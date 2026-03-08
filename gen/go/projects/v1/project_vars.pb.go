@@ -9,6 +9,7 @@ package projectsv1
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	reflect "reflect"
 	unsafe "unsafe"
 )
@@ -719,7 +720,7 @@ var File_projects_v1_project_vars_proto protoreflect.FileDescriptor
 
 const file_projects_v1_project_vars_proto_rawDesc = "" +
 	"\n" +
-	"\x1eprojects/v1/project_vars.proto\x12\vprojects.v1\"k\n" +
+	"\x1eprojects/v1/project_vars.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\"k\n" +
 	"\x12ProjectVarResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1d\n" +
 	"\n" +
@@ -742,7 +743,13 @@ const file_projects_v1_project_vars_proto_rawDesc = "" +
 	"\x05value\x18\x03 \x01(\tR\x05value\"?\n" +
 	"\x17UpdateProjectVarRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05valueB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
+	"\x05value\x18\x02 \x01(\tR\x05value2\xc2\x03\n" +
+	"\x11ProjectVarService\x12S\n" +
+	"\rGetProjectVar\x12!.projects.v1.GetProjectVarRequest\x1a\x1f.projects.v1.ProjectVarResponse\x12\\\n" +
+	"\x0fListProjectVars\x12#.projects.v1.ListProjectVarsRequest\x1a$.projects.v1.ListProjectVarsResponse\x12Y\n" +
+	"\x10CreateProjectVar\x12$.projects.v1.CreateProjectVarRequest\x1a\x1f.projects.v1.ProjectVarResponse\x12P\n" +
+	"\x10UpdateProjectVar\x12$.projects.v1.UpdateProjectVarRequest\x1a\x16.google.protobuf.Empty\x12M\n" +
+	"\x10DeleteProjectVar\x12!.projects.v1.GetProjectVarRequest\x1a\x16.google.protobuf.EmptyB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
 
 var file_projects_v1_project_vars_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_projects_v1_project_vars_proto_goTypes = []any{
@@ -752,11 +759,22 @@ var file_projects_v1_project_vars_proto_goTypes = []any{
 	(*ListProjectVarsRequest)(nil),  // 3: projects.v1.ListProjectVarsRequest
 	(*CreateProjectVarRequest)(nil), // 4: projects.v1.CreateProjectVarRequest
 	(*UpdateProjectVarRequest)(nil), // 5: projects.v1.UpdateProjectVarRequest
+	(*emptypb.Empty)(nil),           // 6: google.protobuf.Empty
 }
 var file_projects_v1_project_vars_proto_depIdxs = []int32{
 	0, // 0: projects.v1.ListProjectVarsResponse.project_vars:type_name -> projects.v1.ProjectVarResponse
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
+	2, // 1: projects.v1.ProjectVarService.GetProjectVar:input_type -> projects.v1.GetProjectVarRequest
+	3, // 2: projects.v1.ProjectVarService.ListProjectVars:input_type -> projects.v1.ListProjectVarsRequest
+	4, // 3: projects.v1.ProjectVarService.CreateProjectVar:input_type -> projects.v1.CreateProjectVarRequest
+	5, // 4: projects.v1.ProjectVarService.UpdateProjectVar:input_type -> projects.v1.UpdateProjectVarRequest
+	2, // 5: projects.v1.ProjectVarService.DeleteProjectVar:input_type -> projects.v1.GetProjectVarRequest
+	0, // 6: projects.v1.ProjectVarService.GetProjectVar:output_type -> projects.v1.ProjectVarResponse
+	1, // 7: projects.v1.ProjectVarService.ListProjectVars:output_type -> projects.v1.ListProjectVarsResponse
+	0, // 8: projects.v1.ProjectVarService.CreateProjectVar:output_type -> projects.v1.ProjectVarResponse
+	6, // 9: projects.v1.ProjectVarService.UpdateProjectVar:output_type -> google.protobuf.Empty
+	6, // 10: projects.v1.ProjectVarService.DeleteProjectVar:output_type -> google.protobuf.Empty
+	6, // [6:11] is the sub-list for method output_type
+	1, // [1:6] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
 	1, // [1:1] is the sub-list for extension extendee
 	0, // [0:1] is the sub-list for field type_name
@@ -775,7 +793,7 @@ func file_projects_v1_project_vars_proto_init() {
 			NumEnums:      0,
 			NumMessages:   6,
 			NumExtensions: 0,
-			NumServices:   0,
+			NumServices:   1,
 		},
 		GoTypes:           file_projects_v1_project_vars_proto_goTypes,
 		DependencyIndexes: file_projects_v1_project_vars_proto_depIdxs,

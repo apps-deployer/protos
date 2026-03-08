@@ -2,7 +2,26 @@ edition = "2024";
 
 package projects.v1;
 
+import "google/protobuf/empty.proto";
+
 option go_package = "github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1";
+
+// Сервис EnvVarService предоставляет CRUD интерфейс для управления переменными окружения
+service EnvVarService {
+  // GetEnvVar возвращает переменную окружения по ее ID
+  rpc GetEnvVar (GetEnvVarRequest) returns (EnvVarResponse);
+  // ListEnvVars возвращает список переменных окружения для данного окружения с поддержкой пагинации
+  rpc ListEnvVars (ListEnvVarsRequest) returns (ListEnvVarsResponse);
+  // ListAllVars возвращает список всех переменных, определенных в окружении, включая 
+  // переменные проекта, с поддержкой пагинации
+  rpc ListAllVars (ListEnvVarsRequest) returns (ListEnvVarsResponse);
+  // CreateEnvVar создает новую переменную окружения для данного окружения
+  rpc CreateEnvVar (CreateEnvVarRequest) returns (EnvVarResponse);
+  // UpdateEnvVar обновляет переменную окружения по ее ID
+  rpc UpdateEnvVar (UpdateEnvVarRequest) returns (google.protobuf.Empty);
+  // DeleteEnvVar удаляет переменную окружения по ее ID
+  rpc DeleteEnvVar (GetEnvVarRequest) returns (google.protobuf.Empty);
+}
 
 // Ответ с данными переменной окружения для среды
 message EnvVarResponse {

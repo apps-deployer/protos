@@ -2,7 +2,26 @@ edition = "2024";
 
 package projects.v1;
 
+import "google/protobuf/empty.proto";
+
 option go_package = "github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1";
+
+// Сервис EnvService предоставляет CRUD интерфейс для управления 
+// окружениями, привязанными к GitHub-репозиториям и их конфигурациями
+service EnvService {
+  // GetEnvByGit возвращает окружение, связанное с проектом, по URL репозитория и названию ветки
+  rpc GetEnvByGit (GetEnvByGitRequest) returns (EnvResponse);
+  // GetEnv возвращает информацию об окружении по его ID
+  rpc GetEnv (GetEnvRequest) returns (EnvResponse);
+  // ListEnvs возвращает список окружений проекта с поддержкой пагинации
+  rpc ListEnvs (ListEnvsRequest) returns (ListEnvsResponse);
+  // CreateEnv создает новое окружение для проекта
+  rpc CreateEnv (CreateEnvRequest) returns (EnvResponse);
+  // UpdateEnv обновляет окружение по его ID
+  rpc UpdateEnv (UpdateEnvRequest) returns (google.protobuf.Empty);
+  // DeleteEnv удаляет окружение по его ID
+  rpc DeleteEnv (GetEnvRequest) returns (google.protobuf.Empty);
+}
 
 // Ответ с данными окружения
 message EnvResponse {

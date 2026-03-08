@@ -9,6 +9,7 @@ package projectsv1
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	reflect "reflect"
 	unsafe "unsafe"
 )
@@ -1157,7 +1158,7 @@ var File_projects_v1_deploy_configs_templates_proto protoreflect.FileDescriptor
 
 const file_projects_v1_deploy_configs_templates_proto_rawDesc = "" +
 	"\n" +
-	"*projects/v1/deploy_configs_templates.proto\x12\vprojects.v1\"\xf3\x01\n" +
+	"*projects/v1/deploy_configs_templates.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\"\xf3\x01\n" +
 	"\x1dDeployConfigsTemplateResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
@@ -1199,7 +1200,13 @@ const file_projects_v1_deploy_configs_templates_proto_rawDesc = "" +
 	"\vinstall_cmd\x18\x06 \x01(\tR\n" +
 	"installCmd\x12\x1b\n" +
 	"\tbuild_cmd\x18\a \x01(\tR\bbuildCmd\x12\x17\n" +
-	"\arun_cmd\x18\b \x01(\tR\x06runCmdB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
+	"\arun_cmd\x18\b \x01(\tR\x06runCmd2\xdc\x04\n" +
+	"\x1cDeployConfigsTemplateService\x12t\n" +
+	"\x18GetDeployConfigsTemplate\x12,.projects.v1.GetDeployConfigsTemplateRequest\x1a*.projects.v1.DeployConfigsTemplateResponse\x12}\n" +
+	"\x1aListDeployConfigsTemplates\x12..projects.v1.ListDeployConfigsTemplatesRequest\x1a/.projects.v1.ListDeployConfigsTemplatesResponse\x12z\n" +
+	"\x1bCreateDeployConfigsTemplate\x12/.projects.v1.CreateDeployConfigsTemplateRequest\x1a*.projects.v1.DeployConfigsTemplateResponse\x12f\n" +
+	"\x1bUpdateDeployConfigsTemplate\x12/.projects.v1.UpdateDeployConfigsTemplateRequest\x1a\x16.google.protobuf.Empty\x12c\n" +
+	"\x1bDeleteDeployConfigsTemplate\x12,.projects.v1.GetDeployConfigsTemplateRequest\x1a\x16.google.protobuf.EmptyB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
 
 var file_projects_v1_deploy_configs_templates_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_projects_v1_deploy_configs_templates_proto_goTypes = []any{
@@ -1209,11 +1216,22 @@ var file_projects_v1_deploy_configs_templates_proto_goTypes = []any{
 	(*ListDeployConfigsTemplatesRequest)(nil),  // 3: projects.v1.ListDeployConfigsTemplatesRequest
 	(*CreateDeployConfigsTemplateRequest)(nil), // 4: projects.v1.CreateDeployConfigsTemplateRequest
 	(*UpdateDeployConfigsTemplateRequest)(nil), // 5: projects.v1.UpdateDeployConfigsTemplateRequest
+	(*emptypb.Empty)(nil),                      // 6: google.protobuf.Empty
 }
 var file_projects_v1_deploy_configs_templates_proto_depIdxs = []int32{
 	0, // 0: projects.v1.ListDeployConfigsTemplatesResponse.deploy_configs_templates:type_name -> projects.v1.DeployConfigsTemplateResponse
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
+	2, // 1: projects.v1.DeployConfigsTemplateService.GetDeployConfigsTemplate:input_type -> projects.v1.GetDeployConfigsTemplateRequest
+	3, // 2: projects.v1.DeployConfigsTemplateService.ListDeployConfigsTemplates:input_type -> projects.v1.ListDeployConfigsTemplatesRequest
+	4, // 3: projects.v1.DeployConfigsTemplateService.CreateDeployConfigsTemplate:input_type -> projects.v1.CreateDeployConfigsTemplateRequest
+	5, // 4: projects.v1.DeployConfigsTemplateService.UpdateDeployConfigsTemplate:input_type -> projects.v1.UpdateDeployConfigsTemplateRequest
+	2, // 5: projects.v1.DeployConfigsTemplateService.DeleteDeployConfigsTemplate:input_type -> projects.v1.GetDeployConfigsTemplateRequest
+	0, // 6: projects.v1.DeployConfigsTemplateService.GetDeployConfigsTemplate:output_type -> projects.v1.DeployConfigsTemplateResponse
+	1, // 7: projects.v1.DeployConfigsTemplateService.ListDeployConfigsTemplates:output_type -> projects.v1.ListDeployConfigsTemplatesResponse
+	0, // 8: projects.v1.DeployConfigsTemplateService.CreateDeployConfigsTemplate:output_type -> projects.v1.DeployConfigsTemplateResponse
+	6, // 9: projects.v1.DeployConfigsTemplateService.UpdateDeployConfigsTemplate:output_type -> google.protobuf.Empty
+	6, // 10: projects.v1.DeployConfigsTemplateService.DeleteDeployConfigsTemplate:output_type -> google.protobuf.Empty
+	6, // [6:11] is the sub-list for method output_type
+	1, // [1:6] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
 	1, // [1:1] is the sub-list for extension extendee
 	0, // [0:1] is the sub-list for field type_name
@@ -1232,7 +1250,7 @@ func file_projects_v1_deploy_configs_templates_proto_init() {
 			NumEnums:      0,
 			NumMessages:   6,
 			NumExtensions: 0,
-			NumServices:   0,
+			NumServices:   1,
 		},
 		GoTypes:           file_projects_v1_deploy_configs_templates_proto_goTypes,
 		DependencyIndexes: file_projects_v1_deploy_configs_templates_proto_depIdxs,

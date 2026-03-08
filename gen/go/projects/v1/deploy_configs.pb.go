@@ -9,6 +9,7 @@ package projectsv1
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	reflect "reflect"
 	unsafe "unsafe"
 )
@@ -982,7 +983,7 @@ var File_projects_v1_deploy_configs_proto protoreflect.FileDescriptor
 
 const file_projects_v1_deploy_configs_proto_rawDesc = "" +
 	"\n" +
-	" projects/v1/deploy_configs.proto\x12\vprojects.v1\"\xf5\x02\n" +
+	" projects/v1/deploy_configs.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\"\xf5\x02\n" +
 	"\x14DeployConfigResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1d\n" +
 	"\n" +
@@ -1017,7 +1018,11 @@ const file_projects_v1_deploy_configs_proto_rawDesc = "" +
 	"\x14base_image_overwrite\x18\x05 \x01(\tR\x12baseImageOverwrite\x122\n" +
 	"\x15install_cmd_overwirte\x18\x06 \x01(\tR\x13installCmdOverwirte\x12.\n" +
 	"\x13build_cmd_overwirte\x18\a \x01(\tR\x11buildCmdOverwirte\x12*\n" +
-	"\x11run_cmd_overwirte\x18\b \x01(\tR\x0frunCmdOverwirteB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
+	"\x11run_cmd_overwirte\x18\b \x01(\tR\x0frunCmdOverwirte2\xb1\x02\n" +
+	"\x13DeployConfigService\x12i\n" +
+	"\x17GetResolvedDeployConfig\x12#.projects.v1.GetDeployConfigRequest\x1a).projects.v1.ResolvedDeployConfigResponse\x12Y\n" +
+	"\x0fGetDeployConfig\x12#.projects.v1.GetDeployConfigRequest\x1a!.projects.v1.DeployConfigResponse\x12T\n" +
+	"\x12UpdateDeployConfig\x12&.projects.v1.UpdateDeployConfigRequest\x1a\x16.google.protobuf.EmptyB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
 
 var file_projects_v1_deploy_configs_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_projects_v1_deploy_configs_proto_goTypes = []any{
@@ -1025,10 +1030,17 @@ var file_projects_v1_deploy_configs_proto_goTypes = []any{
 	(*ResolvedDeployConfigResponse)(nil), // 1: projects.v1.ResolvedDeployConfigResponse
 	(*GetDeployConfigRequest)(nil),       // 2: projects.v1.GetDeployConfigRequest
 	(*UpdateDeployConfigRequest)(nil),    // 3: projects.v1.UpdateDeployConfigRequest
+	(*emptypb.Empty)(nil),                // 4: google.protobuf.Empty
 }
 var file_projects_v1_deploy_configs_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
+	2, // 0: projects.v1.DeployConfigService.GetResolvedDeployConfig:input_type -> projects.v1.GetDeployConfigRequest
+	2, // 1: projects.v1.DeployConfigService.GetDeployConfig:input_type -> projects.v1.GetDeployConfigRequest
+	3, // 2: projects.v1.DeployConfigService.UpdateDeployConfig:input_type -> projects.v1.UpdateDeployConfigRequest
+	1, // 3: projects.v1.DeployConfigService.GetResolvedDeployConfig:output_type -> projects.v1.ResolvedDeployConfigResponse
+	0, // 4: projects.v1.DeployConfigService.GetDeployConfig:output_type -> projects.v1.DeployConfigResponse
+	4, // 5: projects.v1.DeployConfigService.UpdateDeployConfig:output_type -> google.protobuf.Empty
+	3, // [3:6] is the sub-list for method output_type
+	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -1047,7 +1059,7 @@ func file_projects_v1_deploy_configs_proto_init() {
 			NumEnums:      0,
 			NumMessages:   4,
 			NumExtensions: 0,
-			NumServices:   0,
+			NumServices:   1,
 		},
 		GoTypes:           file_projects_v1_deploy_configs_proto_goTypes,
 		DependencyIndexes: file_projects_v1_deploy_configs_proto_depIdxs,

@@ -9,6 +9,7 @@ package projectsv1
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	reflect "reflect"
 	unsafe "unsafe"
 )
@@ -963,7 +964,7 @@ var File_projects_v1_envs_proto protoreflect.FileDescriptor
 
 const file_projects_v1_envs_proto_rawDesc = "" +
 	"\n" +
-	"\x16projects/v1/envs.proto\x12\vprojects.v1\"\x96\x01\n" +
+	"\x16projects/v1/envs.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\"\x96\x01\n" +
 	"\vEnvResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1d\n" +
@@ -996,7 +997,15 @@ const file_projects_v1_envs_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12#\n" +
 	"\rtarget_branch\x18\x03 \x01(\tR\ftargetBranch\x12\x1f\n" +
 	"\vdomain_name\x18\x04 \x01(\tR\n" +
-	"domainNameB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
+	"domainName2\xaa\x03\n" +
+	"\n" +
+	"EnvService\x12H\n" +
+	"\vGetEnvByGit\x12\x1f.projects.v1.GetEnvByGitRequest\x1a\x18.projects.v1.EnvResponse\x12>\n" +
+	"\x06GetEnv\x12\x1a.projects.v1.GetEnvRequest\x1a\x18.projects.v1.EnvResponse\x12G\n" +
+	"\bListEnvs\x12\x1c.projects.v1.ListEnvsRequest\x1a\x1d.projects.v1.ListEnvsResponse\x12D\n" +
+	"\tCreateEnv\x12\x1d.projects.v1.CreateEnvRequest\x1a\x18.projects.v1.EnvResponse\x12B\n" +
+	"\tUpdateEnv\x12\x1d.projects.v1.UpdateEnvRequest\x1a\x16.google.protobuf.Empty\x12?\n" +
+	"\tDeleteEnv\x12\x1a.projects.v1.GetEnvRequest\x1a\x16.google.protobuf.EmptyB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
 
 var file_projects_v1_envs_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_projects_v1_envs_proto_goTypes = []any{
@@ -1007,11 +1016,24 @@ var file_projects_v1_envs_proto_goTypes = []any{
 	(*ListEnvsRequest)(nil),    // 4: projects.v1.ListEnvsRequest
 	(*CreateEnvRequest)(nil),   // 5: projects.v1.CreateEnvRequest
 	(*UpdateEnvRequest)(nil),   // 6: projects.v1.UpdateEnvRequest
+	(*emptypb.Empty)(nil),      // 7: google.protobuf.Empty
 }
 var file_projects_v1_envs_proto_depIdxs = []int32{
 	0, // 0: projects.v1.ListEnvsResponse.environments:type_name -> projects.v1.EnvResponse
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
+	3, // 1: projects.v1.EnvService.GetEnvByGit:input_type -> projects.v1.GetEnvByGitRequest
+	2, // 2: projects.v1.EnvService.GetEnv:input_type -> projects.v1.GetEnvRequest
+	4, // 3: projects.v1.EnvService.ListEnvs:input_type -> projects.v1.ListEnvsRequest
+	5, // 4: projects.v1.EnvService.CreateEnv:input_type -> projects.v1.CreateEnvRequest
+	6, // 5: projects.v1.EnvService.UpdateEnv:input_type -> projects.v1.UpdateEnvRequest
+	2, // 6: projects.v1.EnvService.DeleteEnv:input_type -> projects.v1.GetEnvRequest
+	0, // 7: projects.v1.EnvService.GetEnvByGit:output_type -> projects.v1.EnvResponse
+	0, // 8: projects.v1.EnvService.GetEnv:output_type -> projects.v1.EnvResponse
+	1, // 9: projects.v1.EnvService.ListEnvs:output_type -> projects.v1.ListEnvsResponse
+	0, // 10: projects.v1.EnvService.CreateEnv:output_type -> projects.v1.EnvResponse
+	7, // 11: projects.v1.EnvService.UpdateEnv:output_type -> google.protobuf.Empty
+	7, // 12: projects.v1.EnvService.DeleteEnv:output_type -> google.protobuf.Empty
+	7, // [7:13] is the sub-list for method output_type
+	1, // [1:7] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
 	1, // [1:1] is the sub-list for extension extendee
 	0, // [0:1] is the sub-list for field type_name
@@ -1030,7 +1052,7 @@ func file_projects_v1_envs_proto_init() {
 			NumEnums:      0,
 			NumMessages:   7,
 			NumExtensions: 0,
-			NumServices:   0,
+			NumServices:   1,
 		},
 		GoTypes:           file_projects_v1_envs_proto_goTypes,
 		DependencyIndexes: file_projects_v1_envs_proto_depIdxs,

@@ -2,7 +2,24 @@ edition = "2024";
 
 package projects.v1;
 
+import "google/protobuf/empty.proto";
+
 option go_package = "github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1";
+
+// Сервис DeployConfigsTemplateService предоставляет CRUD интерфейс для управления 
+// шаблонами конфигурации деплоя
+service DeployConfigsTemplateService {
+  // GetDeployConfigsTemplate возвращает шаблон конфигурации деплоя по его ID
+  rpc GetDeployConfigsTemplate (GetDeployConfigsTemplateRequest) returns (DeployConfigsTemplateResponse);
+  // ListDeployConfigsTemplates возвращает список шаблонов конфигурации деплоя
+  rpc ListDeployConfigsTemplates (ListDeployConfigsTemplatesRequest) returns (ListDeployConfigsTemplatesResponse);
+  // CreateDeployConfigsTemplate создает новый шаблон конфигурации деплоя
+  rpc CreateDeployConfigsTemplate (CreateDeployConfigsTemplateRequest) returns (DeployConfigsTemplateResponse);
+  // UpdateDeployConfigsTemplate обновляет шаблон конфигурации деплоя по его ID
+  rpc UpdateDeployConfigsTemplate (UpdateDeployConfigsTemplateRequest) returns (google.protobuf.Empty);
+  // DeleteDeployConfigsTemplate удаляет шаблон конфигурации деплоя по его ID
+  rpc DeleteDeployConfigsTemplate (GetDeployConfigsTemplateRequest) returns (google.protobuf.Empty);
+}
 
 // Шаблоны конфигурации деплоя
 message DeployConfigsTemplateResponse {

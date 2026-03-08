@@ -2,7 +2,23 @@ edition = "2024";
 
 package projects.v1;
 
+import "google/protobuf/empty.proto";
+
 option go_package = "github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1";
+
+// Сервис ProjectVarService предоставляет CRUD интерфейс для управления переменными проекта
+service ProjectVarService {
+  // GetProjectVar возвращает переменную проекта по ее ID
+  rpc GetProjectVar (GetProjectVarRequest) returns (ProjectVarResponse);
+  // ListProjectVars возвращает список переменных проекта с поддержкой пагинации
+  rpc ListProjectVars (ListProjectVarsRequest) returns (ListProjectVarsResponse);
+  // CreateProjectVar создает новую переменную проекта
+  rpc CreateProjectVar (CreateProjectVarRequest) returns (ProjectVarResponse);
+  // UpdateProjectVar обновляет переменную проекта по ее ID
+  rpc UpdateProjectVar (UpdateProjectVarRequest) returns (google.protobuf.Empty);
+  // DeleteProjectVar удаляет переменную проекта по ее ID
+  rpc DeleteProjectVar (GetProjectVarRequest) returns (google.protobuf.Empty);
+}
 
 // Ответ с данными переменной окружения для проекта
 message ProjectVarResponse {

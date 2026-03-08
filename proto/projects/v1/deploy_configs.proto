@@ -3,7 +3,20 @@ edition = "2024";
 
 package projects.v1;
 
+import "google/protobuf/empty.proto";
+
 option go_package = "github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1";
+
+// Сервис DeployConfigService предоставляет интерфейс для чтения и обновления кофигурации деплоя проекта
+service DeployConfigService {
+  // GetResolvedDeployConfig возвращает конфигурацию деплоя по его ID, сгенерированную  
+  // с учетом значений из шаблона и их переопределений 
+  rpc GetResolvedDeployConfig (GetDeployConfigRequest) returns (ResolvedDeployConfigResponse);
+  // GetDeployConfig возвращает конфигурацию деплоя по его ID, без учета шаблона
+  rpc GetDeployConfig (GetDeployConfigRequest) returns (DeployConfigResponse);
+  // UpdateDeployConfig обновляет конфигурацию деплоя по его ID
+  rpc UpdateDeployConfig (UpdateDeployConfigRequest) returns (google.protobuf.Empty);
+}
 
 // Конфигурация деплоя для проекта
 message DeployConfigResponse {

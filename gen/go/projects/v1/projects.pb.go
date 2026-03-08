@@ -9,6 +9,7 @@ package projectsv1
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	unsafe "unsafe"
@@ -808,7 +809,7 @@ var File_projects_v1_projects_proto protoreflect.FileDescriptor
 
 const file_projects_v1_projects_proto_rawDesc = "" +
 	"\n" +
-	"\x1aprojects/v1/projects.proto\x12\vprojects.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa6\x01\n" +
+	"\x1aprojects/v1/projects.proto\x12\vprojects.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bgoogle/protobuf/empty.proto\"\xa6\x01\n" +
 	"\x0fProjectResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
@@ -832,7 +833,14 @@ const file_projects_v1_projects_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
 	"\brepo_url\x18\x03 \x01(\tR\arepoUrl\x12\x19\n" +
-	"\bowner_id\x18\x04 \x01(\x03R\aownerIdB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
+	"\bowner_id\x18\x04 \x01(\x03R\aownerId2\x98\x03\n" +
+	"\x0eProjectService\x12J\n" +
+	"\n" +
+	"GetProject\x12\x1e.projects.v1.GetProjectRequest\x1a\x1c.projects.v1.ProjectResponse\x12S\n" +
+	"\fListProjects\x12 .projects.v1.ListProjectsRequest\x1a!.projects.v1.ListProjectsResponse\x12P\n" +
+	"\rCreateProject\x12!.projects.v1.CreateProjectRequest\x1a\x1c.projects.v1.ProjectResponse\x12J\n" +
+	"\rUpdateProject\x12!.projects.v1.UpdateProjectRequest\x1a\x16.google.protobuf.Empty\x12G\n" +
+	"\rDeleteProject\x12\x1e.projects.v1.GetProjectRequest\x1a\x16.google.protobuf.EmptyB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
 
 var file_projects_v1_projects_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_projects_v1_projects_proto_goTypes = []any{
@@ -843,12 +851,23 @@ var file_projects_v1_projects_proto_goTypes = []any{
 	(*CreateProjectRequest)(nil),  // 4: projects.v1.CreateProjectRequest
 	(*UpdateProjectRequest)(nil),  // 5: projects.v1.UpdateProjectRequest
 	(*timestamppb.Timestamp)(nil), // 6: google.protobuf.Timestamp
+	(*emptypb.Empty)(nil),         // 7: google.protobuf.Empty
 }
 var file_projects_v1_projects_proto_depIdxs = []int32{
 	6, // 0: projects.v1.ProjectResponse.created_at:type_name -> google.protobuf.Timestamp
 	0, // 1: projects.v1.ListProjectsResponse.projects:type_name -> projects.v1.ProjectResponse
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
+	2, // 2: projects.v1.ProjectService.GetProject:input_type -> projects.v1.GetProjectRequest
+	3, // 3: projects.v1.ProjectService.ListProjects:input_type -> projects.v1.ListProjectsRequest
+	4, // 4: projects.v1.ProjectService.CreateProject:input_type -> projects.v1.CreateProjectRequest
+	5, // 5: projects.v1.ProjectService.UpdateProject:input_type -> projects.v1.UpdateProjectRequest
+	2, // 6: projects.v1.ProjectService.DeleteProject:input_type -> projects.v1.GetProjectRequest
+	0, // 7: projects.v1.ProjectService.GetProject:output_type -> projects.v1.ProjectResponse
+	1, // 8: projects.v1.ProjectService.ListProjects:output_type -> projects.v1.ListProjectsResponse
+	0, // 9: projects.v1.ProjectService.CreateProject:output_type -> projects.v1.ProjectResponse
+	7, // 10: projects.v1.ProjectService.UpdateProject:output_type -> google.protobuf.Empty
+	7, // 11: projects.v1.ProjectService.DeleteProject:output_type -> google.protobuf.Empty
+	7, // [7:12] is the sub-list for method output_type
+	2, // [2:7] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
 	2, // [2:2] is the sub-list for extension extendee
 	0, // [0:2] is the sub-list for field type_name
@@ -867,7 +886,7 @@ func file_projects_v1_projects_proto_init() {
 			NumEnums:      0,
 			NumMessages:   6,
 			NumExtensions: 0,
-			NumServices:   0,
+			NumServices:   1,
 		},
 		GoTypes:           file_projects_v1_projects_proto_goTypes,
 		DependencyIndexes: file_projects_v1_projects_proto_depIdxs,

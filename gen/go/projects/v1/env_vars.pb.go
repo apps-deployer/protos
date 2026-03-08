@@ -9,6 +9,7 @@ package projectsv1
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	reflect "reflect"
 	unsafe "unsafe"
 )
@@ -719,7 +720,7 @@ var File_projects_v1_env_vars_proto protoreflect.FileDescriptor
 
 const file_projects_v1_env_vars_proto_rawDesc = "" +
 	"\n" +
-	"\x1aprojects/v1/env_vars.proto\x12\vprojects.v1\"_\n" +
+	"\x1aprojects/v1/env_vars.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\"_\n" +
 	"\x0eEnvVarResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x15\n" +
 	"\x06env_id\x18\x02 \x01(\x03R\x05envId\x12\x10\n" +
@@ -739,7 +740,14 @@ const file_projects_v1_env_vars_proto_rawDesc = "" +
 	"\x05value\x18\x03 \x01(\tR\x05value\";\n" +
 	"\x13UpdateEnvVarRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05valueB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
+	"\x05value\x18\x02 \x01(\tR\x05value2\xdc\x03\n" +
+	"\rEnvVarService\x12G\n" +
+	"\tGetEnvVar\x12\x1d.projects.v1.GetEnvVarRequest\x1a\x1b.projects.v1.EnvVarResponse\x12P\n" +
+	"\vListEnvVars\x12\x1f.projects.v1.ListEnvVarsRequest\x1a .projects.v1.ListEnvVarsResponse\x12P\n" +
+	"\vListAllVars\x12\x1f.projects.v1.ListEnvVarsRequest\x1a .projects.v1.ListEnvVarsResponse\x12M\n" +
+	"\fCreateEnvVar\x12 .projects.v1.CreateEnvVarRequest\x1a\x1b.projects.v1.EnvVarResponse\x12H\n" +
+	"\fUpdateEnvVar\x12 .projects.v1.UpdateEnvVarRequest\x1a\x16.google.protobuf.Empty\x12E\n" +
+	"\fDeleteEnvVar\x12\x1d.projects.v1.GetEnvVarRequest\x1a\x16.google.protobuf.EmptyB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
 
 var file_projects_v1_env_vars_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_projects_v1_env_vars_proto_goTypes = []any{
@@ -749,11 +757,24 @@ var file_projects_v1_env_vars_proto_goTypes = []any{
 	(*ListEnvVarsRequest)(nil),  // 3: projects.v1.ListEnvVarsRequest
 	(*CreateEnvVarRequest)(nil), // 4: projects.v1.CreateEnvVarRequest
 	(*UpdateEnvVarRequest)(nil), // 5: projects.v1.UpdateEnvVarRequest
+	(*emptypb.Empty)(nil),       // 6: google.protobuf.Empty
 }
 var file_projects_v1_env_vars_proto_depIdxs = []int32{
 	0, // 0: projects.v1.ListEnvVarsResponse.env_vars:type_name -> projects.v1.EnvVarResponse
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
+	2, // 1: projects.v1.EnvVarService.GetEnvVar:input_type -> projects.v1.GetEnvVarRequest
+	3, // 2: projects.v1.EnvVarService.ListEnvVars:input_type -> projects.v1.ListEnvVarsRequest
+	3, // 3: projects.v1.EnvVarService.ListAllVars:input_type -> projects.v1.ListEnvVarsRequest
+	4, // 4: projects.v1.EnvVarService.CreateEnvVar:input_type -> projects.v1.CreateEnvVarRequest
+	5, // 5: projects.v1.EnvVarService.UpdateEnvVar:input_type -> projects.v1.UpdateEnvVarRequest
+	2, // 6: projects.v1.EnvVarService.DeleteEnvVar:input_type -> projects.v1.GetEnvVarRequest
+	0, // 7: projects.v1.EnvVarService.GetEnvVar:output_type -> projects.v1.EnvVarResponse
+	1, // 8: projects.v1.EnvVarService.ListEnvVars:output_type -> projects.v1.ListEnvVarsResponse
+	1, // 9: projects.v1.EnvVarService.ListAllVars:output_type -> projects.v1.ListEnvVarsResponse
+	0, // 10: projects.v1.EnvVarService.CreateEnvVar:output_type -> projects.v1.EnvVarResponse
+	6, // 11: projects.v1.EnvVarService.UpdateEnvVar:output_type -> google.protobuf.Empty
+	6, // 12: projects.v1.EnvVarService.DeleteEnvVar:output_type -> google.protobuf.Empty
+	7, // [7:13] is the sub-list for method output_type
+	1, // [1:7] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
 	1, // [1:1] is the sub-list for extension extendee
 	0, // [0:1] is the sub-list for field type_name
@@ -772,7 +793,7 @@ func file_projects_v1_env_vars_proto_init() {
 			NumEnums:      0,
 			NumMessages:   6,
 			NumExtensions: 0,
-			NumServices:   0,
+			NumServices:   1,
 		},
 		GoTypes:           file_projects_v1_env_vars_proto_goTypes,
 		DependencyIndexes: file_projects_v1_env_vars_proto_depIdxs,
