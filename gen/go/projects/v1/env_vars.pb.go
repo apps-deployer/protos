@@ -733,7 +733,7 @@ const file_projects_v1_env_vars_proto_rawDesc = "" +
 	"\x05value\x18\x03 \x01(\tR\x05value\";\n" +
 	"\x13UpdateEnvVarRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05valueB5Z3github.com/org/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
+	"\x05value\x18\x02 \x01(\tR\x05valueB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
 
 var file_projects_v1_env_vars_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_projects_v1_env_vars_proto_goTypes = []any{

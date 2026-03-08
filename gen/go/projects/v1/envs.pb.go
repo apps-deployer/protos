@@ -989,7 +989,7 @@ const file_projects_v1_envs_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12#\n" +
 	"\rtarget_branch\x18\x03 \x01(\tR\ftargetBranch\x12\x1f\n" +
 	"\vdomain_name\x18\x04 \x01(\tR\n" +
-	"domainNameB5Z3github.com/org/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
+	"domainNameB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
 
 var file_projects_v1_envs_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_projects_v1_envs_proto_goTypes = []any{

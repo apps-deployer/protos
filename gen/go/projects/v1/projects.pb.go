@@ -826,7 +826,7 @@ const file_projects_v1_projects_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
 	"\brepo_url\x18\x03 \x01(\tR\arepoUrl\x12\x19\n" +
-	"\bowner_id\x18\x04 \x01(\x03R\aownerIdB5Z3github.com/org/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
+	"\bowner_id\x18\x04 \x01(\x03R\aownerIdB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
 
 var file_projects_v1_projects_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_projects_v1_projects_proto_goTypes = []any{

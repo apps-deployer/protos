@@ -11,7 +11,7 @@ import "projects/v1/envs.proto";
 import "projects/v1/project_vars.proto";
 import "projects/v1/projects.proto";
 
-option go_package = "github.com/org/protos/gen/go/projects/v1;projectsv1";
+option go_package = "github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1";
 
 service ProjectService {
   rpc GetProject (GetProjectRequest) returns (ProjectResponse);

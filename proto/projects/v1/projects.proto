@@ -4,7 +4,7 @@ package projects.v1;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/org/protos/gen/go/projects/v1;projectsv1";
+option go_package = "github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1";
 
 message ProjectResponse {
   int64 id = 1;

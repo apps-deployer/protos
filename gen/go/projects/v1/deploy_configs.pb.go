@@ -1091,7 +1091,7 @@ const file_projects_v1_deploy_configs_proto_rawDesc = "" +
 	"\x14base_image_overwrite\x18\x05 \x01(\tR\x12baseImageOverwrite\x122\n" +
 	"\x15install_cmd_overwirte\x18\x06 \x01(\tR\x13installCmdOverwirte\x12.\n" +
 	"\x13build_cmd_overwirte\x18\a \x01(\tR\x11buildCmdOverwirte\x12*\n" +
-	"\x11run_cmd_overwirte\x18\b \x01(\tR\x0frunCmdOverwirteB5Z3github.com/org/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
+	"\x11run_cmd_overwirte\x18\b \x01(\tR\x0frunCmdOverwirteB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
 
 var file_projects_v1_deploy_configs_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_projects_v1_deploy_configs_proto_goTypes = []any{

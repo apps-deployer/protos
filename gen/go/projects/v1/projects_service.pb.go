@@ -57,7 +57,7 @@ const file_projects_v1_projects_service_proto_rawDesc = "" +
 	"\vListAllVars\x12\x1f.projects.v1.ListEnvVarsRequest\x1a .projects.v1.ListEnvVarsResponse\x12M\n" +
 	"\fCreateEnvVar\x12 .projects.v1.CreateEnvVarRequest\x1a\x1b.projects.v1.EnvVarResponse\x12H\n" +
 	"\fUpdateEnvVar\x12 .projects.v1.UpdateEnvVarRequest\x1a\x16.google.protobuf.Empty\x12E\n" +
-	"\fDeleteEnvVar\x12\x1d.projects.v1.GetEnvVarRequest\x1a\x16.google.protobuf.EmptyB5Z3github.com/org/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
+	"\fDeleteEnvVar\x12\x1d.projects.v1.GetEnvVarRequest\x1a\x16.google.protobuf.EmptyB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
 
 var file_projects_v1_projects_service_proto_goTypes = []any{
 	(*GetProjectRequest)(nil),                  // 0: projects.v1.GetProjectRequest

@@ -1193,7 +1193,7 @@ const file_projects_v1_deploy_configs_templates_proto_rawDesc = "" +
 	"\vinstall_cmd\x18\x06 \x01(\tR\n" +
 	"installCmd\x12\x1b\n" +
 	"\tbuild_cmd\x18\a \x01(\tR\bbuildCmd\x12\x17\n" +
-	"\arun_cmd\x18\b \x01(\tR\x06runCmdB5Z3github.com/org/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
+	"\arun_cmd\x18\b \x01(\tR\x06runCmdB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
 
 var file_projects_v1_deploy_configs_templates_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_projects_v1_deploy_configs_templates_proto_goTypes = []any{

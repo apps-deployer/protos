@@ -1,4 +1,4 @@
-module github.com/org/protos
+module github.com/apps-deployer/protos
 
 go 1.26.1
 

@@ -2,7 +2,7 @@ edition = "2024";
 
 package projects.v1;
 
-option go_package = "github.com/org/protos/gen/go/projects/v1;projectsv1";
+option go_package = "github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1";
 
 message EnvVarResponse {
     int64 id = 1;
