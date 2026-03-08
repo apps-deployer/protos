@@ -20,6 +20,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// Ответ с данными окружения
 type EnvResponse struct {
 	state                   protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id           int64                  `protobuf:"varint,1,opt,name=id"`
@@ -224,6 +225,7 @@ func (b0 EnvResponse_builder) Build() *EnvResponse {
 	return m0
 }
 
+// Ответ со списком окружений
 type ListEnvsResponse struct {
 	state                   protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Environments *[]*EnvResponse        `protobuf:"bytes,1,rep,name=environments"`
@@ -283,6 +285,7 @@ func (b0 ListEnvsResponse_builder) Build() *ListEnvsResponse {
 	return m0
 }
 
+// Параметры запросов на получение окружения по ID
 type GetEnvRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id          int64                  `protobuf:"varint,1,opt,name=id"`
@@ -358,6 +361,7 @@ func (b0 GetEnvRequest_builder) Build() *GetEnvRequest {
 	return m0
 }
 
+// Параметры запросов на получение окружения по репозиторию и ветке
 type GetEnvByGitRequest struct {
 	state                   protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_RepoUrl      *string                `protobuf:"bytes,1,opt,name=repo_url,json=repoUrl"`
@@ -469,6 +473,7 @@ func (b0 GetEnvByGitRequest_builder) Build() *GetEnvByGitRequest {
 	return m0
 }
 
+// Параметры запросов на получение списка окружений проекта
 type ListEnvsRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_ProjectId   int64                  `protobuf:"varint,1,opt,name=project_id,json=projectId"`
@@ -604,6 +609,7 @@ func (b0 ListEnvsRequest_builder) Build() *ListEnvsRequest {
 	return m0
 }
 
+// Параметры запросов на создание окружения
 type CreateEnvRequest struct {
 	state                   protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Name         *string                `protobuf:"bytes,1,opt,name=name"`
@@ -778,6 +784,7 @@ func (b0 CreateEnvRequest_builder) Build() *CreateEnvRequest {
 	return m0
 }
 
+// Параметры запросов на обновление окружений
 type UpdateEnvRequest struct {
 	state                   protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id           int64                  `protobuf:"varint,1,opt,name=id"`

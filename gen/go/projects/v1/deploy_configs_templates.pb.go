@@ -20,6 +20,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// Шаблоны конфигурации деплоя
 type DeployConfigsTemplateResponse struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id          int64                  `protobuf:"varint,1,opt,name=id"`
@@ -326,6 +327,7 @@ func (b0 DeployConfigsTemplateResponse_builder) Build() *DeployConfigsTemplateRe
 	return m0
 }
 
+// Список шаблонов конфигурации деплоя
 type ListDeployConfigsTemplatesResponse struct {
 	state                             protoimpl.MessageState            `protogen:"opaque.v1"`
 	xxx_hidden_DeployConfigsTemplates *[]*DeployConfigsTemplateResponse `protobuf:"bytes,1,rep,name=deploy_configs_templates,json=deployConfigsTemplates"`
@@ -385,6 +387,7 @@ func (b0 ListDeployConfigsTemplatesResponse_builder) Build() *ListDeployConfigsT
 	return m0
 }
 
+// Параметры запросов для получения шаблона конфигурации по ID
 type GetDeployConfigsTemplateRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id          int64                  `protobuf:"varint,1,opt,name=id"`
@@ -460,6 +463,7 @@ func (b0 GetDeployConfigsTemplateRequest_builder) Build() *GetDeployConfigsTempl
 	return m0
 }
 
+// Параметры запросов для получения списка шаблонов конфигурации
 type ListDeployConfigsTemplatesRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Limit       int64                  `protobuf:"varint,1,opt,name=limit"`
@@ -565,6 +569,7 @@ func (b0 ListDeployConfigsTemplatesRequest_builder) Build() *ListDeployConfigsTe
 	return m0
 }
 
+// Параметры запросов для создания шаблона конфигурации деплоя
 type CreateDeployConfigsTemplateRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Name        *string                `protobuf:"bytes,1,opt,name=name"`
@@ -841,6 +846,7 @@ func (b0 CreateDeployConfigsTemplateRequest_builder) Build() *CreateDeployConfig
 	return m0
 }
 
+// Параметры запросов для обновления шаблона конфигурации деплоя по ID
 type UpdateDeployConfigsTemplateRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id          int64                  `protobuf:"varint,1,opt,name=id"`

@@ -20,6 +20,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// Ответ с данными переменной окружения для проекта
 type ProjectVarResponse struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id          int64                  `protobuf:"varint,1,opt,name=id"`
@@ -191,6 +192,7 @@ func (b0 ProjectVarResponse_builder) Build() *ProjectVarResponse {
 	return m0
 }
 
+// Ответ со списком переменных окружения для проекта
 type ListProjectVarsResponse struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_ProjectVars *[]*ProjectVarResponse `protobuf:"bytes,1,rep,name=project_vars,json=projectVars"`
@@ -250,6 +252,7 @@ func (b0 ListProjectVarsResponse_builder) Build() *ListProjectVarsResponse {
 	return m0
 }
 
+// Параметры запросов для получения переменной окружения по ID
 type GetProjectVarRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id          int64                  `protobuf:"varint,1,opt,name=id"`
@@ -325,6 +328,7 @@ func (b0 GetProjectVarRequest_builder) Build() *GetProjectVarRequest {
 	return m0
 }
 
+// Параметры запросов для получения списка переменных окружения для проекта
 type ListProjectVarsRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_ProjectId   int64                  `protobuf:"varint,1,opt,name=project_id,json=projectId"`
@@ -460,6 +464,7 @@ func (b0 ListProjectVarsRequest_builder) Build() *ListProjectVarsRequest {
 	return m0
 }
 
+// Параметры запросов для создания переменной окружения для проекта
 type CreateProjectVarRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_ProjectId   int64                  `protobuf:"varint,1,opt,name=project_id,json=projectId"`
@@ -601,6 +606,7 @@ func (b0 CreateProjectVarRequest_builder) Build() *CreateProjectVarRequest {
 	return m0
 }
 
+// Параметры запросов для обновления переменной окружения по ID
 type UpdateProjectVarRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id          int64                  `protobuf:"varint,1,opt,name=id"`

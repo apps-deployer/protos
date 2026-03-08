@@ -55,36 +55,71 @@ const (
 // ProjectServiceClient is the client API for ProjectService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+//
+// Сервис ProjectService предоставляет CRUD интерфейс для управления
+// проектами, привязанными к GitHub-репозиториям и их конфигурациями
 type ProjectServiceClient interface {
+	// GetProject возвращает информацию о проекте по его ID
 	GetProject(ctx context.Context, in *GetProjectRequest, opts ...grpc.CallOption) (*ProjectResponse, error)
+	// ListProjects возвращает список проектов, принадлежащих пользователю
 	ListProjects(ctx context.Context, in *ListProjectsRequest, opts ...grpc.CallOption) (*ListProjectsResponse, error)
+	// CreateProject создает новый проект с указанными параметрами
 	CreateProject(ctx context.Context, in *CreateProjectRequest, opts ...grpc.CallOption) (*ProjectResponse, error)
+	// UpdateProject обновляет информацию о проекте по его ID
 	UpdateProject(ctx context.Context, in *UpdateProjectRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	// DeleteProject удаляет проект по его ID
 	DeleteProject(ctx context.Context, in *GetProjectRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	// GetDeployConfigsTemplate возвращает шаблон конфигурации деплоя по его ID
 	GetDeployConfigsTemplate(ctx context.Context, in *GetDeployConfigsTemplateRequest, opts ...grpc.CallOption) (*DeployConfigsTemplateResponse, error)
+	// ListDeployConfigsTemplates возвращает список шаблонов конфигурации деплоя
 	ListDeployConfigsTemplates(ctx context.Context, in *ListDeployConfigsTemplatesRequest, opts ...grpc.CallOption) (*ListDeployConfigsTemplatesResponse, error)
+	// CreateDeployConfigsTemplate создает новый шаблон конфигурации деплоя
 	CreateDeployConfigsTemplate(ctx context.Context, in *CreateDeployConfigsTemplateRequest, opts ...grpc.CallOption) (*DeployConfigsTemplateResponse, error)
+	// UpdateDeployConfigsTemplate обновляет шаблон конфигурации деплоя по его ID
 	UpdateDeployConfigsTemplate(ctx context.Context, in *UpdateDeployConfigsTemplateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	// DeleteDeployConfigsTemplate удаляет шаблон конфигурации деплоя по его ID
 	DeleteDeployConfigsTemplate(ctx context.Context, in *GetDeployConfigsTemplateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	GetResolvedDeployConfig(ctx context.Context, in *GetResolvedDeployConfigRequest, opts ...grpc.CallOption) (*ResolvedDeployConfigResponse, error)
+	// GetResolvedDeployConfig возвращает конфигурацию деплоя по его ID, сгенерированную
+	// с учетом значений из шаблона и их переопределений
+	GetResolvedDeployConfig(ctx context.Context, in *GetDeployConfigRequest, opts ...grpc.CallOption) (*ResolvedDeployConfigResponse, error)
+	// GetDeployConfig возвращает конфигурацию деплоя по его ID, без учета шаблона
 	GetDeployConfig(ctx context.Context, in *GetDeployConfigRequest, opts ...grpc.CallOption) (*DeployConfigResponse, error)
+	// UpdateDeployConfig обновляет конфигурацию деплоя по его ID
 	UpdateDeployConfig(ctx context.Context, in *UpdateDeployConfigRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	// GetEnvByGit возвращает окружение, связанное с проектом, по URL репозитория и названию ветки
 	GetEnvByGit(ctx context.Context, in *GetEnvByGitRequest, opts ...grpc.CallOption) (*EnvResponse, error)
+	// GetEnv возвращает информацию об окружении по его ID
 	GetEnv(ctx context.Context, in *GetEnvRequest, opts ...grpc.CallOption) (*EnvResponse, error)
+	// ListEnvs возвращает список окружений проекта с поддержкой пагинации
 	ListEnvs(ctx context.Context, in *ListEnvsRequest, opts ...grpc.CallOption) (*ListEnvsResponse, error)
+	// CreateEnv создает новое окружение для проекта
 	CreateEnv(ctx context.Context, in *CreateEnvRequest, opts ...grpc.CallOption) (*EnvResponse, error)
+	// UpdateEnv обновляет окружение по его ID
 	UpdateEnv(ctx context.Context, in *UpdateEnvRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	// DeleteEnv удаляет окружение по его ID
 	DeleteEnv(ctx context.Context, in *GetEnvRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	// GetProjectVar возвращает переменную проекта по ее ID
 	GetProjectVar(ctx context.Context, in *GetProjectVarRequest, opts ...grpc.CallOption) (*ProjectVarResponse, error)
+	// ListProjectVars возвращает список переменных проекта с поддержкой пагинации
 	ListProjectVars(ctx context.Context, in *ListProjectVarsRequest, opts ...grpc.CallOption) (*ListProjectVarsResponse, error)
+	// CreateProjectVar создает новую переменную проекта
 	CreateProjectVar(ctx context.Context, in *CreateProjectVarRequest, opts ...grpc.CallOption) (*ProjectVarResponse, error)
+	// UpdateProjectVar обновляет переменную проекта по ее ID
 	UpdateProjectVar(ctx context.Context, in *UpdateProjectVarRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	// DeleteProjectVar удаляет переменную проекта по ее ID
 	DeleteProjectVar(ctx context.Context, in *GetProjectVarRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	// GetEnvVar возвращает переменную окружения по ее ID
 	GetEnvVar(ctx context.Context, in *GetEnvVarRequest, opts ...grpc.CallOption) (*EnvVarResponse, error)
+	// ListEnvVars возвращает список переменных окружения для данного окружения с поддержкой пагинации
 	ListEnvVars(ctx context.Context, in *ListEnvVarsRequest, opts ...grpc.CallOption) (*ListEnvVarsResponse, error)
+	// ListAllVars возвращает список всех переменных, определенных в окружении, включая
+	// переменные проекта, с поддержкой пагинации
 	ListAllVars(ctx context.Context, in *ListEnvVarsRequest, opts ...grpc.CallOption) (*ListEnvVarsResponse, error)
+	// CreateEnvVar создает новую переменную окружения для данного окружения
 	CreateEnvVar(ctx context.Context, in *CreateEnvVarRequest, opts ...grpc.CallOption) (*EnvVarResponse, error)
+	// UpdateEnvVar обновляет переменную окружения по ее ID
 	UpdateEnvVar(ctx context.Context, in *UpdateEnvVarRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	// DeleteEnvVar удаляет переменную окружения по ее ID
 	DeleteEnvVar(ctx context.Context, in *GetEnvVarRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
@@ -196,7 +231,7 @@ func (c *projectServiceClient) DeleteDeployConfigsTemplate(ctx context.Context, 
 	return out, nil
 }
 
-func (c *projectServiceClient) GetResolvedDeployConfig(ctx context.Context, in *GetResolvedDeployConfigRequest, opts ...grpc.CallOption) (*ResolvedDeployConfigResponse, error) {
+func (c *projectServiceClient) GetResolvedDeployConfig(ctx context.Context, in *GetDeployConfigRequest, opts ...grpc.CallOption) (*ResolvedDeployConfigResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResolvedDeployConfigResponse)
 	err := c.cc.Invoke(ctx, ProjectService_GetResolvedDeployConfig_FullMethodName, in, out, cOpts...)
@@ -399,36 +434,71 @@ func (c *projectServiceClient) DeleteEnvVar(ctx context.Context, in *GetEnvVarRe
 // ProjectServiceServer is the server API for ProjectService service.
 // All implementations must embed UnimplementedProjectServiceServer
 // for forward compatibility.
+//
+// Сервис ProjectService предоставляет CRUD интерфейс для управления
+// проектами, привязанными к GitHub-репозиториям и их конфигурациями
 type ProjectServiceServer interface {
+	// GetProject возвращает информацию о проекте по его ID
 	GetProject(context.Context, *GetProjectRequest) (*ProjectResponse, error)
+	// ListProjects возвращает список проектов, принадлежащих пользователю
 	ListProjects(context.Context, *ListProjectsRequest) (*ListProjectsResponse, error)
+	// CreateProject создает новый проект с указанными параметрами
 	CreateProject(context.Context, *CreateProjectRequest) (*ProjectResponse, error)
+	// UpdateProject обновляет информацию о проекте по его ID
 	UpdateProject(context.Context, *UpdateProjectRequest) (*emptypb.Empty, error)
+	// DeleteProject удаляет проект по его ID
 	DeleteProject(context.Context, *GetProjectRequest) (*emptypb.Empty, error)
+	// GetDeployConfigsTemplate возвращает шаблон конфигурации деплоя по его ID
 	GetDeployConfigsTemplate(context.Context, *GetDeployConfigsTemplateRequest) (*DeployConfigsTemplateResponse, error)
+	// ListDeployConfigsTemplates возвращает список шаблонов конфигурации деплоя
 	ListDeployConfigsTemplates(context.Context, *ListDeployConfigsTemplatesRequest) (*ListDeployConfigsTemplatesResponse, error)
+	// CreateDeployConfigsTemplate создает новый шаблон конфигурации деплоя
 	CreateDeployConfigsTemplate(context.Context, *CreateDeployConfigsTemplateRequest) (*DeployConfigsTemplateResponse, error)
+	// UpdateDeployConfigsTemplate обновляет шаблон конфигурации деплоя по его ID
 	UpdateDeployConfigsTemplate(context.Context, *UpdateDeployConfigsTemplateRequest) (*emptypb.Empty, error)
+	// DeleteDeployConfigsTemplate удаляет шаблон конфигурации деплоя по его ID
 	DeleteDeployConfigsTemplate(context.Context, *GetDeployConfigsTemplateRequest) (*emptypb.Empty, error)
-	GetResolvedDeployConfig(context.Context, *GetResolvedDeployConfigRequest) (*ResolvedDeployConfigResponse, error)
+	// GetResolvedDeployConfig возвращает конфигурацию деплоя по его ID, сгенерированную
+	// с учетом значений из шаблона и их переопределений
+	GetResolvedDeployConfig(context.Context, *GetDeployConfigRequest) (*ResolvedDeployConfigResponse, error)
+	// GetDeployConfig возвращает конфигурацию деплоя по его ID, без учета шаблона
 	GetDeployConfig(context.Context, *GetDeployConfigRequest) (*DeployConfigResponse, error)
+	// UpdateDeployConfig обновляет конфигурацию деплоя по его ID
 	UpdateDeployConfig(context.Context, *UpdateDeployConfigRequest) (*emptypb.Empty, error)
+	// GetEnvByGit возвращает окружение, связанное с проектом, по URL репозитория и названию ветки
 	GetEnvByGit(context.Context, *GetEnvByGitRequest) (*EnvResponse, error)
+	// GetEnv возвращает информацию об окружении по его ID
 	GetEnv(context.Context, *GetEnvRequest) (*EnvResponse, error)
+	// ListEnvs возвращает список окружений проекта с поддержкой пагинации
 	ListEnvs(context.Context, *ListEnvsRequest) (*ListEnvsResponse, error)
+	// CreateEnv создает новое окружение для проекта
 	CreateEnv(context.Context, *CreateEnvRequest) (*EnvResponse, error)
+	// UpdateEnv обновляет окружение по его ID
 	UpdateEnv(context.Context, *UpdateEnvRequest) (*emptypb.Empty, error)
+	// DeleteEnv удаляет окружение по его ID
 	DeleteEnv(context.Context, *GetEnvRequest) (*emptypb.Empty, error)
+	// GetProjectVar возвращает переменную проекта по ее ID
 	GetProjectVar(context.Context, *GetProjectVarRequest) (*ProjectVarResponse, error)
+	// ListProjectVars возвращает список переменных проекта с поддержкой пагинации
 	ListProjectVars(context.Context, *ListProjectVarsRequest) (*ListProjectVarsResponse, error)
+	// CreateProjectVar создает новую переменную проекта
 	CreateProjectVar(context.Context, *CreateProjectVarRequest) (*ProjectVarResponse, error)
+	// UpdateProjectVar обновляет переменную проекта по ее ID
 	UpdateProjectVar(context.Context, *UpdateProjectVarRequest) (*emptypb.Empty, error)
+	// DeleteProjectVar удаляет переменную проекта по ее ID
 	DeleteProjectVar(context.Context, *GetProjectVarRequest) (*emptypb.Empty, error)
+	// GetEnvVar возвращает переменную окружения по ее ID
 	GetEnvVar(context.Context, *GetEnvVarRequest) (*EnvVarResponse, error)
+	// ListEnvVars возвращает список переменных окружения для данного окружения с поддержкой пагинации
 	ListEnvVars(context.Context, *ListEnvVarsRequest) (*ListEnvVarsResponse, error)
+	// ListAllVars возвращает список всех переменных, определенных в окружении, включая
+	// переменные проекта, с поддержкой пагинации
 	ListAllVars(context.Context, *ListEnvVarsRequest) (*ListEnvVarsResponse, error)
+	// CreateEnvVar создает новую переменную окружения для данного окружения
 	CreateEnvVar(context.Context, *CreateEnvVarRequest) (*EnvVarResponse, error)
+	// UpdateEnvVar обновляет переменную окружения по ее ID
 	UpdateEnvVar(context.Context, *UpdateEnvVarRequest) (*emptypb.Empty, error)
+	// DeleteEnvVar удаляет переменную окружения по ее ID
 	DeleteEnvVar(context.Context, *GetEnvVarRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedProjectServiceServer()
 }
@@ -470,7 +540,7 @@ func (UnimplementedProjectServiceServer) UpdateDeployConfigsTemplate(context.Con
 func (UnimplementedProjectServiceServer) DeleteDeployConfigsTemplate(context.Context, *GetDeployConfigsTemplateRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteDeployConfigsTemplate not implemented")
 }
-func (UnimplementedProjectServiceServer) GetResolvedDeployConfig(context.Context, *GetResolvedDeployConfigRequest) (*ResolvedDeployConfigResponse, error) {
+func (UnimplementedProjectServiceServer) GetResolvedDeployConfig(context.Context, *GetDeployConfigRequest) (*ResolvedDeployConfigResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetResolvedDeployConfig not implemented")
 }
 func (UnimplementedProjectServiceServer) GetDeployConfig(context.Context, *GetDeployConfigRequest) (*DeployConfigResponse, error) {
@@ -732,7 +802,7 @@ func _ProjectService_DeleteDeployConfigsTemplate_Handler(srv interface{}, ctx co
 }
 
 func _ProjectService_GetResolvedDeployConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetResolvedDeployConfigRequest)
+	in := new(GetDeployConfigRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -744,7 +814,7 @@ func _ProjectService_GetResolvedDeployConfig_Handler(srv interface{}, ctx contex
 		FullMethod: ProjectService_GetResolvedDeployConfig_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProjectServiceServer).GetResolvedDeployConfig(ctx, req.(*GetResolvedDeployConfigRequest))
+		return srv.(ProjectServiceServer).GetResolvedDeployConfig(ctx, req.(*GetDeployConfigRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

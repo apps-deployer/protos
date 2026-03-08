@@ -20,6 +20,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// Ответ с данными переменной окружения для среды
 type EnvVarResponse struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id          int64                  `protobuf:"varint,1,opt,name=id"`
@@ -191,6 +192,7 @@ func (b0 EnvVarResponse_builder) Build() *EnvVarResponse {
 	return m0
 }
 
+// Ответ со списком переменных окружения
 type ListEnvVarsResponse struct {
 	state              protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_EnvVars *[]*EnvVarResponse     `protobuf:"bytes,1,rep,name=env_vars,json=envVars"`
@@ -250,6 +252,7 @@ func (b0 ListEnvVarsResponse_builder) Build() *ListEnvVarsResponse {
 	return m0
 }
 
+// Параметры запросов для получения переменной окружения по ID
 type GetEnvVarRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id          int64                  `protobuf:"varint,1,opt,name=id"`
@@ -325,6 +328,7 @@ func (b0 GetEnvVarRequest_builder) Build() *GetEnvVarRequest {
 	return m0
 }
 
+// Параметры запросов для получения списка переменных окружения для среды
 type ListEnvVarsRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_EnvId       int64                  `protobuf:"varint,1,opt,name=env_id,json=envId"`
@@ -460,6 +464,7 @@ func (b0 ListEnvVarsRequest_builder) Build() *ListEnvVarsRequest {
 	return m0
 }
 
+// Параметры запросов для создания переменной окружения для среды
 type CreateEnvVarRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_EnvId       int64                  `protobuf:"varint,1,opt,name=env_id,json=envId"`
@@ -601,6 +606,7 @@ func (b0 CreateEnvVarRequest_builder) Build() *CreateEnvVarRequest {
 	return m0
 }
 
+// Параметры запросов для обновления переменной окружения по ID
 type UpdateEnvVarRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id          int64                  `protobuf:"varint,1,opt,name=id"`

@@ -25,7 +25,7 @@ var File_projects_v1_projects_service_proto protoreflect.FileDescriptor
 
 const file_projects_v1_projects_service_proto_rawDesc = "" +
 	"\n" +
-	"\"projects/v1/projects_service.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a*projects/v1/deploy_configs_templates.proto\x1a projects/v1/deploy_configs.proto\x1a\x1aprojects/v1/env_vars.proto\x1a\x16projects/v1/envs.proto\x1a\x1eprojects/v1/project_vars.proto\x1a\x1aprojects/v1/projects.proto2\x94\x14\n" +
+	"\"projects/v1/projects_service.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a*projects/v1/deploy_configs_templates.proto\x1a projects/v1/deploy_configs.proto\x1a\x1aprojects/v1/env_vars.proto\x1a\x16projects/v1/envs.proto\x1a\x1eprojects/v1/project_vars.proto\x1a\x1aprojects/v1/projects.proto2\x8c\x14\n" +
 	"\x0eProjectService\x12J\n" +
 	"\n" +
 	"GetProject\x12\x1e.projects.v1.GetProjectRequest\x1a\x1c.projects.v1.ProjectResponse\x12S\n" +
@@ -37,8 +37,8 @@ const file_projects_v1_projects_service_proto_rawDesc = "" +
 	"\x1aListDeployConfigsTemplates\x12..projects.v1.ListDeployConfigsTemplatesRequest\x1a/.projects.v1.ListDeployConfigsTemplatesResponse\x12z\n" +
 	"\x1bCreateDeployConfigsTemplate\x12/.projects.v1.CreateDeployConfigsTemplateRequest\x1a*.projects.v1.DeployConfigsTemplateResponse\x12f\n" +
 	"\x1bUpdateDeployConfigsTemplate\x12/.projects.v1.UpdateDeployConfigsTemplateRequest\x1a\x16.google.protobuf.Empty\x12c\n" +
-	"\x1bDeleteDeployConfigsTemplate\x12,.projects.v1.GetDeployConfigsTemplateRequest\x1a\x16.google.protobuf.Empty\x12q\n" +
-	"\x17GetResolvedDeployConfig\x12+.projects.v1.GetResolvedDeployConfigRequest\x1a).projects.v1.ResolvedDeployConfigResponse\x12Y\n" +
+	"\x1bDeleteDeployConfigsTemplate\x12,.projects.v1.GetDeployConfigsTemplateRequest\x1a\x16.google.protobuf.Empty\x12i\n" +
+	"\x17GetResolvedDeployConfig\x12#.projects.v1.GetDeployConfigRequest\x1a).projects.v1.ResolvedDeployConfigResponse\x12Y\n" +
 	"\x0fGetDeployConfig\x12#.projects.v1.GetDeployConfigRequest\x1a!.projects.v1.DeployConfigResponse\x12T\n" +
 	"\x12UpdateDeployConfig\x12&.projects.v1.UpdateDeployConfigRequest\x1a\x16.google.protobuf.Empty\x12H\n" +
 	"\vGetEnvByGit\x12\x1f.projects.v1.GetEnvByGitRequest\x1a\x18.projects.v1.EnvResponse\x12>\n" +
@@ -68,35 +68,34 @@ var file_projects_v1_projects_service_proto_goTypes = []any{
 	(*ListDeployConfigsTemplatesRequest)(nil),  // 5: projects.v1.ListDeployConfigsTemplatesRequest
 	(*CreateDeployConfigsTemplateRequest)(nil), // 6: projects.v1.CreateDeployConfigsTemplateRequest
 	(*UpdateDeployConfigsTemplateRequest)(nil), // 7: projects.v1.UpdateDeployConfigsTemplateRequest
-	(*GetResolvedDeployConfigRequest)(nil),     // 8: projects.v1.GetResolvedDeployConfigRequest
-	(*GetDeployConfigRequest)(nil),             // 9: projects.v1.GetDeployConfigRequest
-	(*UpdateDeployConfigRequest)(nil),          // 10: projects.v1.UpdateDeployConfigRequest
-	(*GetEnvByGitRequest)(nil),                 // 11: projects.v1.GetEnvByGitRequest
-	(*GetEnvRequest)(nil),                      // 12: projects.v1.GetEnvRequest
-	(*ListEnvsRequest)(nil),                    // 13: projects.v1.ListEnvsRequest
-	(*CreateEnvRequest)(nil),                   // 14: projects.v1.CreateEnvRequest
-	(*UpdateEnvRequest)(nil),                   // 15: projects.v1.UpdateEnvRequest
-	(*GetProjectVarRequest)(nil),               // 16: projects.v1.GetProjectVarRequest
-	(*ListProjectVarsRequest)(nil),             // 17: projects.v1.ListProjectVarsRequest
-	(*CreateProjectVarRequest)(nil),            // 18: projects.v1.CreateProjectVarRequest
-	(*UpdateProjectVarRequest)(nil),            // 19: projects.v1.UpdateProjectVarRequest
-	(*GetEnvVarRequest)(nil),                   // 20: projects.v1.GetEnvVarRequest
-	(*ListEnvVarsRequest)(nil),                 // 21: projects.v1.ListEnvVarsRequest
-	(*CreateEnvVarRequest)(nil),                // 22: projects.v1.CreateEnvVarRequest
-	(*UpdateEnvVarRequest)(nil),                // 23: projects.v1.UpdateEnvVarRequest
-	(*ProjectResponse)(nil),                    // 24: projects.v1.ProjectResponse
-	(*ListProjectsResponse)(nil),               // 25: projects.v1.ListProjectsResponse
-	(*emptypb.Empty)(nil),                      // 26: google.protobuf.Empty
-	(*DeployConfigsTemplateResponse)(nil),      // 27: projects.v1.DeployConfigsTemplateResponse
-	(*ListDeployConfigsTemplatesResponse)(nil), // 28: projects.v1.ListDeployConfigsTemplatesResponse
-	(*ResolvedDeployConfigResponse)(nil),       // 29: projects.v1.ResolvedDeployConfigResponse
-	(*DeployConfigResponse)(nil),               // 30: projects.v1.DeployConfigResponse
-	(*EnvResponse)(nil),                        // 31: projects.v1.EnvResponse
-	(*ListEnvsResponse)(nil),                   // 32: projects.v1.ListEnvsResponse
-	(*ProjectVarResponse)(nil),                 // 33: projects.v1.ProjectVarResponse
-	(*ListProjectVarsResponse)(nil),            // 34: projects.v1.ListProjectVarsResponse
-	(*EnvVarResponse)(nil),                     // 35: projects.v1.EnvVarResponse
-	(*ListEnvVarsResponse)(nil),                // 36: projects.v1.ListEnvVarsResponse
+	(*GetDeployConfigRequest)(nil),             // 8: projects.v1.GetDeployConfigRequest
+	(*UpdateDeployConfigRequest)(nil),          // 9: projects.v1.UpdateDeployConfigRequest
+	(*GetEnvByGitRequest)(nil),                 // 10: projects.v1.GetEnvByGitRequest
+	(*GetEnvRequest)(nil),                      // 11: projects.v1.GetEnvRequest
+	(*ListEnvsRequest)(nil),                    // 12: projects.v1.ListEnvsRequest
+	(*CreateEnvRequest)(nil),                   // 13: projects.v1.CreateEnvRequest
+	(*UpdateEnvRequest)(nil),                   // 14: projects.v1.UpdateEnvRequest
+	(*GetProjectVarRequest)(nil),               // 15: projects.v1.GetProjectVarRequest
+	(*ListProjectVarsRequest)(nil),             // 16: projects.v1.ListProjectVarsRequest
+	(*CreateProjectVarRequest)(nil),            // 17: projects.v1.CreateProjectVarRequest
+	(*UpdateProjectVarRequest)(nil),            // 18: projects.v1.UpdateProjectVarRequest
+	(*GetEnvVarRequest)(nil),                   // 19: projects.v1.GetEnvVarRequest
+	(*ListEnvVarsRequest)(nil),                 // 20: projects.v1.ListEnvVarsRequest
+	(*CreateEnvVarRequest)(nil),                // 21: projects.v1.CreateEnvVarRequest
+	(*UpdateEnvVarRequest)(nil),                // 22: projects.v1.UpdateEnvVarRequest
+	(*ProjectResponse)(nil),                    // 23: projects.v1.ProjectResponse
+	(*ListProjectsResponse)(nil),               // 24: projects.v1.ListProjectsResponse
+	(*emptypb.Empty)(nil),                      // 25: google.protobuf.Empty
+	(*DeployConfigsTemplateResponse)(nil),      // 26: projects.v1.DeployConfigsTemplateResponse
+	(*ListDeployConfigsTemplatesResponse)(nil), // 27: projects.v1.ListDeployConfigsTemplatesResponse
+	(*ResolvedDeployConfigResponse)(nil),       // 28: projects.v1.ResolvedDeployConfigResponse
+	(*DeployConfigResponse)(nil),               // 29: projects.v1.DeployConfigResponse
+	(*EnvResponse)(nil),                        // 30: projects.v1.EnvResponse
+	(*ListEnvsResponse)(nil),                   // 31: projects.v1.ListEnvsResponse
+	(*ProjectVarResponse)(nil),                 // 32: projects.v1.ProjectVarResponse
+	(*ListProjectVarsResponse)(nil),            // 33: projects.v1.ListProjectVarsResponse
+	(*EnvVarResponse)(nil),                     // 34: projects.v1.EnvVarResponse
+	(*ListEnvVarsResponse)(nil),                // 35: projects.v1.ListEnvVarsResponse
 }
 var file_projects_v1_projects_service_proto_depIdxs = []int32{
 	0,  // 0: projects.v1.ProjectService.GetProject:input_type -> projects.v1.GetProjectRequest
@@ -109,56 +108,56 @@ var file_projects_v1_projects_service_proto_depIdxs = []int32{
 	6,  // 7: projects.v1.ProjectService.CreateDeployConfigsTemplate:input_type -> projects.v1.CreateDeployConfigsTemplateRequest
 	7,  // 8: projects.v1.ProjectService.UpdateDeployConfigsTemplate:input_type -> projects.v1.UpdateDeployConfigsTemplateRequest
 	4,  // 9: projects.v1.ProjectService.DeleteDeployConfigsTemplate:input_type -> projects.v1.GetDeployConfigsTemplateRequest
-	8,  // 10: projects.v1.ProjectService.GetResolvedDeployConfig:input_type -> projects.v1.GetResolvedDeployConfigRequest
-	9,  // 11: projects.v1.ProjectService.GetDeployConfig:input_type -> projects.v1.GetDeployConfigRequest
-	10, // 12: projects.v1.ProjectService.UpdateDeployConfig:input_type -> projects.v1.UpdateDeployConfigRequest
-	11, // 13: projects.v1.ProjectService.GetEnvByGit:input_type -> projects.v1.GetEnvByGitRequest
-	12, // 14: projects.v1.ProjectService.GetEnv:input_type -> projects.v1.GetEnvRequest
-	13, // 15: projects.v1.ProjectService.ListEnvs:input_type -> projects.v1.ListEnvsRequest
-	14, // 16: projects.v1.ProjectService.CreateEnv:input_type -> projects.v1.CreateEnvRequest
-	15, // 17: projects.v1.ProjectService.UpdateEnv:input_type -> projects.v1.UpdateEnvRequest
-	12, // 18: projects.v1.ProjectService.DeleteEnv:input_type -> projects.v1.GetEnvRequest
-	16, // 19: projects.v1.ProjectService.GetProjectVar:input_type -> projects.v1.GetProjectVarRequest
-	17, // 20: projects.v1.ProjectService.ListProjectVars:input_type -> projects.v1.ListProjectVarsRequest
-	18, // 21: projects.v1.ProjectService.CreateProjectVar:input_type -> projects.v1.CreateProjectVarRequest
-	19, // 22: projects.v1.ProjectService.UpdateProjectVar:input_type -> projects.v1.UpdateProjectVarRequest
-	16, // 23: projects.v1.ProjectService.DeleteProjectVar:input_type -> projects.v1.GetProjectVarRequest
-	20, // 24: projects.v1.ProjectService.GetEnvVar:input_type -> projects.v1.GetEnvVarRequest
-	21, // 25: projects.v1.ProjectService.ListEnvVars:input_type -> projects.v1.ListEnvVarsRequest
-	21, // 26: projects.v1.ProjectService.ListAllVars:input_type -> projects.v1.ListEnvVarsRequest
-	22, // 27: projects.v1.ProjectService.CreateEnvVar:input_type -> projects.v1.CreateEnvVarRequest
-	23, // 28: projects.v1.ProjectService.UpdateEnvVar:input_type -> projects.v1.UpdateEnvVarRequest
-	20, // 29: projects.v1.ProjectService.DeleteEnvVar:input_type -> projects.v1.GetEnvVarRequest
-	24, // 30: projects.v1.ProjectService.GetProject:output_type -> projects.v1.ProjectResponse
-	25, // 31: projects.v1.ProjectService.ListProjects:output_type -> projects.v1.ListProjectsResponse
-	24, // 32: projects.v1.ProjectService.CreateProject:output_type -> projects.v1.ProjectResponse
-	26, // 33: projects.v1.ProjectService.UpdateProject:output_type -> google.protobuf.Empty
-	26, // 34: projects.v1.ProjectService.DeleteProject:output_type -> google.protobuf.Empty
-	27, // 35: projects.v1.ProjectService.GetDeployConfigsTemplate:output_type -> projects.v1.DeployConfigsTemplateResponse
-	28, // 36: projects.v1.ProjectService.ListDeployConfigsTemplates:output_type -> projects.v1.ListDeployConfigsTemplatesResponse
-	27, // 37: projects.v1.ProjectService.CreateDeployConfigsTemplate:output_type -> projects.v1.DeployConfigsTemplateResponse
-	26, // 38: projects.v1.ProjectService.UpdateDeployConfigsTemplate:output_type -> google.protobuf.Empty
-	26, // 39: projects.v1.ProjectService.DeleteDeployConfigsTemplate:output_type -> google.protobuf.Empty
-	29, // 40: projects.v1.ProjectService.GetResolvedDeployConfig:output_type -> projects.v1.ResolvedDeployConfigResponse
-	30, // 41: projects.v1.ProjectService.GetDeployConfig:output_type -> projects.v1.DeployConfigResponse
-	26, // 42: projects.v1.ProjectService.UpdateDeployConfig:output_type -> google.protobuf.Empty
-	31, // 43: projects.v1.ProjectService.GetEnvByGit:output_type -> projects.v1.EnvResponse
-	31, // 44: projects.v1.ProjectService.GetEnv:output_type -> projects.v1.EnvResponse
-	32, // 45: projects.v1.ProjectService.ListEnvs:output_type -> projects.v1.ListEnvsResponse
-	31, // 46: projects.v1.ProjectService.CreateEnv:output_type -> projects.v1.EnvResponse
-	26, // 47: projects.v1.ProjectService.UpdateEnv:output_type -> google.protobuf.Empty
-	26, // 48: projects.v1.ProjectService.DeleteEnv:output_type -> google.protobuf.Empty
-	33, // 49: projects.v1.ProjectService.GetProjectVar:output_type -> projects.v1.ProjectVarResponse
-	34, // 50: projects.v1.ProjectService.ListProjectVars:output_type -> projects.v1.ListProjectVarsResponse
-	33, // 51: projects.v1.ProjectService.CreateProjectVar:output_type -> projects.v1.ProjectVarResponse
-	26, // 52: projects.v1.ProjectService.UpdateProjectVar:output_type -> google.protobuf.Empty
-	26, // 53: projects.v1.ProjectService.DeleteProjectVar:output_type -> google.protobuf.Empty
-	35, // 54: projects.v1.ProjectService.GetEnvVar:output_type -> projects.v1.EnvVarResponse
-	36, // 55: projects.v1.ProjectService.ListEnvVars:output_type -> projects.v1.ListEnvVarsResponse
-	36, // 56: projects.v1.ProjectService.ListAllVars:output_type -> projects.v1.ListEnvVarsResponse
-	35, // 57: projects.v1.ProjectService.CreateEnvVar:output_type -> projects.v1.EnvVarResponse
-	26, // 58: projects.v1.ProjectService.UpdateEnvVar:output_type -> google.protobuf.Empty
-	26, // 59: projects.v1.ProjectService.DeleteEnvVar:output_type -> google.protobuf.Empty
+	8,  // 10: projects.v1.ProjectService.GetResolvedDeployConfig:input_type -> projects.v1.GetDeployConfigRequest
+	8,  // 11: projects.v1.ProjectService.GetDeployConfig:input_type -> projects.v1.GetDeployConfigRequest
+	9,  // 12: projects.v1.ProjectService.UpdateDeployConfig:input_type -> projects.v1.UpdateDeployConfigRequest
+	10, // 13: projects.v1.ProjectService.GetEnvByGit:input_type -> projects.v1.GetEnvByGitRequest
+	11, // 14: projects.v1.ProjectService.GetEnv:input_type -> projects.v1.GetEnvRequest
+	12, // 15: projects.v1.ProjectService.ListEnvs:input_type -> projects.v1.ListEnvsRequest
+	13, // 16: projects.v1.ProjectService.CreateEnv:input_type -> projects.v1.CreateEnvRequest
+	14, // 17: projects.v1.ProjectService.UpdateEnv:input_type -> projects.v1.UpdateEnvRequest
+	11, // 18: projects.v1.ProjectService.DeleteEnv:input_type -> projects.v1.GetEnvRequest
+	15, // 19: projects.v1.ProjectService.GetProjectVar:input_type -> projects.v1.GetProjectVarRequest
+	16, // 20: projects.v1.ProjectService.ListProjectVars:input_type -> projects.v1.ListProjectVarsRequest
+	17, // 21: projects.v1.ProjectService.CreateProjectVar:input_type -> projects.v1.CreateProjectVarRequest
+	18, // 22: projects.v1.ProjectService.UpdateProjectVar:input_type -> projects.v1.UpdateProjectVarRequest
+	15, // 23: projects.v1.ProjectService.DeleteProjectVar:input_type -> projects.v1.GetProjectVarRequest
+	19, // 24: projects.v1.ProjectService.GetEnvVar:input_type -> projects.v1.GetEnvVarRequest
+	20, // 25: projects.v1.ProjectService.ListEnvVars:input_type -> projects.v1.ListEnvVarsRequest
+	20, // 26: projects.v1.ProjectService.ListAllVars:input_type -> projects.v1.ListEnvVarsRequest
+	21, // 27: projects.v1.ProjectService.CreateEnvVar:input_type -> projects.v1.CreateEnvVarRequest
+	22, // 28: projects.v1.ProjectService.UpdateEnvVar:input_type -> projects.v1.UpdateEnvVarRequest
+	19, // 29: projects.v1.ProjectService.DeleteEnvVar:input_type -> projects.v1.GetEnvVarRequest
+	23, // 30: projects.v1.ProjectService.GetProject:output_type -> projects.v1.ProjectResponse
+	24, // 31: projects.v1.ProjectService.ListProjects:output_type -> projects.v1.ListProjectsResponse
+	23, // 32: projects.v1.ProjectService.CreateProject:output_type -> projects.v1.ProjectResponse
+	25, // 33: projects.v1.ProjectService.UpdateProject:output_type -> google.protobuf.Empty
+	25, // 34: projects.v1.ProjectService.DeleteProject:output_type -> google.protobuf.Empty
+	26, // 35: projects.v1.ProjectService.GetDeployConfigsTemplate:output_type -> projects.v1.DeployConfigsTemplateResponse
+	27, // 36: projects.v1.ProjectService.ListDeployConfigsTemplates:output_type -> projects.v1.ListDeployConfigsTemplatesResponse
+	26, // 37: projects.v1.ProjectService.CreateDeployConfigsTemplate:output_type -> projects.v1.DeployConfigsTemplateResponse
+	25, // 38: projects.v1.ProjectService.UpdateDeployConfigsTemplate:output_type -> google.protobuf.Empty
+	25, // 39: projects.v1.ProjectService.DeleteDeployConfigsTemplate:output_type -> google.protobuf.Empty
+	28, // 40: projects.v1.ProjectService.GetResolvedDeployConfig:output_type -> projects.v1.ResolvedDeployConfigResponse
+	29, // 41: projects.v1.ProjectService.GetDeployConfig:output_type -> projects.v1.DeployConfigResponse
+	25, // 42: projects.v1.ProjectService.UpdateDeployConfig:output_type -> google.protobuf.Empty
+	30, // 43: projects.v1.ProjectService.GetEnvByGit:output_type -> projects.v1.EnvResponse
+	30, // 44: projects.v1.ProjectService.GetEnv:output_type -> projects.v1.EnvResponse
+	31, // 45: projects.v1.ProjectService.ListEnvs:output_type -> projects.v1.ListEnvsResponse
+	30, // 46: projects.v1.ProjectService.CreateEnv:output_type -> projects.v1.EnvResponse
+	25, // 47: projects.v1.ProjectService.UpdateEnv:output_type -> google.protobuf.Empty
+	25, // 48: projects.v1.ProjectService.DeleteEnv:output_type -> google.protobuf.Empty
+	32, // 49: projects.v1.ProjectService.GetProjectVar:output_type -> projects.v1.ProjectVarResponse
+	33, // 50: projects.v1.ProjectService.ListProjectVars:output_type -> projects.v1.ListProjectVarsResponse
+	32, // 51: projects.v1.ProjectService.CreateProjectVar:output_type -> projects.v1.ProjectVarResponse
+	25, // 52: projects.v1.ProjectService.UpdateProjectVar:output_type -> google.protobuf.Empty
+	25, // 53: projects.v1.ProjectService.DeleteProjectVar:output_type -> google.protobuf.Empty
+	34, // 54: projects.v1.ProjectService.GetEnvVar:output_type -> projects.v1.EnvVarResponse
+	35, // 55: projects.v1.ProjectService.ListEnvVars:output_type -> projects.v1.ListEnvVarsResponse
+	35, // 56: projects.v1.ProjectService.ListAllVars:output_type -> projects.v1.ListEnvVarsResponse
+	34, // 57: projects.v1.ProjectService.CreateEnvVar:output_type -> projects.v1.EnvVarResponse
+	25, // 58: projects.v1.ProjectService.UpdateEnvVar:output_type -> google.protobuf.Empty
+	25, // 59: projects.v1.ProjectService.DeleteEnvVar:output_type -> google.protobuf.Empty
 	30, // [30:60] is the sub-list for method output_type
 	0,  // [0:30] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name

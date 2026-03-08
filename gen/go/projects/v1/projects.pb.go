@@ -21,6 +21,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// Ответ с данными проекта
 type ProjectResponse struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id          int64                  `protobuf:"varint,1,opt,name=id"`
@@ -217,6 +218,7 @@ func (b0 ProjectResponse_builder) Build() *ProjectResponse {
 	return m0
 }
 
+// Ответ со списком проектов пользователя
 type ListProjectsResponse struct {
 	state               protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Projects *[]*ProjectResponse    `protobuf:"bytes,1,rep,name=projects"`
@@ -276,6 +278,7 @@ func (b0 ListProjectsResponse_builder) Build() *ListProjectsResponse {
 	return m0
 }
 
+// Параметры запросов для получения проекта по ID
 type GetProjectRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id          int64                  `protobuf:"varint,1,opt,name=id"`
@@ -351,6 +354,7 @@ func (b0 GetProjectRequest_builder) Build() *GetProjectRequest {
 	return m0
 }
 
+// Параметры запросов для получения списка проектов пользователя
 type ListProjectsRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_UserId      int64                  `protobuf:"varint,1,opt,name=user_id,json=userId"`
@@ -486,6 +490,7 @@ func (b0 ListProjectsRequest_builder) Build() *ListProjectsRequest {
 	return m0
 }
 
+// Параметры запросов для создания проекта
 type CreateProjectRequest struct {
 	state                             protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Name                   *string                `protobuf:"bytes,1,opt,name=name"`
@@ -627,6 +632,7 @@ func (b0 CreateProjectRequest_builder) Build() *CreateProjectRequest {
 	return m0
 }
 
+// Параметры запросов для обновления проекта
 type UpdateProjectRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id          int64                  `protobuf:"varint,1,opt,name=id"`

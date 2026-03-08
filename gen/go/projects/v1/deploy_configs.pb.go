@@ -20,6 +20,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// Конфигурация деплоя для проекта
 type DeployConfigResponse struct {
 	state                          protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id                  int64                  `protobuf:"varint,1,opt,name=id"`
@@ -353,6 +354,7 @@ func (b0 DeployConfigResponse_builder) Build() *DeployConfigResponse {
 	return m0
 }
 
+// Конфигурация деплоя для проекта, сгенерированная с учетом шаблона и переопределений
 type ResolvedDeployConfigResponse struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_RootDir     *string                `protobuf:"bytes,1,opt,name=root_dir,json=rootDir"`
@@ -596,6 +598,7 @@ func (b0 ResolvedDeployConfigResponse_builder) Build() *ResolvedDeployConfigResp
 	return m0
 }
 
+// Параметры запросов для получения конфигурации деплоя по ID
 type GetDeployConfigRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_ProjectId   int64                  `protobuf:"varint,1,opt,name=project_id,json=projectId"`
@@ -671,81 +674,7 @@ func (b0 GetDeployConfigRequest_builder) Build() *GetDeployConfigRequest {
 	return m0
 }
 
-type GetResolvedDeployConfigRequest struct {
-	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_ProjectId   int64                  `protobuf:"varint,1,opt,name=project_id,json=projectId"`
-	XXX_raceDetectHookData protoimpl.RaceDetectHookData
-	XXX_presence           [1]uint32
-	unknownFields          protoimpl.UnknownFields
-	sizeCache              protoimpl.SizeCache
-}
-
-func (x *GetResolvedDeployConfigRequest) Reset() {
-	*x = GetResolvedDeployConfigRequest{}
-	mi := &file_projects_v1_deploy_configs_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetResolvedDeployConfigRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetResolvedDeployConfigRequest) ProtoMessage() {}
-
-func (x *GetResolvedDeployConfigRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_projects_v1_deploy_configs_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-func (x *GetResolvedDeployConfigRequest) GetProjectId() int64 {
-	if x != nil {
-		return x.xxx_hidden_ProjectId
-	}
-	return 0
-}
-
-func (x *GetResolvedDeployConfigRequest) SetProjectId(v int64) {
-	x.xxx_hidden_ProjectId = v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
-}
-
-func (x *GetResolvedDeployConfigRequest) HasProjectId() bool {
-	if x == nil {
-		return false
-	}
-	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
-}
-
-func (x *GetResolvedDeployConfigRequest) ClearProjectId() {
-	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
-	x.xxx_hidden_ProjectId = 0
-}
-
-type GetResolvedDeployConfigRequest_builder struct {
-	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
-
-	ProjectId *int64
-}
-
-func (b0 GetResolvedDeployConfigRequest_builder) Build() *GetResolvedDeployConfigRequest {
-	m0 := &GetResolvedDeployConfigRequest{}
-	b, x := &b0, m0
-	_, _ = b, x
-	if b.ProjectId != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 1)
-		x.xxx_hidden_ProjectId = *b.ProjectId
-	}
-	return m0
-}
-
+// Параметры запросов для обновления конфигурации деплоя по ID
 type UpdateDeployConfigRequest struct {
 	state                          protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id                  int64                  `protobuf:"varint,1,opt,name=id"`
@@ -764,7 +693,7 @@ type UpdateDeployConfigRequest struct {
 
 func (x *UpdateDeployConfigRequest) Reset() {
 	*x = UpdateDeployConfigRequest{}
-	mi := &file_projects_v1_deploy_configs_proto_msgTypes[4]
+	mi := &file_projects_v1_deploy_configs_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -776,7 +705,7 @@ func (x *UpdateDeployConfigRequest) String() string {
 func (*UpdateDeployConfigRequest) ProtoMessage() {}
 
 func (x *UpdateDeployConfigRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_projects_v1_deploy_configs_proto_msgTypes[4]
+	mi := &file_projects_v1_deploy_configs_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1078,9 +1007,6 @@ const file_projects_v1_deploy_configs_proto_rawDesc = "" +
 	"\arun_cmd\x18\x06 \x01(\tR\x06runCmd\"7\n" +
 	"\x16GetDeployConfigRequest\x12\x1d\n" +
 	"\n" +
-	"project_id\x18\x01 \x01(\x03R\tprojectId\"?\n" +
-	"\x1eGetResolvedDeployConfigRequest\x12\x1d\n" +
-	"\n" +
 	"project_id\x18\x01 \x01(\x03R\tprojectId\"\xdb\x02\n" +
 	"\x19UpdateDeployConfigRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1f\n" +
@@ -1093,13 +1019,12 @@ const file_projects_v1_deploy_configs_proto_rawDesc = "" +
 	"\x13build_cmd_overwirte\x18\a \x01(\tR\x11buildCmdOverwirte\x12*\n" +
 	"\x11run_cmd_overwirte\x18\b \x01(\tR\x0frunCmdOverwirteB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
 
-var file_projects_v1_deploy_configs_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_projects_v1_deploy_configs_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_projects_v1_deploy_configs_proto_goTypes = []any{
-	(*DeployConfigResponse)(nil),           // 0: projects.v1.DeployConfigResponse
-	(*ResolvedDeployConfigResponse)(nil),   // 1: projects.v1.ResolvedDeployConfigResponse
-	(*GetDeployConfigRequest)(nil),         // 2: projects.v1.GetDeployConfigRequest
-	(*GetResolvedDeployConfigRequest)(nil), // 3: projects.v1.GetResolvedDeployConfigRequest
-	(*UpdateDeployConfigRequest)(nil),      // 4: projects.v1.UpdateDeployConfigRequest
+	(*DeployConfigResponse)(nil),         // 0: projects.v1.DeployConfigResponse
+	(*ResolvedDeployConfigResponse)(nil), // 1: projects.v1.ResolvedDeployConfigResponse
+	(*GetDeployConfigRequest)(nil),       // 2: projects.v1.GetDeployConfigRequest
+	(*UpdateDeployConfigRequest)(nil),    // 3: projects.v1.UpdateDeployConfigRequest
 }
 var file_projects_v1_deploy_configs_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -1120,7 +1045,7 @@ func file_projects_v1_deploy_configs_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_projects_v1_deploy_configs_proto_rawDesc), len(file_projects_v1_deploy_configs_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
