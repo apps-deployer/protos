@@ -1,0 +1,46 @@
+
+edition = "2024";
+
+package projects.v1;
+
+option go_package = "github.com/org/protos/gen/go/projects/v1;projectsv1";
+
+message DeployConfigResponse {
+  int64 id = 1;
+  int64 project_id = 2;
+  int64 template_id = 3;
+  string root_dir = 4; 
+  string output_dir_overwrite = 5;
+  string base_image_overwrite = 6;
+  string install_cmd_overwirte = 7;
+  string build_cmd_overwirte = 8;
+  string run_cmd_overwirte = 9;
+}
+
+message ResolvedDeployConfigResponse {
+  string root_dir = 1;
+  string output_dir = 2;
+  string base_image = 3;
+  string install_cmd = 4;
+  string build_cmd = 5;
+  string run_cmd = 6;
+}
+
+message GetDeployConfigRequest {
+  int64 project_id = 1;
+}
+
+message GetResolvedDeployConfigRequest {
+  int64 project_id = 1;
+}
+
+message UpdateDeployConfigRequest {
+  int64 id = 1;
+  int64 template_id = 2;
+  string root_dir = 3; 
+  string output_dir_overwrite = 4;
+  string base_image_overwrite = 5;
+  string install_cmd_overwirte = 6;
+  string build_cmd_overwirte = 7;
+  string run_cmd_overwirte = 8;
+}

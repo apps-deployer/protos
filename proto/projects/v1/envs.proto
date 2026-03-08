@@ -1,0 +1,46 @@
+edition = "2024";
+
+package projects.v1;
+
+option go_package = "github.com/org/protos/gen/go/projects/v1;projectsv1";
+
+message EnvResponse {
+    int64 id = 1;
+    string name = 2;
+    int64 project_id = 3;
+    string target_branch = 4;
+    string domain_name = 5;
+}
+
+message ListEnvsResponse {
+    repeated EnvResponse environments = 1;
+}
+
+message GetEnvRequest {
+    int64 id = 1;
+}
+
+message GetEnvByGitRequest {
+    string repo_url = 1;
+    string target_branch = 2;
+}
+
+message ListEnvsRequest {
+    int64 project_id = 1;
+    int64 limit = 2;
+    int64 offset = 3;
+}
+
+message CreateEnvRequest {
+    string name = 1;
+    int64 project_id = 2;
+    string target_branch = 3;
+    string domain_name = 4;
+}
+
+message UpdateEnvRequest {
+    int64 id = 1;
+    string name = 2;
+    string target_branch = 3;
+    string domain_name = 4;
+}

@@ -1,0 +1,52 @@
+edition = "2024";
+
+package projects.v1;
+
+import "google/protobuf/empty.proto";
+
+import "projects/v1/deploy_configs_templates.proto";
+import "projects/v1/deploy_configs.proto";
+import "projects/v1/env_vars.proto";
+import "projects/v1/envs.proto";
+import "projects/v1/project_vars.proto";
+import "projects/v1/projects.proto";
+
+option go_package = "github.com/org/protos/gen/go/projects/v1;projectsv1";
+
+service ProjectService {
+  rpc GetProject (GetProjectRequest) returns (ProjectResponse);
+  rpc ListProjects (ListProjectsRequest) returns (ListProjectsResponse); 
+  rpc CreateProject (CreateProjectRequest) returns (ProjectResponse);
+  rpc UpdateProject (UpdateProjectRequest) returns (google.protobuf.Empty);
+  rpc DeleteProject (GetProjectRequest) returns (google.protobuf.Empty);
+
+  rpc GetDeployConfigsTemplate (GetDeployConfigsTemplateRequest) returns (DeployConfigsTemplateResponse);
+  rpc ListDeployConfigsTemplates (ListDeployConfigsTemplatesRequest) returns (ListDeployConfigsTemplatesResponse);
+  rpc CreateDeployConfigsTemplate (CreateDeployConfigsTemplateRequest) returns (DeployConfigsTemplateResponse);
+  rpc UpdateDeployConfigsTemplate (UpdateDeployConfigsTemplateRequest) returns (google.protobuf.Empty);
+  rpc DeleteDeployConfigsTemplate (GetDeployConfigsTemplateRequest) returns (google.protobuf.Empty);
+
+  rpc GetResolvedDeployConfig (GetResolvedDeployConfigRequest) returns (ResolvedDeployConfigResponse);
+  rpc GetDeployConfig (GetDeployConfigRequest) returns (DeployConfigResponse);
+  rpc UpdateDeployConfig (UpdateDeployConfigRequest) returns (google.protobuf.Empty);
+
+  rpc GetEnvByGit (GetEnvByGitRequest) returns (EnvResponse);
+  rpc GetEnv (GetEnvRequest) returns (EnvResponse);
+  rpc ListEnvs (ListEnvsRequest) returns (ListEnvsResponse);
+  rpc CreateEnv (CreateEnvRequest) returns (EnvResponse);
+  rpc UpdateEnv (UpdateEnvRequest) returns (google.protobuf.Empty);
+  rpc DeleteEnv (GetEnvRequest) returns (google.protobuf.Empty);
+
+  rpc GetProjectVar (GetProjectVarRequest) returns (ProjectVarResponse);
+  rpc ListProjectVars (ListProjectVarsRequest) returns (ListProjectVarsResponse);
+  rpc CreateProjectVar (CreateProjectVarRequest) returns (ProjectVarResponse);
+  rpc UpdateProjectVar (UpdateProjectVarRequest) returns (google.protobuf.Empty);
+  rpc DeleteProjectVar (GetProjectVarRequest) returns (google.protobuf.Empty);
+
+  rpc GetEnvVar (GetEnvVarRequest) returns (EnvVarResponse);
+  rpc ListEnvVars (ListEnvVarsRequest) returns (ListEnvVarsResponse);
+  rpc ListAllVars (ListEnvVarsRequest) returns (ListEnvVarsResponse);
+  rpc CreateEnvVar (CreateEnvVarRequest) returns (EnvVarResponse);
+  rpc UpdateEnvVar (UpdateEnvVarRequest) returns (google.protobuf.Empty);
+  rpc DeleteEnvVar (GetEnvVarRequest) returns (google.protobuf.Empty);
+} 
