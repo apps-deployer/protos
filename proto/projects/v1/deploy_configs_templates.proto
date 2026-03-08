@@ -4,6 +4,7 @@ package projects.v1;
 
 option go_package = "github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1";
 
+// Шаблоны конфигурации деплоя
 message DeployConfigsTemplateResponse {
   int64 id = 1;
   string name = 2;
@@ -15,19 +16,23 @@ message DeployConfigsTemplateResponse {
   string run_cmd = 8;
 }
 
+// Список шаблонов конфигурации деплоя
 message ListDeployConfigsTemplatesResponse {
   repeated DeployConfigsTemplateResponse deploy_configs_templates = 1;
 }
 
+// Параметры запросов для получения шаблона конфигурации по ID
 message GetDeployConfigsTemplateRequest {
   int64 id = 1;
 }
 
+// Параметры запросов для получения списка шаблонов конфигурации
 message ListDeployConfigsTemplatesRequest {
   int64 limit = 1;
   int64 offset = 2;
 }
 
+// Параметры запросов для создания шаблона конфигурации деплоя
 message CreateDeployConfigsTemplateRequest {
   string name = 1;
   string root_dir = 2;
@@ -38,6 +43,7 @@ message CreateDeployConfigsTemplateRequest {
   string run_cmd = 7;
 }
 
+// Параметры запросов для обновления шаблона конфигурации деплоя по ID
 message UpdateDeployConfigsTemplateRequest {
   int64 id = 1;
   string name = 2;

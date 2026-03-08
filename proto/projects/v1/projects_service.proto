@@ -13,40 +13,74 @@ import "projects/v1/projects.proto";
 
 option go_package = "github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1";
 
+// Сервис ProjectService предоставляет CRUD интерфейс для управления 
+// проектами, привязанными к GitHub-репозиториям и их конфигурациями
 service ProjectService {
+  // GetProject возвращает информацию о проекте по его ID
   rpc GetProject (GetProjectRequest) returns (ProjectResponse);
-  rpc ListProjects (ListProjectsRequest) returns (ListProjectsResponse); 
+  // ListProjects возвращает список проектов, принадлежащих пользователю
+  rpc ListProjects (ListProjectsRequest) returns (ListProjectsResponse);
+  // CreateProject создает новый проект с указанными параметрами 
   rpc CreateProject (CreateProjectRequest) returns (ProjectResponse);
+  // UpdateProject обновляет информацию о проекте по его ID
   rpc UpdateProject (UpdateProjectRequest) returns (google.protobuf.Empty);
+  // DeleteProject удаляет проект по его ID
   rpc DeleteProject (GetProjectRequest) returns (google.protobuf.Empty);
 
+  // GetDeployConfigsTemplate возвращает шаблон конфигурации деплоя по его ID
   rpc GetDeployConfigsTemplate (GetDeployConfigsTemplateRequest) returns (DeployConfigsTemplateResponse);
+  // ListDeployConfigsTemplates возвращает список шаблонов конфигурации деплоя
   rpc ListDeployConfigsTemplates (ListDeployConfigsTemplatesRequest) returns (ListDeployConfigsTemplatesResponse);
+  // CreateDeployConfigsTemplate создает новый шаблон конфигурации деплоя
   rpc CreateDeployConfigsTemplate (CreateDeployConfigsTemplateRequest) returns (DeployConfigsTemplateResponse);
+  // UpdateDeployConfigsTemplate обновляет шаблон конфигурации деплоя по его ID
   rpc UpdateDeployConfigsTemplate (UpdateDeployConfigsTemplateRequest) returns (google.protobuf.Empty);
+  // DeleteDeployConfigsTemplate удаляет шаблон конфигурации деплоя по его ID
   rpc DeleteDeployConfigsTemplate (GetDeployConfigsTemplateRequest) returns (google.protobuf.Empty);
 
-  rpc GetResolvedDeployConfig (GetResolvedDeployConfigRequest) returns (ResolvedDeployConfigResponse);
+  // GetResolvedDeployConfig возвращает конфигурацию деплоя по его ID, сгенерированную  
+  // с учетом значений из шаблона и их переопределений 
+  rpc GetResolvedDeployConfig (GetDeployConfigRequest) returns (ResolvedDeployConfigResponse);
+  // GetDeployConfig возвращает конфигурацию деплоя по его ID, без учета шаблона
   rpc GetDeployConfig (GetDeployConfigRequest) returns (DeployConfigResponse);
+  // UpdateDeployConfig обновляет конфигурацию деплоя по его ID
   rpc UpdateDeployConfig (UpdateDeployConfigRequest) returns (google.protobuf.Empty);
 
+  // GetEnvByGit возвращает окружение, связанное с проектом, по URL репозитория и названию ветки
   rpc GetEnvByGit (GetEnvByGitRequest) returns (EnvResponse);
+  // GetEnv возвращает информацию об окружении по его ID
   rpc GetEnv (GetEnvRequest) returns (EnvResponse);
+  // ListEnvs возвращает список окружений проекта с поддержкой пагинации
   rpc ListEnvs (ListEnvsRequest) returns (ListEnvsResponse);
+  // CreateEnv создает новое окружение для проекта
   rpc CreateEnv (CreateEnvRequest) returns (EnvResponse);
+  // UpdateEnv обновляет окружение по его ID
   rpc UpdateEnv (UpdateEnvRequest) returns (google.protobuf.Empty);
+  // DeleteEnv удаляет окружение по его ID
   rpc DeleteEnv (GetEnvRequest) returns (google.protobuf.Empty);
 
+  // GetProjectVar возвращает переменную проекта по ее ID
   rpc GetProjectVar (GetProjectVarRequest) returns (ProjectVarResponse);
+  // ListProjectVars возвращает список переменных проекта с поддержкой пагинации
   rpc ListProjectVars (ListProjectVarsRequest) returns (ListProjectVarsResponse);
+  // CreateProjectVar создает новую переменную проекта
   rpc CreateProjectVar (CreateProjectVarRequest) returns (ProjectVarResponse);
+  // UpdateProjectVar обновляет переменную проекта по ее ID
   rpc UpdateProjectVar (UpdateProjectVarRequest) returns (google.protobuf.Empty);
+  // DeleteProjectVar удаляет переменную проекта по ее ID
   rpc DeleteProjectVar (GetProjectVarRequest) returns (google.protobuf.Empty);
 
+  // GetEnvVar возвращает переменную окружения по ее ID
   rpc GetEnvVar (GetEnvVarRequest) returns (EnvVarResponse);
+  // ListEnvVars возвращает список переменных окружения для данного окружения с поддержкой пагинации
   rpc ListEnvVars (ListEnvVarsRequest) returns (ListEnvVarsResponse);
+  // ListAllVars возвращает список всех переменных, определенных в окружении, включая 
+  // переменные проекта, с поддержкой пагинации
   rpc ListAllVars (ListEnvVarsRequest) returns (ListEnvVarsResponse);
+  // CreateEnvVar создает новую переменную окружения для данного окружения
   rpc CreateEnvVar (CreateEnvVarRequest) returns (EnvVarResponse);
+  // UpdateEnvVar обновляет переменную окружения по ее ID
   rpc UpdateEnvVar (UpdateEnvVarRequest) returns (google.protobuf.Empty);
+  // DeleteEnvVar удаляет переменную окружения по ее ID
   rpc DeleteEnvVar (GetEnvVarRequest) returns (google.protobuf.Empty);
 } 

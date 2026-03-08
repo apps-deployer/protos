@@ -4,6 +4,7 @@ package projects.v1;
 
 option go_package = "github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1";
 
+// Ответ с данными окружения
 message EnvResponse {
     int64 id = 1;
     string name = 2;
@@ -12,25 +13,30 @@ message EnvResponse {
     string domain_name = 5;
 }
 
+// Ответ со списком окружений
 message ListEnvsResponse {
     repeated EnvResponse environments = 1;
 }
 
+// Параметры запросов на получение окружения по ID
 message GetEnvRequest {
     int64 id = 1;
 }
 
+// Параметры запросов на получение окружения по репозиторию и ветке 
 message GetEnvByGitRequest {
     string repo_url = 1;
     string target_branch = 2;
 }
 
+// Параметры запросов на получение списка окружений проекта
 message ListEnvsRequest {
     int64 project_id = 1;
     int64 limit = 2;
     int64 offset = 3;
 }
 
+// Параметры запросов на создание окружения
 message CreateEnvRequest {
     string name = 1;
     int64 project_id = 2;
@@ -38,6 +44,7 @@ message CreateEnvRequest {
     string domain_name = 4;
 }
 
+// Параметры запросов на обновление окружений
 message UpdateEnvRequest {
     int64 id = 1;
     string name = 2;

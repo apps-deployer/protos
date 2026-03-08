@@ -4,6 +4,7 @@ package projects.v1;
 
 option go_package = "github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1";
 
+// Ответ с данными переменной окружения для проекта
 message ProjectVarResponse {
     int64 id = 1;
     int64 project_id = 2;
@@ -11,28 +12,32 @@ message ProjectVarResponse {
     string value = 4;
 }
 
+// Ответ со списком переменных окружения для проекта
 message ListProjectVarsResponse {
     repeated ProjectVarResponse project_vars = 1;
 }
 
+// Параметры запросов для получения переменной окружения по ID
 message GetProjectVarRequest {
     int64 id = 1;
 }
 
+// Параметры запросов для получения списка переменных окружения для проекта
 message ListProjectVarsRequest {
     int64 project_id = 1;
     int64 limit = 2;
     int64 offset = 3;
 }
 
+// Параметры запросов для создания переменной окружения для проекта
 message CreateProjectVarRequest {
     int64 project_id = 1;
     string key = 2;
     string value = 3;
 }
 
+// Параметры запросов для обновления переменной окружения по ID
 message UpdateProjectVarRequest {
     int64 id = 1;
     string value = 2;
 }
-
