@@ -26,7 +26,7 @@ type DeployConfigResponse struct {
 	state                          protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id                  *string                `protobuf:"bytes,1,opt,name=id"`
 	xxx_hidden_ProjectId           *string                `protobuf:"bytes,2,opt,name=project_id,json=projectId"`
-	xxx_hidden_TemplateId          *string                `protobuf:"bytes,3,opt,name=template_id,json=templateId"`
+	xxx_hidden_FrameworkId         *string                `protobuf:"bytes,3,opt,name=framework_id,json=frameworkId"`
 	xxx_hidden_RootDir             *string                `protobuf:"bytes,4,opt,name=root_dir,json=rootDir"`
 	xxx_hidden_OutputDirOverwrite  *string                `protobuf:"bytes,5,opt,name=output_dir_overwrite,json=outputDirOverwrite"`
 	xxx_hidden_BaseImageOverwrite  *string                `protobuf:"bytes,6,opt,name=base_image_overwrite,json=baseImageOverwrite"`
@@ -84,10 +84,10 @@ func (x *DeployConfigResponse) GetProjectId() string {
 	return ""
 }
 
-func (x *DeployConfigResponse) GetTemplateId() string {
+func (x *DeployConfigResponse) GetFrameworkId() string {
 	if x != nil {
-		if x.xxx_hidden_TemplateId != nil {
-			return *x.xxx_hidden_TemplateId
+		if x.xxx_hidden_FrameworkId != nil {
+			return *x.xxx_hidden_FrameworkId
 		}
 		return ""
 	}
@@ -164,8 +164,8 @@ func (x *DeployConfigResponse) SetProjectId(v string) {
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 9)
 }
 
-func (x *DeployConfigResponse) SetTemplateId(v string) {
-	x.xxx_hidden_TemplateId = &v
+func (x *DeployConfigResponse) SetFrameworkId(v string) {
+	x.xxx_hidden_FrameworkId = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 9)
 }
 
@@ -213,7 +213,7 @@ func (x *DeployConfigResponse) HasProjectId() bool {
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
 }
 
-func (x *DeployConfigResponse) HasTemplateId() bool {
+func (x *DeployConfigResponse) HasFrameworkId() bool {
 	if x == nil {
 		return false
 	}
@@ -272,9 +272,9 @@ func (x *DeployConfigResponse) ClearProjectId() {
 	x.xxx_hidden_ProjectId = nil
 }
 
-func (x *DeployConfigResponse) ClearTemplateId() {
+func (x *DeployConfigResponse) ClearFrameworkId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
-	x.xxx_hidden_TemplateId = nil
+	x.xxx_hidden_FrameworkId = nil
 }
 
 func (x *DeployConfigResponse) ClearRootDir() {
@@ -312,7 +312,7 @@ type DeployConfigResponse_builder struct {
 
 	Id                  *string
 	ProjectId           *string
-	TemplateId          *string
+	FrameworkId         *string
 	RootDir             *string
 	OutputDirOverwrite  *string
 	BaseImageOverwrite  *string
@@ -333,9 +333,9 @@ func (b0 DeployConfigResponse_builder) Build() *DeployConfigResponse {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 9)
 		x.xxx_hidden_ProjectId = b.ProjectId
 	}
-	if b.TemplateId != nil {
+	if b.FrameworkId != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 9)
-		x.xxx_hidden_TemplateId = b.TemplateId
+		x.xxx_hidden_FrameworkId = b.FrameworkId
 	}
 	if b.RootDir != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 9)
@@ -364,7 +364,7 @@ func (b0 DeployConfigResponse_builder) Build() *DeployConfigResponse {
 	return m0
 }
 
-// Конфигурация деплоя для проекта, сгенерированная с учетом шаблона и переопределений
+// Конфигурация деплоя для проекта, сгенерированная с учетом фреймворка и переопределений
 type ResolvedDeployConfigResponse struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_RootDir     *string                `protobuf:"bytes,1,opt,name=root_dir,json=rootDir"`
@@ -691,7 +691,7 @@ func (b0 GetDeployConfigRequest_builder) Build() *GetDeployConfigRequest {
 type UpdateDeployConfigRequest struct {
 	state                          protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id                  *string                `protobuf:"bytes,1,opt,name=id"`
-	xxx_hidden_TemplateId          *string                `protobuf:"bytes,2,opt,name=template_id,json=templateId"`
+	xxx_hidden_FrameworkId         *string                `protobuf:"bytes,2,opt,name=framework_id,json=frameworkId"`
 	xxx_hidden_RootDir             *string                `protobuf:"bytes,3,opt,name=root_dir,json=rootDir"`
 	xxx_hidden_OutputDirOverwrite  *string                `protobuf:"bytes,4,opt,name=output_dir_overwrite,json=outputDirOverwrite"`
 	xxx_hidden_BaseImageOverwrite  *string                `protobuf:"bytes,5,opt,name=base_image_overwrite,json=baseImageOverwrite"`
@@ -739,10 +739,10 @@ func (x *UpdateDeployConfigRequest) GetId() string {
 	return ""
 }
 
-func (x *UpdateDeployConfigRequest) GetTemplateId() string {
+func (x *UpdateDeployConfigRequest) GetFrameworkId() string {
 	if x != nil {
-		if x.xxx_hidden_TemplateId != nil {
-			return *x.xxx_hidden_TemplateId
+		if x.xxx_hidden_FrameworkId != nil {
+			return *x.xxx_hidden_FrameworkId
 		}
 		return ""
 	}
@@ -814,8 +814,8 @@ func (x *UpdateDeployConfigRequest) SetId(v string) {
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 8)
 }
 
-func (x *UpdateDeployConfigRequest) SetTemplateId(v string) {
-	x.xxx_hidden_TemplateId = &v
+func (x *UpdateDeployConfigRequest) SetFrameworkId(v string) {
+	x.xxx_hidden_FrameworkId = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 8)
 }
 
@@ -856,7 +856,7 @@ func (x *UpdateDeployConfigRequest) HasId() bool {
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
 }
 
-func (x *UpdateDeployConfigRequest) HasTemplateId() bool {
+func (x *UpdateDeployConfigRequest) HasFrameworkId() bool {
 	if x == nil {
 		return false
 	}
@@ -910,9 +910,9 @@ func (x *UpdateDeployConfigRequest) ClearId() {
 	x.xxx_hidden_Id = nil
 }
 
-func (x *UpdateDeployConfigRequest) ClearTemplateId() {
+func (x *UpdateDeployConfigRequest) ClearFrameworkId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
-	x.xxx_hidden_TemplateId = nil
+	x.xxx_hidden_FrameworkId = nil
 }
 
 func (x *UpdateDeployConfigRequest) ClearRootDir() {
@@ -949,7 +949,7 @@ type UpdateDeployConfigRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
 	Id                  *string
-	TemplateId          *string
+	FrameworkId         *string
 	RootDir             *string
 	OutputDirOverwrite  *string
 	BaseImageOverwrite  *string
@@ -966,9 +966,9 @@ func (b0 UpdateDeployConfigRequest_builder) Build() *UpdateDeployConfigRequest {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 8)
 		x.xxx_hidden_Id = b.Id
 	}
-	if b.TemplateId != nil {
+	if b.FrameworkId != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 8)
-		x.xxx_hidden_TemplateId = b.TemplateId
+		x.xxx_hidden_FrameworkId = b.FrameworkId
 	}
 	if b.RootDir != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 8)
@@ -1001,13 +1001,12 @@ var File_projects_v1_deploy_configs_proto protoreflect.FileDescriptor
 
 const file_projects_v1_deploy_configs_proto_rawDesc = "" +
 	"\n" +
-	" projects/v1/deploy_configs.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\"\xf5\x02\n" +
+	" projects/v1/deploy_configs.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\"\xf7\x02\n" +
 	"\x14DeployConfigResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
 	"\n" +
-	"project_id\x18\x02 \x01(\tR\tprojectId\x12\x1f\n" +
-	"\vtemplate_id\x18\x03 \x01(\tR\n" +
-	"templateId\x12\x19\n" +
+	"project_id\x18\x02 \x01(\tR\tprojectId\x12!\n" +
+	"\fframework_id\x18\x03 \x01(\tR\vframeworkId\x12\x19\n" +
 	"\broot_dir\x18\x04 \x01(\tR\arootDir\x120\n" +
 	"\x14output_dir_overwrite\x18\x05 \x01(\tR\x12outputDirOverwrite\x120\n" +
 	"\x14base_image_overwrite\x18\x06 \x01(\tR\x12baseImageOverwrite\x122\n" +
@@ -1026,11 +1025,10 @@ const file_projects_v1_deploy_configs_proto_rawDesc = "" +
 	"\arun_cmd\x18\x06 \x01(\tR\x06runCmd\"7\n" +
 	"\x16GetDeployConfigRequest\x12\x1d\n" +
 	"\n" +
-	"project_id\x18\x01 \x01(\tR\tprojectId\"\xdb\x02\n" +
+	"project_id\x18\x01 \x01(\tR\tprojectId\"\xdd\x02\n" +
 	"\x19UpdateDeployConfigRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1f\n" +
-	"\vtemplate_id\x18\x02 \x01(\tR\n" +
-	"templateId\x12\x19\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12!\n" +
+	"\fframework_id\x18\x02 \x01(\tR\vframeworkId\x12\x19\n" +
 	"\broot_dir\x18\x03 \x01(\tR\arootDir\x120\n" +
 	"\x14output_dir_overwrite\x18\x04 \x01(\tR\x12outputDirOverwrite\x120\n" +
 	"\x14base_image_overwrite\x18\x05 \x01(\tR\x12baseImageOverwrite\x122\n" +

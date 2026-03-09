@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        v6.33.1
-// source: projects/v1/framework_configs.proto
+// source: projects/v1/frameworks.proto
 
 package projectsv1
 
@@ -22,7 +22,7 @@ const (
 )
 
 // Шаблоны конфигурации деплоя
-type FrameworkConfigResponse struct {
+type FrameworkResponse struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id          *string                `protobuf:"bytes,1,opt,name=id"`
 	xxx_hidden_Name        *string                `protobuf:"bytes,2,opt,name=name"`
@@ -38,21 +38,21 @@ type FrameworkConfigResponse struct {
 	sizeCache              protoimpl.SizeCache
 }
 
-func (x *FrameworkConfigResponse) Reset() {
-	*x = FrameworkConfigResponse{}
-	mi := &file_projects_v1_framework_configs_proto_msgTypes[0]
+func (x *FrameworkResponse) Reset() {
+	*x = FrameworkResponse{}
+	mi := &file_projects_v1_frameworks_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *FrameworkConfigResponse) String() string {
+func (x *FrameworkResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*FrameworkConfigResponse) ProtoMessage() {}
+func (*FrameworkResponse) ProtoMessage() {}
 
-func (x *FrameworkConfigResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_projects_v1_framework_configs_proto_msgTypes[0]
+func (x *FrameworkResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_projects_v1_frameworks_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -63,7 +63,7 @@ func (x *FrameworkConfigResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *FrameworkConfigResponse) GetId() string {
+func (x *FrameworkResponse) GetId() string {
 	if x != nil {
 		if x.xxx_hidden_Id != nil {
 			return *x.xxx_hidden_Id
@@ -73,7 +73,7 @@ func (x *FrameworkConfigResponse) GetId() string {
 	return ""
 }
 
-func (x *FrameworkConfigResponse) GetName() string {
+func (x *FrameworkResponse) GetName() string {
 	if x != nil {
 		if x.xxx_hidden_Name != nil {
 			return *x.xxx_hidden_Name
@@ -83,7 +83,7 @@ func (x *FrameworkConfigResponse) GetName() string {
 	return ""
 }
 
-func (x *FrameworkConfigResponse) GetRootDir() string {
+func (x *FrameworkResponse) GetRootDir() string {
 	if x != nil {
 		if x.xxx_hidden_RootDir != nil {
 			return *x.xxx_hidden_RootDir
@@ -93,7 +93,7 @@ func (x *FrameworkConfigResponse) GetRootDir() string {
 	return ""
 }
 
-func (x *FrameworkConfigResponse) GetOutputDir() string {
+func (x *FrameworkResponse) GetOutputDir() string {
 	if x != nil {
 		if x.xxx_hidden_OutputDir != nil {
 			return *x.xxx_hidden_OutputDir
@@ -103,7 +103,7 @@ func (x *FrameworkConfigResponse) GetOutputDir() string {
 	return ""
 }
 
-func (x *FrameworkConfigResponse) GetBaseImage() string {
+func (x *FrameworkResponse) GetBaseImage() string {
 	if x != nil {
 		if x.xxx_hidden_BaseImage != nil {
 			return *x.xxx_hidden_BaseImage
@@ -113,7 +113,7 @@ func (x *FrameworkConfigResponse) GetBaseImage() string {
 	return ""
 }
 
-func (x *FrameworkConfigResponse) GetInstallCmd() string {
+func (x *FrameworkResponse) GetInstallCmd() string {
 	if x != nil {
 		if x.xxx_hidden_InstallCmd != nil {
 			return *x.xxx_hidden_InstallCmd
@@ -123,7 +123,7 @@ func (x *FrameworkConfigResponse) GetInstallCmd() string {
 	return ""
 }
 
-func (x *FrameworkConfigResponse) GetBuildCmd() string {
+func (x *FrameworkResponse) GetBuildCmd() string {
 	if x != nil {
 		if x.xxx_hidden_BuildCmd != nil {
 			return *x.xxx_hidden_BuildCmd
@@ -133,7 +133,7 @@ func (x *FrameworkConfigResponse) GetBuildCmd() string {
 	return ""
 }
 
-func (x *FrameworkConfigResponse) GetRunCmd() string {
+func (x *FrameworkResponse) GetRunCmd() string {
 	if x != nil {
 		if x.xxx_hidden_RunCmd != nil {
 			return *x.xxx_hidden_RunCmd
@@ -143,143 +143,143 @@ func (x *FrameworkConfigResponse) GetRunCmd() string {
 	return ""
 }
 
-func (x *FrameworkConfigResponse) SetId(v string) {
+func (x *FrameworkResponse) SetId(v string) {
 	x.xxx_hidden_Id = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 8)
 }
 
-func (x *FrameworkConfigResponse) SetName(v string) {
+func (x *FrameworkResponse) SetName(v string) {
 	x.xxx_hidden_Name = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 8)
 }
 
-func (x *FrameworkConfigResponse) SetRootDir(v string) {
+func (x *FrameworkResponse) SetRootDir(v string) {
 	x.xxx_hidden_RootDir = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 8)
 }
 
-func (x *FrameworkConfigResponse) SetOutputDir(v string) {
+func (x *FrameworkResponse) SetOutputDir(v string) {
 	x.xxx_hidden_OutputDir = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 8)
 }
 
-func (x *FrameworkConfigResponse) SetBaseImage(v string) {
+func (x *FrameworkResponse) SetBaseImage(v string) {
 	x.xxx_hidden_BaseImage = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 8)
 }
 
-func (x *FrameworkConfigResponse) SetInstallCmd(v string) {
+func (x *FrameworkResponse) SetInstallCmd(v string) {
 	x.xxx_hidden_InstallCmd = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 8)
 }
 
-func (x *FrameworkConfigResponse) SetBuildCmd(v string) {
+func (x *FrameworkResponse) SetBuildCmd(v string) {
 	x.xxx_hidden_BuildCmd = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 6, 8)
 }
 
-func (x *FrameworkConfigResponse) SetRunCmd(v string) {
+func (x *FrameworkResponse) SetRunCmd(v string) {
 	x.xxx_hidden_RunCmd = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 7, 8)
 }
 
-func (x *FrameworkConfigResponse) HasId() bool {
+func (x *FrameworkResponse) HasId() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
 }
 
-func (x *FrameworkConfigResponse) HasName() bool {
+func (x *FrameworkResponse) HasName() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
 }
 
-func (x *FrameworkConfigResponse) HasRootDir() bool {
+func (x *FrameworkResponse) HasRootDir() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
 }
 
-func (x *FrameworkConfigResponse) HasOutputDir() bool {
+func (x *FrameworkResponse) HasOutputDir() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 3)
 }
 
-func (x *FrameworkConfigResponse) HasBaseImage() bool {
+func (x *FrameworkResponse) HasBaseImage() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 4)
 }
 
-func (x *FrameworkConfigResponse) HasInstallCmd() bool {
+func (x *FrameworkResponse) HasInstallCmd() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 5)
 }
 
-func (x *FrameworkConfigResponse) HasBuildCmd() bool {
+func (x *FrameworkResponse) HasBuildCmd() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 6)
 }
 
-func (x *FrameworkConfigResponse) HasRunCmd() bool {
+func (x *FrameworkResponse) HasRunCmd() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 7)
 }
 
-func (x *FrameworkConfigResponse) ClearId() {
+func (x *FrameworkResponse) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
 	x.xxx_hidden_Id = nil
 }
 
-func (x *FrameworkConfigResponse) ClearName() {
+func (x *FrameworkResponse) ClearName() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
 	x.xxx_hidden_Name = nil
 }
 
-func (x *FrameworkConfigResponse) ClearRootDir() {
+func (x *FrameworkResponse) ClearRootDir() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
 	x.xxx_hidden_RootDir = nil
 }
 
-func (x *FrameworkConfigResponse) ClearOutputDir() {
+func (x *FrameworkResponse) ClearOutputDir() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 3)
 	x.xxx_hidden_OutputDir = nil
 }
 
-func (x *FrameworkConfigResponse) ClearBaseImage() {
+func (x *FrameworkResponse) ClearBaseImage() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 4)
 	x.xxx_hidden_BaseImage = nil
 }
 
-func (x *FrameworkConfigResponse) ClearInstallCmd() {
+func (x *FrameworkResponse) ClearInstallCmd() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 5)
 	x.xxx_hidden_InstallCmd = nil
 }
 
-func (x *FrameworkConfigResponse) ClearBuildCmd() {
+func (x *FrameworkResponse) ClearBuildCmd() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 6)
 	x.xxx_hidden_BuildCmd = nil
 }
 
-func (x *FrameworkConfigResponse) ClearRunCmd() {
+func (x *FrameworkResponse) ClearRunCmd() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 7)
 	x.xxx_hidden_RunCmd = nil
 }
 
-type FrameworkConfigResponse_builder struct {
+type FrameworkResponse_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
 	Id         *string
@@ -292,8 +292,8 @@ type FrameworkConfigResponse_builder struct {
 	RunCmd     *string
 }
 
-func (b0 FrameworkConfigResponse_builder) Build() *FrameworkConfigResponse {
-	m0 := &FrameworkConfigResponse{}
+func (b0 FrameworkResponse_builder) Build() *FrameworkResponse {
+	m0 := &FrameworkResponse{}
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.Id != nil {
@@ -332,28 +332,28 @@ func (b0 FrameworkConfigResponse_builder) Build() *FrameworkConfigResponse {
 }
 
 // Список шаблонов конфигурации деплоя
-type ListFrameworkConfigsResponse struct {
-	state                       protoimpl.MessageState      `protogen:"opaque.v1"`
-	xxx_hidden_FrameworkConfigs *[]*FrameworkConfigResponse `protobuf:"bytes,1,rep,name=framework_configs,json=frameworkConfigs"`
-	unknownFields               protoimpl.UnknownFields
-	sizeCache                   protoimpl.SizeCache
+type ListFrameworksResponse struct {
+	state                 protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Frameworks *[]*FrameworkResponse  `protobuf:"bytes,1,rep,name=frameworks"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
 }
 
-func (x *ListFrameworkConfigsResponse) Reset() {
-	*x = ListFrameworkConfigsResponse{}
-	mi := &file_projects_v1_framework_configs_proto_msgTypes[1]
+func (x *ListFrameworksResponse) Reset() {
+	*x = ListFrameworksResponse{}
+	mi := &file_projects_v1_frameworks_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListFrameworkConfigsResponse) String() string {
+func (x *ListFrameworksResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListFrameworkConfigsResponse) ProtoMessage() {}
+func (*ListFrameworksResponse) ProtoMessage() {}
 
-func (x *ListFrameworkConfigsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_projects_v1_framework_configs_proto_msgTypes[1]
+func (x *ListFrameworksResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_projects_v1_frameworks_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -364,35 +364,35 @@ func (x *ListFrameworkConfigsResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *ListFrameworkConfigsResponse) GetFrameworkConfigs() []*FrameworkConfigResponse {
+func (x *ListFrameworksResponse) GetFrameworks() []*FrameworkResponse {
 	if x != nil {
-		if x.xxx_hidden_FrameworkConfigs != nil {
-			return *x.xxx_hidden_FrameworkConfigs
+		if x.xxx_hidden_Frameworks != nil {
+			return *x.xxx_hidden_Frameworks
 		}
 	}
 	return nil
 }
 
-func (x *ListFrameworkConfigsResponse) SetFrameworkConfigs(v []*FrameworkConfigResponse) {
-	x.xxx_hidden_FrameworkConfigs = &v
+func (x *ListFrameworksResponse) SetFrameworks(v []*FrameworkResponse) {
+	x.xxx_hidden_Frameworks = &v
 }
 
-type ListFrameworkConfigsResponse_builder struct {
+type ListFrameworksResponse_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	FrameworkConfigs []*FrameworkConfigResponse
+	Frameworks []*FrameworkResponse
 }
 
-func (b0 ListFrameworkConfigsResponse_builder) Build() *ListFrameworkConfigsResponse {
-	m0 := &ListFrameworkConfigsResponse{}
+func (b0 ListFrameworksResponse_builder) Build() *ListFrameworksResponse {
+	m0 := &ListFrameworksResponse{}
 	b, x := &b0, m0
 	_, _ = b, x
-	x.xxx_hidden_FrameworkConfigs = &b.FrameworkConfigs
+	x.xxx_hidden_Frameworks = &b.Frameworks
 	return m0
 }
 
 // Параметры запросов для получения шаблона конфигурации по ID
-type GetFrameworkConfigRequest struct {
+type GetFrameworkRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id          *string                `protobuf:"bytes,1,opt,name=id"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
@@ -401,21 +401,21 @@ type GetFrameworkConfigRequest struct {
 	sizeCache              protoimpl.SizeCache
 }
 
-func (x *GetFrameworkConfigRequest) Reset() {
-	*x = GetFrameworkConfigRequest{}
-	mi := &file_projects_v1_framework_configs_proto_msgTypes[2]
+func (x *GetFrameworkRequest) Reset() {
+	*x = GetFrameworkRequest{}
+	mi := &file_projects_v1_frameworks_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetFrameworkConfigRequest) String() string {
+func (x *GetFrameworkRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetFrameworkConfigRequest) ProtoMessage() {}
+func (*GetFrameworkRequest) ProtoMessage() {}
 
-func (x *GetFrameworkConfigRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_projects_v1_framework_configs_proto_msgTypes[2]
+func (x *GetFrameworkRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_projects_v1_frameworks_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -426,7 +426,7 @@ func (x *GetFrameworkConfigRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *GetFrameworkConfigRequest) GetId() string {
+func (x *GetFrameworkRequest) GetId() string {
 	if x != nil {
 		if x.xxx_hidden_Id != nil {
 			return *x.xxx_hidden_Id
@@ -436,31 +436,31 @@ func (x *GetFrameworkConfigRequest) GetId() string {
 	return ""
 }
 
-func (x *GetFrameworkConfigRequest) SetId(v string) {
+func (x *GetFrameworkRequest) SetId(v string) {
 	x.xxx_hidden_Id = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
 }
 
-func (x *GetFrameworkConfigRequest) HasId() bool {
+func (x *GetFrameworkRequest) HasId() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
 }
 
-func (x *GetFrameworkConfigRequest) ClearId() {
+func (x *GetFrameworkRequest) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
 	x.xxx_hidden_Id = nil
 }
 
-type GetFrameworkConfigRequest_builder struct {
+type GetFrameworkRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
 	Id *string
 }
 
-func (b0 GetFrameworkConfigRequest_builder) Build() *GetFrameworkConfigRequest {
-	m0 := &GetFrameworkConfigRequest{}
+func (b0 GetFrameworkRequest_builder) Build() *GetFrameworkRequest {
+	m0 := &GetFrameworkRequest{}
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.Id != nil {
@@ -471,7 +471,7 @@ func (b0 GetFrameworkConfigRequest_builder) Build() *GetFrameworkConfigRequest {
 }
 
 // Параметры запросов для получения списка шаблонов конфигурации
-type ListFrameworkConfigsRequest struct {
+type ListFrameworksRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Limit       int64                  `protobuf:"varint,1,opt,name=limit"`
 	xxx_hidden_Offset      int64                  `protobuf:"varint,2,opt,name=offset"`
@@ -481,21 +481,21 @@ type ListFrameworkConfigsRequest struct {
 	sizeCache              protoimpl.SizeCache
 }
 
-func (x *ListFrameworkConfigsRequest) Reset() {
-	*x = ListFrameworkConfigsRequest{}
-	mi := &file_projects_v1_framework_configs_proto_msgTypes[3]
+func (x *ListFrameworksRequest) Reset() {
+	*x = ListFrameworksRequest{}
+	mi := &file_projects_v1_frameworks_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListFrameworkConfigsRequest) String() string {
+func (x *ListFrameworksRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListFrameworkConfigsRequest) ProtoMessage() {}
+func (*ListFrameworksRequest) ProtoMessage() {}
 
-func (x *ListFrameworkConfigsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_projects_v1_framework_configs_proto_msgTypes[3]
+func (x *ListFrameworksRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_projects_v1_frameworks_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -506,63 +506,63 @@ func (x *ListFrameworkConfigsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *ListFrameworkConfigsRequest) GetLimit() int64 {
+func (x *ListFrameworksRequest) GetLimit() int64 {
 	if x != nil {
 		return x.xxx_hidden_Limit
 	}
 	return 0
 }
 
-func (x *ListFrameworkConfigsRequest) GetOffset() int64 {
+func (x *ListFrameworksRequest) GetOffset() int64 {
 	if x != nil {
 		return x.xxx_hidden_Offset
 	}
 	return 0
 }
 
-func (x *ListFrameworkConfigsRequest) SetLimit(v int64) {
+func (x *ListFrameworksRequest) SetLimit(v int64) {
 	x.xxx_hidden_Limit = v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 2)
 }
 
-func (x *ListFrameworkConfigsRequest) SetOffset(v int64) {
+func (x *ListFrameworksRequest) SetOffset(v int64) {
 	x.xxx_hidden_Offset = v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 2)
 }
 
-func (x *ListFrameworkConfigsRequest) HasLimit() bool {
+func (x *ListFrameworksRequest) HasLimit() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
 }
 
-func (x *ListFrameworkConfigsRequest) HasOffset() bool {
+func (x *ListFrameworksRequest) HasOffset() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
 }
 
-func (x *ListFrameworkConfigsRequest) ClearLimit() {
+func (x *ListFrameworksRequest) ClearLimit() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
 	x.xxx_hidden_Limit = 0
 }
 
-func (x *ListFrameworkConfigsRequest) ClearOffset() {
+func (x *ListFrameworksRequest) ClearOffset() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
 	x.xxx_hidden_Offset = 0
 }
 
-type ListFrameworkConfigsRequest_builder struct {
+type ListFrameworksRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
 	Limit  *int64
 	Offset *int64
 }
 
-func (b0 ListFrameworkConfigsRequest_builder) Build() *ListFrameworkConfigsRequest {
-	m0 := &ListFrameworkConfigsRequest{}
+func (b0 ListFrameworksRequest_builder) Build() *ListFrameworksRequest {
+	m0 := &ListFrameworksRequest{}
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.Limit != nil {
@@ -577,7 +577,7 @@ func (b0 ListFrameworkConfigsRequest_builder) Build() *ListFrameworkConfigsReque
 }
 
 // Параметры запросов для создания шаблона конфигурации деплоя
-type CreateFrameworkConfigRequest struct {
+type CreateFrameworkRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Name        *string                `protobuf:"bytes,1,opt,name=name"`
 	xxx_hidden_RootDir     *string                `protobuf:"bytes,2,opt,name=root_dir,json=rootDir"`
@@ -592,21 +592,21 @@ type CreateFrameworkConfigRequest struct {
 	sizeCache              protoimpl.SizeCache
 }
 
-func (x *CreateFrameworkConfigRequest) Reset() {
-	*x = CreateFrameworkConfigRequest{}
-	mi := &file_projects_v1_framework_configs_proto_msgTypes[4]
+func (x *CreateFrameworkRequest) Reset() {
+	*x = CreateFrameworkRequest{}
+	mi := &file_projects_v1_frameworks_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateFrameworkConfigRequest) String() string {
+func (x *CreateFrameworkRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateFrameworkConfigRequest) ProtoMessage() {}
+func (*CreateFrameworkRequest) ProtoMessage() {}
 
-func (x *CreateFrameworkConfigRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_projects_v1_framework_configs_proto_msgTypes[4]
+func (x *CreateFrameworkRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_projects_v1_frameworks_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -617,7 +617,7 @@ func (x *CreateFrameworkConfigRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *CreateFrameworkConfigRequest) GetName() string {
+func (x *CreateFrameworkRequest) GetName() string {
 	if x != nil {
 		if x.xxx_hidden_Name != nil {
 			return *x.xxx_hidden_Name
@@ -627,7 +627,7 @@ func (x *CreateFrameworkConfigRequest) GetName() string {
 	return ""
 }
 
-func (x *CreateFrameworkConfigRequest) GetRootDir() string {
+func (x *CreateFrameworkRequest) GetRootDir() string {
 	if x != nil {
 		if x.xxx_hidden_RootDir != nil {
 			return *x.xxx_hidden_RootDir
@@ -637,7 +637,7 @@ func (x *CreateFrameworkConfigRequest) GetRootDir() string {
 	return ""
 }
 
-func (x *CreateFrameworkConfigRequest) GetOutputDir() string {
+func (x *CreateFrameworkRequest) GetOutputDir() string {
 	if x != nil {
 		if x.xxx_hidden_OutputDir != nil {
 			return *x.xxx_hidden_OutputDir
@@ -647,7 +647,7 @@ func (x *CreateFrameworkConfigRequest) GetOutputDir() string {
 	return ""
 }
 
-func (x *CreateFrameworkConfigRequest) GetBaseImage() string {
+func (x *CreateFrameworkRequest) GetBaseImage() string {
 	if x != nil {
 		if x.xxx_hidden_BaseImage != nil {
 			return *x.xxx_hidden_BaseImage
@@ -657,7 +657,7 @@ func (x *CreateFrameworkConfigRequest) GetBaseImage() string {
 	return ""
 }
 
-func (x *CreateFrameworkConfigRequest) GetInstallCmd() string {
+func (x *CreateFrameworkRequest) GetInstallCmd() string {
 	if x != nil {
 		if x.xxx_hidden_InstallCmd != nil {
 			return *x.xxx_hidden_InstallCmd
@@ -667,7 +667,7 @@ func (x *CreateFrameworkConfigRequest) GetInstallCmd() string {
 	return ""
 }
 
-func (x *CreateFrameworkConfigRequest) GetBuildCmd() string {
+func (x *CreateFrameworkRequest) GetBuildCmd() string {
 	if x != nil {
 		if x.xxx_hidden_BuildCmd != nil {
 			return *x.xxx_hidden_BuildCmd
@@ -677,7 +677,7 @@ func (x *CreateFrameworkConfigRequest) GetBuildCmd() string {
 	return ""
 }
 
-func (x *CreateFrameworkConfigRequest) GetRunCmd() string {
+func (x *CreateFrameworkRequest) GetRunCmd() string {
 	if x != nil {
 		if x.xxx_hidden_RunCmd != nil {
 			return *x.xxx_hidden_RunCmd
@@ -687,126 +687,126 @@ func (x *CreateFrameworkConfigRequest) GetRunCmd() string {
 	return ""
 }
 
-func (x *CreateFrameworkConfigRequest) SetName(v string) {
+func (x *CreateFrameworkRequest) SetName(v string) {
 	x.xxx_hidden_Name = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 7)
 }
 
-func (x *CreateFrameworkConfigRequest) SetRootDir(v string) {
+func (x *CreateFrameworkRequest) SetRootDir(v string) {
 	x.xxx_hidden_RootDir = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 7)
 }
 
-func (x *CreateFrameworkConfigRequest) SetOutputDir(v string) {
+func (x *CreateFrameworkRequest) SetOutputDir(v string) {
 	x.xxx_hidden_OutputDir = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 7)
 }
 
-func (x *CreateFrameworkConfigRequest) SetBaseImage(v string) {
+func (x *CreateFrameworkRequest) SetBaseImage(v string) {
 	x.xxx_hidden_BaseImage = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 7)
 }
 
-func (x *CreateFrameworkConfigRequest) SetInstallCmd(v string) {
+func (x *CreateFrameworkRequest) SetInstallCmd(v string) {
 	x.xxx_hidden_InstallCmd = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 7)
 }
 
-func (x *CreateFrameworkConfigRequest) SetBuildCmd(v string) {
+func (x *CreateFrameworkRequest) SetBuildCmd(v string) {
 	x.xxx_hidden_BuildCmd = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 7)
 }
 
-func (x *CreateFrameworkConfigRequest) SetRunCmd(v string) {
+func (x *CreateFrameworkRequest) SetRunCmd(v string) {
 	x.xxx_hidden_RunCmd = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 6, 7)
 }
 
-func (x *CreateFrameworkConfigRequest) HasName() bool {
+func (x *CreateFrameworkRequest) HasName() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
 }
 
-func (x *CreateFrameworkConfigRequest) HasRootDir() bool {
+func (x *CreateFrameworkRequest) HasRootDir() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
 }
 
-func (x *CreateFrameworkConfigRequest) HasOutputDir() bool {
+func (x *CreateFrameworkRequest) HasOutputDir() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
 }
 
-func (x *CreateFrameworkConfigRequest) HasBaseImage() bool {
+func (x *CreateFrameworkRequest) HasBaseImage() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 3)
 }
 
-func (x *CreateFrameworkConfigRequest) HasInstallCmd() bool {
+func (x *CreateFrameworkRequest) HasInstallCmd() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 4)
 }
 
-func (x *CreateFrameworkConfigRequest) HasBuildCmd() bool {
+func (x *CreateFrameworkRequest) HasBuildCmd() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 5)
 }
 
-func (x *CreateFrameworkConfigRequest) HasRunCmd() bool {
+func (x *CreateFrameworkRequest) HasRunCmd() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 6)
 }
 
-func (x *CreateFrameworkConfigRequest) ClearName() {
+func (x *CreateFrameworkRequest) ClearName() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
 	x.xxx_hidden_Name = nil
 }
 
-func (x *CreateFrameworkConfigRequest) ClearRootDir() {
+func (x *CreateFrameworkRequest) ClearRootDir() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
 	x.xxx_hidden_RootDir = nil
 }
 
-func (x *CreateFrameworkConfigRequest) ClearOutputDir() {
+func (x *CreateFrameworkRequest) ClearOutputDir() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
 	x.xxx_hidden_OutputDir = nil
 }
 
-func (x *CreateFrameworkConfigRequest) ClearBaseImage() {
+func (x *CreateFrameworkRequest) ClearBaseImage() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 3)
 	x.xxx_hidden_BaseImage = nil
 }
 
-func (x *CreateFrameworkConfigRequest) ClearInstallCmd() {
+func (x *CreateFrameworkRequest) ClearInstallCmd() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 4)
 	x.xxx_hidden_InstallCmd = nil
 }
 
-func (x *CreateFrameworkConfigRequest) ClearBuildCmd() {
+func (x *CreateFrameworkRequest) ClearBuildCmd() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 5)
 	x.xxx_hidden_BuildCmd = nil
 }
 
-func (x *CreateFrameworkConfigRequest) ClearRunCmd() {
+func (x *CreateFrameworkRequest) ClearRunCmd() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 6)
 	x.xxx_hidden_RunCmd = nil
 }
 
-type CreateFrameworkConfigRequest_builder struct {
+type CreateFrameworkRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
 	Name       *string
@@ -818,8 +818,8 @@ type CreateFrameworkConfigRequest_builder struct {
 	RunCmd     *string
 }
 
-func (b0 CreateFrameworkConfigRequest_builder) Build() *CreateFrameworkConfigRequest {
-	m0 := &CreateFrameworkConfigRequest{}
+func (b0 CreateFrameworkRequest_builder) Build() *CreateFrameworkRequest {
+	m0 := &CreateFrameworkRequest{}
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.Name != nil {
@@ -854,7 +854,7 @@ func (b0 CreateFrameworkConfigRequest_builder) Build() *CreateFrameworkConfigReq
 }
 
 // Параметры запросов для обновления шаблона конфигурации деплоя по ID
-type UpdateFrameworkConfigRequest struct {
+type UpdateFrameworkRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id          *string                `protobuf:"bytes,1,opt,name=id"`
 	xxx_hidden_Name        *string                `protobuf:"bytes,2,opt,name=name"`
@@ -870,21 +870,21 @@ type UpdateFrameworkConfigRequest struct {
 	sizeCache              protoimpl.SizeCache
 }
 
-func (x *UpdateFrameworkConfigRequest) Reset() {
-	*x = UpdateFrameworkConfigRequest{}
-	mi := &file_projects_v1_framework_configs_proto_msgTypes[5]
+func (x *UpdateFrameworkRequest) Reset() {
+	*x = UpdateFrameworkRequest{}
+	mi := &file_projects_v1_frameworks_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateFrameworkConfigRequest) String() string {
+func (x *UpdateFrameworkRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateFrameworkConfigRequest) ProtoMessage() {}
+func (*UpdateFrameworkRequest) ProtoMessage() {}
 
-func (x *UpdateFrameworkConfigRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_projects_v1_framework_configs_proto_msgTypes[5]
+func (x *UpdateFrameworkRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_projects_v1_frameworks_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -895,7 +895,7 @@ func (x *UpdateFrameworkConfigRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *UpdateFrameworkConfigRequest) GetId() string {
+func (x *UpdateFrameworkRequest) GetId() string {
 	if x != nil {
 		if x.xxx_hidden_Id != nil {
 			return *x.xxx_hidden_Id
@@ -905,7 +905,7 @@ func (x *UpdateFrameworkConfigRequest) GetId() string {
 	return ""
 }
 
-func (x *UpdateFrameworkConfigRequest) GetName() string {
+func (x *UpdateFrameworkRequest) GetName() string {
 	if x != nil {
 		if x.xxx_hidden_Name != nil {
 			return *x.xxx_hidden_Name
@@ -915,7 +915,7 @@ func (x *UpdateFrameworkConfigRequest) GetName() string {
 	return ""
 }
 
-func (x *UpdateFrameworkConfigRequest) GetRootDir() string {
+func (x *UpdateFrameworkRequest) GetRootDir() string {
 	if x != nil {
 		if x.xxx_hidden_RootDir != nil {
 			return *x.xxx_hidden_RootDir
@@ -925,7 +925,7 @@ func (x *UpdateFrameworkConfigRequest) GetRootDir() string {
 	return ""
 }
 
-func (x *UpdateFrameworkConfigRequest) GetOutputDir() string {
+func (x *UpdateFrameworkRequest) GetOutputDir() string {
 	if x != nil {
 		if x.xxx_hidden_OutputDir != nil {
 			return *x.xxx_hidden_OutputDir
@@ -935,7 +935,7 @@ func (x *UpdateFrameworkConfigRequest) GetOutputDir() string {
 	return ""
 }
 
-func (x *UpdateFrameworkConfigRequest) GetBaseImage() string {
+func (x *UpdateFrameworkRequest) GetBaseImage() string {
 	if x != nil {
 		if x.xxx_hidden_BaseImage != nil {
 			return *x.xxx_hidden_BaseImage
@@ -945,7 +945,7 @@ func (x *UpdateFrameworkConfigRequest) GetBaseImage() string {
 	return ""
 }
 
-func (x *UpdateFrameworkConfigRequest) GetInstallCmd() string {
+func (x *UpdateFrameworkRequest) GetInstallCmd() string {
 	if x != nil {
 		if x.xxx_hidden_InstallCmd != nil {
 			return *x.xxx_hidden_InstallCmd
@@ -955,7 +955,7 @@ func (x *UpdateFrameworkConfigRequest) GetInstallCmd() string {
 	return ""
 }
 
-func (x *UpdateFrameworkConfigRequest) GetBuildCmd() string {
+func (x *UpdateFrameworkRequest) GetBuildCmd() string {
 	if x != nil {
 		if x.xxx_hidden_BuildCmd != nil {
 			return *x.xxx_hidden_BuildCmd
@@ -965,7 +965,7 @@ func (x *UpdateFrameworkConfigRequest) GetBuildCmd() string {
 	return ""
 }
 
-func (x *UpdateFrameworkConfigRequest) GetRunCmd() string {
+func (x *UpdateFrameworkRequest) GetRunCmd() string {
 	if x != nil {
 		if x.xxx_hidden_RunCmd != nil {
 			return *x.xxx_hidden_RunCmd
@@ -975,143 +975,143 @@ func (x *UpdateFrameworkConfigRequest) GetRunCmd() string {
 	return ""
 }
 
-func (x *UpdateFrameworkConfigRequest) SetId(v string) {
+func (x *UpdateFrameworkRequest) SetId(v string) {
 	x.xxx_hidden_Id = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 8)
 }
 
-func (x *UpdateFrameworkConfigRequest) SetName(v string) {
+func (x *UpdateFrameworkRequest) SetName(v string) {
 	x.xxx_hidden_Name = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 8)
 }
 
-func (x *UpdateFrameworkConfigRequest) SetRootDir(v string) {
+func (x *UpdateFrameworkRequest) SetRootDir(v string) {
 	x.xxx_hidden_RootDir = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 8)
 }
 
-func (x *UpdateFrameworkConfigRequest) SetOutputDir(v string) {
+func (x *UpdateFrameworkRequest) SetOutputDir(v string) {
 	x.xxx_hidden_OutputDir = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 8)
 }
 
-func (x *UpdateFrameworkConfigRequest) SetBaseImage(v string) {
+func (x *UpdateFrameworkRequest) SetBaseImage(v string) {
 	x.xxx_hidden_BaseImage = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 8)
 }
 
-func (x *UpdateFrameworkConfigRequest) SetInstallCmd(v string) {
+func (x *UpdateFrameworkRequest) SetInstallCmd(v string) {
 	x.xxx_hidden_InstallCmd = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 8)
 }
 
-func (x *UpdateFrameworkConfigRequest) SetBuildCmd(v string) {
+func (x *UpdateFrameworkRequest) SetBuildCmd(v string) {
 	x.xxx_hidden_BuildCmd = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 6, 8)
 }
 
-func (x *UpdateFrameworkConfigRequest) SetRunCmd(v string) {
+func (x *UpdateFrameworkRequest) SetRunCmd(v string) {
 	x.xxx_hidden_RunCmd = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 7, 8)
 }
 
-func (x *UpdateFrameworkConfigRequest) HasId() bool {
+func (x *UpdateFrameworkRequest) HasId() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
 }
 
-func (x *UpdateFrameworkConfigRequest) HasName() bool {
+func (x *UpdateFrameworkRequest) HasName() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
 }
 
-func (x *UpdateFrameworkConfigRequest) HasRootDir() bool {
+func (x *UpdateFrameworkRequest) HasRootDir() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
 }
 
-func (x *UpdateFrameworkConfigRequest) HasOutputDir() bool {
+func (x *UpdateFrameworkRequest) HasOutputDir() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 3)
 }
 
-func (x *UpdateFrameworkConfigRequest) HasBaseImage() bool {
+func (x *UpdateFrameworkRequest) HasBaseImage() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 4)
 }
 
-func (x *UpdateFrameworkConfigRequest) HasInstallCmd() bool {
+func (x *UpdateFrameworkRequest) HasInstallCmd() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 5)
 }
 
-func (x *UpdateFrameworkConfigRequest) HasBuildCmd() bool {
+func (x *UpdateFrameworkRequest) HasBuildCmd() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 6)
 }
 
-func (x *UpdateFrameworkConfigRequest) HasRunCmd() bool {
+func (x *UpdateFrameworkRequest) HasRunCmd() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 7)
 }
 
-func (x *UpdateFrameworkConfigRequest) ClearId() {
+func (x *UpdateFrameworkRequest) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
 	x.xxx_hidden_Id = nil
 }
 
-func (x *UpdateFrameworkConfigRequest) ClearName() {
+func (x *UpdateFrameworkRequest) ClearName() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
 	x.xxx_hidden_Name = nil
 }
 
-func (x *UpdateFrameworkConfigRequest) ClearRootDir() {
+func (x *UpdateFrameworkRequest) ClearRootDir() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
 	x.xxx_hidden_RootDir = nil
 }
 
-func (x *UpdateFrameworkConfigRequest) ClearOutputDir() {
+func (x *UpdateFrameworkRequest) ClearOutputDir() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 3)
 	x.xxx_hidden_OutputDir = nil
 }
 
-func (x *UpdateFrameworkConfigRequest) ClearBaseImage() {
+func (x *UpdateFrameworkRequest) ClearBaseImage() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 4)
 	x.xxx_hidden_BaseImage = nil
 }
 
-func (x *UpdateFrameworkConfigRequest) ClearInstallCmd() {
+func (x *UpdateFrameworkRequest) ClearInstallCmd() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 5)
 	x.xxx_hidden_InstallCmd = nil
 }
 
-func (x *UpdateFrameworkConfigRequest) ClearBuildCmd() {
+func (x *UpdateFrameworkRequest) ClearBuildCmd() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 6)
 	x.xxx_hidden_BuildCmd = nil
 }
 
-func (x *UpdateFrameworkConfigRequest) ClearRunCmd() {
+func (x *UpdateFrameworkRequest) ClearRunCmd() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 7)
 	x.xxx_hidden_RunCmd = nil
 }
 
-type UpdateFrameworkConfigRequest_builder struct {
+type UpdateFrameworkRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
 	Id         *string
@@ -1124,8 +1124,8 @@ type UpdateFrameworkConfigRequest_builder struct {
 	RunCmd     *string
 }
 
-func (b0 UpdateFrameworkConfigRequest_builder) Build() *UpdateFrameworkConfigRequest {
-	m0 := &UpdateFrameworkConfigRequest{}
+func (b0 UpdateFrameworkRequest_builder) Build() *UpdateFrameworkRequest {
+	m0 := &UpdateFrameworkRequest{}
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.Id != nil {
@@ -1163,12 +1163,12 @@ func (b0 UpdateFrameworkConfigRequest_builder) Build() *UpdateFrameworkConfigReq
 	return m0
 }
 
-var File_projects_v1_framework_configs_proto protoreflect.FileDescriptor
+var File_projects_v1_frameworks_proto protoreflect.FileDescriptor
 
-const file_projects_v1_framework_configs_proto_rawDesc = "" +
+const file_projects_v1_frameworks_proto_rawDesc = "" +
 	"\n" +
-	"#projects/v1/framework_configs.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\"\xed\x01\n" +
-	"\x17FrameworkConfigResponse\x12\x0e\n" +
+	"\x1cprojects/v1/frameworks.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\"\xe7\x01\n" +
+	"\x11FrameworkResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
 	"\broot_dir\x18\x03 \x01(\tR\arootDir\x12\x1d\n" +
@@ -1179,15 +1179,17 @@ const file_projects_v1_framework_configs_proto_rawDesc = "" +
 	"\vinstall_cmd\x18\x06 \x01(\tR\n" +
 	"installCmd\x12\x1b\n" +
 	"\tbuild_cmd\x18\a \x01(\tR\bbuildCmd\x12\x17\n" +
-	"\arun_cmd\x18\b \x01(\tR\x06runCmd\"q\n" +
-	"\x1cListFrameworkConfigsResponse\x12Q\n" +
-	"\x11framework_configs\x18\x01 \x03(\v2$.projects.v1.FrameworkConfigResponseR\x10frameworkConfigs\"+\n" +
-	"\x19GetFrameworkConfigRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"K\n" +
-	"\x1bListFrameworkConfigsRequest\x12\x14\n" +
+	"\arun_cmd\x18\b \x01(\tR\x06runCmd\"X\n" +
+	"\x16ListFrameworksResponse\x12>\n" +
+	"\n" +
+	"frameworks\x18\x01 \x03(\v2\x1e.projects.v1.FrameworkResponseR\n" +
+	"frameworks\"%\n" +
+	"\x13GetFrameworkRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"E\n" +
+	"\x15ListFrameworksRequest\x12\x14\n" +
 	"\x05limit\x18\x01 \x01(\x03R\x05limit\x12\x16\n" +
-	"\x06offset\x18\x02 \x01(\x03R\x06offset\"\xe2\x01\n" +
-	"\x1cCreateFrameworkConfigRequest\x12\x12\n" +
+	"\x06offset\x18\x02 \x01(\x03R\x06offset\"\xdc\x01\n" +
+	"\x16CreateFrameworkRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x19\n" +
 	"\broot_dir\x18\x02 \x01(\tR\arootDir\x12\x1d\n" +
 	"\n" +
@@ -1197,8 +1199,8 @@ const file_projects_v1_framework_configs_proto_rawDesc = "" +
 	"\vinstall_cmd\x18\x05 \x01(\tR\n" +
 	"installCmd\x12\x1b\n" +
 	"\tbuild_cmd\x18\x06 \x01(\tR\bbuildCmd\x12\x17\n" +
-	"\arun_cmd\x18\a \x01(\tR\x06runCmd\"\xf2\x01\n" +
-	"\x1cUpdateFrameworkConfigRequest\x12\x0e\n" +
+	"\arun_cmd\x18\a \x01(\tR\x06runCmd\"\xec\x01\n" +
+	"\x16UpdateFrameworkRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
 	"\broot_dir\x18\x03 \x01(\tR\arootDir\x12\x1d\n" +
@@ -1209,36 +1211,36 @@ const file_projects_v1_framework_configs_proto_rawDesc = "" +
 	"\vinstall_cmd\x18\x06 \x01(\tR\n" +
 	"installCmd\x12\x1b\n" +
 	"\tbuild_cmd\x18\a \x01(\tR\bbuildCmd\x12\x17\n" +
-	"\arun_cmd\x18\b \x01(\tR\x06runCmd2\x88\x04\n" +
-	"\x16FrameworkConfigService\x12b\n" +
-	"\x12GetFrameworkConfig\x12&.projects.v1.GetFrameworkConfigRequest\x1a$.projects.v1.FrameworkConfigResponse\x12k\n" +
-	"\x14ListFrameworkConfigs\x12(.projects.v1.ListFrameworkConfigsRequest\x1a).projects.v1.ListFrameworkConfigsResponse\x12h\n" +
-	"\x15CreateFrameworkConfig\x12).projects.v1.CreateFrameworkConfigRequest\x1a$.projects.v1.FrameworkConfigResponse\x12Z\n" +
-	"\x15UpdateFrameworkConfig\x12).projects.v1.UpdateFrameworkConfigRequest\x1a\x16.google.protobuf.Empty\x12W\n" +
-	"\x15DeleteFrameworkConfig\x12&.projects.v1.GetFrameworkConfigRequest\x1a\x16.google.protobuf.EmptyB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
+	"\arun_cmd\x18\b \x01(\tR\x06runCmd2\xb4\x03\n" +
+	"\x10FrameworkService\x12P\n" +
+	"\fGetFramework\x12 .projects.v1.GetFrameworkRequest\x1a\x1e.projects.v1.FrameworkResponse\x12Y\n" +
+	"\x0eListFrameworks\x12\".projects.v1.ListFrameworksRequest\x1a#.projects.v1.ListFrameworksResponse\x12V\n" +
+	"\x0fCreateFramework\x12#.projects.v1.CreateFrameworkRequest\x1a\x1e.projects.v1.FrameworkResponse\x12N\n" +
+	"\x0fUpdateFramework\x12#.projects.v1.UpdateFrameworkRequest\x1a\x16.google.protobuf.Empty\x12K\n" +
+	"\x0fDeleteFramework\x12 .projects.v1.GetFrameworkRequest\x1a\x16.google.protobuf.EmptyB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
 
-var file_projects_v1_framework_configs_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
-var file_projects_v1_framework_configs_proto_goTypes = []any{
-	(*FrameworkConfigResponse)(nil),      // 0: projects.v1.FrameworkConfigResponse
-	(*ListFrameworkConfigsResponse)(nil), // 1: projects.v1.ListFrameworkConfigsResponse
-	(*GetFrameworkConfigRequest)(nil),    // 2: projects.v1.GetFrameworkConfigRequest
-	(*ListFrameworkConfigsRequest)(nil),  // 3: projects.v1.ListFrameworkConfigsRequest
-	(*CreateFrameworkConfigRequest)(nil), // 4: projects.v1.CreateFrameworkConfigRequest
-	(*UpdateFrameworkConfigRequest)(nil), // 5: projects.v1.UpdateFrameworkConfigRequest
-	(*emptypb.Empty)(nil),                // 6: google.protobuf.Empty
+var file_projects_v1_frameworks_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_projects_v1_frameworks_proto_goTypes = []any{
+	(*FrameworkResponse)(nil),      // 0: projects.v1.FrameworkResponse
+	(*ListFrameworksResponse)(nil), // 1: projects.v1.ListFrameworksResponse
+	(*GetFrameworkRequest)(nil),    // 2: projects.v1.GetFrameworkRequest
+	(*ListFrameworksRequest)(nil),  // 3: projects.v1.ListFrameworksRequest
+	(*CreateFrameworkRequest)(nil), // 4: projects.v1.CreateFrameworkRequest
+	(*UpdateFrameworkRequest)(nil), // 5: projects.v1.UpdateFrameworkRequest
+	(*emptypb.Empty)(nil),          // 6: google.protobuf.Empty
 }
-var file_projects_v1_framework_configs_proto_depIdxs = []int32{
-	0, // 0: projects.v1.ListFrameworkConfigsResponse.framework_configs:type_name -> projects.v1.FrameworkConfigResponse
-	2, // 1: projects.v1.FrameworkConfigService.GetFrameworkConfig:input_type -> projects.v1.GetFrameworkConfigRequest
-	3, // 2: projects.v1.FrameworkConfigService.ListFrameworkConfigs:input_type -> projects.v1.ListFrameworkConfigsRequest
-	4, // 3: projects.v1.FrameworkConfigService.CreateFrameworkConfig:input_type -> projects.v1.CreateFrameworkConfigRequest
-	5, // 4: projects.v1.FrameworkConfigService.UpdateFrameworkConfig:input_type -> projects.v1.UpdateFrameworkConfigRequest
-	2, // 5: projects.v1.FrameworkConfigService.DeleteFrameworkConfig:input_type -> projects.v1.GetFrameworkConfigRequest
-	0, // 6: projects.v1.FrameworkConfigService.GetFrameworkConfig:output_type -> projects.v1.FrameworkConfigResponse
-	1, // 7: projects.v1.FrameworkConfigService.ListFrameworkConfigs:output_type -> projects.v1.ListFrameworkConfigsResponse
-	0, // 8: projects.v1.FrameworkConfigService.CreateFrameworkConfig:output_type -> projects.v1.FrameworkConfigResponse
-	6, // 9: projects.v1.FrameworkConfigService.UpdateFrameworkConfig:output_type -> google.protobuf.Empty
-	6, // 10: projects.v1.FrameworkConfigService.DeleteFrameworkConfig:output_type -> google.protobuf.Empty
+var file_projects_v1_frameworks_proto_depIdxs = []int32{
+	0, // 0: projects.v1.ListFrameworksResponse.frameworks:type_name -> projects.v1.FrameworkResponse
+	2, // 1: projects.v1.FrameworkService.GetFramework:input_type -> projects.v1.GetFrameworkRequest
+	3, // 2: projects.v1.FrameworkService.ListFrameworks:input_type -> projects.v1.ListFrameworksRequest
+	4, // 3: projects.v1.FrameworkService.CreateFramework:input_type -> projects.v1.CreateFrameworkRequest
+	5, // 4: projects.v1.FrameworkService.UpdateFramework:input_type -> projects.v1.UpdateFrameworkRequest
+	2, // 5: projects.v1.FrameworkService.DeleteFramework:input_type -> projects.v1.GetFrameworkRequest
+	0, // 6: projects.v1.FrameworkService.GetFramework:output_type -> projects.v1.FrameworkResponse
+	1, // 7: projects.v1.FrameworkService.ListFrameworks:output_type -> projects.v1.ListFrameworksResponse
+	0, // 8: projects.v1.FrameworkService.CreateFramework:output_type -> projects.v1.FrameworkResponse
+	6, // 9: projects.v1.FrameworkService.UpdateFramework:output_type -> google.protobuf.Empty
+	6, // 10: projects.v1.FrameworkService.DeleteFramework:output_type -> google.protobuf.Empty
 	6, // [6:11] is the sub-list for method output_type
 	1, // [1:6] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
@@ -1246,26 +1248,26 @@ var file_projects_v1_framework_configs_proto_depIdxs = []int32{
 	0, // [0:1] is the sub-list for field type_name
 }
 
-func init() { file_projects_v1_framework_configs_proto_init() }
-func file_projects_v1_framework_configs_proto_init() {
-	if File_projects_v1_framework_configs_proto != nil {
+func init() { file_projects_v1_frameworks_proto_init() }
+func file_projects_v1_frameworks_proto_init() {
+	if File_projects_v1_frameworks_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_projects_v1_framework_configs_proto_rawDesc), len(file_projects_v1_framework_configs_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_projects_v1_frameworks_proto_rawDesc), len(file_projects_v1_frameworks_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_projects_v1_framework_configs_proto_goTypes,
-		DependencyIndexes: file_projects_v1_framework_configs_proto_depIdxs,
-		MessageInfos:      file_projects_v1_framework_configs_proto_msgTypes,
+		GoTypes:           file_projects_v1_frameworks_proto_goTypes,
+		DependencyIndexes: file_projects_v1_frameworks_proto_depIdxs,
+		MessageInfos:      file_projects_v1_frameworks_proto_msgTypes,
 	}.Build()
-	File_projects_v1_framework_configs_proto = out.File
-	file_projects_v1_framework_configs_proto_goTypes = nil
-	file_projects_v1_framework_configs_proto_depIdxs = nil
+	File_projects_v1_frameworks_proto = out.File
+	file_projects_v1_frameworks_proto_goTypes = nil
+	file_projects_v1_frameworks_proto_depIdxs = nil
 }

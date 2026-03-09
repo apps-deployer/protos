@@ -22,7 +22,7 @@ service DeployConfigService {
 message DeployConfigResponse {
   string id = 1;
   string project_id = 2;
-  string template_id = 3;
+  string framework_id = 3;
   string root_dir = 4; 
   string output_dir_overwrite = 5;
   string base_image_overwrite = 6;
@@ -31,7 +31,7 @@ message DeployConfigResponse {
   string run_cmd_overwirte = 9;
 }
 
-// Конфигурация деплоя для проекта, сгенерированная с учетом шаблона и переопределений
+// Конфигурация деплоя для проекта, сгенерированная с учетом фреймворка и переопределений
 message ResolvedDeployConfigResponse {
   string root_dir = 1;
   string output_dir = 2;
@@ -49,7 +49,7 @@ message GetDeployConfigRequest {
 // Параметры запросов для обновления конфигурации деплоя по ID
 message UpdateDeployConfigRequest {
   string id = 1;
-  string template_id = 2;
+  string framework_id = 2;
   string root_dir = 3; 
   string output_dir_overwrite = 4;
   string base_image_overwrite = 5;
