@@ -11,7 +11,7 @@ option go_package = "github.com/apps-deployer/protos/gen/go/projects/v1;projects
 service DeployConfigService {
   // GetResolvedDeployConfig возвращает конфигурацию деплоя по его ID, сгенерированную  
   // с учетом значений из шаблона и их переопределений 
-  rpc GetResolvedDeployConfig (GetDeployConfigRequest) returns (ResolvedDeployConfigResponse);
+  rpc GenerateDeployConfig (GetDeployConfigRequest) returns (GenerateDeployConfigResponse);
   // GetDeployConfig возвращает конфигурацию деплоя по его ID, без учета шаблона
   rpc GetDeployConfig (GetDeployConfigRequest) returns (DeployConfigResponse);
   // UpdateDeployConfig обновляет конфигурацию деплоя по его ID
@@ -32,13 +32,15 @@ message DeployConfigResponse {
 }
 
 // Конфигурация деплоя для проекта, сгенерированная с учетом фреймворка и переопределений
-message ResolvedDeployConfigResponse {
-  string root_dir = 1;
-  string output_dir = 2;
-  string base_image = 3;
-  string install_cmd = 4;
-  string build_cmd = 5;
-  string run_cmd = 6;
+message GenerateDeployConfigResponse {
+  string id = 1;
+  string project_id = 2;
+  string root_dir = 3;
+  string output_dir = 4;
+  string base_image = 5;
+  string install_cmd = 6;
+  string build_cmd = 7;
+  string run_cmd = 8;
 }
 
 // Параметры запросов для получения конфигурации деплоя по ID
