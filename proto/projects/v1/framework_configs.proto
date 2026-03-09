@@ -1,0 +1,73 @@
+edition = "2024";
+
+package projects.v1;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1";
+
+// Сервис FrameworkConfigService предоставляет CRUD интерфейс для управления 
+// шаблонами конфигурации деплоя
+service FrameworkConfigService {
+  // GetFrameworkConfig возвращает шаблон конфигурации деплоя по его ID
+  rpc GetFrameworkConfig (GetFrameworkConfigRequest) returns (FrameworkConfigResponse);
+  // ListFrameworkConfigs возвращает список шаблонов конфигурации деплоя
+  rpc ListFrameworkConfigs (ListFrameworkConfigsRequest) returns (ListFrameworkConfigsResponse);
+  // CreateFrameworkConfig создает новый шаблон конфигурации деплоя
+  rpc CreateFrameworkConfig (CreateFrameworkConfigRequest) returns (FrameworkConfigResponse);
+  // UpdateFrameworkConfig обновляет шаблон конфигурации деплоя по его ID
+  rpc UpdateFrameworkConfig (UpdateFrameworkConfigRequest) returns (google.protobuf.Empty);
+  // DeleteFrameworkConfig удаляет шаблон конфигурации деплоя по его ID
+  rpc DeleteFrameworkConfig (GetFrameworkConfigRequest) returns (google.protobuf.Empty);
+}
+
+// Шаблоны конфигурации деплоя
+message FrameworkConfigResponse {
+  string id = 1;
+  string name = 2;
+  string root_dir = 3;
+  string output_dir = 4;
+  string base_image = 5;
+  string install_cmd = 6;
+  string build_cmd = 7;
+  string run_cmd = 8;
+}
+
+// Список шаблонов конфигурации деплоя
+message ListFrameworkConfigsResponse {
+  repeated FrameworkConfigResponse deploy_configs_templates = 1;
+}
+
+// Параметры запросов для получения шаблона конфигурации по ID
+message GetFrameworkConfigRequest {
+  string id = 1;
+}
+
+// Параметры запросов для получения списка шаблонов конфигурации
+message ListFrameworkConfigsRequest {
+  int64 limit = 1;
+  int64 offset = 2;
+}
+
+// Параметры запросов для создания шаблона конфигурации деплоя
+message CreateFrameworkConfigRequest {
+  string name = 1;
+  string root_dir = 2;
+  string output_dir = 3;
+  string base_image = 4;
+  string install_cmd = 5;
+  string build_cmd = 6;
+  string run_cmd = 7;
+}
+
+// Параметры запросов для обновления шаблона конфигурации деплоя по ID
+message UpdateFrameworkConfigRequest {
+  string id = 1;
+  string name = 2;
+  string root_dir = 3;
+  string output_dir = 4;
+  string base_image = 5;
+  string install_cmd = 6;
+  string build_cmd = 7;
+  string run_cmd = 8;
+}
