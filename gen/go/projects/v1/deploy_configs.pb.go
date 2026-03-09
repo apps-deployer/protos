@@ -24,9 +24,9 @@ const (
 // Конфигурация деплоя для проекта
 type DeployConfigResponse struct {
 	state                          protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Id                  int64                  `protobuf:"varint,1,opt,name=id"`
-	xxx_hidden_ProjectId           int64                  `protobuf:"varint,2,opt,name=project_id,json=projectId"`
-	xxx_hidden_TemplateId          int64                  `protobuf:"varint,3,opt,name=template_id,json=templateId"`
+	xxx_hidden_Id                  *string                `protobuf:"bytes,1,opt,name=id"`
+	xxx_hidden_ProjectId           *string                `protobuf:"bytes,2,opt,name=project_id,json=projectId"`
+	xxx_hidden_TemplateId          *string                `protobuf:"bytes,3,opt,name=template_id,json=templateId"`
 	xxx_hidden_RootDir             *string                `protobuf:"bytes,4,opt,name=root_dir,json=rootDir"`
 	xxx_hidden_OutputDirOverwrite  *string                `protobuf:"bytes,5,opt,name=output_dir_overwrite,json=outputDirOverwrite"`
 	xxx_hidden_BaseImageOverwrite  *string                `protobuf:"bytes,6,opt,name=base_image_overwrite,json=baseImageOverwrite"`
@@ -64,25 +64,34 @@ func (x *DeployConfigResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *DeployConfigResponse) GetId() int64 {
+func (x *DeployConfigResponse) GetId() string {
 	if x != nil {
-		return x.xxx_hidden_Id
+		if x.xxx_hidden_Id != nil {
+			return *x.xxx_hidden_Id
+		}
+		return ""
 	}
-	return 0
+	return ""
 }
 
-func (x *DeployConfigResponse) GetProjectId() int64 {
+func (x *DeployConfigResponse) GetProjectId() string {
 	if x != nil {
-		return x.xxx_hidden_ProjectId
+		if x.xxx_hidden_ProjectId != nil {
+			return *x.xxx_hidden_ProjectId
+		}
+		return ""
 	}
-	return 0
+	return ""
 }
 
-func (x *DeployConfigResponse) GetTemplateId() int64 {
+func (x *DeployConfigResponse) GetTemplateId() string {
 	if x != nil {
-		return x.xxx_hidden_TemplateId
+		if x.xxx_hidden_TemplateId != nil {
+			return *x.xxx_hidden_TemplateId
+		}
+		return ""
 	}
-	return 0
+	return ""
 }
 
 func (x *DeployConfigResponse) GetRootDir() string {
@@ -145,18 +154,18 @@ func (x *DeployConfigResponse) GetRunCmdOverwirte() string {
 	return ""
 }
 
-func (x *DeployConfigResponse) SetId(v int64) {
-	x.xxx_hidden_Id = v
+func (x *DeployConfigResponse) SetId(v string) {
+	x.xxx_hidden_Id = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 9)
 }
 
-func (x *DeployConfigResponse) SetProjectId(v int64) {
-	x.xxx_hidden_ProjectId = v
+func (x *DeployConfigResponse) SetProjectId(v string) {
+	x.xxx_hidden_ProjectId = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 9)
 }
 
-func (x *DeployConfigResponse) SetTemplateId(v int64) {
-	x.xxx_hidden_TemplateId = v
+func (x *DeployConfigResponse) SetTemplateId(v string) {
+	x.xxx_hidden_TemplateId = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 9)
 }
 
@@ -255,17 +264,17 @@ func (x *DeployConfigResponse) HasRunCmdOverwirte() bool {
 
 func (x *DeployConfigResponse) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
-	x.xxx_hidden_Id = 0
+	x.xxx_hidden_Id = nil
 }
 
 func (x *DeployConfigResponse) ClearProjectId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
-	x.xxx_hidden_ProjectId = 0
+	x.xxx_hidden_ProjectId = nil
 }
 
 func (x *DeployConfigResponse) ClearTemplateId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
-	x.xxx_hidden_TemplateId = 0
+	x.xxx_hidden_TemplateId = nil
 }
 
 func (x *DeployConfigResponse) ClearRootDir() {
@@ -301,9 +310,9 @@ func (x *DeployConfigResponse) ClearRunCmdOverwirte() {
 type DeployConfigResponse_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	Id                  *int64
-	ProjectId           *int64
-	TemplateId          *int64
+	Id                  *string
+	ProjectId           *string
+	TemplateId          *string
 	RootDir             *string
 	OutputDirOverwrite  *string
 	BaseImageOverwrite  *string
@@ -318,15 +327,15 @@ func (b0 DeployConfigResponse_builder) Build() *DeployConfigResponse {
 	_, _ = b, x
 	if b.Id != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 9)
-		x.xxx_hidden_Id = *b.Id
+		x.xxx_hidden_Id = b.Id
 	}
 	if b.ProjectId != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 9)
-		x.xxx_hidden_ProjectId = *b.ProjectId
+		x.xxx_hidden_ProjectId = b.ProjectId
 	}
 	if b.TemplateId != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 9)
-		x.xxx_hidden_TemplateId = *b.TemplateId
+		x.xxx_hidden_TemplateId = b.TemplateId
 	}
 	if b.RootDir != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 9)
@@ -602,7 +611,7 @@ func (b0 ResolvedDeployConfigResponse_builder) Build() *ResolvedDeployConfigResp
 // Параметры запросов для получения конфигурации деплоя по ID
 type GetDeployConfigRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_ProjectId   int64                  `protobuf:"varint,1,opt,name=project_id,json=projectId"`
+	xxx_hidden_ProjectId   *string                `protobuf:"bytes,1,opt,name=project_id,json=projectId"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -634,15 +643,18 @@ func (x *GetDeployConfigRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *GetDeployConfigRequest) GetProjectId() int64 {
+func (x *GetDeployConfigRequest) GetProjectId() string {
 	if x != nil {
-		return x.xxx_hidden_ProjectId
+		if x.xxx_hidden_ProjectId != nil {
+			return *x.xxx_hidden_ProjectId
+		}
+		return ""
 	}
-	return 0
+	return ""
 }
 
-func (x *GetDeployConfigRequest) SetProjectId(v int64) {
-	x.xxx_hidden_ProjectId = v
+func (x *GetDeployConfigRequest) SetProjectId(v string) {
+	x.xxx_hidden_ProjectId = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
 }
 
@@ -655,13 +667,13 @@ func (x *GetDeployConfigRequest) HasProjectId() bool {
 
 func (x *GetDeployConfigRequest) ClearProjectId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
-	x.xxx_hidden_ProjectId = 0
+	x.xxx_hidden_ProjectId = nil
 }
 
 type GetDeployConfigRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	ProjectId *int64
+	ProjectId *string
 }
 
 func (b0 GetDeployConfigRequest_builder) Build() *GetDeployConfigRequest {
@@ -670,7 +682,7 @@ func (b0 GetDeployConfigRequest_builder) Build() *GetDeployConfigRequest {
 	_, _ = b, x
 	if b.ProjectId != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 1)
-		x.xxx_hidden_ProjectId = *b.ProjectId
+		x.xxx_hidden_ProjectId = b.ProjectId
 	}
 	return m0
 }
@@ -678,8 +690,8 @@ func (b0 GetDeployConfigRequest_builder) Build() *GetDeployConfigRequest {
 // Параметры запросов для обновления конфигурации деплоя по ID
 type UpdateDeployConfigRequest struct {
 	state                          protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Id                  int64                  `protobuf:"varint,1,opt,name=id"`
-	xxx_hidden_TemplateId          int64                  `protobuf:"varint,2,opt,name=template_id,json=templateId"`
+	xxx_hidden_Id                  *string                `protobuf:"bytes,1,opt,name=id"`
+	xxx_hidden_TemplateId          *string                `protobuf:"bytes,2,opt,name=template_id,json=templateId"`
 	xxx_hidden_RootDir             *string                `protobuf:"bytes,3,opt,name=root_dir,json=rootDir"`
 	xxx_hidden_OutputDirOverwrite  *string                `protobuf:"bytes,4,opt,name=output_dir_overwrite,json=outputDirOverwrite"`
 	xxx_hidden_BaseImageOverwrite  *string                `protobuf:"bytes,5,opt,name=base_image_overwrite,json=baseImageOverwrite"`
@@ -717,18 +729,24 @@ func (x *UpdateDeployConfigRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *UpdateDeployConfigRequest) GetId() int64 {
+func (x *UpdateDeployConfigRequest) GetId() string {
 	if x != nil {
-		return x.xxx_hidden_Id
+		if x.xxx_hidden_Id != nil {
+			return *x.xxx_hidden_Id
+		}
+		return ""
 	}
-	return 0
+	return ""
 }
 
-func (x *UpdateDeployConfigRequest) GetTemplateId() int64 {
+func (x *UpdateDeployConfigRequest) GetTemplateId() string {
 	if x != nil {
-		return x.xxx_hidden_TemplateId
+		if x.xxx_hidden_TemplateId != nil {
+			return *x.xxx_hidden_TemplateId
+		}
+		return ""
 	}
-	return 0
+	return ""
 }
 
 func (x *UpdateDeployConfigRequest) GetRootDir() string {
@@ -791,13 +809,13 @@ func (x *UpdateDeployConfigRequest) GetRunCmdOverwirte() string {
 	return ""
 }
 
-func (x *UpdateDeployConfigRequest) SetId(v int64) {
-	x.xxx_hidden_Id = v
+func (x *UpdateDeployConfigRequest) SetId(v string) {
+	x.xxx_hidden_Id = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 8)
 }
 
-func (x *UpdateDeployConfigRequest) SetTemplateId(v int64) {
-	x.xxx_hidden_TemplateId = v
+func (x *UpdateDeployConfigRequest) SetTemplateId(v string) {
+	x.xxx_hidden_TemplateId = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 8)
 }
 
@@ -889,12 +907,12 @@ func (x *UpdateDeployConfigRequest) HasRunCmdOverwirte() bool {
 
 func (x *UpdateDeployConfigRequest) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
-	x.xxx_hidden_Id = 0
+	x.xxx_hidden_Id = nil
 }
 
 func (x *UpdateDeployConfigRequest) ClearTemplateId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
-	x.xxx_hidden_TemplateId = 0
+	x.xxx_hidden_TemplateId = nil
 }
 
 func (x *UpdateDeployConfigRequest) ClearRootDir() {
@@ -930,8 +948,8 @@ func (x *UpdateDeployConfigRequest) ClearRunCmdOverwirte() {
 type UpdateDeployConfigRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	Id                  *int64
-	TemplateId          *int64
+	Id                  *string
+	TemplateId          *string
 	RootDir             *string
 	OutputDirOverwrite  *string
 	BaseImageOverwrite  *string
@@ -946,11 +964,11 @@ func (b0 UpdateDeployConfigRequest_builder) Build() *UpdateDeployConfigRequest {
 	_, _ = b, x
 	if b.Id != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 8)
-		x.xxx_hidden_Id = *b.Id
+		x.xxx_hidden_Id = b.Id
 	}
 	if b.TemplateId != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 8)
-		x.xxx_hidden_TemplateId = *b.TemplateId
+		x.xxx_hidden_TemplateId = b.TemplateId
 	}
 	if b.RootDir != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 8)
@@ -985,10 +1003,10 @@ const file_projects_v1_deploy_configs_proto_rawDesc = "" +
 	"\n" +
 	" projects/v1/deploy_configs.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\"\xf5\x02\n" +
 	"\x14DeployConfigResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
 	"\n" +
-	"project_id\x18\x02 \x01(\x03R\tprojectId\x12\x1f\n" +
-	"\vtemplate_id\x18\x03 \x01(\x03R\n" +
+	"project_id\x18\x02 \x01(\tR\tprojectId\x12\x1f\n" +
+	"\vtemplate_id\x18\x03 \x01(\tR\n" +
 	"templateId\x12\x19\n" +
 	"\broot_dir\x18\x04 \x01(\tR\arootDir\x120\n" +
 	"\x14output_dir_overwrite\x18\x05 \x01(\tR\x12outputDirOverwrite\x120\n" +
@@ -1008,10 +1026,10 @@ const file_projects_v1_deploy_configs_proto_rawDesc = "" +
 	"\arun_cmd\x18\x06 \x01(\tR\x06runCmd\"7\n" +
 	"\x16GetDeployConfigRequest\x12\x1d\n" +
 	"\n" +
-	"project_id\x18\x01 \x01(\x03R\tprojectId\"\xdb\x02\n" +
+	"project_id\x18\x01 \x01(\tR\tprojectId\"\xdb\x02\n" +
 	"\x19UpdateDeployConfigRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1f\n" +
-	"\vtemplate_id\x18\x02 \x01(\x03R\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1f\n" +
+	"\vtemplate_id\x18\x02 \x01(\tR\n" +
 	"templateId\x12\x19\n" +
 	"\broot_dir\x18\x03 \x01(\tR\arootDir\x120\n" +
 	"\x14output_dir_overwrite\x18\x04 \x01(\tR\x12outputDirOverwrite\x120\n" +
