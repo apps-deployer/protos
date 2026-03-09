@@ -35,7 +35,7 @@ message FrameworkConfigResponse {
 
 // Список шаблонов конфигурации деплоя
 message ListFrameworkConfigsResponse {
-  repeated FrameworkConfigResponse deploy_configs_templates = 1;
+  repeated FrameworkConfigResponse framework_configs = 1;
 }
 
 // Параметры запросов для получения шаблона конфигурации по ID

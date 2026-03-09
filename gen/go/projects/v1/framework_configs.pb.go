@@ -333,10 +333,10 @@ func (b0 FrameworkConfigResponse_builder) Build() *FrameworkConfigResponse {
 
 // Список шаблонов конфигурации деплоя
 type ListFrameworkConfigsResponse struct {
-	state                             protoimpl.MessageState      `protogen:"opaque.v1"`
-	xxx_hidden_DeployConfigsTemplates *[]*FrameworkConfigResponse `protobuf:"bytes,1,rep,name=deploy_configs_templates,json=deployConfigsTemplates"`
-	unknownFields                     protoimpl.UnknownFields
-	sizeCache                         protoimpl.SizeCache
+	state                       protoimpl.MessageState      `protogen:"opaque.v1"`
+	xxx_hidden_FrameworkConfigs *[]*FrameworkConfigResponse `protobuf:"bytes,1,rep,name=framework_configs,json=frameworkConfigs"`
+	unknownFields               protoimpl.UnknownFields
+	sizeCache                   protoimpl.SizeCache
 }
 
 func (x *ListFrameworkConfigsResponse) Reset() {
@@ -364,30 +364,30 @@ func (x *ListFrameworkConfigsResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *ListFrameworkConfigsResponse) GetDeployConfigsTemplates() []*FrameworkConfigResponse {
+func (x *ListFrameworkConfigsResponse) GetFrameworkConfigs() []*FrameworkConfigResponse {
 	if x != nil {
-		if x.xxx_hidden_DeployConfigsTemplates != nil {
-			return *x.xxx_hidden_DeployConfigsTemplates
+		if x.xxx_hidden_FrameworkConfigs != nil {
+			return *x.xxx_hidden_FrameworkConfigs
 		}
 	}
 	return nil
 }
 
-func (x *ListFrameworkConfigsResponse) SetDeployConfigsTemplates(v []*FrameworkConfigResponse) {
-	x.xxx_hidden_DeployConfigsTemplates = &v
+func (x *ListFrameworkConfigsResponse) SetFrameworkConfigs(v []*FrameworkConfigResponse) {
+	x.xxx_hidden_FrameworkConfigs = &v
 }
 
 type ListFrameworkConfigsResponse_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	DeployConfigsTemplates []*FrameworkConfigResponse
+	FrameworkConfigs []*FrameworkConfigResponse
 }
 
 func (b0 ListFrameworkConfigsResponse_builder) Build() *ListFrameworkConfigsResponse {
 	m0 := &ListFrameworkConfigsResponse{}
 	b, x := &b0, m0
 	_, _ = b, x
-	x.xxx_hidden_DeployConfigsTemplates = &b.DeployConfigsTemplates
+	x.xxx_hidden_FrameworkConfigs = &b.FrameworkConfigs
 	return m0
 }
 
@@ -1179,9 +1179,9 @@ const file_projects_v1_framework_configs_proto_rawDesc = "" +
 	"\vinstall_cmd\x18\x06 \x01(\tR\n" +
 	"installCmd\x12\x1b\n" +
 	"\tbuild_cmd\x18\a \x01(\tR\bbuildCmd\x12\x17\n" +
-	"\arun_cmd\x18\b \x01(\tR\x06runCmd\"~\n" +
-	"\x1cListFrameworkConfigsResponse\x12^\n" +
-	"\x18deploy_configs_templates\x18\x01 \x03(\v2$.projects.v1.FrameworkConfigResponseR\x16deployConfigsTemplates\"+\n" +
+	"\arun_cmd\x18\b \x01(\tR\x06runCmd\"q\n" +
+	"\x1cListFrameworkConfigsResponse\x12Q\n" +
+	"\x11framework_configs\x18\x01 \x03(\v2$.projects.v1.FrameworkConfigResponseR\x10frameworkConfigs\"+\n" +
 	"\x19GetFrameworkConfigRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"K\n" +
 	"\x1bListFrameworkConfigsRequest\x12\x14\n" +
@@ -1228,7 +1228,7 @@ var file_projects_v1_framework_configs_proto_goTypes = []any{
 	(*emptypb.Empty)(nil),                // 6: google.protobuf.Empty
 }
 var file_projects_v1_framework_configs_proto_depIdxs = []int32{
-	0, // 0: projects.v1.ListFrameworkConfigsResponse.deploy_configs_templates:type_name -> projects.v1.FrameworkConfigResponse
+	0, // 0: projects.v1.ListFrameworkConfigsResponse.framework_configs:type_name -> projects.v1.FrameworkConfigResponse
 	2, // 1: projects.v1.FrameworkConfigService.GetFrameworkConfig:input_type -> projects.v1.GetFrameworkConfigRequest
 	3, // 2: projects.v1.FrameworkConfigService.ListFrameworkConfigs:input_type -> projects.v1.ListFrameworkConfigsRequest
 	4, // 3: projects.v1.FrameworkConfigService.CreateFrameworkConfig:input_type -> projects.v1.CreateFrameworkConfigRequest
