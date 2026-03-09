@@ -508,7 +508,8 @@ type CreateProjectRequest struct {
 	state                             protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Name                   *string                `protobuf:"bytes,1,opt,name=name"`
 	xxx_hidden_RepoUrl                *string                `protobuf:"bytes,2,opt,name=repo_url,json=repoUrl"`
-	xxx_hidden_DeployConfigTemplateId *string                `protobuf:"bytes,3,opt,name=deploy_config_template_id,json=deployConfigTemplateId"`
+	xxx_hidden_OwnerId                *string                `protobuf:"bytes,3,opt,name=owner_id,json=ownerId"`
+	xxx_hidden_DeployConfigTemplateId *string                `protobuf:"bytes,4,opt,name=deploy_config_template_id,json=deployConfigTemplateId"`
 	XXX_raceDetectHookData            protoimpl.RaceDetectHookData
 	XXX_presence                      [1]uint32
 	unknownFields                     protoimpl.UnknownFields
@@ -560,6 +561,16 @@ func (x *CreateProjectRequest) GetRepoUrl() string {
 	return ""
 }
 
+func (x *CreateProjectRequest) GetOwnerId() string {
+	if x != nil {
+		if x.xxx_hidden_OwnerId != nil {
+			return *x.xxx_hidden_OwnerId
+		}
+		return ""
+	}
+	return ""
+}
+
 func (x *CreateProjectRequest) GetDeployConfigTemplateId() string {
 	if x != nil {
 		if x.xxx_hidden_DeployConfigTemplateId != nil {
@@ -572,17 +583,22 @@ func (x *CreateProjectRequest) GetDeployConfigTemplateId() string {
 
 func (x *CreateProjectRequest) SetName(v string) {
 	x.xxx_hidden_Name = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 3)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 4)
 }
 
 func (x *CreateProjectRequest) SetRepoUrl(v string) {
 	x.xxx_hidden_RepoUrl = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 3)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 4)
+}
+
+func (x *CreateProjectRequest) SetOwnerId(v string) {
+	x.xxx_hidden_OwnerId = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 4)
 }
 
 func (x *CreateProjectRequest) SetDeployConfigTemplateId(v string) {
 	x.xxx_hidden_DeployConfigTemplateId = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 3)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 4)
 }
 
 func (x *CreateProjectRequest) HasName() bool {
@@ -599,11 +615,18 @@ func (x *CreateProjectRequest) HasRepoUrl() bool {
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
 }
 
-func (x *CreateProjectRequest) HasDeployConfigTemplateId() bool {
+func (x *CreateProjectRequest) HasOwnerId() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
+}
+
+func (x *CreateProjectRequest) HasDeployConfigTemplateId() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 3)
 }
 
 func (x *CreateProjectRequest) ClearName() {
@@ -616,8 +639,13 @@ func (x *CreateProjectRequest) ClearRepoUrl() {
 	x.xxx_hidden_RepoUrl = nil
 }
 
-func (x *CreateProjectRequest) ClearDeployConfigTemplateId() {
+func (x *CreateProjectRequest) ClearOwnerId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
+	x.xxx_hidden_OwnerId = nil
+}
+
+func (x *CreateProjectRequest) ClearDeployConfigTemplateId() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 3)
 	x.xxx_hidden_DeployConfigTemplateId = nil
 }
 
@@ -626,6 +654,7 @@ type CreateProjectRequest_builder struct {
 
 	Name                   *string
 	RepoUrl                *string
+	OwnerId                *string
 	DeployConfigTemplateId *string
 }
 
@@ -634,15 +663,19 @@ func (b0 CreateProjectRequest_builder) Build() *CreateProjectRequest {
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.Name != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 3)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 4)
 		x.xxx_hidden_Name = b.Name
 	}
 	if b.RepoUrl != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 3)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 4)
 		x.xxx_hidden_RepoUrl = b.RepoUrl
 	}
+	if b.OwnerId != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 4)
+		x.xxx_hidden_OwnerId = b.OwnerId
+	}
 	if b.DeployConfigTemplateId != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 3)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 4)
 		x.xxx_hidden_DeployConfigTemplateId = b.DeployConfigTemplateId
 	}
 	return m0
@@ -845,11 +878,12 @@ const file_projects_v1_projects_proto_rawDesc = "" +
 	"\x13ListProjectsRequest\x12\x19\n" +
 	"\bowner_id\x18\x01 \x01(\tR\aownerId\x12\x14\n" +
 	"\x05limit\x18\x02 \x01(\x03R\x05limit\x12\x16\n" +
-	"\x06offset\x18\x03 \x01(\x03R\x06offset\"\x80\x01\n" +
+	"\x06offset\x18\x03 \x01(\x03R\x06offset\"\x9b\x01\n" +
 	"\x14CreateProjectRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x19\n" +
-	"\brepo_url\x18\x02 \x01(\tR\arepoUrl\x129\n" +
-	"\x19deploy_config_template_id\x18\x03 \x01(\tR\x16deployConfigTemplateId\"p\n" +
+	"\brepo_url\x18\x02 \x01(\tR\arepoUrl\x12\x19\n" +
+	"\bowner_id\x18\x03 \x01(\tR\aownerId\x129\n" +
+	"\x19deploy_config_template_id\x18\x04 \x01(\tR\x16deployConfigTemplateId\"p\n" +
 	"\x14UpdateProjectRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +

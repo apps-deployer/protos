@@ -51,7 +51,8 @@ message ListProjectsRequest {
 message CreateProjectRequest {
   string name = 1;
   string repo_url = 2;
-  string deploy_config_template_id = 3;
+  string owner_id = 3;
+  string deploy_config_template_id = 4;
 }
 
 // Параметры запросов для обновления проекта
