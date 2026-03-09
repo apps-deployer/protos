@@ -24,7 +24,7 @@ const (
 // Шаблоны конфигурации деплоя
 type DeployConfigsTemplateResponse struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Id          int64                  `protobuf:"varint,1,opt,name=id"`
+	xxx_hidden_Id          *string                `protobuf:"bytes,1,opt,name=id"`
 	xxx_hidden_Name        *string                `protobuf:"bytes,2,opt,name=name"`
 	xxx_hidden_RootDir     *string                `protobuf:"bytes,3,opt,name=root_dir,json=rootDir"`
 	xxx_hidden_OutputDir   *string                `protobuf:"bytes,4,opt,name=output_dir,json=outputDir"`
@@ -63,11 +63,14 @@ func (x *DeployConfigsTemplateResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *DeployConfigsTemplateResponse) GetId() int64 {
+func (x *DeployConfigsTemplateResponse) GetId() string {
 	if x != nil {
-		return x.xxx_hidden_Id
+		if x.xxx_hidden_Id != nil {
+			return *x.xxx_hidden_Id
+		}
+		return ""
 	}
-	return 0
+	return ""
 }
 
 func (x *DeployConfigsTemplateResponse) GetName() string {
@@ -140,8 +143,8 @@ func (x *DeployConfigsTemplateResponse) GetRunCmd() string {
 	return ""
 }
 
-func (x *DeployConfigsTemplateResponse) SetId(v int64) {
-	x.xxx_hidden_Id = v
+func (x *DeployConfigsTemplateResponse) SetId(v string) {
+	x.xxx_hidden_Id = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 8)
 }
 
@@ -238,7 +241,7 @@ func (x *DeployConfigsTemplateResponse) HasRunCmd() bool {
 
 func (x *DeployConfigsTemplateResponse) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
-	x.xxx_hidden_Id = 0
+	x.xxx_hidden_Id = nil
 }
 
 func (x *DeployConfigsTemplateResponse) ClearName() {
@@ -279,7 +282,7 @@ func (x *DeployConfigsTemplateResponse) ClearRunCmd() {
 type DeployConfigsTemplateResponse_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	Id         *int64
+	Id         *string
 	Name       *string
 	RootDir    *string
 	OutputDir  *string
@@ -295,7 +298,7 @@ func (b0 DeployConfigsTemplateResponse_builder) Build() *DeployConfigsTemplateRe
 	_, _ = b, x
 	if b.Id != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 8)
-		x.xxx_hidden_Id = *b.Id
+		x.xxx_hidden_Id = b.Id
 	}
 	if b.Name != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 8)
@@ -391,7 +394,7 @@ func (b0 ListDeployConfigsTemplatesResponse_builder) Build() *ListDeployConfigsT
 // Параметры запросов для получения шаблона конфигурации по ID
 type GetDeployConfigsTemplateRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Id          int64                  `protobuf:"varint,1,opt,name=id"`
+	xxx_hidden_Id          *string                `protobuf:"bytes,1,opt,name=id"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -423,15 +426,18 @@ func (x *GetDeployConfigsTemplateRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *GetDeployConfigsTemplateRequest) GetId() int64 {
+func (x *GetDeployConfigsTemplateRequest) GetId() string {
 	if x != nil {
-		return x.xxx_hidden_Id
+		if x.xxx_hidden_Id != nil {
+			return *x.xxx_hidden_Id
+		}
+		return ""
 	}
-	return 0
+	return ""
 }
 
-func (x *GetDeployConfigsTemplateRequest) SetId(v int64) {
-	x.xxx_hidden_Id = v
+func (x *GetDeployConfigsTemplateRequest) SetId(v string) {
+	x.xxx_hidden_Id = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
 }
 
@@ -444,13 +450,13 @@ func (x *GetDeployConfigsTemplateRequest) HasId() bool {
 
 func (x *GetDeployConfigsTemplateRequest) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
-	x.xxx_hidden_Id = 0
+	x.xxx_hidden_Id = nil
 }
 
 type GetDeployConfigsTemplateRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	Id *int64
+	Id *string
 }
 
 func (b0 GetDeployConfigsTemplateRequest_builder) Build() *GetDeployConfigsTemplateRequest {
@@ -459,7 +465,7 @@ func (b0 GetDeployConfigsTemplateRequest_builder) Build() *GetDeployConfigsTempl
 	_, _ = b, x
 	if b.Id != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 1)
-		x.xxx_hidden_Id = *b.Id
+		x.xxx_hidden_Id = b.Id
 	}
 	return m0
 }
@@ -850,7 +856,7 @@ func (b0 CreateDeployConfigsTemplateRequest_builder) Build() *CreateDeployConfig
 // Параметры запросов для обновления шаблона конфигурации деплоя по ID
 type UpdateDeployConfigsTemplateRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Id          int64                  `protobuf:"varint,1,opt,name=id"`
+	xxx_hidden_Id          *string                `protobuf:"bytes,1,opt,name=id"`
 	xxx_hidden_Name        *string                `protobuf:"bytes,2,opt,name=name"`
 	xxx_hidden_RootDir     *string                `protobuf:"bytes,3,opt,name=root_dir,json=rootDir"`
 	xxx_hidden_OutputDir   *string                `protobuf:"bytes,4,opt,name=output_dir,json=outputDir"`
@@ -889,11 +895,14 @@ func (x *UpdateDeployConfigsTemplateRequest) ProtoReflect() protoreflect.Message
 	return mi.MessageOf(x)
 }
 
-func (x *UpdateDeployConfigsTemplateRequest) GetId() int64 {
+func (x *UpdateDeployConfigsTemplateRequest) GetId() string {
 	if x != nil {
-		return x.xxx_hidden_Id
+		if x.xxx_hidden_Id != nil {
+			return *x.xxx_hidden_Id
+		}
+		return ""
 	}
-	return 0
+	return ""
 }
 
 func (x *UpdateDeployConfigsTemplateRequest) GetName() string {
@@ -966,8 +975,8 @@ func (x *UpdateDeployConfigsTemplateRequest) GetRunCmd() string {
 	return ""
 }
 
-func (x *UpdateDeployConfigsTemplateRequest) SetId(v int64) {
-	x.xxx_hidden_Id = v
+func (x *UpdateDeployConfigsTemplateRequest) SetId(v string) {
+	x.xxx_hidden_Id = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 8)
 }
 
@@ -1064,7 +1073,7 @@ func (x *UpdateDeployConfigsTemplateRequest) HasRunCmd() bool {
 
 func (x *UpdateDeployConfigsTemplateRequest) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
-	x.xxx_hidden_Id = 0
+	x.xxx_hidden_Id = nil
 }
 
 func (x *UpdateDeployConfigsTemplateRequest) ClearName() {
@@ -1105,7 +1114,7 @@ func (x *UpdateDeployConfigsTemplateRequest) ClearRunCmd() {
 type UpdateDeployConfigsTemplateRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	Id         *int64
+	Id         *string
 	Name       *string
 	RootDir    *string
 	OutputDir  *string
@@ -1121,7 +1130,7 @@ func (b0 UpdateDeployConfigsTemplateRequest_builder) Build() *UpdateDeployConfig
 	_, _ = b, x
 	if b.Id != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 8)
-		x.xxx_hidden_Id = *b.Id
+		x.xxx_hidden_Id = b.Id
 	}
 	if b.Name != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 8)
@@ -1160,7 +1169,7 @@ const file_projects_v1_deploy_configs_templates_proto_rawDesc = "" +
 	"\n" +
 	"*projects/v1/deploy_configs_templates.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\"\xf3\x01\n" +
 	"\x1dDeployConfigsTemplateResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
 	"\broot_dir\x18\x03 \x01(\tR\arootDir\x12\x1d\n" +
 	"\n" +
@@ -1174,7 +1183,7 @@ const file_projects_v1_deploy_configs_templates_proto_rawDesc = "" +
 	"\"ListDeployConfigsTemplatesResponse\x12d\n" +
 	"\x18deploy_configs_templates\x18\x01 \x03(\v2*.projects.v1.DeployConfigsTemplateResponseR\x16deployConfigsTemplates\"1\n" +
 	"\x1fGetDeployConfigsTemplateRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"Q\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"Q\n" +
 	"!ListDeployConfigsTemplatesRequest\x12\x14\n" +
 	"\x05limit\x18\x01 \x01(\x03R\x05limit\x12\x16\n" +
 	"\x06offset\x18\x02 \x01(\x03R\x06offset\"\xe8\x01\n" +
@@ -1190,7 +1199,7 @@ const file_projects_v1_deploy_configs_templates_proto_rawDesc = "" +
 	"\tbuild_cmd\x18\x06 \x01(\tR\bbuildCmd\x12\x17\n" +
 	"\arun_cmd\x18\a \x01(\tR\x06runCmd\"\xf8\x01\n" +
 	"\"UpdateDeployConfigsTemplateRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
 	"\broot_dir\x18\x03 \x01(\tR\arootDir\x12\x1d\n" +
 	"\n" +

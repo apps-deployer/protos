@@ -23,7 +23,7 @@ service DeployConfigsTemplateService {
 
 // Шаблоны конфигурации деплоя
 message DeployConfigsTemplateResponse {
-  int64 id = 1;
+  string id = 1;
   string name = 2;
   string root_dir = 3;
   string output_dir = 4;
@@ -40,7 +40,7 @@ message ListDeployConfigsTemplatesResponse {
 
 // Параметры запросов для получения шаблона конфигурации по ID
 message GetDeployConfigsTemplateRequest {
-  int64 id = 1;
+  string id = 1;
 }
 
 // Параметры запросов для получения списка шаблонов конфигурации
@@ -62,7 +62,7 @@ message CreateDeployConfigsTemplateRequest {
 
 // Параметры запросов для обновления шаблона конфигурации деплоя по ID
 message UpdateDeployConfigsTemplateRequest {
-  int64 id = 1;
+  string id = 1;
   string name = 2;
   string root_dir = 3;
   string output_dir = 4;
