@@ -23,12 +23,12 @@ message DeployConfigResponse {
   string id = 1;
   string project_id = 2;
   string framework_id = 3;
-  string root_dir = 4; 
+  string root_dir_overwrite = 4; 
   string output_dir_overwrite = 5;
   string base_image_overwrite = 6;
-  string install_cmd_overwirte = 7;
-  string build_cmd_overwirte = 8;
-  string run_cmd_overwirte = 9;
+  string install_cmd_overwrite = 7;
+  string build_cmd_overwrite = 8;
+  string run_cmd_overwrite = 9;
 }
 
 // Конфигурация деплоя для проекта, сгенерированная с учетом фреймворка и переопределений
@@ -52,10 +52,10 @@ message GetDeployConfigRequest {
 message UpdateDeployConfigRequest {
   string id = 1;
   string framework_id = 2;
-  string root_dir = 3; 
+  string root_dir_overwrite = 3; 
   string output_dir_overwrite = 4;
   string base_image_overwrite = 5;
-  string install_cmd_overwirte = 6;
-  string build_cmd_overwirte = 7;
-  string run_cmd_overwirte = 8;
+  string install_cmd_overwrite = 6;
+  string build_cmd_overwrite = 7;
+  string run_cmd_overwrite = 8;
 }
