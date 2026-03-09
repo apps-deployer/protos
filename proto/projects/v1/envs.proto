@@ -34,7 +34,7 @@ message EnvResponse {
 
 // Ответ со списком окружений
 message ListEnvsResponse {
-    repeated EnvResponse environments = 1;
+    repeated EnvResponse envs = 1;
 }
 
 // Параметры запросов на получение окружения по ID

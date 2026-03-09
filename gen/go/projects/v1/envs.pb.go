@@ -234,10 +234,10 @@ func (b0 EnvResponse_builder) Build() *EnvResponse {
 
 // Ответ со списком окружений
 type ListEnvsResponse struct {
-	state                   protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Environments *[]*EnvResponse        `protobuf:"bytes,1,rep,name=environments"`
-	unknownFields           protoimpl.UnknownFields
-	sizeCache               protoimpl.SizeCache
+	state           protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Envs *[]*EnvResponse        `protobuf:"bytes,1,rep,name=envs"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *ListEnvsResponse) Reset() {
@@ -265,30 +265,30 @@ func (x *ListEnvsResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *ListEnvsResponse) GetEnvironments() []*EnvResponse {
+func (x *ListEnvsResponse) GetEnvs() []*EnvResponse {
 	if x != nil {
-		if x.xxx_hidden_Environments != nil {
-			return *x.xxx_hidden_Environments
+		if x.xxx_hidden_Envs != nil {
+			return *x.xxx_hidden_Envs
 		}
 	}
 	return nil
 }
 
-func (x *ListEnvsResponse) SetEnvironments(v []*EnvResponse) {
-	x.xxx_hidden_Environments = &v
+func (x *ListEnvsResponse) SetEnvs(v []*EnvResponse) {
+	x.xxx_hidden_Envs = &v
 }
 
 type ListEnvsResponse_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	Environments []*EnvResponse
+	Envs []*EnvResponse
 }
 
 func (b0 ListEnvsResponse_builder) Build() *ListEnvsResponse {
 	m0 := &ListEnvsResponse{}
 	b, x := &b0, m0
 	_, _ = b, x
-	x.xxx_hidden_Environments = &b.Environments
+	x.xxx_hidden_Envs = &b.Envs
 	return m0
 }
 
@@ -990,9 +990,9 @@ const file_projects_v1_envs_proto_rawDesc = "" +
 	"project_id\x18\x03 \x01(\tR\tprojectId\x12#\n" +
 	"\rtarget_branch\x18\x04 \x01(\tR\ftargetBranch\x12\x1f\n" +
 	"\vdomain_name\x18\x05 \x01(\tR\n" +
-	"domainName\"P\n" +
-	"\x10ListEnvsResponse\x12<\n" +
-	"\fenvironments\x18\x01 \x03(\v2\x18.projects.v1.EnvResponseR\fenvironments\"\x1f\n" +
+	"domainName\"@\n" +
+	"\x10ListEnvsResponse\x12,\n" +
+	"\x04envs\x18\x01 \x03(\v2\x18.projects.v1.EnvResponseR\x04envs\"\x1f\n" +
 	"\rGetEnvRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"T\n" +
 	"\x12GetEnvByGitRequest\x12\x19\n" +
@@ -1037,7 +1037,7 @@ var file_projects_v1_envs_proto_goTypes = []any{
 	(*emptypb.Empty)(nil),      // 7: google.protobuf.Empty
 }
 var file_projects_v1_envs_proto_depIdxs = []int32{
-	0, // 0: projects.v1.ListEnvsResponse.environments:type_name -> projects.v1.EnvResponse
+	0, // 0: projects.v1.ListEnvsResponse.envs:type_name -> projects.v1.EnvResponse
 	3, // 1: projects.v1.EnvService.GetEnvByGit:input_type -> projects.v1.GetEnvByGitRequest
 	2, // 2: projects.v1.EnvService.GetEnv:input_type -> projects.v1.GetEnvRequest
 	4, // 3: projects.v1.EnvService.ListEnvs:input_type -> projects.v1.ListEnvsRequest
