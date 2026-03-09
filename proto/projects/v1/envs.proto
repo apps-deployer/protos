@@ -25,9 +25,9 @@ service EnvService {
 
 // Ответ с данными окружения
 message EnvResponse {
-    int64 id = 1;
+    string id = 1;
     string name = 2;
-    int64 project_id = 3;
+    string project_id = 3;
     string target_branch = 4;
     string domain_name = 5;
 }
@@ -39,7 +39,7 @@ message ListEnvsResponse {
 
 // Параметры запросов на получение окружения по ID
 message GetEnvRequest {
-    int64 id = 1;
+    string id = 1;
 }
 
 // Параметры запросов на получение окружения по репозиторию и ветке 
@@ -50,7 +50,7 @@ message GetEnvByGitRequest {
 
 // Параметры запросов на получение списка окружений проекта
 message ListEnvsRequest {
-    int64 project_id = 1;
+    string project_id = 1;
     int64 limit = 2;
     int64 offset = 3;
 }
@@ -58,14 +58,14 @@ message ListEnvsRequest {
 // Параметры запросов на создание окружения
 message CreateEnvRequest {
     string name = 1;
-    int64 project_id = 2;
+    string project_id = 2;
     string target_branch = 3;
     string domain_name = 4;
 }
 
 // Параметры запросов на обновление окружений
 message UpdateEnvRequest {
-    int64 id = 1;
+    string id = 1;
     string name = 2;
     string target_branch = 3;
     string domain_name = 4;

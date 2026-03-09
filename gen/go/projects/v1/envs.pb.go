@@ -24,9 +24,9 @@ const (
 // Ответ с данными окружения
 type EnvResponse struct {
 	state                   protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Id           int64                  `protobuf:"varint,1,opt,name=id"`
+	xxx_hidden_Id           *string                `protobuf:"bytes,1,opt,name=id"`
 	xxx_hidden_Name         *string                `protobuf:"bytes,2,opt,name=name"`
-	xxx_hidden_ProjectId    int64                  `protobuf:"varint,3,opt,name=project_id,json=projectId"`
+	xxx_hidden_ProjectId    *string                `protobuf:"bytes,3,opt,name=project_id,json=projectId"`
 	xxx_hidden_TargetBranch *string                `protobuf:"bytes,4,opt,name=target_branch,json=targetBranch"`
 	xxx_hidden_DomainName   *string                `protobuf:"bytes,5,opt,name=domain_name,json=domainName"`
 	XXX_raceDetectHookData  protoimpl.RaceDetectHookData
@@ -60,11 +60,14 @@ func (x *EnvResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *EnvResponse) GetId() int64 {
+func (x *EnvResponse) GetId() string {
 	if x != nil {
-		return x.xxx_hidden_Id
+		if x.xxx_hidden_Id != nil {
+			return *x.xxx_hidden_Id
+		}
+		return ""
 	}
-	return 0
+	return ""
 }
 
 func (x *EnvResponse) GetName() string {
@@ -77,11 +80,14 @@ func (x *EnvResponse) GetName() string {
 	return ""
 }
 
-func (x *EnvResponse) GetProjectId() int64 {
+func (x *EnvResponse) GetProjectId() string {
 	if x != nil {
-		return x.xxx_hidden_ProjectId
+		if x.xxx_hidden_ProjectId != nil {
+			return *x.xxx_hidden_ProjectId
+		}
+		return ""
 	}
-	return 0
+	return ""
 }
 
 func (x *EnvResponse) GetTargetBranch() string {
@@ -104,8 +110,8 @@ func (x *EnvResponse) GetDomainName() string {
 	return ""
 }
 
-func (x *EnvResponse) SetId(v int64) {
-	x.xxx_hidden_Id = v
+func (x *EnvResponse) SetId(v string) {
+	x.xxx_hidden_Id = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 5)
 }
 
@@ -114,8 +120,8 @@ func (x *EnvResponse) SetName(v string) {
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 5)
 }
 
-func (x *EnvResponse) SetProjectId(v int64) {
-	x.xxx_hidden_ProjectId = v
+func (x *EnvResponse) SetProjectId(v string) {
+	x.xxx_hidden_ProjectId = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 5)
 }
 
@@ -166,7 +172,7 @@ func (x *EnvResponse) HasDomainName() bool {
 
 func (x *EnvResponse) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
-	x.xxx_hidden_Id = 0
+	x.xxx_hidden_Id = nil
 }
 
 func (x *EnvResponse) ClearName() {
@@ -176,7 +182,7 @@ func (x *EnvResponse) ClearName() {
 
 func (x *EnvResponse) ClearProjectId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
-	x.xxx_hidden_ProjectId = 0
+	x.xxx_hidden_ProjectId = nil
 }
 
 func (x *EnvResponse) ClearTargetBranch() {
@@ -192,9 +198,9 @@ func (x *EnvResponse) ClearDomainName() {
 type EnvResponse_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	Id           *int64
+	Id           *string
 	Name         *string
-	ProjectId    *int64
+	ProjectId    *string
 	TargetBranch *string
 	DomainName   *string
 }
@@ -205,7 +211,7 @@ func (b0 EnvResponse_builder) Build() *EnvResponse {
 	_, _ = b, x
 	if b.Id != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 5)
-		x.xxx_hidden_Id = *b.Id
+		x.xxx_hidden_Id = b.Id
 	}
 	if b.Name != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 5)
@@ -213,7 +219,7 @@ func (b0 EnvResponse_builder) Build() *EnvResponse {
 	}
 	if b.ProjectId != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 5)
-		x.xxx_hidden_ProjectId = *b.ProjectId
+		x.xxx_hidden_ProjectId = b.ProjectId
 	}
 	if b.TargetBranch != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 5)
@@ -289,7 +295,7 @@ func (b0 ListEnvsResponse_builder) Build() *ListEnvsResponse {
 // Параметры запросов на получение окружения по ID
 type GetEnvRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Id          int64                  `protobuf:"varint,1,opt,name=id"`
+	xxx_hidden_Id          *string                `protobuf:"bytes,1,opt,name=id"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -321,15 +327,18 @@ func (x *GetEnvRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *GetEnvRequest) GetId() int64 {
+func (x *GetEnvRequest) GetId() string {
 	if x != nil {
-		return x.xxx_hidden_Id
+		if x.xxx_hidden_Id != nil {
+			return *x.xxx_hidden_Id
+		}
+		return ""
 	}
-	return 0
+	return ""
 }
 
-func (x *GetEnvRequest) SetId(v int64) {
-	x.xxx_hidden_Id = v
+func (x *GetEnvRequest) SetId(v string) {
+	x.xxx_hidden_Id = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
 }
 
@@ -342,13 +351,13 @@ func (x *GetEnvRequest) HasId() bool {
 
 func (x *GetEnvRequest) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
-	x.xxx_hidden_Id = 0
+	x.xxx_hidden_Id = nil
 }
 
 type GetEnvRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	Id *int64
+	Id *string
 }
 
 func (b0 GetEnvRequest_builder) Build() *GetEnvRequest {
@@ -357,7 +366,7 @@ func (b0 GetEnvRequest_builder) Build() *GetEnvRequest {
 	_, _ = b, x
 	if b.Id != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 1)
-		x.xxx_hidden_Id = *b.Id
+		x.xxx_hidden_Id = b.Id
 	}
 	return m0
 }
@@ -477,7 +486,7 @@ func (b0 GetEnvByGitRequest_builder) Build() *GetEnvByGitRequest {
 // Параметры запросов на получение списка окружений проекта
 type ListEnvsRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_ProjectId   int64                  `protobuf:"varint,1,opt,name=project_id,json=projectId"`
+	xxx_hidden_ProjectId   *string                `protobuf:"bytes,1,opt,name=project_id,json=projectId"`
 	xxx_hidden_Limit       int64                  `protobuf:"varint,2,opt,name=limit"`
 	xxx_hidden_Offset      int64                  `protobuf:"varint,3,opt,name=offset"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
@@ -511,11 +520,14 @@ func (x *ListEnvsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *ListEnvsRequest) GetProjectId() int64 {
+func (x *ListEnvsRequest) GetProjectId() string {
 	if x != nil {
-		return x.xxx_hidden_ProjectId
+		if x.xxx_hidden_ProjectId != nil {
+			return *x.xxx_hidden_ProjectId
+		}
+		return ""
 	}
-	return 0
+	return ""
 }
 
 func (x *ListEnvsRequest) GetLimit() int64 {
@@ -532,8 +544,8 @@ func (x *ListEnvsRequest) GetOffset() int64 {
 	return 0
 }
 
-func (x *ListEnvsRequest) SetProjectId(v int64) {
-	x.xxx_hidden_ProjectId = v
+func (x *ListEnvsRequest) SetProjectId(v string) {
+	x.xxx_hidden_ProjectId = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 3)
 }
 
@@ -570,7 +582,7 @@ func (x *ListEnvsRequest) HasOffset() bool {
 
 func (x *ListEnvsRequest) ClearProjectId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
-	x.xxx_hidden_ProjectId = 0
+	x.xxx_hidden_ProjectId = nil
 }
 
 func (x *ListEnvsRequest) ClearLimit() {
@@ -586,7 +598,7 @@ func (x *ListEnvsRequest) ClearOffset() {
 type ListEnvsRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	ProjectId *int64
+	ProjectId *string
 	Limit     *int64
 	Offset    *int64
 }
@@ -597,7 +609,7 @@ func (b0 ListEnvsRequest_builder) Build() *ListEnvsRequest {
 	_, _ = b, x
 	if b.ProjectId != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 3)
-		x.xxx_hidden_ProjectId = *b.ProjectId
+		x.xxx_hidden_ProjectId = b.ProjectId
 	}
 	if b.Limit != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 3)
@@ -614,7 +626,7 @@ func (b0 ListEnvsRequest_builder) Build() *ListEnvsRequest {
 type CreateEnvRequest struct {
 	state                   protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Name         *string                `protobuf:"bytes,1,opt,name=name"`
-	xxx_hidden_ProjectId    int64                  `protobuf:"varint,2,opt,name=project_id,json=projectId"`
+	xxx_hidden_ProjectId    *string                `protobuf:"bytes,2,opt,name=project_id,json=projectId"`
 	xxx_hidden_TargetBranch *string                `protobuf:"bytes,3,opt,name=target_branch,json=targetBranch"`
 	xxx_hidden_DomainName   *string                `protobuf:"bytes,4,opt,name=domain_name,json=domainName"`
 	XXX_raceDetectHookData  protoimpl.RaceDetectHookData
@@ -658,11 +670,14 @@ func (x *CreateEnvRequest) GetName() string {
 	return ""
 }
 
-func (x *CreateEnvRequest) GetProjectId() int64 {
+func (x *CreateEnvRequest) GetProjectId() string {
 	if x != nil {
-		return x.xxx_hidden_ProjectId
+		if x.xxx_hidden_ProjectId != nil {
+			return *x.xxx_hidden_ProjectId
+		}
+		return ""
 	}
-	return 0
+	return ""
 }
 
 func (x *CreateEnvRequest) GetTargetBranch() string {
@@ -690,8 +705,8 @@ func (x *CreateEnvRequest) SetName(v string) {
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 4)
 }
 
-func (x *CreateEnvRequest) SetProjectId(v int64) {
-	x.xxx_hidden_ProjectId = v
+func (x *CreateEnvRequest) SetProjectId(v string) {
+	x.xxx_hidden_ProjectId = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 4)
 }
 
@@ -740,7 +755,7 @@ func (x *CreateEnvRequest) ClearName() {
 
 func (x *CreateEnvRequest) ClearProjectId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
-	x.xxx_hidden_ProjectId = 0
+	x.xxx_hidden_ProjectId = nil
 }
 
 func (x *CreateEnvRequest) ClearTargetBranch() {
@@ -757,7 +772,7 @@ type CreateEnvRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
 	Name         *string
-	ProjectId    *int64
+	ProjectId    *string
 	TargetBranch *string
 	DomainName   *string
 }
@@ -772,7 +787,7 @@ func (b0 CreateEnvRequest_builder) Build() *CreateEnvRequest {
 	}
 	if b.ProjectId != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 4)
-		x.xxx_hidden_ProjectId = *b.ProjectId
+		x.xxx_hidden_ProjectId = b.ProjectId
 	}
 	if b.TargetBranch != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 4)
@@ -788,7 +803,7 @@ func (b0 CreateEnvRequest_builder) Build() *CreateEnvRequest {
 // Параметры запросов на обновление окружений
 type UpdateEnvRequest struct {
 	state                   protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Id           int64                  `protobuf:"varint,1,opt,name=id"`
+	xxx_hidden_Id           *string                `protobuf:"bytes,1,opt,name=id"`
 	xxx_hidden_Name         *string                `protobuf:"bytes,2,opt,name=name"`
 	xxx_hidden_TargetBranch *string                `protobuf:"bytes,3,opt,name=target_branch,json=targetBranch"`
 	xxx_hidden_DomainName   *string                `protobuf:"bytes,4,opt,name=domain_name,json=domainName"`
@@ -823,11 +838,14 @@ func (x *UpdateEnvRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *UpdateEnvRequest) GetId() int64 {
+func (x *UpdateEnvRequest) GetId() string {
 	if x != nil {
-		return x.xxx_hidden_Id
+		if x.xxx_hidden_Id != nil {
+			return *x.xxx_hidden_Id
+		}
+		return ""
 	}
-	return 0
+	return ""
 }
 
 func (x *UpdateEnvRequest) GetName() string {
@@ -860,8 +878,8 @@ func (x *UpdateEnvRequest) GetDomainName() string {
 	return ""
 }
 
-func (x *UpdateEnvRequest) SetId(v int64) {
-	x.xxx_hidden_Id = v
+func (x *UpdateEnvRequest) SetId(v string) {
+	x.xxx_hidden_Id = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 4)
 }
 
@@ -910,7 +928,7 @@ func (x *UpdateEnvRequest) HasDomainName() bool {
 
 func (x *UpdateEnvRequest) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
-	x.xxx_hidden_Id = 0
+	x.xxx_hidden_Id = nil
 }
 
 func (x *UpdateEnvRequest) ClearName() {
@@ -931,7 +949,7 @@ func (x *UpdateEnvRequest) ClearDomainName() {
 type UpdateEnvRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	Id           *int64
+	Id           *string
 	Name         *string
 	TargetBranch *string
 	DomainName   *string
@@ -943,7 +961,7 @@ func (b0 UpdateEnvRequest_builder) Build() *UpdateEnvRequest {
 	_, _ = b, x
 	if b.Id != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 4)
-		x.xxx_hidden_Id = *b.Id
+		x.xxx_hidden_Id = b.Id
 	}
 	if b.Name != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 4)
@@ -966,34 +984,34 @@ const file_projects_v1_envs_proto_rawDesc = "" +
 	"\n" +
 	"\x16projects/v1/envs.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\"\x96\x01\n" +
 	"\vEnvResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1d\n" +
 	"\n" +
-	"project_id\x18\x03 \x01(\x03R\tprojectId\x12#\n" +
+	"project_id\x18\x03 \x01(\tR\tprojectId\x12#\n" +
 	"\rtarget_branch\x18\x04 \x01(\tR\ftargetBranch\x12\x1f\n" +
 	"\vdomain_name\x18\x05 \x01(\tR\n" +
 	"domainName\"P\n" +
 	"\x10ListEnvsResponse\x12<\n" +
 	"\fenvironments\x18\x01 \x03(\v2\x18.projects.v1.EnvResponseR\fenvironments\"\x1f\n" +
 	"\rGetEnvRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"T\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"T\n" +
 	"\x12GetEnvByGitRequest\x12\x19\n" +
 	"\brepo_url\x18\x01 \x01(\tR\arepoUrl\x12#\n" +
 	"\rtarget_branch\x18\x02 \x01(\tR\ftargetBranch\"^\n" +
 	"\x0fListEnvsRequest\x12\x1d\n" +
 	"\n" +
-	"project_id\x18\x01 \x01(\x03R\tprojectId\x12\x14\n" +
+	"project_id\x18\x01 \x01(\tR\tprojectId\x12\x14\n" +
 	"\x05limit\x18\x02 \x01(\x03R\x05limit\x12\x16\n" +
 	"\x06offset\x18\x03 \x01(\x03R\x06offset\"\x8b\x01\n" +
 	"\x10CreateEnvRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x1d\n" +
 	"\n" +
-	"project_id\x18\x02 \x01(\x03R\tprojectId\x12#\n" +
+	"project_id\x18\x02 \x01(\tR\tprojectId\x12#\n" +
 	"\rtarget_branch\x18\x03 \x01(\tR\ftargetBranch\x12\x1f\n" +
 	"\vdomain_name\x18\x04 \x01(\tR\n" +
 	"domainName\"|\n" +
 	"\x10UpdateEnvRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12#\n" +
 	"\rtarget_branch\x18\x03 \x01(\tR\ftargetBranch\x12\x1f\n" +
 	"\vdomain_name\x18\x04 \x01(\tR\n" +

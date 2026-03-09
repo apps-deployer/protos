@@ -25,10 +25,10 @@ const (
 // Ответ с данными проекта
 type ProjectResponse struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Id          int64                  `protobuf:"varint,1,opt,name=id"`
+	xxx_hidden_Id          *string                `protobuf:"bytes,1,opt,name=id"`
 	xxx_hidden_Name        *string                `protobuf:"bytes,2,opt,name=name"`
 	xxx_hidden_RepoUrl     *string                `protobuf:"bytes,3,opt,name=repo_url,json=repoUrl"`
-	xxx_hidden_OwnerId     int64                  `protobuf:"varint,4,opt,name=owner_id,json=ownerId"`
+	xxx_hidden_OwnerId     *string                `protobuf:"bytes,4,opt,name=owner_id,json=ownerId"`
 	xxx_hidden_CreatedAt   *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
@@ -61,11 +61,14 @@ func (x *ProjectResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *ProjectResponse) GetId() int64 {
+func (x *ProjectResponse) GetId() string {
 	if x != nil {
-		return x.xxx_hidden_Id
+		if x.xxx_hidden_Id != nil {
+			return *x.xxx_hidden_Id
+		}
+		return ""
 	}
-	return 0
+	return ""
 }
 
 func (x *ProjectResponse) GetName() string {
@@ -88,11 +91,14 @@ func (x *ProjectResponse) GetRepoUrl() string {
 	return ""
 }
 
-func (x *ProjectResponse) GetOwnerId() int64 {
+func (x *ProjectResponse) GetOwnerId() string {
 	if x != nil {
-		return x.xxx_hidden_OwnerId
+		if x.xxx_hidden_OwnerId != nil {
+			return *x.xxx_hidden_OwnerId
+		}
+		return ""
 	}
-	return 0
+	return ""
 }
 
 func (x *ProjectResponse) GetCreatedAt() *timestamppb.Timestamp {
@@ -102,8 +108,8 @@ func (x *ProjectResponse) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *ProjectResponse) SetId(v int64) {
-	x.xxx_hidden_Id = v
+func (x *ProjectResponse) SetId(v string) {
+	x.xxx_hidden_Id = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 5)
 }
 
@@ -117,8 +123,8 @@ func (x *ProjectResponse) SetRepoUrl(v string) {
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 5)
 }
 
-func (x *ProjectResponse) SetOwnerId(v int64) {
-	x.xxx_hidden_OwnerId = v
+func (x *ProjectResponse) SetOwnerId(v string) {
+	x.xxx_hidden_OwnerId = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 5)
 }
 
@@ -163,7 +169,7 @@ func (x *ProjectResponse) HasCreatedAt() bool {
 
 func (x *ProjectResponse) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
-	x.xxx_hidden_Id = 0
+	x.xxx_hidden_Id = nil
 }
 
 func (x *ProjectResponse) ClearName() {
@@ -178,7 +184,7 @@ func (x *ProjectResponse) ClearRepoUrl() {
 
 func (x *ProjectResponse) ClearOwnerId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 3)
-	x.xxx_hidden_OwnerId = 0
+	x.xxx_hidden_OwnerId = nil
 }
 
 func (x *ProjectResponse) ClearCreatedAt() {
@@ -188,10 +194,10 @@ func (x *ProjectResponse) ClearCreatedAt() {
 type ProjectResponse_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	Id        *int64
+	Id        *string
 	Name      *string
 	RepoUrl   *string
-	OwnerId   *int64
+	OwnerId   *string
 	CreatedAt *timestamppb.Timestamp
 }
 
@@ -201,7 +207,7 @@ func (b0 ProjectResponse_builder) Build() *ProjectResponse {
 	_, _ = b, x
 	if b.Id != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 5)
-		x.xxx_hidden_Id = *b.Id
+		x.xxx_hidden_Id = b.Id
 	}
 	if b.Name != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 5)
@@ -213,7 +219,7 @@ func (b0 ProjectResponse_builder) Build() *ProjectResponse {
 	}
 	if b.OwnerId != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 5)
-		x.xxx_hidden_OwnerId = *b.OwnerId
+		x.xxx_hidden_OwnerId = b.OwnerId
 	}
 	x.xxx_hidden_CreatedAt = b.CreatedAt
 	return m0
@@ -282,7 +288,7 @@ func (b0 ListProjectsResponse_builder) Build() *ListProjectsResponse {
 // Параметры запросов для получения проекта по ID
 type GetProjectRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Id          int64                  `protobuf:"varint,1,opt,name=id"`
+	xxx_hidden_Id          *string                `protobuf:"bytes,1,opt,name=id"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -314,15 +320,18 @@ func (x *GetProjectRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *GetProjectRequest) GetId() int64 {
+func (x *GetProjectRequest) GetId() string {
 	if x != nil {
-		return x.xxx_hidden_Id
+		if x.xxx_hidden_Id != nil {
+			return *x.xxx_hidden_Id
+		}
+		return ""
 	}
-	return 0
+	return ""
 }
 
-func (x *GetProjectRequest) SetId(v int64) {
-	x.xxx_hidden_Id = v
+func (x *GetProjectRequest) SetId(v string) {
+	x.xxx_hidden_Id = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
 }
 
@@ -335,13 +344,13 @@ func (x *GetProjectRequest) HasId() bool {
 
 func (x *GetProjectRequest) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
-	x.xxx_hidden_Id = 0
+	x.xxx_hidden_Id = nil
 }
 
 type GetProjectRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	Id *int64
+	Id *string
 }
 
 func (b0 GetProjectRequest_builder) Build() *GetProjectRequest {
@@ -350,7 +359,7 @@ func (b0 GetProjectRequest_builder) Build() *GetProjectRequest {
 	_, _ = b, x
 	if b.Id != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 1)
-		x.xxx_hidden_Id = *b.Id
+		x.xxx_hidden_Id = b.Id
 	}
 	return m0
 }
@@ -358,7 +367,7 @@ func (b0 GetProjectRequest_builder) Build() *GetProjectRequest {
 // Параметры запросов для получения списка проектов пользователя
 type ListProjectsRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_UserId      int64                  `protobuf:"varint,1,opt,name=user_id,json=userId"`
+	xxx_hidden_OwnerId     *string                `protobuf:"bytes,1,opt,name=owner_id,json=ownerId"`
 	xxx_hidden_Limit       int64                  `protobuf:"varint,2,opt,name=limit"`
 	xxx_hidden_Offset      int64                  `protobuf:"varint,3,opt,name=offset"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
@@ -392,11 +401,14 @@ func (x *ListProjectsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *ListProjectsRequest) GetUserId() int64 {
+func (x *ListProjectsRequest) GetOwnerId() string {
 	if x != nil {
-		return x.xxx_hidden_UserId
+		if x.xxx_hidden_OwnerId != nil {
+			return *x.xxx_hidden_OwnerId
+		}
+		return ""
 	}
-	return 0
+	return ""
 }
 
 func (x *ListProjectsRequest) GetLimit() int64 {
@@ -413,8 +425,8 @@ func (x *ListProjectsRequest) GetOffset() int64 {
 	return 0
 }
 
-func (x *ListProjectsRequest) SetUserId(v int64) {
-	x.xxx_hidden_UserId = v
+func (x *ListProjectsRequest) SetOwnerId(v string) {
+	x.xxx_hidden_OwnerId = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 3)
 }
 
@@ -428,7 +440,7 @@ func (x *ListProjectsRequest) SetOffset(v int64) {
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 3)
 }
 
-func (x *ListProjectsRequest) HasUserId() bool {
+func (x *ListProjectsRequest) HasOwnerId() bool {
 	if x == nil {
 		return false
 	}
@@ -449,9 +461,9 @@ func (x *ListProjectsRequest) HasOffset() bool {
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
 }
 
-func (x *ListProjectsRequest) ClearUserId() {
+func (x *ListProjectsRequest) ClearOwnerId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
-	x.xxx_hidden_UserId = 0
+	x.xxx_hidden_OwnerId = nil
 }
 
 func (x *ListProjectsRequest) ClearLimit() {
@@ -467,18 +479,18 @@ func (x *ListProjectsRequest) ClearOffset() {
 type ListProjectsRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	UserId *int64
-	Limit  *int64
-	Offset *int64
+	OwnerId *string
+	Limit   *int64
+	Offset  *int64
 }
 
 func (b0 ListProjectsRequest_builder) Build() *ListProjectsRequest {
 	m0 := &ListProjectsRequest{}
 	b, x := &b0, m0
 	_, _ = b, x
-	if b.UserId != nil {
+	if b.OwnerId != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 3)
-		x.xxx_hidden_UserId = *b.UserId
+		x.xxx_hidden_OwnerId = b.OwnerId
 	}
 	if b.Limit != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 3)
@@ -496,7 +508,7 @@ type CreateProjectRequest struct {
 	state                             protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Name                   *string                `protobuf:"bytes,1,opt,name=name"`
 	xxx_hidden_RepoUrl                *string                `protobuf:"bytes,2,opt,name=repo_url,json=repoUrl"`
-	xxx_hidden_DeployConfigTemplateId int64                  `protobuf:"varint,3,opt,name=deploy_config_template_id,json=deployConfigTemplateId"`
+	xxx_hidden_DeployConfigTemplateId *string                `protobuf:"bytes,3,opt,name=deploy_config_template_id,json=deployConfigTemplateId"`
 	XXX_raceDetectHookData            protoimpl.RaceDetectHookData
 	XXX_presence                      [1]uint32
 	unknownFields                     protoimpl.UnknownFields
@@ -548,11 +560,14 @@ func (x *CreateProjectRequest) GetRepoUrl() string {
 	return ""
 }
 
-func (x *CreateProjectRequest) GetDeployConfigTemplateId() int64 {
+func (x *CreateProjectRequest) GetDeployConfigTemplateId() string {
 	if x != nil {
-		return x.xxx_hidden_DeployConfigTemplateId
+		if x.xxx_hidden_DeployConfigTemplateId != nil {
+			return *x.xxx_hidden_DeployConfigTemplateId
+		}
+		return ""
 	}
-	return 0
+	return ""
 }
 
 func (x *CreateProjectRequest) SetName(v string) {
@@ -565,8 +580,8 @@ func (x *CreateProjectRequest) SetRepoUrl(v string) {
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 3)
 }
 
-func (x *CreateProjectRequest) SetDeployConfigTemplateId(v int64) {
-	x.xxx_hidden_DeployConfigTemplateId = v
+func (x *CreateProjectRequest) SetDeployConfigTemplateId(v string) {
+	x.xxx_hidden_DeployConfigTemplateId = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 3)
 }
 
@@ -603,7 +618,7 @@ func (x *CreateProjectRequest) ClearRepoUrl() {
 
 func (x *CreateProjectRequest) ClearDeployConfigTemplateId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
-	x.xxx_hidden_DeployConfigTemplateId = 0
+	x.xxx_hidden_DeployConfigTemplateId = nil
 }
 
 type CreateProjectRequest_builder struct {
@@ -611,7 +626,7 @@ type CreateProjectRequest_builder struct {
 
 	Name                   *string
 	RepoUrl                *string
-	DeployConfigTemplateId *int64
+	DeployConfigTemplateId *string
 }
 
 func (b0 CreateProjectRequest_builder) Build() *CreateProjectRequest {
@@ -628,7 +643,7 @@ func (b0 CreateProjectRequest_builder) Build() *CreateProjectRequest {
 	}
 	if b.DeployConfigTemplateId != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 3)
-		x.xxx_hidden_DeployConfigTemplateId = *b.DeployConfigTemplateId
+		x.xxx_hidden_DeployConfigTemplateId = b.DeployConfigTemplateId
 	}
 	return m0
 }
@@ -636,10 +651,10 @@ func (b0 CreateProjectRequest_builder) Build() *CreateProjectRequest {
 // Параметры запросов для обновления проекта
 type UpdateProjectRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Id          int64                  `protobuf:"varint,1,opt,name=id"`
+	xxx_hidden_Id          *string                `protobuf:"bytes,1,opt,name=id"`
 	xxx_hidden_Name        *string                `protobuf:"bytes,2,opt,name=name"`
 	xxx_hidden_RepoUrl     *string                `protobuf:"bytes,3,opt,name=repo_url,json=repoUrl"`
-	xxx_hidden_OwnerId     int64                  `protobuf:"varint,4,opt,name=owner_id,json=ownerId"`
+	xxx_hidden_OwnerId     *string                `protobuf:"bytes,4,opt,name=owner_id,json=ownerId"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -671,11 +686,14 @@ func (x *UpdateProjectRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *UpdateProjectRequest) GetId() int64 {
+func (x *UpdateProjectRequest) GetId() string {
 	if x != nil {
-		return x.xxx_hidden_Id
+		if x.xxx_hidden_Id != nil {
+			return *x.xxx_hidden_Id
+		}
+		return ""
 	}
-	return 0
+	return ""
 }
 
 func (x *UpdateProjectRequest) GetName() string {
@@ -698,15 +716,18 @@ func (x *UpdateProjectRequest) GetRepoUrl() string {
 	return ""
 }
 
-func (x *UpdateProjectRequest) GetOwnerId() int64 {
+func (x *UpdateProjectRequest) GetOwnerId() string {
 	if x != nil {
-		return x.xxx_hidden_OwnerId
+		if x.xxx_hidden_OwnerId != nil {
+			return *x.xxx_hidden_OwnerId
+		}
+		return ""
 	}
-	return 0
+	return ""
 }
 
-func (x *UpdateProjectRequest) SetId(v int64) {
-	x.xxx_hidden_Id = v
+func (x *UpdateProjectRequest) SetId(v string) {
+	x.xxx_hidden_Id = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 4)
 }
 
@@ -720,8 +741,8 @@ func (x *UpdateProjectRequest) SetRepoUrl(v string) {
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 4)
 }
 
-func (x *UpdateProjectRequest) SetOwnerId(v int64) {
-	x.xxx_hidden_OwnerId = v
+func (x *UpdateProjectRequest) SetOwnerId(v string) {
+	x.xxx_hidden_OwnerId = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 4)
 }
 
@@ -755,7 +776,7 @@ func (x *UpdateProjectRequest) HasOwnerId() bool {
 
 func (x *UpdateProjectRequest) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
-	x.xxx_hidden_Id = 0
+	x.xxx_hidden_Id = nil
 }
 
 func (x *UpdateProjectRequest) ClearName() {
@@ -770,16 +791,16 @@ func (x *UpdateProjectRequest) ClearRepoUrl() {
 
 func (x *UpdateProjectRequest) ClearOwnerId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 3)
-	x.xxx_hidden_OwnerId = 0
+	x.xxx_hidden_OwnerId = nil
 }
 
 type UpdateProjectRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	Id      *int64
+	Id      *string
 	Name    *string
 	RepoUrl *string
-	OwnerId *int64
+	OwnerId *string
 }
 
 func (b0 UpdateProjectRequest_builder) Build() *UpdateProjectRequest {
@@ -788,7 +809,7 @@ func (b0 UpdateProjectRequest_builder) Build() *UpdateProjectRequest {
 	_, _ = b, x
 	if b.Id != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 4)
-		x.xxx_hidden_Id = *b.Id
+		x.xxx_hidden_Id = b.Id
 	}
 	if b.Name != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 4)
@@ -800,7 +821,7 @@ func (b0 UpdateProjectRequest_builder) Build() *UpdateProjectRequest {
 	}
 	if b.OwnerId != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 4)
-		x.xxx_hidden_OwnerId = *b.OwnerId
+		x.xxx_hidden_OwnerId = b.OwnerId
 	}
 	return m0
 }
@@ -811,29 +832,29 @@ const file_projects_v1_projects_proto_rawDesc = "" +
 	"\n" +
 	"\x1aprojects/v1/projects.proto\x12\vprojects.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bgoogle/protobuf/empty.proto\"\xa6\x01\n" +
 	"\x0fProjectResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
 	"\brepo_url\x18\x03 \x01(\tR\arepoUrl\x12\x19\n" +
-	"\bowner_id\x18\x04 \x01(\x03R\aownerId\x129\n" +
+	"\bowner_id\x18\x04 \x01(\tR\aownerId\x129\n" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"P\n" +
 	"\x14ListProjectsResponse\x128\n" +
 	"\bprojects\x18\x01 \x03(\v2\x1c.projects.v1.ProjectResponseR\bprojects\"#\n" +
 	"\x11GetProjectRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"\\\n" +
-	"\x13ListProjectsRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x14\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"^\n" +
+	"\x13ListProjectsRequest\x12\x19\n" +
+	"\bowner_id\x18\x01 \x01(\tR\aownerId\x12\x14\n" +
 	"\x05limit\x18\x02 \x01(\x03R\x05limit\x12\x16\n" +
 	"\x06offset\x18\x03 \x01(\x03R\x06offset\"\x80\x01\n" +
 	"\x14CreateProjectRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x19\n" +
 	"\brepo_url\x18\x02 \x01(\tR\arepoUrl\x129\n" +
-	"\x19deploy_config_template_id\x18\x03 \x01(\x03R\x16deployConfigTemplateId\"p\n" +
+	"\x19deploy_config_template_id\x18\x03 \x01(\tR\x16deployConfigTemplateId\"p\n" +
 	"\x14UpdateProjectRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
 	"\brepo_url\x18\x03 \x01(\tR\arepoUrl\x12\x19\n" +
-	"\bowner_id\x18\x04 \x01(\x03R\aownerId2\x98\x03\n" +
+	"\bowner_id\x18\x04 \x01(\tR\aownerId2\x98\x03\n" +
 	"\x0eProjectService\x12J\n" +
 	"\n" +
 	"GetProject\x12\x1e.projects.v1.GetProjectRequest\x1a\x1c.projects.v1.ProjectResponse\x12S\n" +
