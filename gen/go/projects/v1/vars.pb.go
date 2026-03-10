@@ -985,6 +985,85 @@ func (b0 UpdateVarRequest_builder) Build() *UpdateVarRequest {
 	return m0
 }
 
+// Параметры запросов для получения полного списка переменных в окружении
+type ListAllVarsRequest struct {
+	state                  protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_EnvId       *string                `protobuf:"bytes,1,opt,name=env_id,json=envId"`
+	XXX_raceDetectHookData protoimpl.RaceDetectHookData
+	XXX_presence           [1]uint32
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *ListAllVarsRequest) Reset() {
+	*x = ListAllVarsRequest{}
+	mi := &file_projects_v1_vars_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListAllVarsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListAllVarsRequest) ProtoMessage() {}
+
+func (x *ListAllVarsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_projects_v1_vars_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *ListAllVarsRequest) GetEnvId() string {
+	if x != nil {
+		if x.xxx_hidden_EnvId != nil {
+			return *x.xxx_hidden_EnvId
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *ListAllVarsRequest) SetEnvId(v string) {
+	x.xxx_hidden_EnvId = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
+}
+
+func (x *ListAllVarsRequest) HasEnvId() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+}
+
+func (x *ListAllVarsRequest) ClearEnvId() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	x.xxx_hidden_EnvId = nil
+}
+
+type ListAllVarsRequest_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	EnvId *string
+}
+
+func (b0 ListAllVarsRequest_builder) Build() *ListAllVarsRequest {
+	m0 := &ListAllVarsRequest{}
+	b, x := &b0, m0
+	_, _ = b, x
+	if b.EnvId != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 1)
+		x.xxx_hidden_EnvId = b.EnvId
+	}
+	return m0
+}
+
 var File_projects_v1_vars_proto protoreflect.FileDescriptor
 
 const file_projects_v1_vars_proto_rawDesc = "" +
@@ -1018,7 +1097,9 @@ const file_projects_v1_vars_proto_rawDesc = "" +
 	"\x05value\x18\x03 \x01(\tR\x05value\"8\n" +
 	"\x10UpdateVarRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value2\xc9\x06\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value\"+\n" +
+	"\x12ListAllVarsRequest\x12\x15\n" +
+	"\x06env_id\x18\x01 \x01(\tR\x05envId2\xc9\x06\n" +
 	"\n" +
 	"VarService\x12E\n" +
 	"\rGetProjectVar\x12\x1a.projects.v1.GetVarRequest\x1a\x18.projects.v1.VarResponse\x12U\n" +
@@ -1031,9 +1112,9 @@ const file_projects_v1_vars_proto_rawDesc = "" +
 	"\fCreateEnvVar\x12 .projects.v1.CreateEnvVarRequest\x1a\x18.projects.v1.VarResponse\x12E\n" +
 	"\fUpdateEnvVar\x12\x1d.projects.v1.UpdateVarRequest\x1a\x16.google.protobuf.Empty\x12B\n" +
 	"\fDeleteEnvVar\x12\x1a.projects.v1.GetVarRequest\x1a\x16.google.protobuf.Empty\x12M\n" +
-	"\vListAllVars\x12\x1f.projects.v1.ListEnvVarsRequest\x1a\x1d.projects.v1.ListVarsResponseB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
+	"\vListAllVars\x12\x1f.projects.v1.ListAllVarsRequest\x1a\x1d.projects.v1.ListVarsResponseB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
 
-var file_projects_v1_vars_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_projects_v1_vars_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_projects_v1_vars_proto_goTypes = []any{
 	(*VarResponse)(nil),             // 0: projects.v1.VarResponse
 	(*ListVarsResponse)(nil),        // 1: projects.v1.ListVarsResponse
@@ -1043,7 +1124,8 @@ var file_projects_v1_vars_proto_goTypes = []any{
 	(*CreateProjectVarRequest)(nil), // 5: projects.v1.CreateProjectVarRequest
 	(*CreateEnvVarRequest)(nil),     // 6: projects.v1.CreateEnvVarRequest
 	(*UpdateVarRequest)(nil),        // 7: projects.v1.UpdateVarRequest
-	(*emptypb.Empty)(nil),           // 8: google.protobuf.Empty
+	(*ListAllVarsRequest)(nil),      // 8: projects.v1.ListAllVarsRequest
+	(*emptypb.Empty)(nil),           // 9: google.protobuf.Empty
 }
 var file_projects_v1_vars_proto_depIdxs = []int32{
 	0,  // 0: projects.v1.ListVarsResponse.vars:type_name -> projects.v1.VarResponse
@@ -1057,17 +1139,17 @@ var file_projects_v1_vars_proto_depIdxs = []int32{
 	6,  // 8: projects.v1.VarService.CreateEnvVar:input_type -> projects.v1.CreateEnvVarRequest
 	7,  // 9: projects.v1.VarService.UpdateEnvVar:input_type -> projects.v1.UpdateVarRequest
 	2,  // 10: projects.v1.VarService.DeleteEnvVar:input_type -> projects.v1.GetVarRequest
-	4,  // 11: projects.v1.VarService.ListAllVars:input_type -> projects.v1.ListEnvVarsRequest
+	8,  // 11: projects.v1.VarService.ListAllVars:input_type -> projects.v1.ListAllVarsRequest
 	0,  // 12: projects.v1.VarService.GetProjectVar:output_type -> projects.v1.VarResponse
 	1,  // 13: projects.v1.VarService.ListProjectVars:output_type -> projects.v1.ListVarsResponse
 	0,  // 14: projects.v1.VarService.CreateProjectVar:output_type -> projects.v1.VarResponse
-	8,  // 15: projects.v1.VarService.UpdateProjectVar:output_type -> google.protobuf.Empty
-	8,  // 16: projects.v1.VarService.DeleteProjectVar:output_type -> google.protobuf.Empty
+	9,  // 15: projects.v1.VarService.UpdateProjectVar:output_type -> google.protobuf.Empty
+	9,  // 16: projects.v1.VarService.DeleteProjectVar:output_type -> google.protobuf.Empty
 	0,  // 17: projects.v1.VarService.GetEnvVar:output_type -> projects.v1.VarResponse
 	1,  // 18: projects.v1.VarService.ListEnvVars:output_type -> projects.v1.ListVarsResponse
 	0,  // 19: projects.v1.VarService.CreateEnvVar:output_type -> projects.v1.VarResponse
-	8,  // 20: projects.v1.VarService.UpdateEnvVar:output_type -> google.protobuf.Empty
-	8,  // 21: projects.v1.VarService.DeleteEnvVar:output_type -> google.protobuf.Empty
+	9,  // 20: projects.v1.VarService.UpdateEnvVar:output_type -> google.protobuf.Empty
+	9,  // 21: projects.v1.VarService.DeleteEnvVar:output_type -> google.protobuf.Empty
 	1,  // 22: projects.v1.VarService.ListAllVars:output_type -> projects.v1.ListVarsResponse
 	12, // [12:23] is the sub-list for method output_type
 	1,  // [1:12] is the sub-list for method input_type
@@ -1087,7 +1169,7 @@ func file_projects_v1_vars_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_projects_v1_vars_proto_rawDesc), len(file_projects_v1_vars_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

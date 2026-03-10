@@ -61,7 +61,7 @@ type VarServiceClient interface {
 	DeleteEnvVar(ctx context.Context, in *GetVarRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// ListAllVars возвращает список всех переменных, определенных в окружении, включая
 	// переменные проекта, с поддержкой пагинации
-	ListAllVars(ctx context.Context, in *ListEnvVarsRequest, opts ...grpc.CallOption) (*ListVarsResponse, error)
+	ListAllVars(ctx context.Context, in *ListAllVarsRequest, opts ...grpc.CallOption) (*ListVarsResponse, error)
 }
 
 type varServiceClient struct {
@@ -172,7 +172,7 @@ func (c *varServiceClient) DeleteEnvVar(ctx context.Context, in *GetVarRequest, 
 	return out, nil
 }
 
-func (c *varServiceClient) ListAllVars(ctx context.Context, in *ListEnvVarsRequest, opts ...grpc.CallOption) (*ListVarsResponse, error) {
+func (c *varServiceClient) ListAllVars(ctx context.Context, in *ListAllVarsRequest, opts ...grpc.CallOption) (*ListVarsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListVarsResponse)
 	err := c.cc.Invoke(ctx, VarService_ListAllVars_FullMethodName, in, out, cOpts...)
@@ -210,7 +210,7 @@ type VarServiceServer interface {
 	DeleteEnvVar(context.Context, *GetVarRequest) (*emptypb.Empty, error)
 	// ListAllVars возвращает список всех переменных, определенных в окружении, включая
 	// переменные проекта, с поддержкой пагинации
-	ListAllVars(context.Context, *ListEnvVarsRequest) (*ListVarsResponse, error)
+	ListAllVars(context.Context, *ListAllVarsRequest) (*ListVarsResponse, error)
 	mustEmbedUnimplementedVarServiceServer()
 }
 
@@ -251,7 +251,7 @@ func (UnimplementedVarServiceServer) UpdateEnvVar(context.Context, *UpdateVarReq
 func (UnimplementedVarServiceServer) DeleteEnvVar(context.Context, *GetVarRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteEnvVar not implemented")
 }
-func (UnimplementedVarServiceServer) ListAllVars(context.Context, *ListEnvVarsRequest) (*ListVarsResponse, error) {
+func (UnimplementedVarServiceServer) ListAllVars(context.Context, *ListAllVarsRequest) (*ListVarsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListAllVars not implemented")
 }
 func (UnimplementedVarServiceServer) mustEmbedUnimplementedVarServiceServer() {}
@@ -456,7 +456,7 @@ func _VarService_DeleteEnvVar_Handler(srv interface{}, ctx context.Context, dec 
 }
 
 func _VarService_ListAllVars_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListEnvVarsRequest)
+	in := new(ListAllVarsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -468,7 +468,7 @@ func _VarService_ListAllVars_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: VarService_ListAllVars_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VarServiceServer).ListAllVars(ctx, req.(*ListEnvVarsRequest))
+		return srv.(VarServiceServer).ListAllVars(ctx, req.(*ListAllVarsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

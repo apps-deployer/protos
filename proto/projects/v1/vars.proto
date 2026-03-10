@@ -32,7 +32,7 @@ service VarService {
 
   // ListAllVars возвращает список всех переменных, определенных в окружении, включая 
   // переменные проекта, с поддержкой пагинации
-  rpc ListAllVars (ListEnvVarsRequest) returns (ListVarsResponse);
+  rpc ListAllVars (ListAllVarsRequest) returns (ListVarsResponse);
 }
 
 // Ответ с данными переменной
@@ -84,4 +84,9 @@ message CreateEnvVarRequest {
 message UpdateVarRequest {
     string id = 1;
     string value = 2;
+}
+
+// Параметры запросов для получения полного списка переменных в окружении
+message ListAllVarsRequest {
+    string env_id = 1;
 }
