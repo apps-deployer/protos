@@ -23,20 +23,20 @@ const (
 
 // Конфигурация деплоя для проекта
 type DeployConfigResponse struct {
-	state                          protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Id                  *string                `protobuf:"bytes,1,opt,name=id"`
-	xxx_hidden_ProjectId           *string                `protobuf:"bytes,2,opt,name=project_id,json=projectId"`
-	xxx_hidden_FrameworkId         *string                `protobuf:"bytes,3,opt,name=framework_id,json=frameworkId"`
-	xxx_hidden_RootDirOverwrite    *string                `protobuf:"bytes,4,opt,name=root_dir_overwrite,json=rootDirOverwrite"`
-	xxx_hidden_OutputDirOverwrite  *string                `protobuf:"bytes,5,opt,name=output_dir_overwrite,json=outputDirOverwrite"`
-	xxx_hidden_BaseImageOverwrite  *string                `protobuf:"bytes,6,opt,name=base_image_overwrite,json=baseImageOverwrite"`
-	xxx_hidden_InstallCmdOverwrite *string                `protobuf:"bytes,7,opt,name=install_cmd_overwrite,json=installCmdOverwrite"`
-	xxx_hidden_BuildCmdOverwrite   *string                `protobuf:"bytes,8,opt,name=build_cmd_overwrite,json=buildCmdOverwrite"`
-	xxx_hidden_RunCmdOverwrite     *string                `protobuf:"bytes,9,opt,name=run_cmd_overwrite,json=runCmdOverwrite"`
-	XXX_raceDetectHookData         protoimpl.RaceDetectHookData
-	XXX_presence                   [1]uint32
-	unknownFields                  protoimpl.UnknownFields
-	sizeCache                      protoimpl.SizeCache
+	state                         protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Id                 *string                `protobuf:"bytes,1,opt,name=id"`
+	xxx_hidden_ProjectId          *string                `protobuf:"bytes,2,opt,name=project_id,json=projectId"`
+	xxx_hidden_FrameworkId        *string                `protobuf:"bytes,3,opt,name=framework_id,json=frameworkId"`
+	xxx_hidden_RootDirOverride    *string                `protobuf:"bytes,4,opt,name=root_dir_override,json=rootDirOverride"`
+	xxx_hidden_OutputDirOverride  *string                `protobuf:"bytes,5,opt,name=output_dir_override,json=outputDirOverride"`
+	xxx_hidden_BaseImageOverride  *string                `protobuf:"bytes,6,opt,name=base_image_override,json=baseImageOverride"`
+	xxx_hidden_InstallCmdOverride *string                `protobuf:"bytes,7,opt,name=install_cmd_override,json=installCmdOverride"`
+	xxx_hidden_BuildCmdOverride   *string                `protobuf:"bytes,8,opt,name=build_cmd_override,json=buildCmdOverride"`
+	xxx_hidden_RunCmdOverride     *string                `protobuf:"bytes,9,opt,name=run_cmd_override,json=runCmdOverride"`
+	XXX_raceDetectHookData        protoimpl.RaceDetectHookData
+	XXX_presence                  [1]uint32
+	unknownFields                 protoimpl.UnknownFields
+	sizeCache                     protoimpl.SizeCache
 }
 
 func (x *DeployConfigResponse) Reset() {
@@ -94,60 +94,60 @@ func (x *DeployConfigResponse) GetFrameworkId() string {
 	return ""
 }
 
-func (x *DeployConfigResponse) GetRootDirOverwrite() string {
+func (x *DeployConfigResponse) GetRootDirOverride() string {
 	if x != nil {
-		if x.xxx_hidden_RootDirOverwrite != nil {
-			return *x.xxx_hidden_RootDirOverwrite
+		if x.xxx_hidden_RootDirOverride != nil {
+			return *x.xxx_hidden_RootDirOverride
 		}
 		return ""
 	}
 	return ""
 }
 
-func (x *DeployConfigResponse) GetOutputDirOverwrite() string {
+func (x *DeployConfigResponse) GetOutputDirOverride() string {
 	if x != nil {
-		if x.xxx_hidden_OutputDirOverwrite != nil {
-			return *x.xxx_hidden_OutputDirOverwrite
+		if x.xxx_hidden_OutputDirOverride != nil {
+			return *x.xxx_hidden_OutputDirOverride
 		}
 		return ""
 	}
 	return ""
 }
 
-func (x *DeployConfigResponse) GetBaseImageOverwrite() string {
+func (x *DeployConfigResponse) GetBaseImageOverride() string {
 	if x != nil {
-		if x.xxx_hidden_BaseImageOverwrite != nil {
-			return *x.xxx_hidden_BaseImageOverwrite
+		if x.xxx_hidden_BaseImageOverride != nil {
+			return *x.xxx_hidden_BaseImageOverride
 		}
 		return ""
 	}
 	return ""
 }
 
-func (x *DeployConfigResponse) GetInstallCmdOverwrite() string {
+func (x *DeployConfigResponse) GetInstallCmdOverride() string {
 	if x != nil {
-		if x.xxx_hidden_InstallCmdOverwrite != nil {
-			return *x.xxx_hidden_InstallCmdOverwrite
+		if x.xxx_hidden_InstallCmdOverride != nil {
+			return *x.xxx_hidden_InstallCmdOverride
 		}
 		return ""
 	}
 	return ""
 }
 
-func (x *DeployConfigResponse) GetBuildCmdOverwrite() string {
+func (x *DeployConfigResponse) GetBuildCmdOverride() string {
 	if x != nil {
-		if x.xxx_hidden_BuildCmdOverwrite != nil {
-			return *x.xxx_hidden_BuildCmdOverwrite
+		if x.xxx_hidden_BuildCmdOverride != nil {
+			return *x.xxx_hidden_BuildCmdOverride
 		}
 		return ""
 	}
 	return ""
 }
 
-func (x *DeployConfigResponse) GetRunCmdOverwrite() string {
+func (x *DeployConfigResponse) GetRunCmdOverride() string {
 	if x != nil {
-		if x.xxx_hidden_RunCmdOverwrite != nil {
-			return *x.xxx_hidden_RunCmdOverwrite
+		if x.xxx_hidden_RunCmdOverride != nil {
+			return *x.xxx_hidden_RunCmdOverride
 		}
 		return ""
 	}
@@ -169,33 +169,33 @@ func (x *DeployConfigResponse) SetFrameworkId(v string) {
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 9)
 }
 
-func (x *DeployConfigResponse) SetRootDirOverwrite(v string) {
-	x.xxx_hidden_RootDirOverwrite = &v
+func (x *DeployConfigResponse) SetRootDirOverride(v string) {
+	x.xxx_hidden_RootDirOverride = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 9)
 }
 
-func (x *DeployConfigResponse) SetOutputDirOverwrite(v string) {
-	x.xxx_hidden_OutputDirOverwrite = &v
+func (x *DeployConfigResponse) SetOutputDirOverride(v string) {
+	x.xxx_hidden_OutputDirOverride = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 9)
 }
 
-func (x *DeployConfigResponse) SetBaseImageOverwrite(v string) {
-	x.xxx_hidden_BaseImageOverwrite = &v
+func (x *DeployConfigResponse) SetBaseImageOverride(v string) {
+	x.xxx_hidden_BaseImageOverride = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 9)
 }
 
-func (x *DeployConfigResponse) SetInstallCmdOverwrite(v string) {
-	x.xxx_hidden_InstallCmdOverwrite = &v
+func (x *DeployConfigResponse) SetInstallCmdOverride(v string) {
+	x.xxx_hidden_InstallCmdOverride = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 6, 9)
 }
 
-func (x *DeployConfigResponse) SetBuildCmdOverwrite(v string) {
-	x.xxx_hidden_BuildCmdOverwrite = &v
+func (x *DeployConfigResponse) SetBuildCmdOverride(v string) {
+	x.xxx_hidden_BuildCmdOverride = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 7, 9)
 }
 
-func (x *DeployConfigResponse) SetRunCmdOverwrite(v string) {
-	x.xxx_hidden_RunCmdOverwrite = &v
+func (x *DeployConfigResponse) SetRunCmdOverride(v string) {
+	x.xxx_hidden_RunCmdOverride = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 8, 9)
 }
 
@@ -220,42 +220,42 @@ func (x *DeployConfigResponse) HasFrameworkId() bool {
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
 }
 
-func (x *DeployConfigResponse) HasRootDirOverwrite() bool {
+func (x *DeployConfigResponse) HasRootDirOverride() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 3)
 }
 
-func (x *DeployConfigResponse) HasOutputDirOverwrite() bool {
+func (x *DeployConfigResponse) HasOutputDirOverride() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 4)
 }
 
-func (x *DeployConfigResponse) HasBaseImageOverwrite() bool {
+func (x *DeployConfigResponse) HasBaseImageOverride() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 5)
 }
 
-func (x *DeployConfigResponse) HasInstallCmdOverwrite() bool {
+func (x *DeployConfigResponse) HasInstallCmdOverride() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 6)
 }
 
-func (x *DeployConfigResponse) HasBuildCmdOverwrite() bool {
+func (x *DeployConfigResponse) HasBuildCmdOverride() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 7)
 }
 
-func (x *DeployConfigResponse) HasRunCmdOverwrite() bool {
+func (x *DeployConfigResponse) HasRunCmdOverride() bool {
 	if x == nil {
 		return false
 	}
@@ -277,48 +277,48 @@ func (x *DeployConfigResponse) ClearFrameworkId() {
 	x.xxx_hidden_FrameworkId = nil
 }
 
-func (x *DeployConfigResponse) ClearRootDirOverwrite() {
+func (x *DeployConfigResponse) ClearRootDirOverride() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 3)
-	x.xxx_hidden_RootDirOverwrite = nil
+	x.xxx_hidden_RootDirOverride = nil
 }
 
-func (x *DeployConfigResponse) ClearOutputDirOverwrite() {
+func (x *DeployConfigResponse) ClearOutputDirOverride() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 4)
-	x.xxx_hidden_OutputDirOverwrite = nil
+	x.xxx_hidden_OutputDirOverride = nil
 }
 
-func (x *DeployConfigResponse) ClearBaseImageOverwrite() {
+func (x *DeployConfigResponse) ClearBaseImageOverride() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 5)
-	x.xxx_hidden_BaseImageOverwrite = nil
+	x.xxx_hidden_BaseImageOverride = nil
 }
 
-func (x *DeployConfigResponse) ClearInstallCmdOverwrite() {
+func (x *DeployConfigResponse) ClearInstallCmdOverride() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 6)
-	x.xxx_hidden_InstallCmdOverwrite = nil
+	x.xxx_hidden_InstallCmdOverride = nil
 }
 
-func (x *DeployConfigResponse) ClearBuildCmdOverwrite() {
+func (x *DeployConfigResponse) ClearBuildCmdOverride() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 7)
-	x.xxx_hidden_BuildCmdOverwrite = nil
+	x.xxx_hidden_BuildCmdOverride = nil
 }
 
-func (x *DeployConfigResponse) ClearRunCmdOverwrite() {
+func (x *DeployConfigResponse) ClearRunCmdOverride() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 8)
-	x.xxx_hidden_RunCmdOverwrite = nil
+	x.xxx_hidden_RunCmdOverride = nil
 }
 
 type DeployConfigResponse_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	Id                  *string
-	ProjectId           *string
-	FrameworkId         *string
-	RootDirOverwrite    *string
-	OutputDirOverwrite  *string
-	BaseImageOverwrite  *string
-	InstallCmdOverwrite *string
-	BuildCmdOverwrite   *string
-	RunCmdOverwrite     *string
+	Id                 *string
+	ProjectId          *string
+	FrameworkId        *string
+	RootDirOverride    *string
+	OutputDirOverride  *string
+	BaseImageOverride  *string
+	InstallCmdOverride *string
+	BuildCmdOverride   *string
+	RunCmdOverride     *string
 }
 
 func (b0 DeployConfigResponse_builder) Build() *DeployConfigResponse {
@@ -337,29 +337,29 @@ func (b0 DeployConfigResponse_builder) Build() *DeployConfigResponse {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 9)
 		x.xxx_hidden_FrameworkId = b.FrameworkId
 	}
-	if b.RootDirOverwrite != nil {
+	if b.RootDirOverride != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 9)
-		x.xxx_hidden_RootDirOverwrite = b.RootDirOverwrite
+		x.xxx_hidden_RootDirOverride = b.RootDirOverride
 	}
-	if b.OutputDirOverwrite != nil {
+	if b.OutputDirOverride != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 9)
-		x.xxx_hidden_OutputDirOverwrite = b.OutputDirOverwrite
+		x.xxx_hidden_OutputDirOverride = b.OutputDirOverride
 	}
-	if b.BaseImageOverwrite != nil {
+	if b.BaseImageOverride != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 5, 9)
-		x.xxx_hidden_BaseImageOverwrite = b.BaseImageOverwrite
+		x.xxx_hidden_BaseImageOverride = b.BaseImageOverride
 	}
-	if b.InstallCmdOverwrite != nil {
+	if b.InstallCmdOverride != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 6, 9)
-		x.xxx_hidden_InstallCmdOverwrite = b.InstallCmdOverwrite
+		x.xxx_hidden_InstallCmdOverride = b.InstallCmdOverride
 	}
-	if b.BuildCmdOverwrite != nil {
+	if b.BuildCmdOverride != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 7, 9)
-		x.xxx_hidden_BuildCmdOverwrite = b.BuildCmdOverwrite
+		x.xxx_hidden_BuildCmdOverride = b.BuildCmdOverride
 	}
-	if b.RunCmdOverwrite != nil {
+	if b.RunCmdOverride != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 8, 9)
-		x.xxx_hidden_RunCmdOverwrite = b.RunCmdOverwrite
+		x.xxx_hidden_RunCmdOverride = b.RunCmdOverride
 	}
 	return m0
 }
@@ -755,19 +755,19 @@ func (b0 GetDeployConfigRequest_builder) Build() *GetDeployConfigRequest {
 
 // Параметры запросов для обновления конфигурации деплоя по ID
 type UpdateDeployConfigRequest struct {
-	state                          protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Id                  *string                `protobuf:"bytes,1,opt,name=id"`
-	xxx_hidden_FrameworkId         *string                `protobuf:"bytes,2,opt,name=framework_id,json=frameworkId"`
-	xxx_hidden_RootDirOverwrite    *string                `protobuf:"bytes,3,opt,name=root_dir_overwrite,json=rootDirOverwrite"`
-	xxx_hidden_OutputDirOverwrite  *string                `protobuf:"bytes,4,opt,name=output_dir_overwrite,json=outputDirOverwrite"`
-	xxx_hidden_BaseImageOverwrite  *string                `protobuf:"bytes,5,opt,name=base_image_overwrite,json=baseImageOverwrite"`
-	xxx_hidden_InstallCmdOverwrite *string                `protobuf:"bytes,6,opt,name=install_cmd_overwrite,json=installCmdOverwrite"`
-	xxx_hidden_BuildCmdOverwrite   *string                `protobuf:"bytes,7,opt,name=build_cmd_overwrite,json=buildCmdOverwrite"`
-	xxx_hidden_RunCmdOverwrite     *string                `protobuf:"bytes,8,opt,name=run_cmd_overwrite,json=runCmdOverwrite"`
-	XXX_raceDetectHookData         protoimpl.RaceDetectHookData
-	XXX_presence                   [1]uint32
-	unknownFields                  protoimpl.UnknownFields
-	sizeCache                      protoimpl.SizeCache
+	state                         protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Id                 *string                `protobuf:"bytes,1,opt,name=id"`
+	xxx_hidden_FrameworkId        *string                `protobuf:"bytes,2,opt,name=framework_id,json=frameworkId"`
+	xxx_hidden_RootDirOverride    *string                `protobuf:"bytes,3,opt,name=root_dir_override,json=rootDirOverride"`
+	xxx_hidden_OutputDirOverride  *string                `protobuf:"bytes,4,opt,name=output_dir_override,json=outputDirOverride"`
+	xxx_hidden_BaseImageOverride  *string                `protobuf:"bytes,5,opt,name=base_image_override,json=baseImageOverride"`
+	xxx_hidden_InstallCmdOverride *string                `protobuf:"bytes,6,opt,name=install_cmd_override,json=installCmdOverride"`
+	xxx_hidden_BuildCmdOverride   *string                `protobuf:"bytes,7,opt,name=build_cmd_override,json=buildCmdOverride"`
+	xxx_hidden_RunCmdOverride     *string                `protobuf:"bytes,8,opt,name=run_cmd_override,json=runCmdOverride"`
+	XXX_raceDetectHookData        protoimpl.RaceDetectHookData
+	XXX_presence                  [1]uint32
+	unknownFields                 protoimpl.UnknownFields
+	sizeCache                     protoimpl.SizeCache
 }
 
 func (x *UpdateDeployConfigRequest) Reset() {
@@ -815,60 +815,60 @@ func (x *UpdateDeployConfigRequest) GetFrameworkId() string {
 	return ""
 }
 
-func (x *UpdateDeployConfigRequest) GetRootDirOverwrite() string {
+func (x *UpdateDeployConfigRequest) GetRootDirOverride() string {
 	if x != nil {
-		if x.xxx_hidden_RootDirOverwrite != nil {
-			return *x.xxx_hidden_RootDirOverwrite
+		if x.xxx_hidden_RootDirOverride != nil {
+			return *x.xxx_hidden_RootDirOverride
 		}
 		return ""
 	}
 	return ""
 }
 
-func (x *UpdateDeployConfigRequest) GetOutputDirOverwrite() string {
+func (x *UpdateDeployConfigRequest) GetOutputDirOverride() string {
 	if x != nil {
-		if x.xxx_hidden_OutputDirOverwrite != nil {
-			return *x.xxx_hidden_OutputDirOverwrite
+		if x.xxx_hidden_OutputDirOverride != nil {
+			return *x.xxx_hidden_OutputDirOverride
 		}
 		return ""
 	}
 	return ""
 }
 
-func (x *UpdateDeployConfigRequest) GetBaseImageOverwrite() string {
+func (x *UpdateDeployConfigRequest) GetBaseImageOverride() string {
 	if x != nil {
-		if x.xxx_hidden_BaseImageOverwrite != nil {
-			return *x.xxx_hidden_BaseImageOverwrite
+		if x.xxx_hidden_BaseImageOverride != nil {
+			return *x.xxx_hidden_BaseImageOverride
 		}
 		return ""
 	}
 	return ""
 }
 
-func (x *UpdateDeployConfigRequest) GetInstallCmdOverwrite() string {
+func (x *UpdateDeployConfigRequest) GetInstallCmdOverride() string {
 	if x != nil {
-		if x.xxx_hidden_InstallCmdOverwrite != nil {
-			return *x.xxx_hidden_InstallCmdOverwrite
+		if x.xxx_hidden_InstallCmdOverride != nil {
+			return *x.xxx_hidden_InstallCmdOverride
 		}
 		return ""
 	}
 	return ""
 }
 
-func (x *UpdateDeployConfigRequest) GetBuildCmdOverwrite() string {
+func (x *UpdateDeployConfigRequest) GetBuildCmdOverride() string {
 	if x != nil {
-		if x.xxx_hidden_BuildCmdOverwrite != nil {
-			return *x.xxx_hidden_BuildCmdOverwrite
+		if x.xxx_hidden_BuildCmdOverride != nil {
+			return *x.xxx_hidden_BuildCmdOverride
 		}
 		return ""
 	}
 	return ""
 }
 
-func (x *UpdateDeployConfigRequest) GetRunCmdOverwrite() string {
+func (x *UpdateDeployConfigRequest) GetRunCmdOverride() string {
 	if x != nil {
-		if x.xxx_hidden_RunCmdOverwrite != nil {
-			return *x.xxx_hidden_RunCmdOverwrite
+		if x.xxx_hidden_RunCmdOverride != nil {
+			return *x.xxx_hidden_RunCmdOverride
 		}
 		return ""
 	}
@@ -885,33 +885,33 @@ func (x *UpdateDeployConfigRequest) SetFrameworkId(v string) {
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 8)
 }
 
-func (x *UpdateDeployConfigRequest) SetRootDirOverwrite(v string) {
-	x.xxx_hidden_RootDirOverwrite = &v
+func (x *UpdateDeployConfigRequest) SetRootDirOverride(v string) {
+	x.xxx_hidden_RootDirOverride = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 8)
 }
 
-func (x *UpdateDeployConfigRequest) SetOutputDirOverwrite(v string) {
-	x.xxx_hidden_OutputDirOverwrite = &v
+func (x *UpdateDeployConfigRequest) SetOutputDirOverride(v string) {
+	x.xxx_hidden_OutputDirOverride = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 8)
 }
 
-func (x *UpdateDeployConfigRequest) SetBaseImageOverwrite(v string) {
-	x.xxx_hidden_BaseImageOverwrite = &v
+func (x *UpdateDeployConfigRequest) SetBaseImageOverride(v string) {
+	x.xxx_hidden_BaseImageOverride = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 8)
 }
 
-func (x *UpdateDeployConfigRequest) SetInstallCmdOverwrite(v string) {
-	x.xxx_hidden_InstallCmdOverwrite = &v
+func (x *UpdateDeployConfigRequest) SetInstallCmdOverride(v string) {
+	x.xxx_hidden_InstallCmdOverride = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 8)
 }
 
-func (x *UpdateDeployConfigRequest) SetBuildCmdOverwrite(v string) {
-	x.xxx_hidden_BuildCmdOverwrite = &v
+func (x *UpdateDeployConfigRequest) SetBuildCmdOverride(v string) {
+	x.xxx_hidden_BuildCmdOverride = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 6, 8)
 }
 
-func (x *UpdateDeployConfigRequest) SetRunCmdOverwrite(v string) {
-	x.xxx_hidden_RunCmdOverwrite = &v
+func (x *UpdateDeployConfigRequest) SetRunCmdOverride(v string) {
+	x.xxx_hidden_RunCmdOverride = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 7, 8)
 }
 
@@ -929,42 +929,42 @@ func (x *UpdateDeployConfigRequest) HasFrameworkId() bool {
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
 }
 
-func (x *UpdateDeployConfigRequest) HasRootDirOverwrite() bool {
+func (x *UpdateDeployConfigRequest) HasRootDirOverride() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
 }
 
-func (x *UpdateDeployConfigRequest) HasOutputDirOverwrite() bool {
+func (x *UpdateDeployConfigRequest) HasOutputDirOverride() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 3)
 }
 
-func (x *UpdateDeployConfigRequest) HasBaseImageOverwrite() bool {
+func (x *UpdateDeployConfigRequest) HasBaseImageOverride() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 4)
 }
 
-func (x *UpdateDeployConfigRequest) HasInstallCmdOverwrite() bool {
+func (x *UpdateDeployConfigRequest) HasInstallCmdOverride() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 5)
 }
 
-func (x *UpdateDeployConfigRequest) HasBuildCmdOverwrite() bool {
+func (x *UpdateDeployConfigRequest) HasBuildCmdOverride() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 6)
 }
 
-func (x *UpdateDeployConfigRequest) HasRunCmdOverwrite() bool {
+func (x *UpdateDeployConfigRequest) HasRunCmdOverride() bool {
 	if x == nil {
 		return false
 	}
@@ -981,47 +981,47 @@ func (x *UpdateDeployConfigRequest) ClearFrameworkId() {
 	x.xxx_hidden_FrameworkId = nil
 }
 
-func (x *UpdateDeployConfigRequest) ClearRootDirOverwrite() {
+func (x *UpdateDeployConfigRequest) ClearRootDirOverride() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
-	x.xxx_hidden_RootDirOverwrite = nil
+	x.xxx_hidden_RootDirOverride = nil
 }
 
-func (x *UpdateDeployConfigRequest) ClearOutputDirOverwrite() {
+func (x *UpdateDeployConfigRequest) ClearOutputDirOverride() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 3)
-	x.xxx_hidden_OutputDirOverwrite = nil
+	x.xxx_hidden_OutputDirOverride = nil
 }
 
-func (x *UpdateDeployConfigRequest) ClearBaseImageOverwrite() {
+func (x *UpdateDeployConfigRequest) ClearBaseImageOverride() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 4)
-	x.xxx_hidden_BaseImageOverwrite = nil
+	x.xxx_hidden_BaseImageOverride = nil
 }
 
-func (x *UpdateDeployConfigRequest) ClearInstallCmdOverwrite() {
+func (x *UpdateDeployConfigRequest) ClearInstallCmdOverride() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 5)
-	x.xxx_hidden_InstallCmdOverwrite = nil
+	x.xxx_hidden_InstallCmdOverride = nil
 }
 
-func (x *UpdateDeployConfigRequest) ClearBuildCmdOverwrite() {
+func (x *UpdateDeployConfigRequest) ClearBuildCmdOverride() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 6)
-	x.xxx_hidden_BuildCmdOverwrite = nil
+	x.xxx_hidden_BuildCmdOverride = nil
 }
 
-func (x *UpdateDeployConfigRequest) ClearRunCmdOverwrite() {
+func (x *UpdateDeployConfigRequest) ClearRunCmdOverride() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 7)
-	x.xxx_hidden_RunCmdOverwrite = nil
+	x.xxx_hidden_RunCmdOverride = nil
 }
 
 type UpdateDeployConfigRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	Id                  *string
-	FrameworkId         *string
-	RootDirOverwrite    *string
-	OutputDirOverwrite  *string
-	BaseImageOverwrite  *string
-	InstallCmdOverwrite *string
-	BuildCmdOverwrite   *string
-	RunCmdOverwrite     *string
+	Id                 *string
+	FrameworkId        *string
+	RootDirOverride    *string
+	OutputDirOverride  *string
+	BaseImageOverride  *string
+	InstallCmdOverride *string
+	BuildCmdOverride   *string
+	RunCmdOverride     *string
 }
 
 func (b0 UpdateDeployConfigRequest_builder) Build() *UpdateDeployConfigRequest {
@@ -1036,29 +1036,29 @@ func (b0 UpdateDeployConfigRequest_builder) Build() *UpdateDeployConfigRequest {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 8)
 		x.xxx_hidden_FrameworkId = b.FrameworkId
 	}
-	if b.RootDirOverwrite != nil {
+	if b.RootDirOverride != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 8)
-		x.xxx_hidden_RootDirOverwrite = b.RootDirOverwrite
+		x.xxx_hidden_RootDirOverride = b.RootDirOverride
 	}
-	if b.OutputDirOverwrite != nil {
+	if b.OutputDirOverride != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 8)
-		x.xxx_hidden_OutputDirOverwrite = b.OutputDirOverwrite
+		x.xxx_hidden_OutputDirOverride = b.OutputDirOverride
 	}
-	if b.BaseImageOverwrite != nil {
+	if b.BaseImageOverride != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 8)
-		x.xxx_hidden_BaseImageOverwrite = b.BaseImageOverwrite
+		x.xxx_hidden_BaseImageOverride = b.BaseImageOverride
 	}
-	if b.InstallCmdOverwrite != nil {
+	if b.InstallCmdOverride != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 5, 8)
-		x.xxx_hidden_InstallCmdOverwrite = b.InstallCmdOverwrite
+		x.xxx_hidden_InstallCmdOverride = b.InstallCmdOverride
 	}
-	if b.BuildCmdOverwrite != nil {
+	if b.BuildCmdOverride != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 6, 8)
-		x.xxx_hidden_BuildCmdOverwrite = b.BuildCmdOverwrite
+		x.xxx_hidden_BuildCmdOverride = b.BuildCmdOverride
 	}
-	if b.RunCmdOverwrite != nil {
+	if b.RunCmdOverride != nil {
 		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 7, 8)
-		x.xxx_hidden_RunCmdOverwrite = b.RunCmdOverwrite
+		x.xxx_hidden_RunCmdOverride = b.RunCmdOverride
 	}
 	return m0
 }
@@ -1067,18 +1067,18 @@ var File_projects_v1_deploy_configs_proto protoreflect.FileDescriptor
 
 const file_projects_v1_deploy_configs_proto_rawDesc = "" +
 	"\n" +
-	" projects/v1/deploy_configs.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\"\x8a\x03\n" +
+	" projects/v1/deploy_configs.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\"\xfe\x02\n" +
 	"\x14DeployConfigResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
 	"\n" +
 	"project_id\x18\x02 \x01(\tR\tprojectId\x12!\n" +
-	"\fframework_id\x18\x03 \x01(\tR\vframeworkId\x12,\n" +
-	"\x12root_dir_overwrite\x18\x04 \x01(\tR\x10rootDirOverwrite\x120\n" +
-	"\x14output_dir_overwrite\x18\x05 \x01(\tR\x12outputDirOverwrite\x120\n" +
-	"\x14base_image_overwrite\x18\x06 \x01(\tR\x12baseImageOverwrite\x122\n" +
-	"\x15install_cmd_overwrite\x18\a \x01(\tR\x13installCmdOverwrite\x12.\n" +
-	"\x13build_cmd_overwrite\x18\b \x01(\tR\x11buildCmdOverwrite\x12*\n" +
-	"\x11run_cmd_overwrite\x18\t \x01(\tR\x0frunCmdOverwrite\"\xfd\x01\n" +
+	"\fframework_id\x18\x03 \x01(\tR\vframeworkId\x12*\n" +
+	"\x11root_dir_override\x18\x04 \x01(\tR\x0frootDirOverride\x12.\n" +
+	"\x13output_dir_override\x18\x05 \x01(\tR\x11outputDirOverride\x12.\n" +
+	"\x13base_image_override\x18\x06 \x01(\tR\x11baseImageOverride\x120\n" +
+	"\x14install_cmd_override\x18\a \x01(\tR\x12installCmdOverride\x12,\n" +
+	"\x12build_cmd_override\x18\b \x01(\tR\x10buildCmdOverride\x12(\n" +
+	"\x10run_cmd_override\x18\t \x01(\tR\x0erunCmdOverride\"\xfd\x01\n" +
 	"\x1cGenerateDeployConfigResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
 	"\n" +
@@ -1094,16 +1094,16 @@ const file_projects_v1_deploy_configs_proto_rawDesc = "" +
 	"\arun_cmd\x18\b \x01(\tR\x06runCmd\"7\n" +
 	"\x16GetDeployConfigRequest\x12\x1d\n" +
 	"\n" +
-	"project_id\x18\x01 \x01(\tR\tprojectId\"\xf0\x02\n" +
+	"project_id\x18\x01 \x01(\tR\tprojectId\"\xe4\x02\n" +
 	"\x19UpdateDeployConfigRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12!\n" +
-	"\fframework_id\x18\x02 \x01(\tR\vframeworkId\x12,\n" +
-	"\x12root_dir_overwrite\x18\x03 \x01(\tR\x10rootDirOverwrite\x120\n" +
-	"\x14output_dir_overwrite\x18\x04 \x01(\tR\x12outputDirOverwrite\x120\n" +
-	"\x14base_image_overwrite\x18\x05 \x01(\tR\x12baseImageOverwrite\x122\n" +
-	"\x15install_cmd_overwrite\x18\x06 \x01(\tR\x13installCmdOverwrite\x12.\n" +
-	"\x13build_cmd_overwrite\x18\a \x01(\tR\x11buildCmdOverwrite\x12*\n" +
-	"\x11run_cmd_overwrite\x18\b \x01(\tR\x0frunCmdOverwrite2\xae\x02\n" +
+	"\fframework_id\x18\x02 \x01(\tR\vframeworkId\x12*\n" +
+	"\x11root_dir_override\x18\x03 \x01(\tR\x0frootDirOverride\x12.\n" +
+	"\x13output_dir_override\x18\x04 \x01(\tR\x11outputDirOverride\x12.\n" +
+	"\x13base_image_override\x18\x05 \x01(\tR\x11baseImageOverride\x120\n" +
+	"\x14install_cmd_override\x18\x06 \x01(\tR\x12installCmdOverride\x12,\n" +
+	"\x12build_cmd_override\x18\a \x01(\tR\x10buildCmdOverride\x12(\n" +
+	"\x10run_cmd_override\x18\b \x01(\tR\x0erunCmdOverride2\xae\x02\n" +
 	"\x13DeployConfigService\x12f\n" +
 	"\x14GenerateDeployConfig\x12#.projects.v1.GetDeployConfigRequest\x1a).projects.v1.GenerateDeployConfigResponse\x12Y\n" +
 	"\x0fGetDeployConfig\x12#.projects.v1.GetDeployConfigRequest\x1a!.projects.v1.DeployConfigResponse\x12T\n" +
