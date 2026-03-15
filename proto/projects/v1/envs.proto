@@ -3,6 +3,7 @@ edition = "2024";
 package projects.v1;
 
 import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1";
 
@@ -20,7 +21,7 @@ service EnvService {
   // UpdateEnv обновляет окружение по его ID
   rpc UpdateEnv (UpdateEnvRequest) returns (google.protobuf.Empty);
   // DeleteEnv удаляет окружение по его ID
-  rpc DeleteEnv (GetEnvRequest) returns (google.protobuf.Empty);
+  rpc DeleteEnv (DeleteEnvRequest) returns (google.protobuf.Empty);
 }
 
 // Ответ с данными окружения
@@ -30,6 +31,8 @@ message EnvResponse {
     string project_id = 3;
     string target_branch = 4;
     string domain_name = 5;
+    google.protobuf.Timestamp created_at = 6;
+    google.protobuf.Timestamp updated_at = 7;
 }
 
 // Ответ со списком окружений
@@ -69,4 +72,9 @@ message UpdateEnvRequest {
     string name = 2;
     string target_branch = 3;
     string domain_name = 4;
+}
+
+// Параметры запроса на удаление окружения
+message DeleteEnvRequest {
+    string id = 1;
 }

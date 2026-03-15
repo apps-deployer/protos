@@ -46,7 +46,7 @@ type EnvServiceClient interface {
 	// UpdateEnv обновляет окружение по его ID
 	UpdateEnv(ctx context.Context, in *UpdateEnvRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// DeleteEnv удаляет окружение по его ID
-	DeleteEnv(ctx context.Context, in *GetEnvRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	DeleteEnv(ctx context.Context, in *DeleteEnvRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type envServiceClient struct {
@@ -107,7 +107,7 @@ func (c *envServiceClient) UpdateEnv(ctx context.Context, in *UpdateEnvRequest, 
 	return out, nil
 }
 
-func (c *envServiceClient) DeleteEnv(ctx context.Context, in *GetEnvRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *envServiceClient) DeleteEnv(ctx context.Context, in *DeleteEnvRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, EnvService_DeleteEnv_FullMethodName, in, out, cOpts...)
@@ -135,7 +135,7 @@ type EnvServiceServer interface {
 	// UpdateEnv обновляет окружение по его ID
 	UpdateEnv(context.Context, *UpdateEnvRequest) (*emptypb.Empty, error)
 	// DeleteEnv удаляет окружение по его ID
-	DeleteEnv(context.Context, *GetEnvRequest) (*emptypb.Empty, error)
+	DeleteEnv(context.Context, *DeleteEnvRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedEnvServiceServer()
 }
 
@@ -161,7 +161,7 @@ func (UnimplementedEnvServiceServer) CreateEnv(context.Context, *CreateEnvReques
 func (UnimplementedEnvServiceServer) UpdateEnv(context.Context, *UpdateEnvRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateEnv not implemented")
 }
-func (UnimplementedEnvServiceServer) DeleteEnv(context.Context, *GetEnvRequest) (*emptypb.Empty, error) {
+func (UnimplementedEnvServiceServer) DeleteEnv(context.Context, *DeleteEnvRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteEnv not implemented")
 }
 func (UnimplementedEnvServiceServer) mustEmbedUnimplementedEnvServiceServer() {}
@@ -276,7 +276,7 @@ func _EnvService_UpdateEnv_Handler(srv interface{}, ctx context.Context, dec fun
 }
 
 func _EnvService_DeleteEnv_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetEnvRequest)
+	in := new(DeleteEnvRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -288,7 +288,7 @@ func _EnvService_DeleteEnv_Handler(srv interface{}, ctx context.Context, dec fun
 		FullMethod: EnvService_DeleteEnv_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(EnvServiceServer).DeleteEnv(ctx, req.(*GetEnvRequest))
+		return srv.(EnvServiceServer).DeleteEnv(ctx, req.(*DeleteEnvRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

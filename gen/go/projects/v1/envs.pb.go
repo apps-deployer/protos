@@ -10,6 +10,7 @@ import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	unsafe "unsafe"
 )
@@ -29,6 +30,8 @@ type EnvResponse struct {
 	xxx_hidden_ProjectId    *string                `protobuf:"bytes,3,opt,name=project_id,json=projectId"`
 	xxx_hidden_TargetBranch *string                `protobuf:"bytes,4,opt,name=target_branch,json=targetBranch"`
 	xxx_hidden_DomainName   *string                `protobuf:"bytes,5,opt,name=domain_name,json=domainName"`
+	xxx_hidden_CreatedAt    *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=created_at,json=createdAt"`
+	xxx_hidden_UpdatedAt    *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt"`
 	XXX_raceDetectHookData  protoimpl.RaceDetectHookData
 	XXX_presence            [1]uint32
 	unknownFields           protoimpl.UnknownFields
@@ -110,29 +113,51 @@ func (x *EnvResponse) GetDomainName() string {
 	return ""
 }
 
+func (x *EnvResponse) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.xxx_hidden_CreatedAt
+	}
+	return nil
+}
+
+func (x *EnvResponse) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.xxx_hidden_UpdatedAt
+	}
+	return nil
+}
+
 func (x *EnvResponse) SetId(v string) {
 	x.xxx_hidden_Id = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 5)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 7)
 }
 
 func (x *EnvResponse) SetName(v string) {
 	x.xxx_hidden_Name = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 5)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 7)
 }
 
 func (x *EnvResponse) SetProjectId(v string) {
 	x.xxx_hidden_ProjectId = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 5)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 7)
 }
 
 func (x *EnvResponse) SetTargetBranch(v string) {
 	x.xxx_hidden_TargetBranch = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 5)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 7)
 }
 
 func (x *EnvResponse) SetDomainName(v string) {
 	x.xxx_hidden_DomainName = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 5)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 7)
+}
+
+func (x *EnvResponse) SetCreatedAt(v *timestamppb.Timestamp) {
+	x.xxx_hidden_CreatedAt = v
+}
+
+func (x *EnvResponse) SetUpdatedAt(v *timestamppb.Timestamp) {
+	x.xxx_hidden_UpdatedAt = v
 }
 
 func (x *EnvResponse) HasId() bool {
@@ -170,6 +195,20 @@ func (x *EnvResponse) HasDomainName() bool {
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 4)
 }
 
+func (x *EnvResponse) HasCreatedAt() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_CreatedAt != nil
+}
+
+func (x *EnvResponse) HasUpdatedAt() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_UpdatedAt != nil
+}
+
 func (x *EnvResponse) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
 	x.xxx_hidden_Id = nil
@@ -195,6 +234,14 @@ func (x *EnvResponse) ClearDomainName() {
 	x.xxx_hidden_DomainName = nil
 }
 
+func (x *EnvResponse) ClearCreatedAt() {
+	x.xxx_hidden_CreatedAt = nil
+}
+
+func (x *EnvResponse) ClearUpdatedAt() {
+	x.xxx_hidden_UpdatedAt = nil
+}
+
 type EnvResponse_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
@@ -203,6 +250,8 @@ type EnvResponse_builder struct {
 	ProjectId    *string
 	TargetBranch *string
 	DomainName   *string
+	CreatedAt    *timestamppb.Timestamp
+	UpdatedAt    *timestamppb.Timestamp
 }
 
 func (b0 EnvResponse_builder) Build() *EnvResponse {
@@ -210,25 +259,27 @@ func (b0 EnvResponse_builder) Build() *EnvResponse {
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.Id != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 5)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 7)
 		x.xxx_hidden_Id = b.Id
 	}
 	if b.Name != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 5)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 7)
 		x.xxx_hidden_Name = b.Name
 	}
 	if b.ProjectId != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 5)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 7)
 		x.xxx_hidden_ProjectId = b.ProjectId
 	}
 	if b.TargetBranch != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 5)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 7)
 		x.xxx_hidden_TargetBranch = b.TargetBranch
 	}
 	if b.DomainName != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 5)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 7)
 		x.xxx_hidden_DomainName = b.DomainName
 	}
+	x.xxx_hidden_CreatedAt = b.CreatedAt
+	x.xxx_hidden_UpdatedAt = b.UpdatedAt
 	return m0
 }
 
@@ -978,11 +1029,90 @@ func (b0 UpdateEnvRequest_builder) Build() *UpdateEnvRequest {
 	return m0
 }
 
+// Параметры запроса на удаление окружения
+type DeleteEnvRequest struct {
+	state                  protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Id          *string                `protobuf:"bytes,1,opt,name=id"`
+	XXX_raceDetectHookData protoimpl.RaceDetectHookData
+	XXX_presence           [1]uint32
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *DeleteEnvRequest) Reset() {
+	*x = DeleteEnvRequest{}
+	mi := &file_projects_v1_envs_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteEnvRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteEnvRequest) ProtoMessage() {}
+
+func (x *DeleteEnvRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_projects_v1_envs_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *DeleteEnvRequest) GetId() string {
+	if x != nil {
+		if x.xxx_hidden_Id != nil {
+			return *x.xxx_hidden_Id
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *DeleteEnvRequest) SetId(v string) {
+	x.xxx_hidden_Id = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
+}
+
+func (x *DeleteEnvRequest) HasId() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+}
+
+func (x *DeleteEnvRequest) ClearId() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	x.xxx_hidden_Id = nil
+}
+
+type DeleteEnvRequest_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Id *string
+}
+
+func (b0 DeleteEnvRequest_builder) Build() *DeleteEnvRequest {
+	m0 := &DeleteEnvRequest{}
+	b, x := &b0, m0
+	_, _ = b, x
+	if b.Id != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 1)
+		x.xxx_hidden_Id = b.Id
+	}
+	return m0
+}
+
 var File_projects_v1_envs_proto protoreflect.FileDescriptor
 
 const file_projects_v1_envs_proto_rawDesc = "" +
 	"\n" +
-	"\x16projects/v1/envs.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\"\x96\x01\n" +
+	"\x16projects/v1/envs.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8c\x02\n" +
 	"\vEnvResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1d\n" +
@@ -990,7 +1120,11 @@ const file_projects_v1_envs_proto_rawDesc = "" +
 	"project_id\x18\x03 \x01(\tR\tprojectId\x12#\n" +
 	"\rtarget_branch\x18\x04 \x01(\tR\ftargetBranch\x12\x1f\n" +
 	"\vdomain_name\x18\x05 \x01(\tR\n" +
-	"domainName\"@\n" +
+	"domainName\x129\n" +
+	"\n" +
+	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"@\n" +
 	"\x10ListEnvsResponse\x12,\n" +
 	"\x04envs\x18\x01 \x03(\v2\x18.projects.v1.EnvResponseR\x04envs\"\x1f\n" +
 	"\rGetEnvRequest\x12\x0e\n" +
@@ -1015,46 +1149,52 @@ const file_projects_v1_envs_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12#\n" +
 	"\rtarget_branch\x18\x03 \x01(\tR\ftargetBranch\x12\x1f\n" +
 	"\vdomain_name\x18\x04 \x01(\tR\n" +
-	"domainName2\xaa\x03\n" +
+	"domainName\"\"\n" +
+	"\x10DeleteEnvRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id2\xad\x03\n" +
 	"\n" +
 	"EnvService\x12H\n" +
 	"\vGetEnvByGit\x12\x1f.projects.v1.GetEnvByGitRequest\x1a\x18.projects.v1.EnvResponse\x12>\n" +
 	"\x06GetEnv\x12\x1a.projects.v1.GetEnvRequest\x1a\x18.projects.v1.EnvResponse\x12G\n" +
 	"\bListEnvs\x12\x1c.projects.v1.ListEnvsRequest\x1a\x1d.projects.v1.ListEnvsResponse\x12D\n" +
 	"\tCreateEnv\x12\x1d.projects.v1.CreateEnvRequest\x1a\x18.projects.v1.EnvResponse\x12B\n" +
-	"\tUpdateEnv\x12\x1d.projects.v1.UpdateEnvRequest\x1a\x16.google.protobuf.Empty\x12?\n" +
-	"\tDeleteEnv\x12\x1a.projects.v1.GetEnvRequest\x1a\x16.google.protobuf.EmptyB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
+	"\tUpdateEnv\x12\x1d.projects.v1.UpdateEnvRequest\x1a\x16.google.protobuf.Empty\x12B\n" +
+	"\tDeleteEnv\x12\x1d.projects.v1.DeleteEnvRequest\x1a\x16.google.protobuf.EmptyB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
 
-var file_projects_v1_envs_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_projects_v1_envs_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_projects_v1_envs_proto_goTypes = []any{
-	(*EnvResponse)(nil),        // 0: projects.v1.EnvResponse
-	(*ListEnvsResponse)(nil),   // 1: projects.v1.ListEnvsResponse
-	(*GetEnvRequest)(nil),      // 2: projects.v1.GetEnvRequest
-	(*GetEnvByGitRequest)(nil), // 3: projects.v1.GetEnvByGitRequest
-	(*ListEnvsRequest)(nil),    // 4: projects.v1.ListEnvsRequest
-	(*CreateEnvRequest)(nil),   // 5: projects.v1.CreateEnvRequest
-	(*UpdateEnvRequest)(nil),   // 6: projects.v1.UpdateEnvRequest
-	(*emptypb.Empty)(nil),      // 7: google.protobuf.Empty
+	(*EnvResponse)(nil),           // 0: projects.v1.EnvResponse
+	(*ListEnvsResponse)(nil),      // 1: projects.v1.ListEnvsResponse
+	(*GetEnvRequest)(nil),         // 2: projects.v1.GetEnvRequest
+	(*GetEnvByGitRequest)(nil),    // 3: projects.v1.GetEnvByGitRequest
+	(*ListEnvsRequest)(nil),       // 4: projects.v1.ListEnvsRequest
+	(*CreateEnvRequest)(nil),      // 5: projects.v1.CreateEnvRequest
+	(*UpdateEnvRequest)(nil),      // 6: projects.v1.UpdateEnvRequest
+	(*DeleteEnvRequest)(nil),      // 7: projects.v1.DeleteEnvRequest
+	(*timestamppb.Timestamp)(nil), // 8: google.protobuf.Timestamp
+	(*emptypb.Empty)(nil),         // 9: google.protobuf.Empty
 }
 var file_projects_v1_envs_proto_depIdxs = []int32{
-	0, // 0: projects.v1.ListEnvsResponse.envs:type_name -> projects.v1.EnvResponse
-	3, // 1: projects.v1.EnvService.GetEnvByGit:input_type -> projects.v1.GetEnvByGitRequest
-	2, // 2: projects.v1.EnvService.GetEnv:input_type -> projects.v1.GetEnvRequest
-	4, // 3: projects.v1.EnvService.ListEnvs:input_type -> projects.v1.ListEnvsRequest
-	5, // 4: projects.v1.EnvService.CreateEnv:input_type -> projects.v1.CreateEnvRequest
-	6, // 5: projects.v1.EnvService.UpdateEnv:input_type -> projects.v1.UpdateEnvRequest
-	2, // 6: projects.v1.EnvService.DeleteEnv:input_type -> projects.v1.GetEnvRequest
-	0, // 7: projects.v1.EnvService.GetEnvByGit:output_type -> projects.v1.EnvResponse
-	0, // 8: projects.v1.EnvService.GetEnv:output_type -> projects.v1.EnvResponse
-	1, // 9: projects.v1.EnvService.ListEnvs:output_type -> projects.v1.ListEnvsResponse
-	0, // 10: projects.v1.EnvService.CreateEnv:output_type -> projects.v1.EnvResponse
-	7, // 11: projects.v1.EnvService.UpdateEnv:output_type -> google.protobuf.Empty
-	7, // 12: projects.v1.EnvService.DeleteEnv:output_type -> google.protobuf.Empty
-	7, // [7:13] is the sub-list for method output_type
-	1, // [1:7] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	8, // 0: projects.v1.EnvResponse.created_at:type_name -> google.protobuf.Timestamp
+	8, // 1: projects.v1.EnvResponse.updated_at:type_name -> google.protobuf.Timestamp
+	0, // 2: projects.v1.ListEnvsResponse.envs:type_name -> projects.v1.EnvResponse
+	3, // 3: projects.v1.EnvService.GetEnvByGit:input_type -> projects.v1.GetEnvByGitRequest
+	2, // 4: projects.v1.EnvService.GetEnv:input_type -> projects.v1.GetEnvRequest
+	4, // 5: projects.v1.EnvService.ListEnvs:input_type -> projects.v1.ListEnvsRequest
+	5, // 6: projects.v1.EnvService.CreateEnv:input_type -> projects.v1.CreateEnvRequest
+	6, // 7: projects.v1.EnvService.UpdateEnv:input_type -> projects.v1.UpdateEnvRequest
+	7, // 8: projects.v1.EnvService.DeleteEnv:input_type -> projects.v1.DeleteEnvRequest
+	0, // 9: projects.v1.EnvService.GetEnvByGit:output_type -> projects.v1.EnvResponse
+	0, // 10: projects.v1.EnvService.GetEnv:output_type -> projects.v1.EnvResponse
+	1, // 11: projects.v1.EnvService.ListEnvs:output_type -> projects.v1.ListEnvsResponse
+	0, // 12: projects.v1.EnvService.CreateEnv:output_type -> projects.v1.EnvResponse
+	9, // 13: projects.v1.EnvService.UpdateEnv:output_type -> google.protobuf.Empty
+	9, // 14: projects.v1.EnvService.DeleteEnv:output_type -> google.protobuf.Empty
+	9, // [9:15] is the sub-list for method output_type
+	3, // [3:9] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_projects_v1_envs_proto_init() }
@@ -1068,7 +1208,7 @@ func file_projects_v1_envs_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_projects_v1_envs_proto_rawDesc), len(file_projects_v1_envs_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

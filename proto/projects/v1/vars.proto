@@ -3,13 +3,12 @@ edition = "2024";
 package projects.v1;
 
 import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1";
 
 // Сервис VarService предоставляет CRUD интерфейс для управления переменными проектов и окружений
 service VarService {
-  // GetProjectVar возвращает переменную проекта по ее ID
-  rpc GetProjectVar (GetVarRequest) returns (VarResponse);
   // ListProjectVars возвращает список переменных проекта с поддержкой пагинации
   rpc ListProjectVars (ListProjectVarsRequest) returns (ListVarsResponse);
   // CreateProjectVar создает новую переменную проекта
@@ -17,10 +16,8 @@ service VarService {
   // UpdateProjectVar обновляет переменную проекта по ее ID
   rpc UpdateProjectVar (UpdateVarRequest) returns (google.protobuf.Empty);
   // DeleteProjectVar удаляет переменную проекта по ее ID
-  rpc DeleteProjectVar (GetVarRequest) returns (google.protobuf.Empty);
+  rpc DeleteProjectVar (DeleteVarRequest) returns (google.protobuf.Empty);
 
-  // GetEnvVar возвращает переменную окружения по ее ID
-  rpc GetEnvVar (GetVarRequest) returns (VarResponse);
   // ListEnvVars возвращает список переменных окружения для данного окружения с поддержкой пагинации
   rpc ListEnvVars (ListEnvVarsRequest) returns (ListVarsResponse);
   // CreateEnvVar создает новую переменную окружения для данного окружения
@@ -28,18 +25,19 @@ service VarService {
   // UpdateEnvVar обновляет переменную окружения по ее ID
   rpc UpdateEnvVar (UpdateVarRequest) returns (google.protobuf.Empty);
   // DeleteEnvVar удаляет переменную окружения по ее ID
-  rpc DeleteEnvVar (GetVarRequest) returns (google.protobuf.Empty);
+  rpc DeleteEnvVar (DeleteVarRequest) returns (google.protobuf.Empty);
 
-  // ListAllVars возвращает список всех переменных, определенных в окружении, включая 
+  // ResolveVars возвращает список всех переменных, определенных в окружении, включая 
   // переменные проекта, с поддержкой пагинации
-  rpc ListAllVars (ListAllVarsRequest) returns (ListVarsResponse);
+  rpc ResolveVars (ResolveVarsRequest) returns (ListVarsResponse);
 }
 
-// Ответ с данными переменной
+// Ответ с метаданными переменной
 message VarResponse {
     string id = 1;
     string key = 2;
-    string value = 3;
+    google.protobuf.Timestamp created_at = 3;
+    google.protobuf.Timestamp updated_at = 4;
 }
 
 // Ответ со списком переменных
@@ -47,8 +45,20 @@ message ListVarsResponse {
     repeated VarResponse vars = 1;
 }
 
+// Ответ с данными переменных
+message ResolvedVar {
+    string id = 1;
+    string key = 2;
+    string value = 3;
+}
+
+// Ответ со списком данных переменных с их значениями
+message ResolveVarsResponse {
+    repeated ResolvedVar vars = 1;
+}
+
 // Параметры запросов для получения переменной по ID
-message GetVarRequest {
+message DeleteVarRequest {
     string id = 1;
 }
 
@@ -87,6 +97,6 @@ message UpdateVarRequest {
 }
 
 // Параметры запросов для получения полного списка переменных в окружении
-message ListAllVarsRequest {
+message ResolveVarsRequest {
     string env_id = 1;
 }

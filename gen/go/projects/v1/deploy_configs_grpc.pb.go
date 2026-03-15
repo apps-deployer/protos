@@ -20,9 +20,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	DeployConfigService_GenerateDeployConfig_FullMethodName = "/projects.v1.DeployConfigService/GenerateDeployConfig"
-	DeployConfigService_GetDeployConfig_FullMethodName      = "/projects.v1.DeployConfigService/GetDeployConfig"
-	DeployConfigService_UpdateDeployConfig_FullMethodName   = "/projects.v1.DeployConfigService/UpdateDeployConfig"
+	DeployConfigService_ResolveDeployConfig_FullMethodName = "/projects.v1.DeployConfigService/ResolveDeployConfig"
+	DeployConfigService_GetDeployConfig_FullMethodName     = "/projects.v1.DeployConfigService/GetDeployConfig"
+	DeployConfigService_UpdateDeployConfig_FullMethodName  = "/projects.v1.DeployConfigService/UpdateDeployConfig"
 )
 
 // DeployConfigServiceClient is the client API for DeployConfigService service.
@@ -33,7 +33,7 @@ const (
 type DeployConfigServiceClient interface {
 	// GetResolvedDeployConfig возвращает конфигурацию деплоя по его ID, сгенерированную
 	// с учетом значений из шаблона и их переопределений
-	GenerateDeployConfig(ctx context.Context, in *GetDeployConfigRequest, opts ...grpc.CallOption) (*GenerateDeployConfigResponse, error)
+	ResolveDeployConfig(ctx context.Context, in *GetDeployConfigRequest, opts ...grpc.CallOption) (*ResolveDeployConfigResponse, error)
 	// GetDeployConfig возвращает конфигурацию деплоя по его ID, без учета шаблона
 	GetDeployConfig(ctx context.Context, in *GetDeployConfigRequest, opts ...grpc.CallOption) (*DeployConfigResponse, error)
 	// UpdateDeployConfig обновляет конфигурацию деплоя по его ID
@@ -48,10 +48,10 @@ func NewDeployConfigServiceClient(cc grpc.ClientConnInterface) DeployConfigServi
 	return &deployConfigServiceClient{cc}
 }
 
-func (c *deployConfigServiceClient) GenerateDeployConfig(ctx context.Context, in *GetDeployConfigRequest, opts ...grpc.CallOption) (*GenerateDeployConfigResponse, error) {
+func (c *deployConfigServiceClient) ResolveDeployConfig(ctx context.Context, in *GetDeployConfigRequest, opts ...grpc.CallOption) (*ResolveDeployConfigResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GenerateDeployConfigResponse)
-	err := c.cc.Invoke(ctx, DeployConfigService_GenerateDeployConfig_FullMethodName, in, out, cOpts...)
+	out := new(ResolveDeployConfigResponse)
+	err := c.cc.Invoke(ctx, DeployConfigService_ResolveDeployConfig_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -86,7 +86,7 @@ func (c *deployConfigServiceClient) UpdateDeployConfig(ctx context.Context, in *
 type DeployConfigServiceServer interface {
 	// GetResolvedDeployConfig возвращает конфигурацию деплоя по его ID, сгенерированную
 	// с учетом значений из шаблона и их переопределений
-	GenerateDeployConfig(context.Context, *GetDeployConfigRequest) (*GenerateDeployConfigResponse, error)
+	ResolveDeployConfig(context.Context, *GetDeployConfigRequest) (*ResolveDeployConfigResponse, error)
 	// GetDeployConfig возвращает конфигурацию деплоя по его ID, без учета шаблона
 	GetDeployConfig(context.Context, *GetDeployConfigRequest) (*DeployConfigResponse, error)
 	// UpdateDeployConfig обновляет конфигурацию деплоя по его ID
@@ -101,8 +101,8 @@ type DeployConfigServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedDeployConfigServiceServer struct{}
 
-func (UnimplementedDeployConfigServiceServer) GenerateDeployConfig(context.Context, *GetDeployConfigRequest) (*GenerateDeployConfigResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method GenerateDeployConfig not implemented")
+func (UnimplementedDeployConfigServiceServer) ResolveDeployConfig(context.Context, *GetDeployConfigRequest) (*ResolveDeployConfigResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ResolveDeployConfig not implemented")
 }
 func (UnimplementedDeployConfigServiceServer) GetDeployConfig(context.Context, *GetDeployConfigRequest) (*DeployConfigResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetDeployConfig not implemented")
@@ -131,20 +131,20 @@ func RegisterDeployConfigServiceServer(s grpc.ServiceRegistrar, srv DeployConfig
 	s.RegisterService(&DeployConfigService_ServiceDesc, srv)
 }
 
-func _DeployConfigService_GenerateDeployConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _DeployConfigService_ResolveDeployConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetDeployConfigRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(DeployConfigServiceServer).GenerateDeployConfig(ctx, in)
+		return srv.(DeployConfigServiceServer).ResolveDeployConfig(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: DeployConfigService_GenerateDeployConfig_FullMethodName,
+		FullMethod: DeployConfigService_ResolveDeployConfig_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DeployConfigServiceServer).GenerateDeployConfig(ctx, req.(*GetDeployConfigRequest))
+		return srv.(DeployConfigServiceServer).ResolveDeployConfig(ctx, req.(*GetDeployConfigRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -193,8 +193,8 @@ var DeployConfigService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*DeployConfigServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GenerateDeployConfig",
-			Handler:    _DeployConfigService_GenerateDeployConfig_Handler,
+			MethodName: "ResolveDeployConfig",
+			Handler:    _DeployConfigService_ResolveDeployConfig_Handler,
 		},
 		{
 			MethodName: "GetDeployConfig",

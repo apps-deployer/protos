@@ -3,6 +3,7 @@ edition = "2024";
 package projects.v1;
 
 import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1";
 
@@ -18,7 +19,7 @@ service FrameworkService {
   // UpdateFramework обновляет шаблон конфигурации деплоя по его ID
   rpc UpdateFramework (UpdateFrameworkRequest) returns (google.protobuf.Empty);
   // DeleteFramework удаляет шаблон конфигурации деплоя по его ID
-  rpc DeleteFramework (GetFrameworkRequest) returns (google.protobuf.Empty);
+  rpc DeleteFramework (DeleteFrameworkRequest) returns (google.protobuf.Empty);
 }
 
 // Шаблоны конфигурации деплоя
@@ -31,6 +32,8 @@ message FrameworkResponse {
   string install_cmd = 6;
   string build_cmd = 7;
   string run_cmd = 8;
+  google.protobuf.Timestamp created_at = 9;
+  google.protobuf.Timestamp updated_at = 10;
 }
 
 // Список шаблонов конфигурации деплоя
@@ -70,4 +73,9 @@ message UpdateFrameworkRequest {
   string install_cmd = 6;
   string build_cmd = 7;
   string run_cmd = 8;
+}
+
+// Параметры запросов для удаления шаблона конфигурации по ID
+message DeleteFrameworkRequest {
+  string id = 1;
 }

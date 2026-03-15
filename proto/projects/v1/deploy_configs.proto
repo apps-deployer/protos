@@ -4,6 +4,7 @@ edition = "2024";
 package projects.v1;
 
 import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1";
 
@@ -11,7 +12,7 @@ option go_package = "github.com/apps-deployer/protos/gen/go/projects/v1;projects
 service DeployConfigService {
   // GetResolvedDeployConfig возвращает конфигурацию деплоя по его ID, сгенерированную  
   // с учетом значений из шаблона и их переопределений 
-  rpc GenerateDeployConfig (GetDeployConfigRequest) returns (GenerateDeployConfigResponse);
+  rpc ResolveDeployConfig (GetDeployConfigRequest) returns (ResolveDeployConfigResponse);
   // GetDeployConfig возвращает конфигурацию деплоя по его ID, без учета шаблона
   rpc GetDeployConfig (GetDeployConfigRequest) returns (DeployConfigResponse);
   // UpdateDeployConfig обновляет конфигурацию деплоя по его ID
@@ -29,10 +30,12 @@ message DeployConfigResponse {
   string install_cmd_override = 7;
   string build_cmd_override = 8;
   string run_cmd_override = 9;
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp updated_at = 11;
 }
 
 // Конфигурация деплоя для проекта, сгенерированная с учетом фреймворка и переопределений
-message GenerateDeployConfigResponse {
+message ResolveDeployConfigResponse {
   string id = 1;
   string project_id = 2;
   string root_dir = 3;

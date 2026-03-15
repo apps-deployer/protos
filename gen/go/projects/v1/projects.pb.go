@@ -30,6 +30,7 @@ type ProjectResponse struct {
 	xxx_hidden_RepoUrl     *string                `protobuf:"bytes,3,opt,name=repo_url,json=repoUrl"`
 	xxx_hidden_OwnerId     *string                `protobuf:"bytes,4,opt,name=owner_id,json=ownerId"`
 	xxx_hidden_CreatedAt   *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt"`
+	xxx_hidden_UpdatedAt   *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -108,28 +109,39 @@ func (x *ProjectResponse) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *ProjectResponse) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.xxx_hidden_UpdatedAt
+	}
+	return nil
+}
+
 func (x *ProjectResponse) SetId(v string) {
 	x.xxx_hidden_Id = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 5)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 6)
 }
 
 func (x *ProjectResponse) SetName(v string) {
 	x.xxx_hidden_Name = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 5)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 6)
 }
 
 func (x *ProjectResponse) SetRepoUrl(v string) {
 	x.xxx_hidden_RepoUrl = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 5)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 6)
 }
 
 func (x *ProjectResponse) SetOwnerId(v string) {
 	x.xxx_hidden_OwnerId = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 5)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 6)
 }
 
 func (x *ProjectResponse) SetCreatedAt(v *timestamppb.Timestamp) {
 	x.xxx_hidden_CreatedAt = v
+}
+
+func (x *ProjectResponse) SetUpdatedAt(v *timestamppb.Timestamp) {
+	x.xxx_hidden_UpdatedAt = v
 }
 
 func (x *ProjectResponse) HasId() bool {
@@ -167,6 +179,13 @@ func (x *ProjectResponse) HasCreatedAt() bool {
 	return x.xxx_hidden_CreatedAt != nil
 }
 
+func (x *ProjectResponse) HasUpdatedAt() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_UpdatedAt != nil
+}
+
 func (x *ProjectResponse) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
 	x.xxx_hidden_Id = nil
@@ -191,6 +210,10 @@ func (x *ProjectResponse) ClearCreatedAt() {
 	x.xxx_hidden_CreatedAt = nil
 }
 
+func (x *ProjectResponse) ClearUpdatedAt() {
+	x.xxx_hidden_UpdatedAt = nil
+}
+
 type ProjectResponse_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
@@ -199,6 +222,7 @@ type ProjectResponse_builder struct {
 	RepoUrl   *string
 	OwnerId   *string
 	CreatedAt *timestamppb.Timestamp
+	UpdatedAt *timestamppb.Timestamp
 }
 
 func (b0 ProjectResponse_builder) Build() *ProjectResponse {
@@ -206,22 +230,23 @@ func (b0 ProjectResponse_builder) Build() *ProjectResponse {
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.Id != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 5)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 6)
 		x.xxx_hidden_Id = b.Id
 	}
 	if b.Name != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 5)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 6)
 		x.xxx_hidden_Name = b.Name
 	}
 	if b.RepoUrl != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 5)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 6)
 		x.xxx_hidden_RepoUrl = b.RepoUrl
 	}
 	if b.OwnerId != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 5)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 6)
 		x.xxx_hidden_OwnerId = b.OwnerId
 	}
 	x.xxx_hidden_CreatedAt = b.CreatedAt
+	x.xxx_hidden_UpdatedAt = b.UpdatedAt
 	return m0
 }
 
@@ -859,18 +884,99 @@ func (b0 UpdateProjectRequest_builder) Build() *UpdateProjectRequest {
 	return m0
 }
 
+// Параметры запросов для удаления проекта по ID
+type DeleteProjectRequest struct {
+	state                  protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Id          *string                `protobuf:"bytes,1,opt,name=id"`
+	XXX_raceDetectHookData protoimpl.RaceDetectHookData
+	XXX_presence           [1]uint32
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *DeleteProjectRequest) Reset() {
+	*x = DeleteProjectRequest{}
+	mi := &file_projects_v1_projects_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteProjectRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteProjectRequest) ProtoMessage() {}
+
+func (x *DeleteProjectRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_projects_v1_projects_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *DeleteProjectRequest) GetId() string {
+	if x != nil {
+		if x.xxx_hidden_Id != nil {
+			return *x.xxx_hidden_Id
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *DeleteProjectRequest) SetId(v string) {
+	x.xxx_hidden_Id = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
+}
+
+func (x *DeleteProjectRequest) HasId() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+}
+
+func (x *DeleteProjectRequest) ClearId() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	x.xxx_hidden_Id = nil
+}
+
+type DeleteProjectRequest_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Id *string
+}
+
+func (b0 DeleteProjectRequest_builder) Build() *DeleteProjectRequest {
+	m0 := &DeleteProjectRequest{}
+	b, x := &b0, m0
+	_, _ = b, x
+	if b.Id != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 1)
+		x.xxx_hidden_Id = b.Id
+	}
+	return m0
+}
+
 var File_projects_v1_projects_proto protoreflect.FileDescriptor
 
 const file_projects_v1_projects_proto_rawDesc = "" +
 	"\n" +
-	"\x1aprojects/v1/projects.proto\x12\vprojects.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bgoogle/protobuf/empty.proto\"\xa6\x01\n" +
+	"\x1aprojects/v1/projects.proto\x12\vprojects.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bgoogle/protobuf/empty.proto\"\xe1\x01\n" +
 	"\x0fProjectResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
 	"\brepo_url\x18\x03 \x01(\tR\arepoUrl\x12\x19\n" +
 	"\bowner_id\x18\x04 \x01(\tR\aownerId\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"P\n" +
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"P\n" +
 	"\x14ListProjectsResponse\x128\n" +
 	"\bprojects\x18\x01 \x03(\v2\x1c.projects.v1.ProjectResponseR\bprojects\"#\n" +
 	"\x11GetProjectRequest\x12\x0e\n" +
@@ -888,16 +994,18 @@ const file_projects_v1_projects_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
 	"\brepo_url\x18\x03 \x01(\tR\arepoUrl\x12\x19\n" +
-	"\bowner_id\x18\x04 \x01(\tR\aownerId2\x98\x03\n" +
+	"\bowner_id\x18\x04 \x01(\tR\aownerId\"&\n" +
+	"\x14DeleteProjectRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id2\x9b\x03\n" +
 	"\x0eProjectService\x12J\n" +
 	"\n" +
 	"GetProject\x12\x1e.projects.v1.GetProjectRequest\x1a\x1c.projects.v1.ProjectResponse\x12S\n" +
 	"\fListProjects\x12 .projects.v1.ListProjectsRequest\x1a!.projects.v1.ListProjectsResponse\x12P\n" +
 	"\rCreateProject\x12!.projects.v1.CreateProjectRequest\x1a\x1c.projects.v1.ProjectResponse\x12J\n" +
-	"\rUpdateProject\x12!.projects.v1.UpdateProjectRequest\x1a\x16.google.protobuf.Empty\x12G\n" +
-	"\rDeleteProject\x12\x1e.projects.v1.GetProjectRequest\x1a\x16.google.protobuf.EmptyB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
+	"\rUpdateProject\x12!.projects.v1.UpdateProjectRequest\x1a\x16.google.protobuf.Empty\x12J\n" +
+	"\rDeleteProject\x12!.projects.v1.DeleteProjectRequest\x1a\x16.google.protobuf.EmptyB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
 
-var file_projects_v1_projects_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_projects_v1_projects_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_projects_v1_projects_proto_goTypes = []any{
 	(*ProjectResponse)(nil),       // 0: projects.v1.ProjectResponse
 	(*ListProjectsResponse)(nil),  // 1: projects.v1.ListProjectsResponse
@@ -905,27 +1013,29 @@ var file_projects_v1_projects_proto_goTypes = []any{
 	(*ListProjectsRequest)(nil),   // 3: projects.v1.ListProjectsRequest
 	(*CreateProjectRequest)(nil),  // 4: projects.v1.CreateProjectRequest
 	(*UpdateProjectRequest)(nil),  // 5: projects.v1.UpdateProjectRequest
-	(*timestamppb.Timestamp)(nil), // 6: google.protobuf.Timestamp
-	(*emptypb.Empty)(nil),         // 7: google.protobuf.Empty
+	(*DeleteProjectRequest)(nil),  // 6: projects.v1.DeleteProjectRequest
+	(*timestamppb.Timestamp)(nil), // 7: google.protobuf.Timestamp
+	(*emptypb.Empty)(nil),         // 8: google.protobuf.Empty
 }
 var file_projects_v1_projects_proto_depIdxs = []int32{
-	6, // 0: projects.v1.ProjectResponse.created_at:type_name -> google.protobuf.Timestamp
-	0, // 1: projects.v1.ListProjectsResponse.projects:type_name -> projects.v1.ProjectResponse
-	2, // 2: projects.v1.ProjectService.GetProject:input_type -> projects.v1.GetProjectRequest
-	3, // 3: projects.v1.ProjectService.ListProjects:input_type -> projects.v1.ListProjectsRequest
-	4, // 4: projects.v1.ProjectService.CreateProject:input_type -> projects.v1.CreateProjectRequest
-	5, // 5: projects.v1.ProjectService.UpdateProject:input_type -> projects.v1.UpdateProjectRequest
-	2, // 6: projects.v1.ProjectService.DeleteProject:input_type -> projects.v1.GetProjectRequest
-	0, // 7: projects.v1.ProjectService.GetProject:output_type -> projects.v1.ProjectResponse
-	1, // 8: projects.v1.ProjectService.ListProjects:output_type -> projects.v1.ListProjectsResponse
-	0, // 9: projects.v1.ProjectService.CreateProject:output_type -> projects.v1.ProjectResponse
-	7, // 10: projects.v1.ProjectService.UpdateProject:output_type -> google.protobuf.Empty
-	7, // 11: projects.v1.ProjectService.DeleteProject:output_type -> google.protobuf.Empty
-	7, // [7:12] is the sub-list for method output_type
-	2, // [2:7] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	7, // 0: projects.v1.ProjectResponse.created_at:type_name -> google.protobuf.Timestamp
+	7, // 1: projects.v1.ProjectResponse.updated_at:type_name -> google.protobuf.Timestamp
+	0, // 2: projects.v1.ListProjectsResponse.projects:type_name -> projects.v1.ProjectResponse
+	2, // 3: projects.v1.ProjectService.GetProject:input_type -> projects.v1.GetProjectRequest
+	3, // 4: projects.v1.ProjectService.ListProjects:input_type -> projects.v1.ListProjectsRequest
+	4, // 5: projects.v1.ProjectService.CreateProject:input_type -> projects.v1.CreateProjectRequest
+	5, // 6: projects.v1.ProjectService.UpdateProject:input_type -> projects.v1.UpdateProjectRequest
+	6, // 7: projects.v1.ProjectService.DeleteProject:input_type -> projects.v1.DeleteProjectRequest
+	0, // 8: projects.v1.ProjectService.GetProject:output_type -> projects.v1.ProjectResponse
+	1, // 9: projects.v1.ProjectService.ListProjects:output_type -> projects.v1.ListProjectsResponse
+	0, // 10: projects.v1.ProjectService.CreateProject:output_type -> projects.v1.ProjectResponse
+	8, // 11: projects.v1.ProjectService.UpdateProject:output_type -> google.protobuf.Empty
+	8, // 12: projects.v1.ProjectService.DeleteProject:output_type -> google.protobuf.Empty
+	8, // [8:13] is the sub-list for method output_type
+	3, // [3:8] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_projects_v1_projects_proto_init() }
@@ -939,7 +1049,7 @@ func file_projects_v1_projects_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_projects_v1_projects_proto_rawDesc), len(file_projects_v1_projects_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

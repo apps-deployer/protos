@@ -43,7 +43,7 @@ type FrameworkServiceClient interface {
 	// UpdateFramework обновляет шаблон конфигурации деплоя по его ID
 	UpdateFramework(ctx context.Context, in *UpdateFrameworkRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// DeleteFramework удаляет шаблон конфигурации деплоя по его ID
-	DeleteFramework(ctx context.Context, in *GetFrameworkRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	DeleteFramework(ctx context.Context, in *DeleteFrameworkRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type frameworkServiceClient struct {
@@ -94,7 +94,7 @@ func (c *frameworkServiceClient) UpdateFramework(ctx context.Context, in *Update
 	return out, nil
 }
 
-func (c *frameworkServiceClient) DeleteFramework(ctx context.Context, in *GetFrameworkRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *frameworkServiceClient) DeleteFramework(ctx context.Context, in *DeleteFrameworkRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, FrameworkService_DeleteFramework_FullMethodName, in, out, cOpts...)
@@ -120,7 +120,7 @@ type FrameworkServiceServer interface {
 	// UpdateFramework обновляет шаблон конфигурации деплоя по его ID
 	UpdateFramework(context.Context, *UpdateFrameworkRequest) (*emptypb.Empty, error)
 	// DeleteFramework удаляет шаблон конфигурации деплоя по его ID
-	DeleteFramework(context.Context, *GetFrameworkRequest) (*emptypb.Empty, error)
+	DeleteFramework(context.Context, *DeleteFrameworkRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedFrameworkServiceServer()
 }
 
@@ -143,7 +143,7 @@ func (UnimplementedFrameworkServiceServer) CreateFramework(context.Context, *Cre
 func (UnimplementedFrameworkServiceServer) UpdateFramework(context.Context, *UpdateFrameworkRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateFramework not implemented")
 }
-func (UnimplementedFrameworkServiceServer) DeleteFramework(context.Context, *GetFrameworkRequest) (*emptypb.Empty, error) {
+func (UnimplementedFrameworkServiceServer) DeleteFramework(context.Context, *DeleteFrameworkRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteFramework not implemented")
 }
 func (UnimplementedFrameworkServiceServer) mustEmbedUnimplementedFrameworkServiceServer() {}
@@ -240,7 +240,7 @@ func _FrameworkService_UpdateFramework_Handler(srv interface{}, ctx context.Cont
 }
 
 func _FrameworkService_DeleteFramework_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetFrameworkRequest)
+	in := new(DeleteFrameworkRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -252,7 +252,7 @@ func _FrameworkService_DeleteFramework_Handler(srv interface{}, ctx context.Cont
 		FullMethod: FrameworkService_DeleteFramework_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FrameworkServiceServer).DeleteFramework(ctx, req.(*GetFrameworkRequest))
+		return srv.(FrameworkServiceServer).DeleteFramework(ctx, req.(*DeleteFrameworkRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

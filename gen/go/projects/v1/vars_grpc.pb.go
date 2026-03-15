@@ -20,17 +20,15 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	VarService_GetProjectVar_FullMethodName    = "/projects.v1.VarService/GetProjectVar"
 	VarService_ListProjectVars_FullMethodName  = "/projects.v1.VarService/ListProjectVars"
 	VarService_CreateProjectVar_FullMethodName = "/projects.v1.VarService/CreateProjectVar"
 	VarService_UpdateProjectVar_FullMethodName = "/projects.v1.VarService/UpdateProjectVar"
 	VarService_DeleteProjectVar_FullMethodName = "/projects.v1.VarService/DeleteProjectVar"
-	VarService_GetEnvVar_FullMethodName        = "/projects.v1.VarService/GetEnvVar"
 	VarService_ListEnvVars_FullMethodName      = "/projects.v1.VarService/ListEnvVars"
 	VarService_CreateEnvVar_FullMethodName     = "/projects.v1.VarService/CreateEnvVar"
 	VarService_UpdateEnvVar_FullMethodName     = "/projects.v1.VarService/UpdateEnvVar"
 	VarService_DeleteEnvVar_FullMethodName     = "/projects.v1.VarService/DeleteEnvVar"
-	VarService_ListAllVars_FullMethodName      = "/projects.v1.VarService/ListAllVars"
+	VarService_ResolveVars_FullMethodName      = "/projects.v1.VarService/ResolveVars"
 )
 
 // VarServiceClient is the client API for VarService service.
@@ -39,8 +37,6 @@ const (
 //
 // Сервис VarService предоставляет CRUD интерфейс для управления переменными проектов и окружений
 type VarServiceClient interface {
-	// GetProjectVar возвращает переменную проекта по ее ID
-	GetProjectVar(ctx context.Context, in *GetVarRequest, opts ...grpc.CallOption) (*VarResponse, error)
 	// ListProjectVars возвращает список переменных проекта с поддержкой пагинации
 	ListProjectVars(ctx context.Context, in *ListProjectVarsRequest, opts ...grpc.CallOption) (*ListVarsResponse, error)
 	// CreateProjectVar создает новую переменную проекта
@@ -48,9 +44,7 @@ type VarServiceClient interface {
 	// UpdateProjectVar обновляет переменную проекта по ее ID
 	UpdateProjectVar(ctx context.Context, in *UpdateVarRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// DeleteProjectVar удаляет переменную проекта по ее ID
-	DeleteProjectVar(ctx context.Context, in *GetVarRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	// GetEnvVar возвращает переменную окружения по ее ID
-	GetEnvVar(ctx context.Context, in *GetVarRequest, opts ...grpc.CallOption) (*VarResponse, error)
+	DeleteProjectVar(ctx context.Context, in *DeleteVarRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// ListEnvVars возвращает список переменных окружения для данного окружения с поддержкой пагинации
 	ListEnvVars(ctx context.Context, in *ListEnvVarsRequest, opts ...grpc.CallOption) (*ListVarsResponse, error)
 	// CreateEnvVar создает новую переменную окружения для данного окружения
@@ -58,10 +52,10 @@ type VarServiceClient interface {
 	// UpdateEnvVar обновляет переменную окружения по ее ID
 	UpdateEnvVar(ctx context.Context, in *UpdateVarRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// DeleteEnvVar удаляет переменную окружения по ее ID
-	DeleteEnvVar(ctx context.Context, in *GetVarRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	// ListAllVars возвращает список всех переменных, определенных в окружении, включая
+	DeleteEnvVar(ctx context.Context, in *DeleteVarRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	// ResolveVars возвращает список всех переменных, определенных в окружении, включая
 	// переменные проекта, с поддержкой пагинации
-	ListAllVars(ctx context.Context, in *ListAllVarsRequest, opts ...grpc.CallOption) (*ListVarsResponse, error)
+	ResolveVars(ctx context.Context, in *ResolveVarsRequest, opts ...grpc.CallOption) (*ListVarsResponse, error)
 }
 
 type varServiceClient struct {
@@ -70,16 +64,6 @@ type varServiceClient struct {
 
 func NewVarServiceClient(cc grpc.ClientConnInterface) VarServiceClient {
 	return &varServiceClient{cc}
-}
-
-func (c *varServiceClient) GetProjectVar(ctx context.Context, in *GetVarRequest, opts ...grpc.CallOption) (*VarResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(VarResponse)
-	err := c.cc.Invoke(ctx, VarService_GetProjectVar_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *varServiceClient) ListProjectVars(ctx context.Context, in *ListProjectVarsRequest, opts ...grpc.CallOption) (*ListVarsResponse, error) {
@@ -112,20 +96,10 @@ func (c *varServiceClient) UpdateProjectVar(ctx context.Context, in *UpdateVarRe
 	return out, nil
 }
 
-func (c *varServiceClient) DeleteProjectVar(ctx context.Context, in *GetVarRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *varServiceClient) DeleteProjectVar(ctx context.Context, in *DeleteVarRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, VarService_DeleteProjectVar_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *varServiceClient) GetEnvVar(ctx context.Context, in *GetVarRequest, opts ...grpc.CallOption) (*VarResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(VarResponse)
-	err := c.cc.Invoke(ctx, VarService_GetEnvVar_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -162,7 +136,7 @@ func (c *varServiceClient) UpdateEnvVar(ctx context.Context, in *UpdateVarReques
 	return out, nil
 }
 
-func (c *varServiceClient) DeleteEnvVar(ctx context.Context, in *GetVarRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *varServiceClient) DeleteEnvVar(ctx context.Context, in *DeleteVarRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, VarService_DeleteEnvVar_FullMethodName, in, out, cOpts...)
@@ -172,10 +146,10 @@ func (c *varServiceClient) DeleteEnvVar(ctx context.Context, in *GetVarRequest, 
 	return out, nil
 }
 
-func (c *varServiceClient) ListAllVars(ctx context.Context, in *ListAllVarsRequest, opts ...grpc.CallOption) (*ListVarsResponse, error) {
+func (c *varServiceClient) ResolveVars(ctx context.Context, in *ResolveVarsRequest, opts ...grpc.CallOption) (*ListVarsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListVarsResponse)
-	err := c.cc.Invoke(ctx, VarService_ListAllVars_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, VarService_ResolveVars_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -188,8 +162,6 @@ func (c *varServiceClient) ListAllVars(ctx context.Context, in *ListAllVarsReque
 //
 // Сервис VarService предоставляет CRUD интерфейс для управления переменными проектов и окружений
 type VarServiceServer interface {
-	// GetProjectVar возвращает переменную проекта по ее ID
-	GetProjectVar(context.Context, *GetVarRequest) (*VarResponse, error)
 	// ListProjectVars возвращает список переменных проекта с поддержкой пагинации
 	ListProjectVars(context.Context, *ListProjectVarsRequest) (*ListVarsResponse, error)
 	// CreateProjectVar создает новую переменную проекта
@@ -197,9 +169,7 @@ type VarServiceServer interface {
 	// UpdateProjectVar обновляет переменную проекта по ее ID
 	UpdateProjectVar(context.Context, *UpdateVarRequest) (*emptypb.Empty, error)
 	// DeleteProjectVar удаляет переменную проекта по ее ID
-	DeleteProjectVar(context.Context, *GetVarRequest) (*emptypb.Empty, error)
-	// GetEnvVar возвращает переменную окружения по ее ID
-	GetEnvVar(context.Context, *GetVarRequest) (*VarResponse, error)
+	DeleteProjectVar(context.Context, *DeleteVarRequest) (*emptypb.Empty, error)
 	// ListEnvVars возвращает список переменных окружения для данного окружения с поддержкой пагинации
 	ListEnvVars(context.Context, *ListEnvVarsRequest) (*ListVarsResponse, error)
 	// CreateEnvVar создает новую переменную окружения для данного окружения
@@ -207,10 +177,10 @@ type VarServiceServer interface {
 	// UpdateEnvVar обновляет переменную окружения по ее ID
 	UpdateEnvVar(context.Context, *UpdateVarRequest) (*emptypb.Empty, error)
 	// DeleteEnvVar удаляет переменную окружения по ее ID
-	DeleteEnvVar(context.Context, *GetVarRequest) (*emptypb.Empty, error)
-	// ListAllVars возвращает список всех переменных, определенных в окружении, включая
+	DeleteEnvVar(context.Context, *DeleteVarRequest) (*emptypb.Empty, error)
+	// ResolveVars возвращает список всех переменных, определенных в окружении, включая
 	// переменные проекта, с поддержкой пагинации
-	ListAllVars(context.Context, *ListAllVarsRequest) (*ListVarsResponse, error)
+	ResolveVars(context.Context, *ResolveVarsRequest) (*ListVarsResponse, error)
 	mustEmbedUnimplementedVarServiceServer()
 }
 
@@ -221,9 +191,6 @@ type VarServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedVarServiceServer struct{}
 
-func (UnimplementedVarServiceServer) GetProjectVar(context.Context, *GetVarRequest) (*VarResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method GetProjectVar not implemented")
-}
 func (UnimplementedVarServiceServer) ListProjectVars(context.Context, *ListProjectVarsRequest) (*ListVarsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListProjectVars not implemented")
 }
@@ -233,11 +200,8 @@ func (UnimplementedVarServiceServer) CreateProjectVar(context.Context, *CreatePr
 func (UnimplementedVarServiceServer) UpdateProjectVar(context.Context, *UpdateVarRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateProjectVar not implemented")
 }
-func (UnimplementedVarServiceServer) DeleteProjectVar(context.Context, *GetVarRequest) (*emptypb.Empty, error) {
+func (UnimplementedVarServiceServer) DeleteProjectVar(context.Context, *DeleteVarRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteProjectVar not implemented")
-}
-func (UnimplementedVarServiceServer) GetEnvVar(context.Context, *GetVarRequest) (*VarResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method GetEnvVar not implemented")
 }
 func (UnimplementedVarServiceServer) ListEnvVars(context.Context, *ListEnvVarsRequest) (*ListVarsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListEnvVars not implemented")
@@ -248,11 +212,11 @@ func (UnimplementedVarServiceServer) CreateEnvVar(context.Context, *CreateEnvVar
 func (UnimplementedVarServiceServer) UpdateEnvVar(context.Context, *UpdateVarRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateEnvVar not implemented")
 }
-func (UnimplementedVarServiceServer) DeleteEnvVar(context.Context, *GetVarRequest) (*emptypb.Empty, error) {
+func (UnimplementedVarServiceServer) DeleteEnvVar(context.Context, *DeleteVarRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteEnvVar not implemented")
 }
-func (UnimplementedVarServiceServer) ListAllVars(context.Context, *ListAllVarsRequest) (*ListVarsResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method ListAllVars not implemented")
+func (UnimplementedVarServiceServer) ResolveVars(context.Context, *ResolveVarsRequest) (*ListVarsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ResolveVars not implemented")
 }
 func (UnimplementedVarServiceServer) mustEmbedUnimplementedVarServiceServer() {}
 func (UnimplementedVarServiceServer) testEmbeddedByValue()                    {}
@@ -273,24 +237,6 @@ func RegisterVarServiceServer(s grpc.ServiceRegistrar, srv VarServiceServer) {
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&VarService_ServiceDesc, srv)
-}
-
-func _VarService_GetProjectVar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetVarRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VarServiceServer).GetProjectVar(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VarService_GetProjectVar_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VarServiceServer).GetProjectVar(ctx, req.(*GetVarRequest))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _VarService_ListProjectVars_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -348,7 +294,7 @@ func _VarService_UpdateProjectVar_Handler(srv interface{}, ctx context.Context, 
 }
 
 func _VarService_DeleteProjectVar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetVarRequest)
+	in := new(DeleteVarRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -360,25 +306,7 @@ func _VarService_DeleteProjectVar_Handler(srv interface{}, ctx context.Context, 
 		FullMethod: VarService_DeleteProjectVar_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VarServiceServer).DeleteProjectVar(ctx, req.(*GetVarRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VarService_GetEnvVar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetVarRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VarServiceServer).GetEnvVar(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VarService_GetEnvVar_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VarServiceServer).GetEnvVar(ctx, req.(*GetVarRequest))
+		return srv.(VarServiceServer).DeleteProjectVar(ctx, req.(*DeleteVarRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -438,7 +366,7 @@ func _VarService_UpdateEnvVar_Handler(srv interface{}, ctx context.Context, dec 
 }
 
 func _VarService_DeleteEnvVar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetVarRequest)
+	in := new(DeleteVarRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -450,25 +378,25 @@ func _VarService_DeleteEnvVar_Handler(srv interface{}, ctx context.Context, dec 
 		FullMethod: VarService_DeleteEnvVar_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VarServiceServer).DeleteEnvVar(ctx, req.(*GetVarRequest))
+		return srv.(VarServiceServer).DeleteEnvVar(ctx, req.(*DeleteVarRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VarService_ListAllVars_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListAllVarsRequest)
+func _VarService_ResolveVars_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResolveVarsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VarServiceServer).ListAllVars(ctx, in)
+		return srv.(VarServiceServer).ResolveVars(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VarService_ListAllVars_FullMethodName,
+		FullMethod: VarService_ResolveVars_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VarServiceServer).ListAllVars(ctx, req.(*ListAllVarsRequest))
+		return srv.(VarServiceServer).ResolveVars(ctx, req.(*ResolveVarsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -480,10 +408,6 @@ var VarService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "projects.v1.VarService",
 	HandlerType: (*VarServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "GetProjectVar",
-			Handler:    _VarService_GetProjectVar_Handler,
-		},
 		{
 			MethodName: "ListProjectVars",
 			Handler:    _VarService_ListProjectVars_Handler,
@@ -499,10 +423,6 @@ var VarService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteProjectVar",
 			Handler:    _VarService_DeleteProjectVar_Handler,
-		},
-		{
-			MethodName: "GetEnvVar",
-			Handler:    _VarService_GetEnvVar_Handler,
 		},
 		{
 			MethodName: "ListEnvVars",
@@ -521,8 +441,8 @@ var VarService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _VarService_DeleteEnvVar_Handler,
 		},
 		{
-			MethodName: "ListAllVars",
-			Handler:    _VarService_ListAllVars_Handler,
+			MethodName: "ResolveVars",
+			Handler:    _VarService_ResolveVars_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

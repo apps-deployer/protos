@@ -18,7 +18,7 @@ service ProjectService {
   // UpdateProject обновляет информацию о проекте по его ID
   rpc UpdateProject (UpdateProjectRequest) returns (google.protobuf.Empty);
   // DeleteProject удаляет проект по его ID
-  rpc DeleteProject (GetProjectRequest) returns (google.protobuf.Empty);
+  rpc DeleteProject (DeleteProjectRequest) returns (google.protobuf.Empty);
 }
 
 // Ответ с данными проекта
@@ -28,6 +28,7 @@ message ProjectResponse {
   string repo_url = 3;
   string owner_id = 4;
   google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
 }
 
 // Ответ со списком проектов пользователя
@@ -61,4 +62,9 @@ message UpdateProjectRequest {
   string name = 2;
   string repo_url = 3;
   string owner_id = 4;
+}
+
+// Параметры запросов для удаления проекта по ID
+message DeleteProjectRequest {
+  string id = 1;
 }

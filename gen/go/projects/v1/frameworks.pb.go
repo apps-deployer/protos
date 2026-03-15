@@ -10,6 +10,7 @@ import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	unsafe "unsafe"
 )
@@ -32,6 +33,8 @@ type FrameworkResponse struct {
 	xxx_hidden_InstallCmd  *string                `protobuf:"bytes,6,opt,name=install_cmd,json=installCmd"`
 	xxx_hidden_BuildCmd    *string                `protobuf:"bytes,7,opt,name=build_cmd,json=buildCmd"`
 	xxx_hidden_RunCmd      *string                `protobuf:"bytes,8,opt,name=run_cmd,json=runCmd"`
+	xxx_hidden_CreatedAt   *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=created_at,json=createdAt"`
+	xxx_hidden_UpdatedAt   *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -143,44 +146,66 @@ func (x *FrameworkResponse) GetRunCmd() string {
 	return ""
 }
 
+func (x *FrameworkResponse) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.xxx_hidden_CreatedAt
+	}
+	return nil
+}
+
+func (x *FrameworkResponse) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.xxx_hidden_UpdatedAt
+	}
+	return nil
+}
+
 func (x *FrameworkResponse) SetId(v string) {
 	x.xxx_hidden_Id = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 10)
 }
 
 func (x *FrameworkResponse) SetName(v string) {
 	x.xxx_hidden_Name = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 10)
 }
 
 func (x *FrameworkResponse) SetRootDir(v string) {
 	x.xxx_hidden_RootDir = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 10)
 }
 
 func (x *FrameworkResponse) SetOutputDir(v string) {
 	x.xxx_hidden_OutputDir = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 10)
 }
 
 func (x *FrameworkResponse) SetBaseImage(v string) {
 	x.xxx_hidden_BaseImage = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 10)
 }
 
 func (x *FrameworkResponse) SetInstallCmd(v string) {
 	x.xxx_hidden_InstallCmd = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 10)
 }
 
 func (x *FrameworkResponse) SetBuildCmd(v string) {
 	x.xxx_hidden_BuildCmd = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 6, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 6, 10)
 }
 
 func (x *FrameworkResponse) SetRunCmd(v string) {
 	x.xxx_hidden_RunCmd = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 7, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 7, 10)
+}
+
+func (x *FrameworkResponse) SetCreatedAt(v *timestamppb.Timestamp) {
+	x.xxx_hidden_CreatedAt = v
+}
+
+func (x *FrameworkResponse) SetUpdatedAt(v *timestamppb.Timestamp) {
+	x.xxx_hidden_UpdatedAt = v
 }
 
 func (x *FrameworkResponse) HasId() bool {
@@ -239,6 +264,20 @@ func (x *FrameworkResponse) HasRunCmd() bool {
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 7)
 }
 
+func (x *FrameworkResponse) HasCreatedAt() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_CreatedAt != nil
+}
+
+func (x *FrameworkResponse) HasUpdatedAt() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_UpdatedAt != nil
+}
+
 func (x *FrameworkResponse) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
 	x.xxx_hidden_Id = nil
@@ -279,6 +318,14 @@ func (x *FrameworkResponse) ClearRunCmd() {
 	x.xxx_hidden_RunCmd = nil
 }
 
+func (x *FrameworkResponse) ClearCreatedAt() {
+	x.xxx_hidden_CreatedAt = nil
+}
+
+func (x *FrameworkResponse) ClearUpdatedAt() {
+	x.xxx_hidden_UpdatedAt = nil
+}
+
 type FrameworkResponse_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
@@ -290,6 +337,8 @@ type FrameworkResponse_builder struct {
 	InstallCmd *string
 	BuildCmd   *string
 	RunCmd     *string
+	CreatedAt  *timestamppb.Timestamp
+	UpdatedAt  *timestamppb.Timestamp
 }
 
 func (b0 FrameworkResponse_builder) Build() *FrameworkResponse {
@@ -297,37 +346,39 @@ func (b0 FrameworkResponse_builder) Build() *FrameworkResponse {
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.Id != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 10)
 		x.xxx_hidden_Id = b.Id
 	}
 	if b.Name != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 10)
 		x.xxx_hidden_Name = b.Name
 	}
 	if b.RootDir != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 10)
 		x.xxx_hidden_RootDir = b.RootDir
 	}
 	if b.OutputDir != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 10)
 		x.xxx_hidden_OutputDir = b.OutputDir
 	}
 	if b.BaseImage != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 10)
 		x.xxx_hidden_BaseImage = b.BaseImage
 	}
 	if b.InstallCmd != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 5, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 5, 10)
 		x.xxx_hidden_InstallCmd = b.InstallCmd
 	}
 	if b.BuildCmd != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 6, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 6, 10)
 		x.xxx_hidden_BuildCmd = b.BuildCmd
 	}
 	if b.RunCmd != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 7, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 7, 10)
 		x.xxx_hidden_RunCmd = b.RunCmd
 	}
+	x.xxx_hidden_CreatedAt = b.CreatedAt
+	x.xxx_hidden_UpdatedAt = b.UpdatedAt
 	return m0
 }
 
@@ -1163,11 +1214,90 @@ func (b0 UpdateFrameworkRequest_builder) Build() *UpdateFrameworkRequest {
 	return m0
 }
 
+// Параметры запросов для удаления шаблона конфигурации по ID
+type DeleteFrameworkRequest struct {
+	state                  protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Id          *string                `protobuf:"bytes,1,opt,name=id"`
+	XXX_raceDetectHookData protoimpl.RaceDetectHookData
+	XXX_presence           [1]uint32
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *DeleteFrameworkRequest) Reset() {
+	*x = DeleteFrameworkRequest{}
+	mi := &file_projects_v1_frameworks_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteFrameworkRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteFrameworkRequest) ProtoMessage() {}
+
+func (x *DeleteFrameworkRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_projects_v1_frameworks_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *DeleteFrameworkRequest) GetId() string {
+	if x != nil {
+		if x.xxx_hidden_Id != nil {
+			return *x.xxx_hidden_Id
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *DeleteFrameworkRequest) SetId(v string) {
+	x.xxx_hidden_Id = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
+}
+
+func (x *DeleteFrameworkRequest) HasId() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+}
+
+func (x *DeleteFrameworkRequest) ClearId() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	x.xxx_hidden_Id = nil
+}
+
+type DeleteFrameworkRequest_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Id *string
+}
+
+func (b0 DeleteFrameworkRequest_builder) Build() *DeleteFrameworkRequest {
+	m0 := &DeleteFrameworkRequest{}
+	b, x := &b0, m0
+	_, _ = b, x
+	if b.Id != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 1)
+		x.xxx_hidden_Id = b.Id
+	}
+	return m0
+}
+
 var File_projects_v1_frameworks_proto protoreflect.FileDescriptor
 
 const file_projects_v1_frameworks_proto_rawDesc = "" +
 	"\n" +
-	"\x1cprojects/v1/frameworks.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\"\xe7\x01\n" +
+	"\x1cprojects/v1/frameworks.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xdd\x02\n" +
 	"\x11FrameworkResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
@@ -1179,7 +1309,12 @@ const file_projects_v1_frameworks_proto_rawDesc = "" +
 	"\vinstall_cmd\x18\x06 \x01(\tR\n" +
 	"installCmd\x12\x1b\n" +
 	"\tbuild_cmd\x18\a \x01(\tR\bbuildCmd\x12\x17\n" +
-	"\arun_cmd\x18\b \x01(\tR\x06runCmd\"X\n" +
+	"\arun_cmd\x18\b \x01(\tR\x06runCmd\x129\n" +
+	"\n" +
+	"created_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"X\n" +
 	"\x16ListFrameworksResponse\x12>\n" +
 	"\n" +
 	"frameworks\x18\x01 \x03(\v2\x1e.projects.v1.FrameworkResponseR\n" +
@@ -1211,15 +1346,17 @@ const file_projects_v1_frameworks_proto_rawDesc = "" +
 	"\vinstall_cmd\x18\x06 \x01(\tR\n" +
 	"installCmd\x12\x1b\n" +
 	"\tbuild_cmd\x18\a \x01(\tR\bbuildCmd\x12\x17\n" +
-	"\arun_cmd\x18\b \x01(\tR\x06runCmd2\xb4\x03\n" +
+	"\arun_cmd\x18\b \x01(\tR\x06runCmd\"(\n" +
+	"\x16DeleteFrameworkRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id2\xb7\x03\n" +
 	"\x10FrameworkService\x12P\n" +
 	"\fGetFramework\x12 .projects.v1.GetFrameworkRequest\x1a\x1e.projects.v1.FrameworkResponse\x12Y\n" +
 	"\x0eListFrameworks\x12\".projects.v1.ListFrameworksRequest\x1a#.projects.v1.ListFrameworksResponse\x12V\n" +
 	"\x0fCreateFramework\x12#.projects.v1.CreateFrameworkRequest\x1a\x1e.projects.v1.FrameworkResponse\x12N\n" +
-	"\x0fUpdateFramework\x12#.projects.v1.UpdateFrameworkRequest\x1a\x16.google.protobuf.Empty\x12K\n" +
-	"\x0fDeleteFramework\x12 .projects.v1.GetFrameworkRequest\x1a\x16.google.protobuf.EmptyB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
+	"\x0fUpdateFramework\x12#.projects.v1.UpdateFrameworkRequest\x1a\x16.google.protobuf.Empty\x12N\n" +
+	"\x0fDeleteFramework\x12#.projects.v1.DeleteFrameworkRequest\x1a\x16.google.protobuf.EmptyB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
 
-var file_projects_v1_frameworks_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_projects_v1_frameworks_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_projects_v1_frameworks_proto_goTypes = []any{
 	(*FrameworkResponse)(nil),      // 0: projects.v1.FrameworkResponse
 	(*ListFrameworksResponse)(nil), // 1: projects.v1.ListFrameworksResponse
@@ -1227,25 +1364,29 @@ var file_projects_v1_frameworks_proto_goTypes = []any{
 	(*ListFrameworksRequest)(nil),  // 3: projects.v1.ListFrameworksRequest
 	(*CreateFrameworkRequest)(nil), // 4: projects.v1.CreateFrameworkRequest
 	(*UpdateFrameworkRequest)(nil), // 5: projects.v1.UpdateFrameworkRequest
-	(*emptypb.Empty)(nil),          // 6: google.protobuf.Empty
+	(*DeleteFrameworkRequest)(nil), // 6: projects.v1.DeleteFrameworkRequest
+	(*timestamppb.Timestamp)(nil),  // 7: google.protobuf.Timestamp
+	(*emptypb.Empty)(nil),          // 8: google.protobuf.Empty
 }
 var file_projects_v1_frameworks_proto_depIdxs = []int32{
-	0, // 0: projects.v1.ListFrameworksResponse.frameworks:type_name -> projects.v1.FrameworkResponse
-	2, // 1: projects.v1.FrameworkService.GetFramework:input_type -> projects.v1.GetFrameworkRequest
-	3, // 2: projects.v1.FrameworkService.ListFrameworks:input_type -> projects.v1.ListFrameworksRequest
-	4, // 3: projects.v1.FrameworkService.CreateFramework:input_type -> projects.v1.CreateFrameworkRequest
-	5, // 4: projects.v1.FrameworkService.UpdateFramework:input_type -> projects.v1.UpdateFrameworkRequest
-	2, // 5: projects.v1.FrameworkService.DeleteFramework:input_type -> projects.v1.GetFrameworkRequest
-	0, // 6: projects.v1.FrameworkService.GetFramework:output_type -> projects.v1.FrameworkResponse
-	1, // 7: projects.v1.FrameworkService.ListFrameworks:output_type -> projects.v1.ListFrameworksResponse
-	0, // 8: projects.v1.FrameworkService.CreateFramework:output_type -> projects.v1.FrameworkResponse
-	6, // 9: projects.v1.FrameworkService.UpdateFramework:output_type -> google.protobuf.Empty
-	6, // 10: projects.v1.FrameworkService.DeleteFramework:output_type -> google.protobuf.Empty
-	6, // [6:11] is the sub-list for method output_type
-	1, // [1:6] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	7, // 0: projects.v1.FrameworkResponse.created_at:type_name -> google.protobuf.Timestamp
+	7, // 1: projects.v1.FrameworkResponse.updated_at:type_name -> google.protobuf.Timestamp
+	0, // 2: projects.v1.ListFrameworksResponse.frameworks:type_name -> projects.v1.FrameworkResponse
+	2, // 3: projects.v1.FrameworkService.GetFramework:input_type -> projects.v1.GetFrameworkRequest
+	3, // 4: projects.v1.FrameworkService.ListFrameworks:input_type -> projects.v1.ListFrameworksRequest
+	4, // 5: projects.v1.FrameworkService.CreateFramework:input_type -> projects.v1.CreateFrameworkRequest
+	5, // 6: projects.v1.FrameworkService.UpdateFramework:input_type -> projects.v1.UpdateFrameworkRequest
+	6, // 7: projects.v1.FrameworkService.DeleteFramework:input_type -> projects.v1.DeleteFrameworkRequest
+	0, // 8: projects.v1.FrameworkService.GetFramework:output_type -> projects.v1.FrameworkResponse
+	1, // 9: projects.v1.FrameworkService.ListFrameworks:output_type -> projects.v1.ListFrameworksResponse
+	0, // 10: projects.v1.FrameworkService.CreateFramework:output_type -> projects.v1.FrameworkResponse
+	8, // 11: projects.v1.FrameworkService.UpdateFramework:output_type -> google.protobuf.Empty
+	8, // 12: projects.v1.FrameworkService.DeleteFramework:output_type -> google.protobuf.Empty
+	8, // [8:13] is the sub-list for method output_type
+	3, // [3:8] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_projects_v1_frameworks_proto_init() }
@@ -1259,7 +1400,7 @@ func file_projects_v1_frameworks_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_projects_v1_frameworks_proto_rawDesc), len(file_projects_v1_frameworks_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

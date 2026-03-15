@@ -42,7 +42,7 @@ type ProjectServiceClient interface {
 	// UpdateProject обновляет информацию о проекте по его ID
 	UpdateProject(ctx context.Context, in *UpdateProjectRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// DeleteProject удаляет проект по его ID
-	DeleteProject(ctx context.Context, in *GetProjectRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	DeleteProject(ctx context.Context, in *DeleteProjectRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type projectServiceClient struct {
@@ -93,7 +93,7 @@ func (c *projectServiceClient) UpdateProject(ctx context.Context, in *UpdateProj
 	return out, nil
 }
 
-func (c *projectServiceClient) DeleteProject(ctx context.Context, in *GetProjectRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *projectServiceClient) DeleteProject(ctx context.Context, in *DeleteProjectRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, ProjectService_DeleteProject_FullMethodName, in, out, cOpts...)
@@ -118,7 +118,7 @@ type ProjectServiceServer interface {
 	// UpdateProject обновляет информацию о проекте по его ID
 	UpdateProject(context.Context, *UpdateProjectRequest) (*emptypb.Empty, error)
 	// DeleteProject удаляет проект по его ID
-	DeleteProject(context.Context, *GetProjectRequest) (*emptypb.Empty, error)
+	DeleteProject(context.Context, *DeleteProjectRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedProjectServiceServer()
 }
 
@@ -141,7 +141,7 @@ func (UnimplementedProjectServiceServer) CreateProject(context.Context, *CreateP
 func (UnimplementedProjectServiceServer) UpdateProject(context.Context, *UpdateProjectRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateProject not implemented")
 }
-func (UnimplementedProjectServiceServer) DeleteProject(context.Context, *GetProjectRequest) (*emptypb.Empty, error) {
+func (UnimplementedProjectServiceServer) DeleteProject(context.Context, *DeleteProjectRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteProject not implemented")
 }
 func (UnimplementedProjectServiceServer) mustEmbedUnimplementedProjectServiceServer() {}
@@ -238,7 +238,7 @@ func _ProjectService_UpdateProject_Handler(srv interface{}, ctx context.Context,
 }
 
 func _ProjectService_DeleteProject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetProjectRequest)
+	in := new(DeleteProjectRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -250,7 +250,7 @@ func _ProjectService_DeleteProject_Handler(srv interface{}, ctx context.Context,
 		FullMethod: ProjectService_DeleteProject_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProjectServiceServer).DeleteProject(ctx, req.(*GetProjectRequest))
+		return srv.(ProjectServiceServer).DeleteProject(ctx, req.(*DeleteProjectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

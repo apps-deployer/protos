@@ -10,6 +10,7 @@ import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	unsafe "unsafe"
 )
@@ -21,12 +22,13 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Ответ с данными переменной
+// Ответ с метаданными переменной
 type VarResponse struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id          *string                `protobuf:"bytes,1,opt,name=id"`
 	xxx_hidden_Key         *string                `protobuf:"bytes,2,opt,name=key"`
-	xxx_hidden_Value       *string                `protobuf:"bytes,3,opt,name=value"`
+	xxx_hidden_CreatedAt   *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=created_at,json=createdAt"`
+	xxx_hidden_UpdatedAt   *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=updated_at,json=updatedAt"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -78,29 +80,36 @@ func (x *VarResponse) GetKey() string {
 	return ""
 }
 
-func (x *VarResponse) GetValue() string {
+func (x *VarResponse) GetCreatedAt() *timestamppb.Timestamp {
 	if x != nil {
-		if x.xxx_hidden_Value != nil {
-			return *x.xxx_hidden_Value
-		}
-		return ""
+		return x.xxx_hidden_CreatedAt
 	}
-	return ""
+	return nil
+}
+
+func (x *VarResponse) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.xxx_hidden_UpdatedAt
+	}
+	return nil
 }
 
 func (x *VarResponse) SetId(v string) {
 	x.xxx_hidden_Id = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 3)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 4)
 }
 
 func (x *VarResponse) SetKey(v string) {
 	x.xxx_hidden_Key = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 3)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 4)
 }
 
-func (x *VarResponse) SetValue(v string) {
-	x.xxx_hidden_Value = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 3)
+func (x *VarResponse) SetCreatedAt(v *timestamppb.Timestamp) {
+	x.xxx_hidden_CreatedAt = v
+}
+
+func (x *VarResponse) SetUpdatedAt(v *timestamppb.Timestamp) {
+	x.xxx_hidden_UpdatedAt = v
 }
 
 func (x *VarResponse) HasId() bool {
@@ -117,11 +126,18 @@ func (x *VarResponse) HasKey() bool {
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
 }
 
-func (x *VarResponse) HasValue() bool {
+func (x *VarResponse) HasCreatedAt() bool {
 	if x == nil {
 		return false
 	}
-	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
+	return x.xxx_hidden_CreatedAt != nil
+}
+
+func (x *VarResponse) HasUpdatedAt() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_UpdatedAt != nil
 }
 
 func (x *VarResponse) ClearId() {
@@ -134,17 +150,21 @@ func (x *VarResponse) ClearKey() {
 	x.xxx_hidden_Key = nil
 }
 
-func (x *VarResponse) ClearValue() {
-	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
-	x.xxx_hidden_Value = nil
+func (x *VarResponse) ClearCreatedAt() {
+	x.xxx_hidden_CreatedAt = nil
+}
+
+func (x *VarResponse) ClearUpdatedAt() {
+	x.xxx_hidden_UpdatedAt = nil
 }
 
 type VarResponse_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	Id    *string
-	Key   *string
-	Value *string
+	Id        *string
+	Key       *string
+	CreatedAt *timestamppb.Timestamp
+	UpdatedAt *timestamppb.Timestamp
 }
 
 func (b0 VarResponse_builder) Build() *VarResponse {
@@ -152,17 +172,15 @@ func (b0 VarResponse_builder) Build() *VarResponse {
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.Id != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 3)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 4)
 		x.xxx_hidden_Id = b.Id
 	}
 	if b.Key != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 3)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 4)
 		x.xxx_hidden_Key = b.Key
 	}
-	if b.Value != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 3)
-		x.xxx_hidden_Value = b.Value
-	}
+	x.xxx_hidden_CreatedAt = b.CreatedAt
+	x.xxx_hidden_UpdatedAt = b.UpdatedAt
 	return m0
 }
 
@@ -226,30 +244,32 @@ func (b0 ListVarsResponse_builder) Build() *ListVarsResponse {
 	return m0
 }
 
-// Параметры запросов для получения переменной по ID
-type GetVarRequest struct {
+// Ответ с данными переменных
+type ResolvedVar struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Id          *string                `protobuf:"bytes,1,opt,name=id"`
+	xxx_hidden_Key         *string                `protobuf:"bytes,2,opt,name=key"`
+	xxx_hidden_Value       *string                `protobuf:"bytes,3,opt,name=value"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
 	sizeCache              protoimpl.SizeCache
 }
 
-func (x *GetVarRequest) Reset() {
-	*x = GetVarRequest{}
+func (x *ResolvedVar) Reset() {
+	*x = ResolvedVar{}
 	mi := &file_projects_v1_vars_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetVarRequest) String() string {
+func (x *ResolvedVar) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetVarRequest) ProtoMessage() {}
+func (*ResolvedVar) ProtoMessage() {}
 
-func (x *GetVarRequest) ProtoReflect() protoreflect.Message {
+func (x *ResolvedVar) ProtoReflect() protoreflect.Message {
 	mi := &file_projects_v1_vars_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -261,7 +281,7 @@ func (x *GetVarRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *GetVarRequest) GetId() string {
+func (x *ResolvedVar) GetId() string {
 	if x != nil {
 		if x.xxx_hidden_Id != nil {
 			return *x.xxx_hidden_Id
@@ -271,31 +291,234 @@ func (x *GetVarRequest) GetId() string {
 	return ""
 }
 
-func (x *GetVarRequest) SetId(v string) {
-	x.xxx_hidden_Id = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
+func (x *ResolvedVar) GetKey() string {
+	if x != nil {
+		if x.xxx_hidden_Key != nil {
+			return *x.xxx_hidden_Key
+		}
+		return ""
+	}
+	return ""
 }
 
-func (x *GetVarRequest) HasId() bool {
+func (x *ResolvedVar) GetValue() string {
+	if x != nil {
+		if x.xxx_hidden_Value != nil {
+			return *x.xxx_hidden_Value
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *ResolvedVar) SetId(v string) {
+	x.xxx_hidden_Id = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 3)
+}
+
+func (x *ResolvedVar) SetKey(v string) {
+	x.xxx_hidden_Key = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 3)
+}
+
+func (x *ResolvedVar) SetValue(v string) {
+	x.xxx_hidden_Value = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 3)
+}
+
+func (x *ResolvedVar) HasId() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
 }
 
-func (x *GetVarRequest) ClearId() {
+func (x *ResolvedVar) HasKey() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
+}
+
+func (x *ResolvedVar) HasValue() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
+}
+
+func (x *ResolvedVar) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
 	x.xxx_hidden_Id = nil
 }
 
-type GetVarRequest_builder struct {
+func (x *ResolvedVar) ClearKey() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
+	x.xxx_hidden_Key = nil
+}
+
+func (x *ResolvedVar) ClearValue() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
+	x.xxx_hidden_Value = nil
+}
+
+type ResolvedVar_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Id    *string
+	Key   *string
+	Value *string
+}
+
+func (b0 ResolvedVar_builder) Build() *ResolvedVar {
+	m0 := &ResolvedVar{}
+	b, x := &b0, m0
+	_, _ = b, x
+	if b.Id != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 3)
+		x.xxx_hidden_Id = b.Id
+	}
+	if b.Key != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 3)
+		x.xxx_hidden_Key = b.Key
+	}
+	if b.Value != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 3)
+		x.xxx_hidden_Value = b.Value
+	}
+	return m0
+}
+
+// Ответ со списком данных переменных с их значениями
+type ResolveVarsResponse struct {
+	state           protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Vars *[]*ResolvedVar        `protobuf:"bytes,1,rep,name=vars"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *ResolveVarsResponse) Reset() {
+	*x = ResolveVarsResponse{}
+	mi := &file_projects_v1_vars_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ResolveVarsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResolveVarsResponse) ProtoMessage() {}
+
+func (x *ResolveVarsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_projects_v1_vars_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *ResolveVarsResponse) GetVars() []*ResolvedVar {
+	if x != nil {
+		if x.xxx_hidden_Vars != nil {
+			return *x.xxx_hidden_Vars
+		}
+	}
+	return nil
+}
+
+func (x *ResolveVarsResponse) SetVars(v []*ResolvedVar) {
+	x.xxx_hidden_Vars = &v
+}
+
+type ResolveVarsResponse_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Vars []*ResolvedVar
+}
+
+func (b0 ResolveVarsResponse_builder) Build() *ResolveVarsResponse {
+	m0 := &ResolveVarsResponse{}
+	b, x := &b0, m0
+	_, _ = b, x
+	x.xxx_hidden_Vars = &b.Vars
+	return m0
+}
+
+// Параметры запросов для получения переменной по ID
+type DeleteVarRequest struct {
+	state                  protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Id          *string                `protobuf:"bytes,1,opt,name=id"`
+	XXX_raceDetectHookData protoimpl.RaceDetectHookData
+	XXX_presence           [1]uint32
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *DeleteVarRequest) Reset() {
+	*x = DeleteVarRequest{}
+	mi := &file_projects_v1_vars_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteVarRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteVarRequest) ProtoMessage() {}
+
+func (x *DeleteVarRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_projects_v1_vars_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *DeleteVarRequest) GetId() string {
+	if x != nil {
+		if x.xxx_hidden_Id != nil {
+			return *x.xxx_hidden_Id
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *DeleteVarRequest) SetId(v string) {
+	x.xxx_hidden_Id = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
+}
+
+func (x *DeleteVarRequest) HasId() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+}
+
+func (x *DeleteVarRequest) ClearId() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	x.xxx_hidden_Id = nil
+}
+
+type DeleteVarRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
 	Id *string
 }
 
-func (b0 GetVarRequest_builder) Build() *GetVarRequest {
-	m0 := &GetVarRequest{}
+func (b0 DeleteVarRequest_builder) Build() *DeleteVarRequest {
+	m0 := &DeleteVarRequest{}
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.Id != nil {
@@ -319,7 +542,7 @@ type ListProjectVarsRequest struct {
 
 func (x *ListProjectVarsRequest) Reset() {
 	*x = ListProjectVarsRequest{}
-	mi := &file_projects_v1_vars_proto_msgTypes[3]
+	mi := &file_projects_v1_vars_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -331,7 +554,7 @@ func (x *ListProjectVarsRequest) String() string {
 func (*ListProjectVarsRequest) ProtoMessage() {}
 
 func (x *ListProjectVarsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_projects_v1_vars_proto_msgTypes[3]
+	mi := &file_projects_v1_vars_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -458,7 +681,7 @@ type ListEnvVarsRequest struct {
 
 func (x *ListEnvVarsRequest) Reset() {
 	*x = ListEnvVarsRequest{}
-	mi := &file_projects_v1_vars_proto_msgTypes[4]
+	mi := &file_projects_v1_vars_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -470,7 +693,7 @@ func (x *ListEnvVarsRequest) String() string {
 func (*ListEnvVarsRequest) ProtoMessage() {}
 
 func (x *ListEnvVarsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_projects_v1_vars_proto_msgTypes[4]
+	mi := &file_projects_v1_vars_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -597,7 +820,7 @@ type CreateProjectVarRequest struct {
 
 func (x *CreateProjectVarRequest) Reset() {
 	*x = CreateProjectVarRequest{}
-	mi := &file_projects_v1_vars_proto_msgTypes[5]
+	mi := &file_projects_v1_vars_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -609,7 +832,7 @@ func (x *CreateProjectVarRequest) String() string {
 func (*CreateProjectVarRequest) ProtoMessage() {}
 
 func (x *CreateProjectVarRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_projects_v1_vars_proto_msgTypes[5]
+	mi := &file_projects_v1_vars_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -742,7 +965,7 @@ type CreateEnvVarRequest struct {
 
 func (x *CreateEnvVarRequest) Reset() {
 	*x = CreateEnvVarRequest{}
-	mi := &file_projects_v1_vars_proto_msgTypes[6]
+	mi := &file_projects_v1_vars_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -754,7 +977,7 @@ func (x *CreateEnvVarRequest) String() string {
 func (*CreateEnvVarRequest) ProtoMessage() {}
 
 func (x *CreateEnvVarRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_projects_v1_vars_proto_msgTypes[6]
+	mi := &file_projects_v1_vars_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -886,7 +1109,7 @@ type UpdateVarRequest struct {
 
 func (x *UpdateVarRequest) Reset() {
 	*x = UpdateVarRequest{}
-	mi := &file_projects_v1_vars_proto_msgTypes[7]
+	mi := &file_projects_v1_vars_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -898,7 +1121,7 @@ func (x *UpdateVarRequest) String() string {
 func (*UpdateVarRequest) ProtoMessage() {}
 
 func (x *UpdateVarRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_projects_v1_vars_proto_msgTypes[7]
+	mi := &file_projects_v1_vars_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -986,7 +1209,7 @@ func (b0 UpdateVarRequest_builder) Build() *UpdateVarRequest {
 }
 
 // Параметры запросов для получения полного списка переменных в окружении
-type ListAllVarsRequest struct {
+type ResolveVarsRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_EnvId       *string                `protobuf:"bytes,1,opt,name=env_id,json=envId"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
@@ -995,21 +1218,21 @@ type ListAllVarsRequest struct {
 	sizeCache              protoimpl.SizeCache
 }
 
-func (x *ListAllVarsRequest) Reset() {
-	*x = ListAllVarsRequest{}
-	mi := &file_projects_v1_vars_proto_msgTypes[8]
+func (x *ResolveVarsRequest) Reset() {
+	*x = ResolveVarsRequest{}
+	mi := &file_projects_v1_vars_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListAllVarsRequest) String() string {
+func (x *ResolveVarsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListAllVarsRequest) ProtoMessage() {}
+func (*ResolveVarsRequest) ProtoMessage() {}
 
-func (x *ListAllVarsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_projects_v1_vars_proto_msgTypes[8]
+func (x *ResolveVarsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_projects_v1_vars_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1020,7 +1243,7 @@ func (x *ListAllVarsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *ListAllVarsRequest) GetEnvId() string {
+func (x *ResolveVarsRequest) GetEnvId() string {
 	if x != nil {
 		if x.xxx_hidden_EnvId != nil {
 			return *x.xxx_hidden_EnvId
@@ -1030,31 +1253,31 @@ func (x *ListAllVarsRequest) GetEnvId() string {
 	return ""
 }
 
-func (x *ListAllVarsRequest) SetEnvId(v string) {
+func (x *ResolveVarsRequest) SetEnvId(v string) {
 	x.xxx_hidden_EnvId = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
 }
 
-func (x *ListAllVarsRequest) HasEnvId() bool {
+func (x *ResolveVarsRequest) HasEnvId() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
 }
 
-func (x *ListAllVarsRequest) ClearEnvId() {
+func (x *ResolveVarsRequest) ClearEnvId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
 	x.xxx_hidden_EnvId = nil
 }
 
-type ListAllVarsRequest_builder struct {
+type ResolveVarsRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
 	EnvId *string
 }
 
-func (b0 ListAllVarsRequest_builder) Build() *ListAllVarsRequest {
-	m0 := &ListAllVarsRequest{}
+func (b0 ResolveVarsRequest_builder) Build() *ResolveVarsRequest {
+	m0 := &ResolveVarsRequest{}
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.EnvId != nil {
@@ -1068,14 +1291,23 @@ var File_projects_v1_vars_proto protoreflect.FileDescriptor
 
 const file_projects_v1_vars_proto_rawDesc = "" +
 	"\n" +
-	"\x16projects/v1/vars.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\"E\n" +
+	"\x16projects/v1/vars.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa5\x01\n" +
 	"\vVarResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
-	"\x03key\x18\x02 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x03 \x01(\tR\x05value\"@\n" +
+	"\x03key\x18\x02 \x01(\tR\x03key\x129\n" +
+	"\n" +
+	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"@\n" +
 	"\x10ListVarsResponse\x12,\n" +
-	"\x04vars\x18\x01 \x03(\v2\x18.projects.v1.VarResponseR\x04vars\"\x1f\n" +
-	"\rGetVarRequest\x12\x0e\n" +
+	"\x04vars\x18\x01 \x03(\v2\x18.projects.v1.VarResponseR\x04vars\"E\n" +
+	"\vResolvedVar\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
+	"\x03key\x18\x02 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x03 \x01(\tR\x05value\"C\n" +
+	"\x13ResolveVarsResponse\x12,\n" +
+	"\x04vars\x18\x01 \x03(\v2\x18.projects.v1.ResolvedVarR\x04vars\"\"\n" +
+	"\x10DeleteVarRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"e\n" +
 	"\x16ListProjectVarsRequest\x12\x1d\n" +
 	"\n" +
@@ -1098,64 +1330,64 @@ const file_projects_v1_vars_proto_rawDesc = "" +
 	"\x10UpdateVarRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value\"+\n" +
-	"\x12ListAllVarsRequest\x12\x15\n" +
-	"\x06env_id\x18\x01 \x01(\tR\x05envId2\xc9\x06\n" +
+	"\x12ResolveVarsRequest\x12\x15\n" +
+	"\x06env_id\x18\x01 \x01(\tR\x05envId2\xc5\x05\n" +
 	"\n" +
-	"VarService\x12E\n" +
-	"\rGetProjectVar\x12\x1a.projects.v1.GetVarRequest\x1a\x18.projects.v1.VarResponse\x12U\n" +
+	"VarService\x12U\n" +
 	"\x0fListProjectVars\x12#.projects.v1.ListProjectVarsRequest\x1a\x1d.projects.v1.ListVarsResponse\x12R\n" +
 	"\x10CreateProjectVar\x12$.projects.v1.CreateProjectVarRequest\x1a\x18.projects.v1.VarResponse\x12I\n" +
-	"\x10UpdateProjectVar\x12\x1d.projects.v1.UpdateVarRequest\x1a\x16.google.protobuf.Empty\x12F\n" +
-	"\x10DeleteProjectVar\x12\x1a.projects.v1.GetVarRequest\x1a\x16.google.protobuf.Empty\x12A\n" +
-	"\tGetEnvVar\x12\x1a.projects.v1.GetVarRequest\x1a\x18.projects.v1.VarResponse\x12M\n" +
+	"\x10UpdateProjectVar\x12\x1d.projects.v1.UpdateVarRequest\x1a\x16.google.protobuf.Empty\x12I\n" +
+	"\x10DeleteProjectVar\x12\x1d.projects.v1.DeleteVarRequest\x1a\x16.google.protobuf.Empty\x12M\n" +
 	"\vListEnvVars\x12\x1f.projects.v1.ListEnvVarsRequest\x1a\x1d.projects.v1.ListVarsResponse\x12J\n" +
 	"\fCreateEnvVar\x12 .projects.v1.CreateEnvVarRequest\x1a\x18.projects.v1.VarResponse\x12E\n" +
-	"\fUpdateEnvVar\x12\x1d.projects.v1.UpdateVarRequest\x1a\x16.google.protobuf.Empty\x12B\n" +
-	"\fDeleteEnvVar\x12\x1a.projects.v1.GetVarRequest\x1a\x16.google.protobuf.Empty\x12M\n" +
-	"\vListAllVars\x12\x1f.projects.v1.ListAllVarsRequest\x1a\x1d.projects.v1.ListVarsResponseB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
+	"\fUpdateEnvVar\x12\x1d.projects.v1.UpdateVarRequest\x1a\x16.google.protobuf.Empty\x12E\n" +
+	"\fDeleteEnvVar\x12\x1d.projects.v1.DeleteVarRequest\x1a\x16.google.protobuf.Empty\x12M\n" +
+	"\vResolveVars\x12\x1f.projects.v1.ResolveVarsRequest\x1a\x1d.projects.v1.ListVarsResponseB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
 
-var file_projects_v1_vars_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_projects_v1_vars_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_projects_v1_vars_proto_goTypes = []any{
 	(*VarResponse)(nil),             // 0: projects.v1.VarResponse
 	(*ListVarsResponse)(nil),        // 1: projects.v1.ListVarsResponse
-	(*GetVarRequest)(nil),           // 2: projects.v1.GetVarRequest
-	(*ListProjectVarsRequest)(nil),  // 3: projects.v1.ListProjectVarsRequest
-	(*ListEnvVarsRequest)(nil),      // 4: projects.v1.ListEnvVarsRequest
-	(*CreateProjectVarRequest)(nil), // 5: projects.v1.CreateProjectVarRequest
-	(*CreateEnvVarRequest)(nil),     // 6: projects.v1.CreateEnvVarRequest
-	(*UpdateVarRequest)(nil),        // 7: projects.v1.UpdateVarRequest
-	(*ListAllVarsRequest)(nil),      // 8: projects.v1.ListAllVarsRequest
-	(*emptypb.Empty)(nil),           // 9: google.protobuf.Empty
+	(*ResolvedVar)(nil),             // 2: projects.v1.ResolvedVar
+	(*ResolveVarsResponse)(nil),     // 3: projects.v1.ResolveVarsResponse
+	(*DeleteVarRequest)(nil),        // 4: projects.v1.DeleteVarRequest
+	(*ListProjectVarsRequest)(nil),  // 5: projects.v1.ListProjectVarsRequest
+	(*ListEnvVarsRequest)(nil),      // 6: projects.v1.ListEnvVarsRequest
+	(*CreateProjectVarRequest)(nil), // 7: projects.v1.CreateProjectVarRequest
+	(*CreateEnvVarRequest)(nil),     // 8: projects.v1.CreateEnvVarRequest
+	(*UpdateVarRequest)(nil),        // 9: projects.v1.UpdateVarRequest
+	(*ResolveVarsRequest)(nil),      // 10: projects.v1.ResolveVarsRequest
+	(*timestamppb.Timestamp)(nil),   // 11: google.protobuf.Timestamp
+	(*emptypb.Empty)(nil),           // 12: google.protobuf.Empty
 }
 var file_projects_v1_vars_proto_depIdxs = []int32{
-	0,  // 0: projects.v1.ListVarsResponse.vars:type_name -> projects.v1.VarResponse
-	2,  // 1: projects.v1.VarService.GetProjectVar:input_type -> projects.v1.GetVarRequest
-	3,  // 2: projects.v1.VarService.ListProjectVars:input_type -> projects.v1.ListProjectVarsRequest
-	5,  // 3: projects.v1.VarService.CreateProjectVar:input_type -> projects.v1.CreateProjectVarRequest
-	7,  // 4: projects.v1.VarService.UpdateProjectVar:input_type -> projects.v1.UpdateVarRequest
-	2,  // 5: projects.v1.VarService.DeleteProjectVar:input_type -> projects.v1.GetVarRequest
-	2,  // 6: projects.v1.VarService.GetEnvVar:input_type -> projects.v1.GetVarRequest
-	4,  // 7: projects.v1.VarService.ListEnvVars:input_type -> projects.v1.ListEnvVarsRequest
-	6,  // 8: projects.v1.VarService.CreateEnvVar:input_type -> projects.v1.CreateEnvVarRequest
-	7,  // 9: projects.v1.VarService.UpdateEnvVar:input_type -> projects.v1.UpdateVarRequest
-	2,  // 10: projects.v1.VarService.DeleteEnvVar:input_type -> projects.v1.GetVarRequest
-	8,  // 11: projects.v1.VarService.ListAllVars:input_type -> projects.v1.ListAllVarsRequest
-	0,  // 12: projects.v1.VarService.GetProjectVar:output_type -> projects.v1.VarResponse
+	11, // 0: projects.v1.VarResponse.created_at:type_name -> google.protobuf.Timestamp
+	11, // 1: projects.v1.VarResponse.updated_at:type_name -> google.protobuf.Timestamp
+	0,  // 2: projects.v1.ListVarsResponse.vars:type_name -> projects.v1.VarResponse
+	2,  // 3: projects.v1.ResolveVarsResponse.vars:type_name -> projects.v1.ResolvedVar
+	5,  // 4: projects.v1.VarService.ListProjectVars:input_type -> projects.v1.ListProjectVarsRequest
+	7,  // 5: projects.v1.VarService.CreateProjectVar:input_type -> projects.v1.CreateProjectVarRequest
+	9,  // 6: projects.v1.VarService.UpdateProjectVar:input_type -> projects.v1.UpdateVarRequest
+	4,  // 7: projects.v1.VarService.DeleteProjectVar:input_type -> projects.v1.DeleteVarRequest
+	6,  // 8: projects.v1.VarService.ListEnvVars:input_type -> projects.v1.ListEnvVarsRequest
+	8,  // 9: projects.v1.VarService.CreateEnvVar:input_type -> projects.v1.CreateEnvVarRequest
+	9,  // 10: projects.v1.VarService.UpdateEnvVar:input_type -> projects.v1.UpdateVarRequest
+	4,  // 11: projects.v1.VarService.DeleteEnvVar:input_type -> projects.v1.DeleteVarRequest
+	10, // 12: projects.v1.VarService.ResolveVars:input_type -> projects.v1.ResolveVarsRequest
 	1,  // 13: projects.v1.VarService.ListProjectVars:output_type -> projects.v1.ListVarsResponse
 	0,  // 14: projects.v1.VarService.CreateProjectVar:output_type -> projects.v1.VarResponse
-	9,  // 15: projects.v1.VarService.UpdateProjectVar:output_type -> google.protobuf.Empty
-	9,  // 16: projects.v1.VarService.DeleteProjectVar:output_type -> google.protobuf.Empty
-	0,  // 17: projects.v1.VarService.GetEnvVar:output_type -> projects.v1.VarResponse
-	1,  // 18: projects.v1.VarService.ListEnvVars:output_type -> projects.v1.ListVarsResponse
-	0,  // 19: projects.v1.VarService.CreateEnvVar:output_type -> projects.v1.VarResponse
-	9,  // 20: projects.v1.VarService.UpdateEnvVar:output_type -> google.protobuf.Empty
-	9,  // 21: projects.v1.VarService.DeleteEnvVar:output_type -> google.protobuf.Empty
-	1,  // 22: projects.v1.VarService.ListAllVars:output_type -> projects.v1.ListVarsResponse
-	12, // [12:23] is the sub-list for method output_type
-	1,  // [1:12] is the sub-list for method input_type
-	1,  // [1:1] is the sub-list for extension type_name
-	1,  // [1:1] is the sub-list for extension extendee
-	0,  // [0:1] is the sub-list for field type_name
+	12, // 15: projects.v1.VarService.UpdateProjectVar:output_type -> google.protobuf.Empty
+	12, // 16: projects.v1.VarService.DeleteProjectVar:output_type -> google.protobuf.Empty
+	1,  // 17: projects.v1.VarService.ListEnvVars:output_type -> projects.v1.ListVarsResponse
+	0,  // 18: projects.v1.VarService.CreateEnvVar:output_type -> projects.v1.VarResponse
+	12, // 19: projects.v1.VarService.UpdateEnvVar:output_type -> google.protobuf.Empty
+	12, // 20: projects.v1.VarService.DeleteEnvVar:output_type -> google.protobuf.Empty
+	1,  // 21: projects.v1.VarService.ResolveVars:output_type -> projects.v1.ListVarsResponse
+	13, // [13:22] is the sub-list for method output_type
+	4,  // [4:13] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_projects_v1_vars_proto_init() }
@@ -1169,7 +1401,7 @@ func file_projects_v1_vars_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_projects_v1_vars_proto_rawDesc), len(file_projects_v1_vars_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
