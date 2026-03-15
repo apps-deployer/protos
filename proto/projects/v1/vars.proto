@@ -29,7 +29,7 @@ service VarService {
 
   // ResolveVars возвращает список всех переменных, определенных в окружении, включая 
   // переменные проекта, с поддержкой пагинации
-  rpc ResolveVars (ResolveVarsRequest) returns (ListVarsResponse);
+  rpc ResolveVars (ResolveVarsRequest) returns (ResolveVarsResponse);
 }
 
 // Ответ с метаданными переменной

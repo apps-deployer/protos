@@ -1331,7 +1331,7 @@ const file_projects_v1_vars_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value\"+\n" +
 	"\x12ResolveVarsRequest\x12\x15\n" +
-	"\x06env_id\x18\x01 \x01(\tR\x05envId2\xc5\x05\n" +
+	"\x06env_id\x18\x01 \x01(\tR\x05envId2\xc8\x05\n" +
 	"\n" +
 	"VarService\x12U\n" +
 	"\x0fListProjectVars\x12#.projects.v1.ListProjectVarsRequest\x1a\x1d.projects.v1.ListVarsResponse\x12R\n" +
@@ -1341,8 +1341,8 @@ const file_projects_v1_vars_proto_rawDesc = "" +
 	"\vListEnvVars\x12\x1f.projects.v1.ListEnvVarsRequest\x1a\x1d.projects.v1.ListVarsResponse\x12J\n" +
 	"\fCreateEnvVar\x12 .projects.v1.CreateEnvVarRequest\x1a\x18.projects.v1.VarResponse\x12E\n" +
 	"\fUpdateEnvVar\x12\x1d.projects.v1.UpdateVarRequest\x1a\x16.google.protobuf.Empty\x12E\n" +
-	"\fDeleteEnvVar\x12\x1d.projects.v1.DeleteVarRequest\x1a\x16.google.protobuf.Empty\x12M\n" +
-	"\vResolveVars\x12\x1f.projects.v1.ResolveVarsRequest\x1a\x1d.projects.v1.ListVarsResponseB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
+	"\fDeleteEnvVar\x12\x1d.projects.v1.DeleteVarRequest\x1a\x16.google.protobuf.Empty\x12P\n" +
+	"\vResolveVars\x12\x1f.projects.v1.ResolveVarsRequest\x1a .projects.v1.ResolveVarsResponseB?Z=github.com/apps-deployer/protos/gen/go/projects/v1;projectsv1b\beditionsp\xe9\a"
 
 var file_projects_v1_vars_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_projects_v1_vars_proto_goTypes = []any{
@@ -1382,7 +1382,7 @@ var file_projects_v1_vars_proto_depIdxs = []int32{
 	0,  // 18: projects.v1.VarService.CreateEnvVar:output_type -> projects.v1.VarResponse
 	12, // 19: projects.v1.VarService.UpdateEnvVar:output_type -> google.protobuf.Empty
 	12, // 20: projects.v1.VarService.DeleteEnvVar:output_type -> google.protobuf.Empty
-	1,  // 21: projects.v1.VarService.ResolveVars:output_type -> projects.v1.ListVarsResponse
+	3,  // 21: projects.v1.VarService.ResolveVars:output_type -> projects.v1.ResolveVarsResponse
 	13, // [13:22] is the sub-list for method output_type
 	4,  // [4:13] is the sub-list for method input_type
 	4,  // [4:4] is the sub-list for extension type_name

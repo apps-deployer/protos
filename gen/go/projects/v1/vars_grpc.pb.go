@@ -55,7 +55,7 @@ type VarServiceClient interface {
 	DeleteEnvVar(ctx context.Context, in *DeleteVarRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// ResolveVars возвращает список всех переменных, определенных в окружении, включая
 	// переменные проекта, с поддержкой пагинации
-	ResolveVars(ctx context.Context, in *ResolveVarsRequest, opts ...grpc.CallOption) (*ListVarsResponse, error)
+	ResolveVars(ctx context.Context, in *ResolveVarsRequest, opts ...grpc.CallOption) (*ResolveVarsResponse, error)
 }
 
 type varServiceClient struct {
@@ -146,9 +146,9 @@ func (c *varServiceClient) DeleteEnvVar(ctx context.Context, in *DeleteVarReques
 	return out, nil
 }
 
-func (c *varServiceClient) ResolveVars(ctx context.Context, in *ResolveVarsRequest, opts ...grpc.CallOption) (*ListVarsResponse, error) {
+func (c *varServiceClient) ResolveVars(ctx context.Context, in *ResolveVarsRequest, opts ...grpc.CallOption) (*ResolveVarsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListVarsResponse)
+	out := new(ResolveVarsResponse)
 	err := c.cc.Invoke(ctx, VarService_ResolveVars_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -180,7 +180,7 @@ type VarServiceServer interface {
 	DeleteEnvVar(context.Context, *DeleteVarRequest) (*emptypb.Empty, error)
 	// ResolveVars возвращает список всех переменных, определенных в окружении, включая
 	// переменные проекта, с поддержкой пагинации
-	ResolveVars(context.Context, *ResolveVarsRequest) (*ListVarsResponse, error)
+	ResolveVars(context.Context, *ResolveVarsRequest) (*ResolveVarsResponse, error)
 	mustEmbedUnimplementedVarServiceServer()
 }
 
@@ -215,7 +215,7 @@ func (UnimplementedVarServiceServer) UpdateEnvVar(context.Context, *UpdateVarReq
 func (UnimplementedVarServiceServer) DeleteEnvVar(context.Context, *DeleteVarRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteEnvVar not implemented")
 }
-func (UnimplementedVarServiceServer) ResolveVars(context.Context, *ResolveVarsRequest) (*ListVarsResponse, error) {
+func (UnimplementedVarServiceServer) ResolveVars(context.Context, *ResolveVarsRequest) (*ResolveVarsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ResolveVars not implemented")
 }
 func (UnimplementedVarServiceServer) mustEmbedUnimplementedVarServiceServer() {}
