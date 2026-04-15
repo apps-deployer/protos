@@ -30,7 +30,6 @@ message EnvResponse {
     string name = 2;
     string project_id = 3;
     string target_branch = 4;
-    string domain_name = 5;
     google.protobuf.Timestamp created_at = 6;
     google.protobuf.Timestamp updated_at = 7;
 }
@@ -63,7 +62,6 @@ message CreateEnvRequest {
     string name = 1;
     string project_id = 2;
     string target_branch = 3;
-    string domain_name = 4;
 }
 
 // Параметры запросов на обновление окружений
@@ -71,7 +69,6 @@ message UpdateEnvRequest {
     string id = 1;
     string name = 2;
     string target_branch = 3;
-    string domain_name = 4;
 }
 
 // Параметры запроса на удаление окружения

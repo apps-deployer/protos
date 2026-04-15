@@ -29,7 +29,6 @@ type EnvResponse struct {
 	xxx_hidden_Name         *string                `protobuf:"bytes,2,opt,name=name"`
 	xxx_hidden_ProjectId    *string                `protobuf:"bytes,3,opt,name=project_id,json=projectId"`
 	xxx_hidden_TargetBranch *string                `protobuf:"bytes,4,opt,name=target_branch,json=targetBranch"`
-	xxx_hidden_DomainName   *string                `protobuf:"bytes,5,opt,name=domain_name,json=domainName"`
 	xxx_hidden_CreatedAt    *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=created_at,json=createdAt"`
 	xxx_hidden_UpdatedAt    *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt"`
 	XXX_raceDetectHookData  protoimpl.RaceDetectHookData
@@ -103,16 +102,6 @@ func (x *EnvResponse) GetTargetBranch() string {
 	return ""
 }
 
-func (x *EnvResponse) GetDomainName() string {
-	if x != nil {
-		if x.xxx_hidden_DomainName != nil {
-			return *x.xxx_hidden_DomainName
-		}
-		return ""
-	}
-	return ""
-}
-
 func (x *EnvResponse) GetCreatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.xxx_hidden_CreatedAt
@@ -129,27 +118,22 @@ func (x *EnvResponse) GetUpdatedAt() *timestamppb.Timestamp {
 
 func (x *EnvResponse) SetId(v string) {
 	x.xxx_hidden_Id = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 7)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 6)
 }
 
 func (x *EnvResponse) SetName(v string) {
 	x.xxx_hidden_Name = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 7)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 6)
 }
 
 func (x *EnvResponse) SetProjectId(v string) {
 	x.xxx_hidden_ProjectId = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 7)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 6)
 }
 
 func (x *EnvResponse) SetTargetBranch(v string) {
 	x.xxx_hidden_TargetBranch = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 7)
-}
-
-func (x *EnvResponse) SetDomainName(v string) {
-	x.xxx_hidden_DomainName = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 7)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 6)
 }
 
 func (x *EnvResponse) SetCreatedAt(v *timestamppb.Timestamp) {
@@ -188,13 +172,6 @@ func (x *EnvResponse) HasTargetBranch() bool {
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 3)
 }
 
-func (x *EnvResponse) HasDomainName() bool {
-	if x == nil {
-		return false
-	}
-	return protoimpl.X.Present(&(x.XXX_presence[0]), 4)
-}
-
 func (x *EnvResponse) HasCreatedAt() bool {
 	if x == nil {
 		return false
@@ -229,11 +206,6 @@ func (x *EnvResponse) ClearTargetBranch() {
 	x.xxx_hidden_TargetBranch = nil
 }
 
-func (x *EnvResponse) ClearDomainName() {
-	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 4)
-	x.xxx_hidden_DomainName = nil
-}
-
 func (x *EnvResponse) ClearCreatedAt() {
 	x.xxx_hidden_CreatedAt = nil
 }
@@ -249,7 +221,6 @@ type EnvResponse_builder struct {
 	Name         *string
 	ProjectId    *string
 	TargetBranch *string
-	DomainName   *string
 	CreatedAt    *timestamppb.Timestamp
 	UpdatedAt    *timestamppb.Timestamp
 }
@@ -259,24 +230,20 @@ func (b0 EnvResponse_builder) Build() *EnvResponse {
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.Id != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 7)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 6)
 		x.xxx_hidden_Id = b.Id
 	}
 	if b.Name != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 7)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 6)
 		x.xxx_hidden_Name = b.Name
 	}
 	if b.ProjectId != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 7)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 6)
 		x.xxx_hidden_ProjectId = b.ProjectId
 	}
 	if b.TargetBranch != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 7)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 6)
 		x.xxx_hidden_TargetBranch = b.TargetBranch
-	}
-	if b.DomainName != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 7)
-		x.xxx_hidden_DomainName = b.DomainName
 	}
 	x.xxx_hidden_CreatedAt = b.CreatedAt
 	x.xxx_hidden_UpdatedAt = b.UpdatedAt
@@ -679,7 +646,6 @@ type CreateEnvRequest struct {
 	xxx_hidden_Name         *string                `protobuf:"bytes,1,opt,name=name"`
 	xxx_hidden_ProjectId    *string                `protobuf:"bytes,2,opt,name=project_id,json=projectId"`
 	xxx_hidden_TargetBranch *string                `protobuf:"bytes,3,opt,name=target_branch,json=targetBranch"`
-	xxx_hidden_DomainName   *string                `protobuf:"bytes,4,opt,name=domain_name,json=domainName"`
 	XXX_raceDetectHookData  protoimpl.RaceDetectHookData
 	XXX_presence            [1]uint32
 	unknownFields           protoimpl.UnknownFields
@@ -741,34 +707,19 @@ func (x *CreateEnvRequest) GetTargetBranch() string {
 	return ""
 }
 
-func (x *CreateEnvRequest) GetDomainName() string {
-	if x != nil {
-		if x.xxx_hidden_DomainName != nil {
-			return *x.xxx_hidden_DomainName
-		}
-		return ""
-	}
-	return ""
-}
-
 func (x *CreateEnvRequest) SetName(v string) {
 	x.xxx_hidden_Name = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 4)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 3)
 }
 
 func (x *CreateEnvRequest) SetProjectId(v string) {
 	x.xxx_hidden_ProjectId = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 4)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 3)
 }
 
 func (x *CreateEnvRequest) SetTargetBranch(v string) {
 	x.xxx_hidden_TargetBranch = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 4)
-}
-
-func (x *CreateEnvRequest) SetDomainName(v string) {
-	x.xxx_hidden_DomainName = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 4)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 3)
 }
 
 func (x *CreateEnvRequest) HasName() bool {
@@ -792,13 +743,6 @@ func (x *CreateEnvRequest) HasTargetBranch() bool {
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
 }
 
-func (x *CreateEnvRequest) HasDomainName() bool {
-	if x == nil {
-		return false
-	}
-	return protoimpl.X.Present(&(x.XXX_presence[0]), 3)
-}
-
 func (x *CreateEnvRequest) ClearName() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
 	x.xxx_hidden_Name = nil
@@ -814,18 +758,12 @@ func (x *CreateEnvRequest) ClearTargetBranch() {
 	x.xxx_hidden_TargetBranch = nil
 }
 
-func (x *CreateEnvRequest) ClearDomainName() {
-	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 3)
-	x.xxx_hidden_DomainName = nil
-}
-
 type CreateEnvRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
 	Name         *string
 	ProjectId    *string
 	TargetBranch *string
-	DomainName   *string
 }
 
 func (b0 CreateEnvRequest_builder) Build() *CreateEnvRequest {
@@ -833,20 +771,16 @@ func (b0 CreateEnvRequest_builder) Build() *CreateEnvRequest {
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.Name != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 4)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 3)
 		x.xxx_hidden_Name = b.Name
 	}
 	if b.ProjectId != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 4)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 3)
 		x.xxx_hidden_ProjectId = b.ProjectId
 	}
 	if b.TargetBranch != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 4)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 3)
 		x.xxx_hidden_TargetBranch = b.TargetBranch
-	}
-	if b.DomainName != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 4)
-		x.xxx_hidden_DomainName = b.DomainName
 	}
 	return m0
 }
@@ -857,7 +791,6 @@ type UpdateEnvRequest struct {
 	xxx_hidden_Id           *string                `protobuf:"bytes,1,opt,name=id"`
 	xxx_hidden_Name         *string                `protobuf:"bytes,2,opt,name=name"`
 	xxx_hidden_TargetBranch *string                `protobuf:"bytes,3,opt,name=target_branch,json=targetBranch"`
-	xxx_hidden_DomainName   *string                `protobuf:"bytes,4,opt,name=domain_name,json=domainName"`
 	XXX_raceDetectHookData  protoimpl.RaceDetectHookData
 	XXX_presence            [1]uint32
 	unknownFields           protoimpl.UnknownFields
@@ -919,34 +852,19 @@ func (x *UpdateEnvRequest) GetTargetBranch() string {
 	return ""
 }
 
-func (x *UpdateEnvRequest) GetDomainName() string {
-	if x != nil {
-		if x.xxx_hidden_DomainName != nil {
-			return *x.xxx_hidden_DomainName
-		}
-		return ""
-	}
-	return ""
-}
-
 func (x *UpdateEnvRequest) SetId(v string) {
 	x.xxx_hidden_Id = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 4)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 3)
 }
 
 func (x *UpdateEnvRequest) SetName(v string) {
 	x.xxx_hidden_Name = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 4)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 3)
 }
 
 func (x *UpdateEnvRequest) SetTargetBranch(v string) {
 	x.xxx_hidden_TargetBranch = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 4)
-}
-
-func (x *UpdateEnvRequest) SetDomainName(v string) {
-	x.xxx_hidden_DomainName = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 4)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 3)
 }
 
 func (x *UpdateEnvRequest) HasId() bool {
@@ -970,13 +888,6 @@ func (x *UpdateEnvRequest) HasTargetBranch() bool {
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
 }
 
-func (x *UpdateEnvRequest) HasDomainName() bool {
-	if x == nil {
-		return false
-	}
-	return protoimpl.X.Present(&(x.XXX_presence[0]), 3)
-}
-
 func (x *UpdateEnvRequest) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
 	x.xxx_hidden_Id = nil
@@ -992,18 +903,12 @@ func (x *UpdateEnvRequest) ClearTargetBranch() {
 	x.xxx_hidden_TargetBranch = nil
 }
 
-func (x *UpdateEnvRequest) ClearDomainName() {
-	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 3)
-	x.xxx_hidden_DomainName = nil
-}
-
 type UpdateEnvRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
 	Id           *string
 	Name         *string
 	TargetBranch *string
-	DomainName   *string
 }
 
 func (b0 UpdateEnvRequest_builder) Build() *UpdateEnvRequest {
@@ -1011,20 +916,16 @@ func (b0 UpdateEnvRequest_builder) Build() *UpdateEnvRequest {
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.Id != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 4)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 3)
 		x.xxx_hidden_Id = b.Id
 	}
 	if b.Name != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 4)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 3)
 		x.xxx_hidden_Name = b.Name
 	}
 	if b.TargetBranch != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 4)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 3)
 		x.xxx_hidden_TargetBranch = b.TargetBranch
-	}
-	if b.DomainName != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 4)
-		x.xxx_hidden_DomainName = b.DomainName
 	}
 	return m0
 }
@@ -1112,15 +1013,13 @@ var File_projects_v1_envs_proto protoreflect.FileDescriptor
 
 const file_projects_v1_envs_proto_rawDesc = "" +
 	"\n" +
-	"\x16projects/v1/envs.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8c\x02\n" +
+	"\x16projects/v1/envs.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xeb\x01\n" +
 	"\vEnvResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1d\n" +
 	"\n" +
 	"project_id\x18\x03 \x01(\tR\tprojectId\x12#\n" +
-	"\rtarget_branch\x18\x04 \x01(\tR\ftargetBranch\x12\x1f\n" +
-	"\vdomain_name\x18\x05 \x01(\tR\n" +
-	"domainName\x129\n" +
+	"\rtarget_branch\x18\x04 \x01(\tR\ftargetBranch\x129\n" +
 	"\n" +
 	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
@@ -1136,20 +1035,16 @@ const file_projects_v1_envs_proto_rawDesc = "" +
 	"\n" +
 	"project_id\x18\x01 \x01(\tR\tprojectId\x12\x14\n" +
 	"\x05limit\x18\x02 \x01(\x03R\x05limit\x12\x16\n" +
-	"\x06offset\x18\x03 \x01(\x03R\x06offset\"\x8b\x01\n" +
+	"\x06offset\x18\x03 \x01(\x03R\x06offset\"j\n" +
 	"\x10CreateEnvRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x1d\n" +
 	"\n" +
 	"project_id\x18\x02 \x01(\tR\tprojectId\x12#\n" +
-	"\rtarget_branch\x18\x03 \x01(\tR\ftargetBranch\x12\x1f\n" +
-	"\vdomain_name\x18\x04 \x01(\tR\n" +
-	"domainName\"|\n" +
+	"\rtarget_branch\x18\x03 \x01(\tR\ftargetBranch\"[\n" +
 	"\x10UpdateEnvRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12#\n" +
-	"\rtarget_branch\x18\x03 \x01(\tR\ftargetBranch\x12\x1f\n" +
-	"\vdomain_name\x18\x04 \x01(\tR\n" +
-	"domainName\"\"\n" +
+	"\rtarget_branch\x18\x03 \x01(\tR\ftargetBranch\"\"\n" +
 	"\x10DeleteEnvRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id2\xad\x03\n" +
 	"\n" +
