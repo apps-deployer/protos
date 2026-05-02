@@ -36,6 +36,7 @@ type DeployConfigResponse struct {
 	xxx_hidden_RunCmdOverride     *string                `protobuf:"bytes,9,opt,name=run_cmd_override,json=runCmdOverride"`
 	xxx_hidden_CreatedAt          *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created_at,json=createdAt"`
 	xxx_hidden_UpdatedAt          *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt"`
+	xxx_hidden_AppPortOverride    int32                  `protobuf:"varint,12,opt,name=app_port_override,json=appPortOverride"`
 	XXX_raceDetectHookData        protoimpl.RaceDetectHookData
 	XXX_presence                  [1]uint32
 	unknownFields                 protoimpl.UnknownFields
@@ -171,49 +172,56 @@ func (x *DeployConfigResponse) GetUpdatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *DeployConfigResponse) GetAppPortOverride() int32 {
+	if x != nil {
+		return x.xxx_hidden_AppPortOverride
+	}
+	return 0
+}
+
 func (x *DeployConfigResponse) SetId(v string) {
 	x.xxx_hidden_Id = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 11)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 12)
 }
 
 func (x *DeployConfigResponse) SetProjectId(v string) {
 	x.xxx_hidden_ProjectId = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 11)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 12)
 }
 
 func (x *DeployConfigResponse) SetFrameworkId(v string) {
 	x.xxx_hidden_FrameworkId = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 11)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 12)
 }
 
 func (x *DeployConfigResponse) SetRootDirOverride(v string) {
 	x.xxx_hidden_RootDirOverride = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 11)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 12)
 }
 
 func (x *DeployConfigResponse) SetOutputDirOverride(v string) {
 	x.xxx_hidden_OutputDirOverride = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 11)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 12)
 }
 
 func (x *DeployConfigResponse) SetBaseImageOverride(v string) {
 	x.xxx_hidden_BaseImageOverride = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 11)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 12)
 }
 
 func (x *DeployConfigResponse) SetInstallCmdOverride(v string) {
 	x.xxx_hidden_InstallCmdOverride = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 6, 11)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 6, 12)
 }
 
 func (x *DeployConfigResponse) SetBuildCmdOverride(v string) {
 	x.xxx_hidden_BuildCmdOverride = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 7, 11)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 7, 12)
 }
 
 func (x *DeployConfigResponse) SetRunCmdOverride(v string) {
 	x.xxx_hidden_RunCmdOverride = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 8, 11)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 8, 12)
 }
 
 func (x *DeployConfigResponse) SetCreatedAt(v *timestamppb.Timestamp) {
@@ -222,6 +230,11 @@ func (x *DeployConfigResponse) SetCreatedAt(v *timestamppb.Timestamp) {
 
 func (x *DeployConfigResponse) SetUpdatedAt(v *timestamppb.Timestamp) {
 	x.xxx_hidden_UpdatedAt = v
+}
+
+func (x *DeployConfigResponse) SetAppPortOverride(v int32) {
+	x.xxx_hidden_AppPortOverride = v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 11, 12)
 }
 
 func (x *DeployConfigResponse) HasId() bool {
@@ -301,6 +314,13 @@ func (x *DeployConfigResponse) HasUpdatedAt() bool {
 	return x.xxx_hidden_UpdatedAt != nil
 }
 
+func (x *DeployConfigResponse) HasAppPortOverride() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 11)
+}
+
 func (x *DeployConfigResponse) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
 	x.xxx_hidden_Id = nil
@@ -354,6 +374,11 @@ func (x *DeployConfigResponse) ClearUpdatedAt() {
 	x.xxx_hidden_UpdatedAt = nil
 }
 
+func (x *DeployConfigResponse) ClearAppPortOverride() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 11)
+	x.xxx_hidden_AppPortOverride = 0
+}
+
 type DeployConfigResponse_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
@@ -368,6 +393,7 @@ type DeployConfigResponse_builder struct {
 	RunCmdOverride     *string
 	CreatedAt          *timestamppb.Timestamp
 	UpdatedAt          *timestamppb.Timestamp
+	AppPortOverride    *int32
 }
 
 func (b0 DeployConfigResponse_builder) Build() *DeployConfigResponse {
@@ -375,43 +401,47 @@ func (b0 DeployConfigResponse_builder) Build() *DeployConfigResponse {
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.Id != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 11)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 12)
 		x.xxx_hidden_Id = b.Id
 	}
 	if b.ProjectId != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 11)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 12)
 		x.xxx_hidden_ProjectId = b.ProjectId
 	}
 	if b.FrameworkId != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 11)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 12)
 		x.xxx_hidden_FrameworkId = b.FrameworkId
 	}
 	if b.RootDirOverride != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 11)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 12)
 		x.xxx_hidden_RootDirOverride = b.RootDirOverride
 	}
 	if b.OutputDirOverride != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 11)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 12)
 		x.xxx_hidden_OutputDirOverride = b.OutputDirOverride
 	}
 	if b.BaseImageOverride != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 5, 11)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 5, 12)
 		x.xxx_hidden_BaseImageOverride = b.BaseImageOverride
 	}
 	if b.InstallCmdOverride != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 6, 11)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 6, 12)
 		x.xxx_hidden_InstallCmdOverride = b.InstallCmdOverride
 	}
 	if b.BuildCmdOverride != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 7, 11)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 7, 12)
 		x.xxx_hidden_BuildCmdOverride = b.BuildCmdOverride
 	}
 	if b.RunCmdOverride != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 8, 11)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 8, 12)
 		x.xxx_hidden_RunCmdOverride = b.RunCmdOverride
 	}
 	x.xxx_hidden_CreatedAt = b.CreatedAt
 	x.xxx_hidden_UpdatedAt = b.UpdatedAt
+	if b.AppPortOverride != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 11, 12)
+		x.xxx_hidden_AppPortOverride = *b.AppPortOverride
+	}
 	return m0
 }
 
@@ -426,6 +456,7 @@ type ResolveDeployConfigResponse struct {
 	xxx_hidden_InstallCmd  *string                `protobuf:"bytes,6,opt,name=install_cmd,json=installCmd"`
 	xxx_hidden_BuildCmd    *string                `protobuf:"bytes,7,opt,name=build_cmd,json=buildCmd"`
 	xxx_hidden_RunCmd      *string                `protobuf:"bytes,8,opt,name=run_cmd,json=runCmd"`
+	xxx_hidden_AppPort     int32                  `protobuf:"varint,9,opt,name=app_port,json=appPort"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -537,44 +568,56 @@ func (x *ResolveDeployConfigResponse) GetRunCmd() string {
 	return ""
 }
 
+func (x *ResolveDeployConfigResponse) GetAppPort() int32 {
+	if x != nil {
+		return x.xxx_hidden_AppPort
+	}
+	return 0
+}
+
 func (x *ResolveDeployConfigResponse) SetId(v string) {
 	x.xxx_hidden_Id = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 9)
 }
 
 func (x *ResolveDeployConfigResponse) SetProjectId(v string) {
 	x.xxx_hidden_ProjectId = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 9)
 }
 
 func (x *ResolveDeployConfigResponse) SetRootDir(v string) {
 	x.xxx_hidden_RootDir = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 9)
 }
 
 func (x *ResolveDeployConfigResponse) SetOutputDir(v string) {
 	x.xxx_hidden_OutputDir = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 9)
 }
 
 func (x *ResolveDeployConfigResponse) SetBaseImage(v string) {
 	x.xxx_hidden_BaseImage = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 9)
 }
 
 func (x *ResolveDeployConfigResponse) SetInstallCmd(v string) {
 	x.xxx_hidden_InstallCmd = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 9)
 }
 
 func (x *ResolveDeployConfigResponse) SetBuildCmd(v string) {
 	x.xxx_hidden_BuildCmd = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 6, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 6, 9)
 }
 
 func (x *ResolveDeployConfigResponse) SetRunCmd(v string) {
 	x.xxx_hidden_RunCmd = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 7, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 7, 9)
+}
+
+func (x *ResolveDeployConfigResponse) SetAppPort(v int32) {
+	x.xxx_hidden_AppPort = v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 8, 9)
 }
 
 func (x *ResolveDeployConfigResponse) HasId() bool {
@@ -633,6 +676,13 @@ func (x *ResolveDeployConfigResponse) HasRunCmd() bool {
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 7)
 }
 
+func (x *ResolveDeployConfigResponse) HasAppPort() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 8)
+}
+
 func (x *ResolveDeployConfigResponse) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
 	x.xxx_hidden_Id = nil
@@ -673,6 +723,11 @@ func (x *ResolveDeployConfigResponse) ClearRunCmd() {
 	x.xxx_hidden_RunCmd = nil
 }
 
+func (x *ResolveDeployConfigResponse) ClearAppPort() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 8)
+	x.xxx_hidden_AppPort = 0
+}
+
 type ResolveDeployConfigResponse_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
@@ -684,6 +739,7 @@ type ResolveDeployConfigResponse_builder struct {
 	InstallCmd *string
 	BuildCmd   *string
 	RunCmd     *string
+	AppPort    *int32
 }
 
 func (b0 ResolveDeployConfigResponse_builder) Build() *ResolveDeployConfigResponse {
@@ -691,36 +747,40 @@ func (b0 ResolveDeployConfigResponse_builder) Build() *ResolveDeployConfigRespon
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.Id != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 9)
 		x.xxx_hidden_Id = b.Id
 	}
 	if b.ProjectId != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 9)
 		x.xxx_hidden_ProjectId = b.ProjectId
 	}
 	if b.RootDir != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 9)
 		x.xxx_hidden_RootDir = b.RootDir
 	}
 	if b.OutputDir != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 9)
 		x.xxx_hidden_OutputDir = b.OutputDir
 	}
 	if b.BaseImage != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 9)
 		x.xxx_hidden_BaseImage = b.BaseImage
 	}
 	if b.InstallCmd != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 5, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 5, 9)
 		x.xxx_hidden_InstallCmd = b.InstallCmd
 	}
 	if b.BuildCmd != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 6, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 6, 9)
 		x.xxx_hidden_BuildCmd = b.BuildCmd
 	}
 	if b.RunCmd != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 7, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 7, 9)
 		x.xxx_hidden_RunCmd = b.RunCmd
+	}
+	if b.AppPort != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 8, 9)
+		x.xxx_hidden_AppPort = *b.AppPort
 	}
 	return m0
 }
@@ -815,6 +875,7 @@ type UpdateDeployConfigRequest struct {
 	xxx_hidden_InstallCmdOverride *string                `protobuf:"bytes,6,opt,name=install_cmd_override,json=installCmdOverride"`
 	xxx_hidden_BuildCmdOverride   *string                `protobuf:"bytes,7,opt,name=build_cmd_override,json=buildCmdOverride"`
 	xxx_hidden_RunCmdOverride     *string                `protobuf:"bytes,8,opt,name=run_cmd_override,json=runCmdOverride"`
+	xxx_hidden_AppPortOverride    int32                  `protobuf:"varint,9,opt,name=app_port_override,json=appPortOverride"`
 	XXX_raceDetectHookData        protoimpl.RaceDetectHookData
 	XXX_presence                  [1]uint32
 	unknownFields                 protoimpl.UnknownFields
@@ -926,44 +987,56 @@ func (x *UpdateDeployConfigRequest) GetRunCmdOverride() string {
 	return ""
 }
 
+func (x *UpdateDeployConfigRequest) GetAppPortOverride() int32 {
+	if x != nil {
+		return x.xxx_hidden_AppPortOverride
+	}
+	return 0
+}
+
 func (x *UpdateDeployConfigRequest) SetId(v string) {
 	x.xxx_hidden_Id = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 9)
 }
 
 func (x *UpdateDeployConfigRequest) SetFrameworkId(v string) {
 	x.xxx_hidden_FrameworkId = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 9)
 }
 
 func (x *UpdateDeployConfigRequest) SetRootDirOverride(v string) {
 	x.xxx_hidden_RootDirOverride = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 9)
 }
 
 func (x *UpdateDeployConfigRequest) SetOutputDirOverride(v string) {
 	x.xxx_hidden_OutputDirOverride = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 9)
 }
 
 func (x *UpdateDeployConfigRequest) SetBaseImageOverride(v string) {
 	x.xxx_hidden_BaseImageOverride = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 9)
 }
 
 func (x *UpdateDeployConfigRequest) SetInstallCmdOverride(v string) {
 	x.xxx_hidden_InstallCmdOverride = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 9)
 }
 
 func (x *UpdateDeployConfigRequest) SetBuildCmdOverride(v string) {
 	x.xxx_hidden_BuildCmdOverride = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 6, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 6, 9)
 }
 
 func (x *UpdateDeployConfigRequest) SetRunCmdOverride(v string) {
 	x.xxx_hidden_RunCmdOverride = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 7, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 7, 9)
+}
+
+func (x *UpdateDeployConfigRequest) SetAppPortOverride(v int32) {
+	x.xxx_hidden_AppPortOverride = v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 8, 9)
 }
 
 func (x *UpdateDeployConfigRequest) HasId() bool {
@@ -1022,6 +1095,13 @@ func (x *UpdateDeployConfigRequest) HasRunCmdOverride() bool {
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 7)
 }
 
+func (x *UpdateDeployConfigRequest) HasAppPortOverride() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 8)
+}
+
 func (x *UpdateDeployConfigRequest) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
 	x.xxx_hidden_Id = nil
@@ -1062,6 +1142,11 @@ func (x *UpdateDeployConfigRequest) ClearRunCmdOverride() {
 	x.xxx_hidden_RunCmdOverride = nil
 }
 
+func (x *UpdateDeployConfigRequest) ClearAppPortOverride() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 8)
+	x.xxx_hidden_AppPortOverride = 0
+}
+
 type UpdateDeployConfigRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
@@ -1073,6 +1158,7 @@ type UpdateDeployConfigRequest_builder struct {
 	InstallCmdOverride *string
 	BuildCmdOverride   *string
 	RunCmdOverride     *string
+	AppPortOverride    *int32
 }
 
 func (b0 UpdateDeployConfigRequest_builder) Build() *UpdateDeployConfigRequest {
@@ -1080,36 +1166,40 @@ func (b0 UpdateDeployConfigRequest_builder) Build() *UpdateDeployConfigRequest {
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.Id != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 9)
 		x.xxx_hidden_Id = b.Id
 	}
 	if b.FrameworkId != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 9)
 		x.xxx_hidden_FrameworkId = b.FrameworkId
 	}
 	if b.RootDirOverride != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 9)
 		x.xxx_hidden_RootDirOverride = b.RootDirOverride
 	}
 	if b.OutputDirOverride != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 9)
 		x.xxx_hidden_OutputDirOverride = b.OutputDirOverride
 	}
 	if b.BaseImageOverride != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 9)
 		x.xxx_hidden_BaseImageOverride = b.BaseImageOverride
 	}
 	if b.InstallCmdOverride != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 5, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 5, 9)
 		x.xxx_hidden_InstallCmdOverride = b.InstallCmdOverride
 	}
 	if b.BuildCmdOverride != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 6, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 6, 9)
 		x.xxx_hidden_BuildCmdOverride = b.BuildCmdOverride
 	}
 	if b.RunCmdOverride != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 7, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 7, 9)
 		x.xxx_hidden_RunCmdOverride = b.RunCmdOverride
+	}
+	if b.AppPortOverride != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 8, 9)
+		x.xxx_hidden_AppPortOverride = *b.AppPortOverride
 	}
 	return m0
 }
@@ -1118,7 +1208,7 @@ var File_projects_v1_deploy_configs_proto protoreflect.FileDescriptor
 
 const file_projects_v1_deploy_configs_proto_rawDesc = "" +
 	"\n" +
-	" projects/v1/deploy_configs.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf4\x03\n" +
+	" projects/v1/deploy_configs.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa0\x04\n" +
 	"\x14DeployConfigResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
 	"\n" +
@@ -1134,7 +1224,8 @@ const file_projects_v1_deploy_configs_proto_rawDesc = "" +
 	"created_at\x18\n" +
 	" \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xfc\x01\n" +
+	"updated_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12*\n" +
+	"\x11app_port_override\x18\f \x01(\x05R\x0fappPortOverride\"\x97\x02\n" +
 	"\x1bResolveDeployConfigResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
 	"\n" +
@@ -1147,10 +1238,11 @@ const file_projects_v1_deploy_configs_proto_rawDesc = "" +
 	"\vinstall_cmd\x18\x06 \x01(\tR\n" +
 	"installCmd\x12\x1b\n" +
 	"\tbuild_cmd\x18\a \x01(\tR\bbuildCmd\x12\x17\n" +
-	"\arun_cmd\x18\b \x01(\tR\x06runCmd\"7\n" +
+	"\arun_cmd\x18\b \x01(\tR\x06runCmd\x12\x19\n" +
+	"\bapp_port\x18\t \x01(\x05R\aappPort\"7\n" +
 	"\x16GetDeployConfigRequest\x12\x1d\n" +
 	"\n" +
-	"project_id\x18\x01 \x01(\tR\tprojectId\"\xe4\x02\n" +
+	"project_id\x18\x01 \x01(\tR\tprojectId\"\x90\x03\n" +
 	"\x19UpdateDeployConfigRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12!\n" +
 	"\fframework_id\x18\x02 \x01(\tR\vframeworkId\x12*\n" +
@@ -1159,7 +1251,8 @@ const file_projects_v1_deploy_configs_proto_rawDesc = "" +
 	"\x13base_image_override\x18\x05 \x01(\tR\x11baseImageOverride\x120\n" +
 	"\x14install_cmd_override\x18\x06 \x01(\tR\x12installCmdOverride\x12,\n" +
 	"\x12build_cmd_override\x18\a \x01(\tR\x10buildCmdOverride\x12(\n" +
-	"\x10run_cmd_override\x18\b \x01(\tR\x0erunCmdOverride2\xac\x02\n" +
+	"\x10run_cmd_override\x18\b \x01(\tR\x0erunCmdOverride\x12*\n" +
+	"\x11app_port_override\x18\t \x01(\x05R\x0fappPortOverride2\xac\x02\n" +
 	"\x13DeployConfigService\x12d\n" +
 	"\x13ResolveDeployConfig\x12#.projects.v1.GetDeployConfigRequest\x1a(.projects.v1.ResolveDeployConfigResponse\x12Y\n" +
 	"\x0fGetDeployConfig\x12#.projects.v1.GetDeployConfigRequest\x1a!.projects.v1.DeployConfigResponse\x12T\n" +

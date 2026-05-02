@@ -35,6 +35,7 @@ type FrameworkResponse struct {
 	xxx_hidden_RunCmd      *string                `protobuf:"bytes,8,opt,name=run_cmd,json=runCmd"`
 	xxx_hidden_CreatedAt   *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=created_at,json=createdAt"`
 	xxx_hidden_UpdatedAt   *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt"`
+	xxx_hidden_AppPort     int32                  `protobuf:"varint,11,opt,name=app_port,json=appPort"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -160,44 +161,51 @@ func (x *FrameworkResponse) GetUpdatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *FrameworkResponse) GetAppPort() int32 {
+	if x != nil {
+		return x.xxx_hidden_AppPort
+	}
+	return 0
+}
+
 func (x *FrameworkResponse) SetId(v string) {
 	x.xxx_hidden_Id = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 10)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 11)
 }
 
 func (x *FrameworkResponse) SetName(v string) {
 	x.xxx_hidden_Name = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 10)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 11)
 }
 
 func (x *FrameworkResponse) SetRootDir(v string) {
 	x.xxx_hidden_RootDir = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 10)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 11)
 }
 
 func (x *FrameworkResponse) SetOutputDir(v string) {
 	x.xxx_hidden_OutputDir = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 10)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 11)
 }
 
 func (x *FrameworkResponse) SetBaseImage(v string) {
 	x.xxx_hidden_BaseImage = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 10)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 11)
 }
 
 func (x *FrameworkResponse) SetInstallCmd(v string) {
 	x.xxx_hidden_InstallCmd = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 10)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 11)
 }
 
 func (x *FrameworkResponse) SetBuildCmd(v string) {
 	x.xxx_hidden_BuildCmd = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 6, 10)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 6, 11)
 }
 
 func (x *FrameworkResponse) SetRunCmd(v string) {
 	x.xxx_hidden_RunCmd = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 7, 10)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 7, 11)
 }
 
 func (x *FrameworkResponse) SetCreatedAt(v *timestamppb.Timestamp) {
@@ -206,6 +214,11 @@ func (x *FrameworkResponse) SetCreatedAt(v *timestamppb.Timestamp) {
 
 func (x *FrameworkResponse) SetUpdatedAt(v *timestamppb.Timestamp) {
 	x.xxx_hidden_UpdatedAt = v
+}
+
+func (x *FrameworkResponse) SetAppPort(v int32) {
+	x.xxx_hidden_AppPort = v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 10, 11)
 }
 
 func (x *FrameworkResponse) HasId() bool {
@@ -278,6 +291,13 @@ func (x *FrameworkResponse) HasUpdatedAt() bool {
 	return x.xxx_hidden_UpdatedAt != nil
 }
 
+func (x *FrameworkResponse) HasAppPort() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 10)
+}
+
 func (x *FrameworkResponse) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
 	x.xxx_hidden_Id = nil
@@ -326,6 +346,11 @@ func (x *FrameworkResponse) ClearUpdatedAt() {
 	x.xxx_hidden_UpdatedAt = nil
 }
 
+func (x *FrameworkResponse) ClearAppPort() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 10)
+	x.xxx_hidden_AppPort = 0
+}
+
 type FrameworkResponse_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
@@ -339,6 +364,7 @@ type FrameworkResponse_builder struct {
 	RunCmd     *string
 	CreatedAt  *timestamppb.Timestamp
 	UpdatedAt  *timestamppb.Timestamp
+	AppPort    *int32
 }
 
 func (b0 FrameworkResponse_builder) Build() *FrameworkResponse {
@@ -346,39 +372,43 @@ func (b0 FrameworkResponse_builder) Build() *FrameworkResponse {
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.Id != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 10)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 11)
 		x.xxx_hidden_Id = b.Id
 	}
 	if b.Name != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 10)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 11)
 		x.xxx_hidden_Name = b.Name
 	}
 	if b.RootDir != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 10)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 11)
 		x.xxx_hidden_RootDir = b.RootDir
 	}
 	if b.OutputDir != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 10)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 11)
 		x.xxx_hidden_OutputDir = b.OutputDir
 	}
 	if b.BaseImage != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 10)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 11)
 		x.xxx_hidden_BaseImage = b.BaseImage
 	}
 	if b.InstallCmd != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 5, 10)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 5, 11)
 		x.xxx_hidden_InstallCmd = b.InstallCmd
 	}
 	if b.BuildCmd != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 6, 10)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 6, 11)
 		x.xxx_hidden_BuildCmd = b.BuildCmd
 	}
 	if b.RunCmd != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 7, 10)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 7, 11)
 		x.xxx_hidden_RunCmd = b.RunCmd
 	}
 	x.xxx_hidden_CreatedAt = b.CreatedAt
 	x.xxx_hidden_UpdatedAt = b.UpdatedAt
+	if b.AppPort != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 10, 11)
+		x.xxx_hidden_AppPort = *b.AppPort
+	}
 	return m0
 }
 
@@ -637,6 +667,7 @@ type CreateFrameworkRequest struct {
 	xxx_hidden_InstallCmd  *string                `protobuf:"bytes,5,opt,name=install_cmd,json=installCmd"`
 	xxx_hidden_BuildCmd    *string                `protobuf:"bytes,6,opt,name=build_cmd,json=buildCmd"`
 	xxx_hidden_RunCmd      *string                `protobuf:"bytes,7,opt,name=run_cmd,json=runCmd"`
+	xxx_hidden_AppPort     int32                  `protobuf:"varint,8,opt,name=app_port,json=appPort"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -738,39 +769,51 @@ func (x *CreateFrameworkRequest) GetRunCmd() string {
 	return ""
 }
 
+func (x *CreateFrameworkRequest) GetAppPort() int32 {
+	if x != nil {
+		return x.xxx_hidden_AppPort
+	}
+	return 0
+}
+
 func (x *CreateFrameworkRequest) SetName(v string) {
 	x.xxx_hidden_Name = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 7)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 8)
 }
 
 func (x *CreateFrameworkRequest) SetRootDir(v string) {
 	x.xxx_hidden_RootDir = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 7)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 8)
 }
 
 func (x *CreateFrameworkRequest) SetOutputDir(v string) {
 	x.xxx_hidden_OutputDir = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 7)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 8)
 }
 
 func (x *CreateFrameworkRequest) SetBaseImage(v string) {
 	x.xxx_hidden_BaseImage = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 7)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 8)
 }
 
 func (x *CreateFrameworkRequest) SetInstallCmd(v string) {
 	x.xxx_hidden_InstallCmd = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 7)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 8)
 }
 
 func (x *CreateFrameworkRequest) SetBuildCmd(v string) {
 	x.xxx_hidden_BuildCmd = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 7)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 8)
 }
 
 func (x *CreateFrameworkRequest) SetRunCmd(v string) {
 	x.xxx_hidden_RunCmd = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 6, 7)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 6, 8)
+}
+
+func (x *CreateFrameworkRequest) SetAppPort(v int32) {
+	x.xxx_hidden_AppPort = v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 7, 8)
 }
 
 func (x *CreateFrameworkRequest) HasName() bool {
@@ -822,6 +865,13 @@ func (x *CreateFrameworkRequest) HasRunCmd() bool {
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 6)
 }
 
+func (x *CreateFrameworkRequest) HasAppPort() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 7)
+}
+
 func (x *CreateFrameworkRequest) ClearName() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
 	x.xxx_hidden_Name = nil
@@ -857,6 +907,11 @@ func (x *CreateFrameworkRequest) ClearRunCmd() {
 	x.xxx_hidden_RunCmd = nil
 }
 
+func (x *CreateFrameworkRequest) ClearAppPort() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 7)
+	x.xxx_hidden_AppPort = 0
+}
+
 type CreateFrameworkRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
@@ -867,6 +922,7 @@ type CreateFrameworkRequest_builder struct {
 	InstallCmd *string
 	BuildCmd   *string
 	RunCmd     *string
+	AppPort    *int32
 }
 
 func (b0 CreateFrameworkRequest_builder) Build() *CreateFrameworkRequest {
@@ -874,32 +930,36 @@ func (b0 CreateFrameworkRequest_builder) Build() *CreateFrameworkRequest {
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.Name != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 7)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 8)
 		x.xxx_hidden_Name = b.Name
 	}
 	if b.RootDir != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 7)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 8)
 		x.xxx_hidden_RootDir = b.RootDir
 	}
 	if b.OutputDir != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 7)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 8)
 		x.xxx_hidden_OutputDir = b.OutputDir
 	}
 	if b.BaseImage != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 7)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 8)
 		x.xxx_hidden_BaseImage = b.BaseImage
 	}
 	if b.InstallCmd != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 7)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 8)
 		x.xxx_hidden_InstallCmd = b.InstallCmd
 	}
 	if b.BuildCmd != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 5, 7)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 5, 8)
 		x.xxx_hidden_BuildCmd = b.BuildCmd
 	}
 	if b.RunCmd != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 6, 7)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 6, 8)
 		x.xxx_hidden_RunCmd = b.RunCmd
+	}
+	if b.AppPort != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 7, 8)
+		x.xxx_hidden_AppPort = *b.AppPort
 	}
 	return m0
 }
@@ -915,6 +975,7 @@ type UpdateFrameworkRequest struct {
 	xxx_hidden_InstallCmd  *string                `protobuf:"bytes,6,opt,name=install_cmd,json=installCmd"`
 	xxx_hidden_BuildCmd    *string                `protobuf:"bytes,7,opt,name=build_cmd,json=buildCmd"`
 	xxx_hidden_RunCmd      *string                `protobuf:"bytes,8,opt,name=run_cmd,json=runCmd"`
+	xxx_hidden_AppPort     int32                  `protobuf:"varint,9,opt,name=app_port,json=appPort"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -1026,44 +1087,56 @@ func (x *UpdateFrameworkRequest) GetRunCmd() string {
 	return ""
 }
 
+func (x *UpdateFrameworkRequest) GetAppPort() int32 {
+	if x != nil {
+		return x.xxx_hidden_AppPort
+	}
+	return 0
+}
+
 func (x *UpdateFrameworkRequest) SetId(v string) {
 	x.xxx_hidden_Id = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 9)
 }
 
 func (x *UpdateFrameworkRequest) SetName(v string) {
 	x.xxx_hidden_Name = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 9)
 }
 
 func (x *UpdateFrameworkRequest) SetRootDir(v string) {
 	x.xxx_hidden_RootDir = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 9)
 }
 
 func (x *UpdateFrameworkRequest) SetOutputDir(v string) {
 	x.xxx_hidden_OutputDir = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 9)
 }
 
 func (x *UpdateFrameworkRequest) SetBaseImage(v string) {
 	x.xxx_hidden_BaseImage = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 9)
 }
 
 func (x *UpdateFrameworkRequest) SetInstallCmd(v string) {
 	x.xxx_hidden_InstallCmd = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 9)
 }
 
 func (x *UpdateFrameworkRequest) SetBuildCmd(v string) {
 	x.xxx_hidden_BuildCmd = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 6, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 6, 9)
 }
 
 func (x *UpdateFrameworkRequest) SetRunCmd(v string) {
 	x.xxx_hidden_RunCmd = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 7, 8)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 7, 9)
+}
+
+func (x *UpdateFrameworkRequest) SetAppPort(v int32) {
+	x.xxx_hidden_AppPort = v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 8, 9)
 }
 
 func (x *UpdateFrameworkRequest) HasId() bool {
@@ -1122,6 +1195,13 @@ func (x *UpdateFrameworkRequest) HasRunCmd() bool {
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 7)
 }
 
+func (x *UpdateFrameworkRequest) HasAppPort() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 8)
+}
+
 func (x *UpdateFrameworkRequest) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
 	x.xxx_hidden_Id = nil
@@ -1162,6 +1242,11 @@ func (x *UpdateFrameworkRequest) ClearRunCmd() {
 	x.xxx_hidden_RunCmd = nil
 }
 
+func (x *UpdateFrameworkRequest) ClearAppPort() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 8)
+	x.xxx_hidden_AppPort = 0
+}
+
 type UpdateFrameworkRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
@@ -1173,6 +1258,7 @@ type UpdateFrameworkRequest_builder struct {
 	InstallCmd *string
 	BuildCmd   *string
 	RunCmd     *string
+	AppPort    *int32
 }
 
 func (b0 UpdateFrameworkRequest_builder) Build() *UpdateFrameworkRequest {
@@ -1180,36 +1266,40 @@ func (b0 UpdateFrameworkRequest_builder) Build() *UpdateFrameworkRequest {
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.Id != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 9)
 		x.xxx_hidden_Id = b.Id
 	}
 	if b.Name != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 9)
 		x.xxx_hidden_Name = b.Name
 	}
 	if b.RootDir != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 9)
 		x.xxx_hidden_RootDir = b.RootDir
 	}
 	if b.OutputDir != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 9)
 		x.xxx_hidden_OutputDir = b.OutputDir
 	}
 	if b.BaseImage != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 9)
 		x.xxx_hidden_BaseImage = b.BaseImage
 	}
 	if b.InstallCmd != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 5, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 5, 9)
 		x.xxx_hidden_InstallCmd = b.InstallCmd
 	}
 	if b.BuildCmd != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 6, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 6, 9)
 		x.xxx_hidden_BuildCmd = b.BuildCmd
 	}
 	if b.RunCmd != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 7, 8)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 7, 9)
 		x.xxx_hidden_RunCmd = b.RunCmd
+	}
+	if b.AppPort != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 8, 9)
+		x.xxx_hidden_AppPort = *b.AppPort
 	}
 	return m0
 }
@@ -1297,7 +1387,7 @@ var File_projects_v1_frameworks_proto protoreflect.FileDescriptor
 
 const file_projects_v1_frameworks_proto_rawDesc = "" +
 	"\n" +
-	"\x1cprojects/v1/frameworks.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xdd\x02\n" +
+	"\x1cprojects/v1/frameworks.proto\x12\vprojects.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf8\x02\n" +
 	"\x11FrameworkResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
@@ -1314,7 +1404,8 @@ const file_projects_v1_frameworks_proto_rawDesc = "" +
 	"created_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
 	"updated_at\x18\n" +
-	" \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"X\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12\x19\n" +
+	"\bapp_port\x18\v \x01(\x05R\aappPort\"X\n" +
 	"\x16ListFrameworksResponse\x12>\n" +
 	"\n" +
 	"frameworks\x18\x01 \x03(\v2\x1e.projects.v1.FrameworkResponseR\n" +
@@ -1323,7 +1414,7 @@ const file_projects_v1_frameworks_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"E\n" +
 	"\x15ListFrameworksRequest\x12\x14\n" +
 	"\x05limit\x18\x01 \x01(\x03R\x05limit\x12\x16\n" +
-	"\x06offset\x18\x02 \x01(\x03R\x06offset\"\xdc\x01\n" +
+	"\x06offset\x18\x02 \x01(\x03R\x06offset\"\xf7\x01\n" +
 	"\x16CreateFrameworkRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x19\n" +
 	"\broot_dir\x18\x02 \x01(\tR\arootDir\x12\x1d\n" +
@@ -1334,7 +1425,8 @@ const file_projects_v1_frameworks_proto_rawDesc = "" +
 	"\vinstall_cmd\x18\x05 \x01(\tR\n" +
 	"installCmd\x12\x1b\n" +
 	"\tbuild_cmd\x18\x06 \x01(\tR\bbuildCmd\x12\x17\n" +
-	"\arun_cmd\x18\a \x01(\tR\x06runCmd\"\xec\x01\n" +
+	"\arun_cmd\x18\a \x01(\tR\x06runCmd\x12\x19\n" +
+	"\bapp_port\x18\b \x01(\x05R\aappPort\"\x87\x02\n" +
 	"\x16UpdateFrameworkRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
@@ -1346,7 +1438,8 @@ const file_projects_v1_frameworks_proto_rawDesc = "" +
 	"\vinstall_cmd\x18\x06 \x01(\tR\n" +
 	"installCmd\x12\x1b\n" +
 	"\tbuild_cmd\x18\a \x01(\tR\bbuildCmd\x12\x17\n" +
-	"\arun_cmd\x18\b \x01(\tR\x06runCmd\"(\n" +
+	"\arun_cmd\x18\b \x01(\tR\x06runCmd\x12\x19\n" +
+	"\bapp_port\x18\t \x01(\x05R\aappPort\"(\n" +
 	"\x16DeleteFrameworkRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id2\xb7\x03\n" +
 	"\x10FrameworkService\x12P\n" +

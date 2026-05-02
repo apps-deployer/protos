@@ -32,6 +32,7 @@ message DeployConfigResponse {
   string run_cmd_override = 9;
   google.protobuf.Timestamp created_at = 10;
   google.protobuf.Timestamp updated_at = 11;
+  int32 app_port_override = 12;
 }
 
 // Конфигурация деплоя для проекта, сгенерированная с учетом фреймворка и переопределений
@@ -44,6 +45,7 @@ message ResolveDeployConfigResponse {
   string install_cmd = 6;
   string build_cmd = 7;
   string run_cmd = 8;
+  int32 app_port = 9;
 }
 
 // Параметры запросов для получения конфигурации деплоя по ID
@@ -61,4 +63,5 @@ message UpdateDeployConfigRequest {
   string install_cmd_override = 6;
   string build_cmd_override = 7;
   string run_cmd_override = 8;
+  int32 app_port_override = 9;
 }
